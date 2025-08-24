@@ -9,9 +9,9 @@ const ItemCard = ({ item, showSelectedItem }) => {
     >
       <img src={`${item.images}`} alt="item-image" />
       <div className="item-name">
-        {item.name}
-        Price <br />
-        BHD {item.price}
+        <p className="primary-text">{item.name}</p>
+        <p className="secondary-text">Price</p>
+        <p className="primary-text">BHD {item.price}</p>
       </div>
     </div>
   );
