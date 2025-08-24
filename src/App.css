@@ -53,3 +53,110 @@ body {
   background-color: transparent;
   color: white;
 }
+
+nav {
+  width: 100vw;
+  height: 9vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  bottom: 0;
+  position: fixed;
+  background-color: white;
+  border-top: 0.5px solid #cbcbcb;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5%;
+}
+
+.current-page {
+  filter: grayscale(100%) sepia(100%) hue-rotate(0deg) saturate(500%);
+}
+
+.sign-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.sign-page h2 {
+  width: 90%;
+}
+
+.sign-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-form input {
+  border-radius: 5px;
+  height: 5vh;
+  border: 1px #dddddd solid;
+  width: 90%;
+}
+
+.sign-form label {
+  margin-top: 4%;
+  width: 90%;
+}
+
+.sign-button {
+  width: 90%;
+  margin-top: 6%;
+  border: none;
+  border-radius: 25px;
+  height: 6vh;
+  background-color: #ff0022;
+  color: white;
+}
+
+.terms {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 80%;
+}
+
+.terms p {
+  width: 90%;
+}
+
+.terms a {
+  color: #ff0022;
+}
+
+.google-btn {
+  margin-top: 6%;
+  border-radius: 5px;
+  height: 5vh;
+  border: 1px #dddddd solid;
+  width: 90%;
+  background-color: white;
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+}
+
+.google-btn img {
+  margin-left: 4%;
+  margin-right: 4%;
+  height: 70%;
+}
+
+.sign-alternative {
+  color: #797775;
+}
+
+.sign-alternative a {
+  font: bold;
+  color: #ff0022;
+}
