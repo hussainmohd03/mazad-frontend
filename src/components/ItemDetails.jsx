@@ -12,13 +12,19 @@ const ItemDetails = ({ item, setSelectedItem }) => {
         </div>
         <div className="item-details">
           <p>Lot ID #{item._id}</p>
-          <h4>{item.name}</h4>
-          <h4>Current Bid {item.price}</h4>
+          <strong>{item.name}</strong>
+          <p>Current Bid: {item.price}</p>
           <p>0 Bids . Closes on: August/26 at 06:00 PM</p>
-          <div className="item-description">{item.description}</div>
+          <div className="item-description">
+            <strong>Description</strong> <br />
+            {item.description}
+          </div>
         </div>
       </div>
-      <button className="sign-button">Bid Now</button>
+      <div className="item-page-footer">
+        <div className="bidding-time">5 Days : 8 Hours 17 Min</div>
+        <button className="action-button">Bid Now</button>
+      </div>
     </div>
   );
 };

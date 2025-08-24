@@ -230,19 +230,21 @@ nav a {
   grid-template-columns: repeat(2, 1fr);
   overflow-y: scroll;
   overflow-x: hidden;
-  align-items: center;
 }
 
 .item-card {
-  width: 50vw;
+  width: 40vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-self: center;
+  justify-self: center;
 }
 
 .item-card a {
   text-decoration: none;
   color: black;
+  display: flex;
+  justify-content: center;
 }
 
 .item-card img {
@@ -304,10 +306,40 @@ nav a {
 .item-details {
   background-color: #f8f8f8;
   width: 90%;
+  padding: 3%;
 }
 
 .item-description {
   border-radius: 10px;
   background-color: white;
   border: 1px #797775 solid;
+  padding: 3%;
+}
+
+.item-page-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.action-button {
+  width: 90%;
+  border: none;
+  border-radius: 25px;
+  height: 6vh;
+  background-color: #ff0022;
+  color: white;
+}
+
+.bidding-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4%;
+  margin-bottom: 3%;
+}
+
+.secondairy-text {
+  color: #84919a;
 }
