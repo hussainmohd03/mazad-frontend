@@ -9,7 +9,6 @@ import Activity from "./pages/Activity";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import NavBar from "./components/NavBar";
-import ItemDetails from "./components/ItemDetails";
 const App = () => {
   return (
     <>
