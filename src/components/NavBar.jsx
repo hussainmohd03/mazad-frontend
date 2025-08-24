@@ -17,15 +17,12 @@ const NavBar = () => {
       >
         <img src="/design-images/nav-home.png" alt="home" name="home" />
       </NavLink>
-      <NavLink
-        to="/activity"
-        onClick={handleClick}
-        className={current === "activity" ? "current-page" : "nav-page"}
-      >
+      <NavLink to="/activity" onClick={handleClick}>
         <img
           src="/design-images/nav-activity.png"
           alt="activity"
           name="activity"
+          className={current === "activity" ? "current-page" : "nav-page"}
         />
       </NavLink>
       <NavLink
