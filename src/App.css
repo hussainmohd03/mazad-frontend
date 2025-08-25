@@ -63,7 +63,6 @@ nav {
   align-items: center;
   bottom: 0;
   position: fixed;
-  background-color: white;
   border-top: 0.5px solid #cbcbcb;
 }
 
@@ -214,6 +213,7 @@ nav a {
 .category-link p {
   margin: 0;
   padding: 0;
+  font-size: small;
 }
 
 .category-link img {
@@ -227,7 +227,7 @@ nav a {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
 }
 
@@ -351,4 +351,84 @@ nav a {
   padding: 0%;
   font-size: 70%;
   color: #84919a;
+}
+
+.activity-page{
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 1fr 9fr 1fr;
+}
+
+.activity-page header{
+  text-align: center;
+}
+
+.activity-page header button{
+  width: 40%;
+  border: none;
+  background-color: transparent;
+}
+
+.activity-page main{
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+
+.auctions-search-filter{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7vh;
+}
+
+.auctions-search-filter input{
+  width: 80%;
+  height: 60%;
+  border-radius: 20px;
+  border: none;
+  background-color: #f8f8f8;
+}
+
+
+.activity-page nav{
+  background-color: blueviolet;
+}
+
+.auctions-grid{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auction-box{
+  margin-bottom: 3%;
+  width: 90%;
+  background-color: whitewa;
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  border-radius: 15px;
+  box-shadow: 2px 4px 6px rgba(0,0,0,0.2); 
+}
+
+.auction-box-item-image{
+  width: 35%;
+  aspect-ratio: 1/1;
+  border-radius: 15px;
+}
+
+.auction-box-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.auction-box-footer{
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #f8f8f8;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }

@@ -1,6 +1,7 @@
 import React from "react";
+import NavBar from "../components/NavBar";
 
-function Sell() {
+const Sell=()=> {
   return <div>Sell</div>;
 }
 

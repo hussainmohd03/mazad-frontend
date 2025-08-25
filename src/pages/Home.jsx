@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import categories from "../objects/categories.json";
-import items from "../objects/items.json";
+import auctions from "../objects/auctions.json";
 import { useState } from "react";
 import ItemDetails from "../components/ItemDetails";
 import ItemCard from "../components/ItemCard";
@@ -35,10 +35,10 @@ const Home = () => {
             ))}
           </div>
           <div className="items-container">
-            {items.map((item) => (
+            {auctions.map((auction) => (
               <ItemCard
-                key={item._id}
-                item={item}
+                key={auction._id}
+                item={auction.item}
                 showSelectedItem={showSelectedItem}
               />
             ))}

@@ -1,6 +1,7 @@
 import React from "react";
+import NavBar from "../components/NavBar";
 
-function Profile() {
+const Profile=()=> {
   return <div>Profile</div>;
 }
 
