@@ -1,15 +1,40 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 const SignUp = () => {
+    const [formData, setFormData] = useState({
+        fullName: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
   return (
     <div className="sign-page">
       <form className="sign-form">
         <h2>Sign up</h2>
+        <label htmlFor="fullName">Full name</label>
+        <input
+          type="text"
+          placeholder="Enter your full name (required)"
+          name="fullName"
+          onChange={handleChange}
+          required
+        />
         <label htmlFor="email">Email address</label>
         <input
           type="email"
           placeholder="Enter your email address (required)"
           name="email"
+          onChange={handleChange}
           required
         />
         <label htmlFor="password">Password</label>
@@ -17,6 +42,7 @@ const SignUp = () => {
           type="password"
           name="password"
           placeholder="Enter your password (required)"
+          onChange={handleChange}
           required
         />
         <label htmlFor="confirmPassword">Confirm password</label>
@@ -24,6 +50,7 @@ const SignUp = () => {
           type="password"
           name="confirmPassword"
           placeholder="Re-enter your password (required)"
+          onChange={handleChange}
           required
         />
         <button type="submit" className="sign-button">
