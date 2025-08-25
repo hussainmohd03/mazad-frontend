@@ -1,19 +1,11 @@
 import { NavLink } from "react-router-dom";
 import categories from "../objects/categories.json";
 import auctions from "../objects/auctions.json";
-import { useState } from "react";
-import ItemDetails from "../components/ItemDetails";
 import ItemCard from "../components/ItemCard";
 import CategoryCard from "../components/CategoryCard";
 import NavBar from "../components/NavBar";
 const Home = () => {
-  const [selectItem, setSelectedItem] = useState(null);
-
-  const showSelectedItem = (item) => {
-    setSelectedItem(item);
-  };
-  if (selectItem)
-    return <ItemDetails item={selectItem} setSelectedItem={setSelectedItem} />;
+  
   return (
     <>
       <div className="home-page">
@@ -35,11 +27,10 @@ const Home = () => {
             ))}
           </div>
           <div className="items-container">
-            {auctions.map((auction) => (
+            {auctions.map( auction => (
               <ItemCard
                 key={auction._id}
-                item={auction.item}
-                showSelectedItem={showSelectedItem}
+                auction={auction}
               />
             ))}
           </div>

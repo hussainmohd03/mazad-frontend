@@ -392,11 +392,6 @@ nav a {
   background-color: #f8f8f8;
 }
 
-
-.activity-page nav{
-  background-color: blueviolet;
-}
-
 .auctions-grid{
   display: flex;
   flex-direction: column;
@@ -431,4 +426,10 @@ nav a {
   background-color: #f8f8f8;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+}
+
+.card-link{
+  text-decoration: none;
+  color: none;
+  display: none;
 }

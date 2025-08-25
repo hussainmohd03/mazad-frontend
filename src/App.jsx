@@ -1,5 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import Sell from "./pages/Sell";
@@ -8,6 +9,8 @@ import Profile from "./pages/Profile";
 import Activity from "./pages/Activity";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
+import ItemDetails from "./components/ItemDetails";
+
 const App = () => {
   return (
     <>
@@ -20,6 +23,7 @@ const App = () => {
         <Route path="/activity" element={<Activity />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/auctions/:auctionId" element={<ItemDetails  />}/>
       </Routes>
     </>
   );

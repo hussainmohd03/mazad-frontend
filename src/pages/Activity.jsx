@@ -1,7 +1,8 @@
-import React from "react";
 import NavBar from "../components/NavBar";
 import auctions from '../objects/auctions.json'
+import { useNavigate } from "react-router-dom";
 const Activty=()=> {
+  const navigate = useNavigate()
 
   const formatRemainingTime=(endDate)=> {
   const now = new Date()
@@ -27,7 +28,7 @@ const Activty=()=> {
       <div className="auctions-search-filter"><input type="text" name="search" placeholder="Search" /><span><img src="/design-images/filter-icon.png" alt="filter-auctions" /></span></div>
       <div className="auctions-grid">
         {auctions.map (auction =>(
-          <div className="auction-box">
+          <div className="auction-box" key={auction._id} onClick={()=>{navigate(`/auctions/${auction._id}`)}}>
             <div className="auction-box-header">
             <img src={`${auction.item.images}`} alt="item-image" className="auction-box-item-image"/> <div className="auction-box-description"><p className="primary-text">{auction.item.name}</p> <p className="secondary-text">{auction.item.category}</p></div>
             </div><div className="auction-box-footer">
