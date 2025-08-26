@@ -1,5 +1,5 @@
-import { createContext, useState } from 'react'
-
+import { createContext, useState, useEffect } from 'react'
+import { CheckSession } from '../../services/Auth'
 const UserContext = createContext(null)
 
 export const UserProvider = ({ children }) => {
@@ -11,6 +11,5 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   )
 }
-
 
 export default UserContext

@@ -6,10 +6,9 @@ import { Link } from 'react-router-dom'
 const Profile = () => {
   const { user } = useContext(UserContext)
   const [name, setName] = useState('')
-  
   useEffect(() => {
-    setName(user.user.first_name)
-  }, [])
+    setName(user.first_name)
+  }, )
 
   return (
     <div>

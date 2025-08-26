@@ -17,8 +17,8 @@ import UserContext from './context/UserContext'
 
 const App = () => {
   const navigate = useNavigate()
-  const { setUser } = useContext(UserContext)
-
+  const {setUser} = useContext(UserContext)
+  
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
@@ -32,6 +32,7 @@ const App = () => {
       navigate('/')
     }
   }, [])
+
 
   return (
     <>
