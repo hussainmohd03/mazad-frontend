@@ -13,7 +13,7 @@ const AdminListings = () => {
     const fetchListings = async () => {
       try {
         const res = await Client.get(`${backendUrl}/admin/items`)
-        setListings(res.data)
+        setListings(res.data.item)
         console.log(res.data) // there are data
       } catch (error) {
         console.error('Error fetching listings:', error)
@@ -21,6 +21,7 @@ const AdminListings = () => {
     }
     fetchListings()
   }, [])
+
   const filteredListings = listings.filter((listing) => {
     if (filter === 'all') return true
     return listing.status === filter
