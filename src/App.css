@@ -1,4 +1,523 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
+  width: 100vw;
+  height: 100vh;
   margin: 0;
-  box-sizing: border-box;
+  padding: 0;
+  font-family: 'Poppins', sans-serif !important;
+  color: black;
+  font-weight: 400;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.landing-page {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('design-images/background.svg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  color: white;
+}
+
+.landing-page img {
+  width: 16%;
+}
+
+.landing-page-buttons {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10%;
+  width: 80%;
+}
+
+.landing-page button {
+  border-radius: 25px;
+  margin-bottom: 5%;
+  height: 5vh;
+  border: 1px white solid;
+  font-family: 'Poppins';
+  font-size: 1em;
+}
+
+.get-started-btn {
+  background-color: white;
+  color: #e40421;
+}
+
+.guest-btn {
+  background-color: transparent;
+  color: white;
+}
+
+nav {
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  bottom: 0;
+  position: fixed;
+  background-color: white;
+}
+
+nav a.nav-link {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  width: 15%;
+  aspect-ratio: 1/1;
+}
+
+nav a.nav-link.active img {
+  filter: invert(21%) sepia(93%) saturate(7465%) hue-rotate(356deg)
+    brightness(80%) contrast(119%);
+}
+
+.sign-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  color: #303940;
+}
+
+.sign-page h2 {
+  font-weight: 600;
+  width: 90%;
+}
+
+.input-key {
+  font-weight: 500;
+  color: #303940;
+}
+
+.sign-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-form input {
+  border-radius: 7px;
+  height: 5vh;
+  border: 1px #dddddd solid;
+  width: 90%;
+}
+
+.sign-form label {
+  margin-top: 4%;
+  width: 90%;
+}
+
+.input-field {
+  font-family: 'Poppins', sans-serif !important;
+  color: #84919a;
+  padding-left: 10px;
+}
+.sign-button {
+  width: 90%;
+  margin-top: 6%;
+  border: none;
+  border-radius: 25px;
+  height: 6vh;
+  background-color: #ff0022;
+  color: white;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 500;
+}
+
+.terms {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 80%;
+}
+
+.terms p {
+  width: 90%;
+}
+
+.terms a {
+  color: #ff0022;
+}
+
+.google-btn {
+  margin-top: 6%;
+  border-radius: 5px;
+  height: 5vh;
+  border: 1px #dddddd solid;
+  width: 90%;
+  background-color: white;
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+}
+
+.google-btn img {
+  margin-left: 4%;
+  margin-right: 4%;
+  height: 70%;
+}
+
+.sign-alternative {
+  color: #797775;
+  font-size: 14px;
+}
+
+input[type='text'] {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.sign-alternative a {
+  font-weight: 600;
+  color: #ff0022;
+}
+
+.home-page {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 1fr 7fr 0.75fr;
+}
+
+.home-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 10vh;
+  width: 100%;
+}
+
+.home-body {
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.search-bar {
+  width: 80%;
+  border: none;
+  background-color: #f8f8f8;
+  height: 50%;
+  border-radius: 10px;
+}
+
+.home-categories {
+  padding-left: 30%;
+  height: 12vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.category-link {
+  text-decoration: none;
+  color: black;
+  height: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1%;
+}
+
+.category-link p {
+  margin: 0;
+  padding: 0;
+  font-size: small;
+}
+
+.category-link img {
+  background-color: #f8f8f8;
+  border-radius: 100%;
+  height: 70%;
+}
+
+.items-container {
+  margin-top: 1%;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.item-card {
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  font-size: small;
+}
+
+.item-card a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+}
+
+.item-card img {
+  width: 100%;
+  border-radius: 10px;
+  aspect-ratio: 1/1;
+}
+
+.item-name {
+  margin: 0%;
+  padding: 0%;
+}
+
+.item-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-page-header {
+  width: 100%;
+  height: 7vh;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  padding: 1%;
+}
+
+.item-page-header img {
+  margin-right: 93%;
+  margin-bottom: 1%;
+}
+
+.item-images-container {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.item-images-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.item-page-body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.item-details {
+  background-color: #f8f8f8;
+  width: 90%;
+  padding: 3%;
+}
+
+.item-description {
+  border-radius: 10px;
+  background-color: white;
+  border: 1px #797775 solid;
+  padding: 3%;
+}
+
+.item-page-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.action-button {
+  width: 90%;
+  border: none;
+  border-radius: 25px;
+  height: 6vh;
+  background-color: #ff0022;
+  color: white;
+}
+
+.bidding-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4%;
+  margin-bottom: 3%;
+}
+
+.primary-text {
+  color: black;
+  margin: 0%;
+  padding: 0%;
+}
+
+.secondary-text {
+  margin: 0%;
+  padding: 0%;
+  font-size: 70%;
+  color: #84919a;
+}
+
+.activity-page {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 2fr 7fr 0.75fr;
+}
+
+.activity-page header {
+  text-align: center;
+}
+
+.activity-page header button {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.activity-page header p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  height: 40%;
+}
+
+.toggle-buttons {
+  height: 30%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: end;
+  border-bottom: #ededed 1px solid;
+}
+
+.toggle-buttons button {
+  width: 35%;
+  height: 70%;
+  border: none;
+  background-color: transparent;
+}
+
+.toggle-buttons .active {
+  border-bottom: #ff0022 3px solid;
+  color: #ff0022;
+}
+
+
+.activity-page main {
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.auctions-search-filter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7vh;
+}
+
+.auctions-search-filter input {
+  width: 80%;
+  height: 60%;
+  border-radius: 20px;
+  border: none;
+  background-color: #f8f8f8;
+}
+
+.auctions-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auction-box {
+  margin-bottom: 3%;
+  display: grid;
+  grid-auto-rows: 35%;
+  height: 100%;
+  row-gap: 3%;
+}
+
+.auction-box {
+  height: 100%;
+  justify-self: center;
+  width: 90%;
+  background-color: white;
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  border-radius: 15px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.auction-box-item-image {
+  width: 35%;
+  aspect-ratio: 1/1;
+  border-radius: 15px;
+}
+
+.auction-box-header {
+
+  height: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+  margin-right: 7%;
+}
+
+.auction-box-footer {
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  background-color: #f8f8f8;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+
+.auction-box-footer p {
+  font-size: small;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.card-link {
+  text-decoration: none;
+  color: none;
+  display: none;
+}
+
+.sell-page {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 1fr 7fr 0.75fr;
 }
