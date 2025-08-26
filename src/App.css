@@ -1,13 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   color: black;
-  font-weight: 500;
+  font-weight: 400;
   overflow-x: hidden;
   overflow-y: hidden;
 }
@@ -15,7 +15,7 @@ body {
 .landing-page {
   width: 100vw;
   height: 100vh;
-  background-image: url("design-images/background.svg");
+  background-image: url('design-images/background.svg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -41,7 +41,7 @@ body {
   margin-bottom: 5%;
   height: 5vh;
   border: 1px white solid;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 1em;
 }
 
@@ -84,10 +84,17 @@ nav a.nav-link.active img {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  color: #303940;
 }
 
 .sign-page h2 {
+  font-weight: 600;
   width: 90%;
+}
+
+.input-key {
+  font-weight: 500;
+  color: #303940;
 }
 
 .sign-form {
@@ -98,7 +105,7 @@ nav a.nav-link.active img {
 }
 
 .sign-form input {
-  border-radius: 5px;
+  border-radius: 7px;
   height: 5vh;
   border: 1px #dddddd solid;
   width: 90%;
@@ -109,6 +116,11 @@ nav a.nav-link.active img {
   width: 90%;
 }
 
+.input-field {
+  font-family: 'Poppins', sans-serif !important;
+  color: #84919a;
+  padding-left: 10px;
+}
 .sign-button {
   width: 90%;
   margin-top: 6%;
@@ -117,6 +129,8 @@ nav a.nav-link.active img {
   height: 6vh;
   background-color: #ff0022;
   color: white;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 500;
 }
 
 .terms {
@@ -155,10 +169,15 @@ nav a.nav-link.active img {
 
 .sign-alternative {
   color: #797775;
+  font-size: 14px;
+}
+
+input[type='text'] {
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .sign-alternative a {
-  font: bold;
+  font-weight: 600;
   color: #ff0022;
 }
 
@@ -366,6 +385,11 @@ nav a.nav-link.active img {
 }
 
 .activity-page header {
+  text-align: center;
+}
+
+.activity-page header button {
+  width: 40%;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -401,6 +425,7 @@ nav a.nav-link.active img {
   color: #ff0022;
 }
 
+
 .activity-page main {
   overflow-y: scroll;
   scrollbar-width: none;
@@ -423,6 +448,13 @@ nav a.nav-link.active img {
 }
 
 .auctions-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auction-box {
+  margin-bottom: 3%;
   display: grid;
   grid-auto-rows: 35%;
   height: 100%;
@@ -447,7 +479,9 @@ nav a.nav-link.active img {
 }
 
 .auction-box-header {
+
   height: auto;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -464,6 +498,7 @@ nav a.nav-link.active img {
   border-bottom-right-radius: 15px;
 }
 
+
 .auction-box-footer p {
   font-size: small;
   margin: 0;
@@ -472,6 +507,7 @@ nav a.nav-link.active img {
   justify-content: center;
   align-items: center;
 }
+
 
 .card-link {
   text-decoration: none;
