@@ -1,5 +1,5 @@
-import React from "react";
-import NavBar from "../components/NavBar";
+import React from 'react'
+import NavBar from '../components/NavBar'
 
 const Sell = () => {
   return (
@@ -10,7 +10,7 @@ const Sell = () => {
       <main></main>
       <NavBar />
     </div>
-  );
-};
+  )
+}
 
-export default Sell;
+export default Sell
