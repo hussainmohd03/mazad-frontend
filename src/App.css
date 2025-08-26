@@ -59,22 +59,23 @@ nav {
   width: 100vw;
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: baseline;
   bottom: 0;
   position: fixed;
   background-color: white;
 }
 
-nav a {
+nav a.nav-link {
   color: white;
   text-decoration: none;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 1.5%;
+  align-items: end;
+  width: 15%;
+  aspect-ratio: 1/1;
 }
 
-.current-page {
+nav a.nav-link.active img {
   filter: invert(21%) sepia(93%) saturate(7465%) hue-rotate(356deg)
     brightness(80%) contrast(119%);
 }
@@ -476,4 +477,11 @@ nav a {
   text-decoration: none;
   color: none;
   display: none;
+}
+
+.sell-page {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 1fr 7fr 0.75fr;
 }
