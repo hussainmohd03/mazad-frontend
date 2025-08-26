@@ -420,11 +420,10 @@ input[type='text'] {
   background-color: transparent;
 }
 
-
 .toggle-buttons .active {
   border-bottom: #ff0022 3px solid;
   color: #ff0022;
-
+}
 .activity-page main {
   overflow-y: scroll;
   scrollbar-width: none;
@@ -494,8 +493,6 @@ input[type='text'] {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
-
-
 
 .auction-box-footer p {
   font-size: small;
@@ -568,11 +565,11 @@ input[type='text'] {
 
 table {
   width: 100%;
-  border-collapse: separate; /* allow spacing */
-  border-spacing: 6px; /*vertical gap between rows*/
+  border-collapse: separate;
+  border-spacing: 6px;
   background-color: #fff;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: scroll;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -740,11 +737,19 @@ tbody td:nth-child(5).rejected {
 
 .admin-nav-out .spacer {
   flex-grow: 1;
+}
 
 .sell-page {
   height: 100vh;
   width: 100vw;
   display: grid;
   grid-template-rows: 1fr 7fr 0.75fr;
-
+}
+@media (min-width: 1000px) {
+  body {
+    overflow-y: scroll;
+  }
+  nav {
+    align-items: center;
+  }
 }
