@@ -1,7 +1,12 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
 import { useState } from 'react'
+import { Login } from '../../services/Auth'
+import UserContext from '../context/UserContext'
 const SignIn = () => {
+  const navigate = useNavigate()
+  const { setUser } = useContext(UserContext)
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -14,10 +19,16 @@ const SignIn = () => {
     })
   }
 
-  
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const user = await Login(formData)
+    setFormData({ email: '', password: '' })
+    setUser(user)
+    navigate('/home')
+  }
   return (
     <div className="sign-page">
-      <form className="sign-form">
+      <form className="sign-form" onSubmit={handleSubmit}>
         <h2>Sign In</h2>
         <label htmlFor="email" className="input-key">
           Email address

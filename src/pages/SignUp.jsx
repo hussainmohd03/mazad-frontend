@@ -1,9 +1,11 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { Register } from '../../services/Auth'
 const SignUp = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    fullName: '',
+    full_name: '',
     email: '',
     password: '',
     confirmPassword: ''
@@ -17,18 +19,29 @@ const SignUp = () => {
     })
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await Register(formData.full_name, formData.email, formData.password)
+    setFormData({
+      full_name: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    })
+    navigate('/sign-in')
+  }
   return (
     <div className="sign-page">
-      <form className="sign-form">
+      <form className="sign-form" onSubmit={handleSubmit}>
         <h2>Sign up</h2>
-        <label htmlFor="fullName" className="input-key">
+        <label htmlFor="full_name" className="input-key">
           Full name
         </label>
         <input
           className="input-field"
           type="text"
           placeholder="Enter your full name (required)"
-          name="fullName"
+          name="full_name"
           onChange={handleChange}
           required
         />

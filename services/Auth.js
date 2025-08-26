@@ -1,8 +1,12 @@
 import Client from './api'
 
-export const Register = async (data) => {
+export const Register = async (full_name, email, password) => {
   try {
-    const res = await Client.post('/auth/register', data)
+    const res = await Client.post('/auth/register', {
+      full_name,
+      email,
+      password
+    })
     return res.data
   } catch (error) {
     throw error
