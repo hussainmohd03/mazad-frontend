@@ -24,6 +24,15 @@ const AdminListingDetails = () => {
     fetchListing()
   }, [])
 
+  const handleApprove = async () => {
+    try {
+      const res = await Client.put(`{backendUrl}/admin/items/${id}/approve`)
+      setListing(res.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <div className="admin-layout">
       <AdminNav />
