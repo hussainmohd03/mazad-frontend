@@ -1,17 +1,23 @@
+
+
 import React from "react";
 import { NavLink } from "react-router-dom";
+
 
 const NavBar = () => {
   return (
     <nav>
       <NavLink
         to="/home"
+
         className={({ isActive }) =>
           isActive ? "nav-link active" : "nav-link"
         }
+
       >
         <img src="/design-images/nav-home.svg" alt="home" />
       </NavLink>
+
       <NavLink
         to="/activity"
         className={({ isActive }) =>
@@ -30,6 +36,7 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         to="/watchlist"
+
         className={({ isActive }) =>
           isActive ? "nav-link active" : "nav-link"
         }
@@ -38,6 +45,7 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         to="/profile"
+
         className={({ isActive }) =>
           isActive ? "nav-link active" : "nav-link"
         }
@@ -45,7 +53,7 @@ const NavBar = () => {
         <img src="/design-images/nav-profile.svg" alt="profile" />
       </NavLink>
     </nav>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar
