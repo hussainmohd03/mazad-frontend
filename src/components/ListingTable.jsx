@@ -30,9 +30,9 @@ const ListingTable = ({ listings }) => {
             <td className="">{item._id}</td>
             <td className="">{item.name}</td>
             <td className="">{item.ownerId}</td>
-            <td className="">{item.status}</td>
+            <td className={item.status}>{item.status}</td>
             <td className="">
-              {new Date(item.createdAt).toLocaleString('en-BH', {
+              {new Date(item.createdAt).toLocaleString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
@@ -40,7 +40,7 @@ const ListingTable = ({ listings }) => {
                 minute: 'numeric'
               })}
             </td>
-            <td className="">${item.price}</td>
+            <td className="">HD{item.price}</td>
           </tr>
         ))}
       </tbody>
