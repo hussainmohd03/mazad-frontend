@@ -4,50 +4,46 @@ import { useNavigate } from 'react-router-dom'
 const ListingTable = ({ listings }) => {
   const navigate = useNavigate()
 
+  const headers = [
+    'Index',
+    'ID Listing',
+    'Product Name',
+    'Customer Name',
+    'Status',
+    'Created Date',
+    'Price'
+  ]
   return (
-    <table className="">
-      <thead>
-        <tr className="">
-          <th className="" res>
-            index
-          </th>
-          <th className="">ID Listing</th>
-          <th className="">Product Name</th>
-          <th className="">Customer Name</th>
-          <th className="">Status</th>
-          <th className="">Created Date</th>
-          <th className="">Price</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {listings.map((item, index) => (
-          <tr
-            key={item._id}
-            className=""
-            onClick={() => navigate(`/admin/listings/${item._id}`)}
-          >
-            <td className="">
-              <td className="">{index + 1}</td>
-            </td>
-            <td className="">{item._id}</td>
-            <td className="">{item.name}</td>
-            <td className="">{item.ownerId}</td>
-            <td className={item.status}>{item.status}</td>
-            <td className="">
-              {new Date(item.createdAt).toLocaleString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric'
-              })}
-            </td>
-            <td className="">BHD {item.price}</td>
-          </tr>
+    <div className="listings-container">
+      <div className="header">
+        {headers.map((header) => (
+          <span key={header} className="listing-header-cell">
+            {header}
+          </span>
         ))}
-      </tbody>
-    </table>
+      </div>
+      {listings.map((item, index) => (
+        <div
+          key={item._id}
+          className="listing-row"
+          onClick={() => navigate(`/admin/listings/${item._id}`)}
+        >
+          <span>{index + 1}</span>
+          <span>
+            {item._id.slice(0, 4)}...{item._id.slice(-4)}
+          </span>
+          <span>{item.name}</span>
+          <span>
+            {item.ownerId.firstName} {item.ownerId.lastName}
+          </span>
+          <span className={`listing-status ${item.status}`}>{item.status}</span>
+          <span className="listing-date">
+            {String(item.createdAt).split('T')[0]}
+          </span>
+          <span>BHD {item.price}</span>
+        </div>
+      ))}
+    </div>
   )
 }
 

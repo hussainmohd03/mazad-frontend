@@ -563,10 +563,10 @@ input[type='text'] {
   border-color: #f21731;
 }
 
-table {
+/* table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 6px;
+  border-spacing: 4px;
   background-color: #fff;
   border-radius: 8px;
   overflow: scroll;
@@ -575,8 +575,6 @@ table {
 
 thead tr {
   background-color: #f1f1f1;
-  border-collapse: separate;
-  border-spacing: 0 1em;
 }
 
 thead th {
@@ -607,7 +605,7 @@ tbody img {
   object-fit: cover;
   border-radius: 8px;
   border: #f0f0f0 solid 1px;
-}
+} 
 
 tbody td:nth-child(5) {
   text-transform: capitalize;
@@ -631,6 +629,103 @@ tbody td:nth-child(5).rejected {
   background-color: #f7d1d1;
   color: #f21731;
 }
+*/
+
+/* for ListingTable.jsx start here */
+.listings-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.listing-row {
+  display: grid;
+  grid-template-columns:
+    50px
+    minmax(150px, 250px)
+    minmax(120px, 1fr)
+    minmax(120px, 1fr)
+    120px
+    minmax(160px, 240px)
+    100px;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  column-gap: 16px;
+}
+
+.listing-row {
+  font-weight: 600;
+  background-color: #ffffff;
+  cursor: default;
+}
+.header {
+  display: grid;
+  grid-template-columns:
+    50px
+    minmax(150px, 250px)
+    minmax(120px, 1fr)
+    minmax(120px, 1fr)
+    120px
+    minmax(160px, 240px)
+    100px;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  column-gap: 16px;
+
+  font-weight: 600;
+  background-color: #ffffff;
+  cursor: default;
+  border-bottom: #f4f4f4 2px solid;
+}
+
+.listing-header-cell {
+  color: #303940;
+}
+
+.listing-row:hover {
+  background-color: #ececec;
+  transition: 0.07s;
+}
+
+.listing-status.approved {
+  background-color: #d1f7dc;
+  color: #21c36f;
+  border-radius: 8px;
+  text-align: center;
+  padding: 2px 6px;
+}
+
+.listing-status.pending {
+  background-color: #fff4d1;
+  color: #f2b01e;
+  border-radius: 8px;
+  text-align: center;
+  padding: 2px 6px;
+}
+
+.listing-status.rejected {
+  background-color: #f7d1d1;
+  color: #f21731;
+  border-radius: 8px;
+  text-align: center;
+  padding: 2px 6px;
+}
+
+.listing-row span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* for ListingTable.jsx end here */
 
 /* for AdminNav */
 .content p {
@@ -745,6 +840,7 @@ tbody td:nth-child(5).rejected {
   display: grid;
   grid-template-rows: 1fr 7fr 0.75fr;
 }
+
 @media (min-width: 1000px) {
   body {
     overflow-y: scroll;
