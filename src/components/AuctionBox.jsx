@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const AuctionBox = ({ auction }) => {
+const AuctionBox = ({ auction, activeButton }) => {
   const navigate = useNavigate();
   const formatRemainingTime = (endDate) => {
     const now = new Date();
@@ -14,7 +14,7 @@ const AuctionBox = ({ auction }) => {
     return `${days}d ${hours}h`;
   };
 
-  return (
+  return activeButton === "Bids" ? (
     <div
       className="auction-box"
       key={auction._id}
@@ -36,7 +36,7 @@ const AuctionBox = ({ auction }) => {
       <div className="auction-box-footer">
         <p>
           <strong>BHD&nbsp;</strong>
-          {auction.currentPrice}
+          {auction.currentPrice.toLocaleString()}
         </p>
         <p>
           <img src={`design-images/bids-count.svg`} alt="total-bids" />{" "}
@@ -46,6 +46,33 @@ const AuctionBox = ({ auction }) => {
           <img src={`design-images/bids-time.svg`} alt="time-left" />
           <span>&nbsp; {formatRemainingTime(auction.endDate)}</span>
         </p>
+      </div>
+    </div>
+  ) : (
+    <div
+      className="auction-box"
+      key={auction._id}
+      onClick={() => {
+        navigate(`/auctions/${auction._id}`);
+      }}
+    >
+      <div className="auction-box-header">
+        <img
+          src={`${auction.item.images}`}
+          alt="item-image"
+          className="auction-box-item-image"
+        />
+        <div className="auction-box-description">
+          <p className="primary-text">{auction.item.name}</p>
+          <p className="secondary-text">{auction.item.category}</p>
+        </div>
+      </div>
+      <div className="auction-box-footer">
+        <p>
+          <strong>BHD&nbsp;</strong>
+          {auction.currentPrice.toLocaleString()}
+        </p>
+        <p>{auction.endDate.split("T")[0]}</p>
       </div>
     </div>
   );
