@@ -6,7 +6,7 @@ const Landing = () => {
     <div className="landing-page">
       <div className="landing-page-buttons">
         <img src="design-images\Vector.png" alt="vector" />
-        <h2>Get the Best Auction Experience</h2>
+        <h3>Get the Best Auction Experience</h3>
         <button
           className="get-started-btn"
           onClick={() => navigate("/sign-in")}
