@@ -5,7 +5,6 @@ import ItemCard from "../components/ItemCard";
 import CategoryCard from "../components/CategoryCard";
 import NavBar from "../components/NavBar";
 const Home = () => {
-  
   return (
     <>
       <div className="home-page">
@@ -27,15 +26,13 @@ const Home = () => {
             ))}
           </div>
           <div className="items-container">
-            {auctions.map( auction => (
-              <ItemCard
-                key={auction._id}
-                auction={auction}
-              />
+            {auctions.map((auction) => (
+              <ItemCard key={auction._id} auction={auction} />
             ))}
           </div>
         </div>
       </div>
+
       <NavBar />
     </>
   );
