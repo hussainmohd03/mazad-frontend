@@ -62,26 +62,29 @@ const ItemDetails = () => {
   const navigate = useNavigate()
   return (
     <div className="item-page">
-      <div className="item-page-header" onClick={() => navigate('/home')}>
-        <img src="/design-images/back-arrow.png" alt="back" />
+      <div className="item-page-header" onClick={() => navigate(-1)}>
+        <img src="/design-images/arrow.svg" alt="back" />
       </div>
       <div className="item-page-body">
         <div className="item-images-container">
           <img src={`/${auction.item.images}`} alt="item-image" />
         </div>
         <div className="item-details">
-          <p>Lot ID #{auction.item._id}</p>
-          <strong>{auction.item.name}</strong>
-          <p>Current Bid: {auction.item.price}</p>
-          <p>0 Bids . Closes on: {getDateFormatted(auction.endDate)}</p>
+          <p className="grey-1">Lot ID # {auction.item._id}</p>
+          <p className="boldnbig">{auction.item.name}</p>
+          <p className="grey-1">Current Bid</p>
+          <p className="boldnbig">BHD {auction.item.price}</p>
+          <p className="bids-count">
+            0 Bids • Closes on: {getDateFormatted(auction.endDate)}
+          </p>
           <div className="item-description">
-            <strong>Description</strong> <br />
-            {auction.item.description}
+            <p className="description-title">Description</p>
+            <p className='description-text'> {auction.item.description}</p>
           </div>
         </div>
       </div>
       <div className="item-page-footer">
-        <div className="bidding-time">5 Days : 8 Hours 17 Min</div>
+        <div className="bidding-time">5 Days : 8 Hours : 17 Min</div>
         <button className="action-button">Bid Now</button>
       </div>
     </div>
