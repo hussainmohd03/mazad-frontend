@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AdminNav from '../components/AdminNav'
 import axios from 'axios'
-// import ListingTable from '../components/ListingTable'
+import ListingTable from '../components/ListingTable'
 const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 const AdminListings = () => {
@@ -20,7 +20,6 @@ const AdminListings = () => {
     }
     fetchListings()
   }, [])
-  // console.log(listings)
   const filteredListings = listings.filter((listing) => {
     if (filter === 'all') return true
     return listing.status === filter
@@ -29,6 +28,19 @@ const AdminListings = () => {
   return (
     <div className="admin-page">
       <AdminNav />
+
+      <div className="content">
+        <h1>Listings</h1>
+
+        <div className="filter-buttons">
+          <button onClick={() => setFilter('all')}>All</button>
+          <button onClick={() => setFilter('approved')}>Complete</button>
+          <button onClick={() => setFilter('pending')}>Pending</button>
+          <button onClick={() => setFilter('rejected')}>Rejected</button>
+        </div>
+
+        <ListingTable listings={filteredListings} />
+      </div>
     </div>
   )
 }
