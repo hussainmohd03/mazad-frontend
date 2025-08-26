@@ -20,13 +20,17 @@ const AdminListings = () => {
     }
     fetchListings()
   }, [])
-
+  // console.log(listings)
   const filteredListings = listings.filter((listing) => {
     if (filter === 'all') return true
     return listing.status === filter
   })
 
-  return <></>
+  return (
+    <div className="admin-page">
+      <AdminNav />
+    </div>
+  )
 }
 
 export default AdminListings

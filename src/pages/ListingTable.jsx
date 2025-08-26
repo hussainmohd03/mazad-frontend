@@ -24,10 +24,7 @@ const ListingTable = ({ listings }) => {
             onClick={() => navigate(`/admin/listings/${item._id}`)}
           >
             <td>
-              <img
-                src={item.images?.[0] || 'https://via.placeholder.com/50'}
-                alt={item.name}
-              />
+              <img src={item.images?.[0] || 'no image'} alt={item.name} />
             </td>
             <td>{item._id}</td>
             <td>{item.name}</td>
