@@ -1,61 +1,59 @@
+
+
 import React from "react";
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
+
+
 const NavBar = () => {
-  const [current, setCurrent] = useState(null);
-
-  const handleClick = (e) => {
-    setCurrent(e.target.name);
-  };
-
   return (
     <nav>
       <NavLink
         to="/home"
-        onClick={handleClick}
-        className={current === "home" ? "current-page" : "nav-page"}
+
+        className={({ isActive }) =>
+          isActive ? "nav-link active" : "nav-link"
+        }
+
       >
-        <img src="/design-images/nav-home.png" alt="home" name="home" />
+        <img src="/design-images/nav-home.svg" alt="home" />
       </NavLink>
-      <NavLink to="/activity" onClick={handleClick}>
-        <img
-          src="/design-images/nav-activity.png"
-          alt="activity"
-          name="activity"
-          className={current === "activity" ? "current-page" : "nav-page"}
-        />
+
+      <NavLink
+        to="/activity"
+        className={({ isActive }) =>
+          isActive ? "nav-link active" : "nav-link"
+        }
+      >
+        <img src="/design-images/nav-activity.svg" alt="activity" />
       </NavLink>
       <NavLink
         to="/sell"
-        onClick={handleClick}
-        className={current === "sell" ? "current-page" : "nav-page"}
+        className={({ isActive }) =>
+          isActive ? "nav-link active" : "nav-link"
+        }
       >
-        <img src="/design-images/nav-sell.png" alt="sell" name="sell" />
+        <img src="/design-images/nav-sell.svg" alt="sell" />
       </NavLink>
       <NavLink
         to="/watchlist"
-        onClick={handleClick}
-        className={current === "watchlist" ? "current-page" : "nav-page"}
+
+        className={({ isActive }) =>
+          isActive ? "nav-link active" : "nav-link"
+        }
       >
-        <img
-          src="/design-images/nav-watchlist.png"
-          alt="watchlist"
-          name="watchlist"
-        />
+        <img src="/design-images/nav-watchlist.svg" alt="watchlist" />
       </NavLink>
       <NavLink
         to="/profile"
-        onClick={handleClick}
-        className={current === "profile" ? "current-page" : "nav-page"}
+
+        className={({ isActive }) =>
+          isActive ? "nav-link active" : "nav-link"
+        }
       >
-        <img
-          src="/design-images/nav-profile.png"
-          alt="profile"
-          name="profile"
-        />
+        <img src="/design-images/nav-profile.svg" alt="profile" />
       </NavLink>
     </nav>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar
