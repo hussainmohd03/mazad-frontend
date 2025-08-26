@@ -1,27 +1,25 @@
-import NavBar from "../components/NavBar";
-import auctions from "../objects/auctions.json";
-import { useState } from "react";
-import AuctionBox from "../components/AuctionBox";
+import NavBar from '../components/NavBar'
+import auctions from '../objects/auctions.json'
+import { useState } from 'react'
+import AuctionBox from '../components/AuctionBox'
 const Activity = () => {
-  const [activeButton, setActiveButton] = useState("Bids");
+  const [activeButton, setActiveButton] = useState('Bids')
 
   return (
     <div className="activity-page">
       <header>
-        <p>
-          <strong>Activity</strong>
-        </p>
+        <p className='activity-header'>Activity</p>
         <div className="toggle-buttons">
           <button
-            className={activeButton === "Bids" ? "active" : ""}
-            onClick={() => setActiveButton("Bids")}
+            className={activeButton === 'Bids' ? 'active' : ''}
+            onClick={() => setActiveButton('Bids')}
           >
             Bids
           </button>
           <button
-            className={activeButton === "Purchases" ? "active" : ""}
+            className={activeButton === 'Purchases' ? 'active' : ''}
             onClick={() => {
-              setActiveButton("Purchases");
+              setActiveButton('Purchases')
             }}
           >
             Purchases
@@ -47,7 +45,7 @@ const Activity = () => {
       </main>
       <NavBar />
     </div>
-  );
-};
+  )
+}
 
-export default Activity;
+export default Activity
