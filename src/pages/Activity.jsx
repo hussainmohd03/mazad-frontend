@@ -20,7 +20,9 @@ const Activity = () => {
           </button>
           <button
             className={activeButton === "Purchases" ? "active" : ""}
-            onClick={() => setActiveButton("Purchases")}
+            onClick={() => {
+              setActiveButton("Purchases");
+            }}
           >
             Purchases
           </button>
@@ -34,10 +36,13 @@ const Activity = () => {
       </header>
       <main>
         <div className="auctions-grid">
-          {activeButton === "Bids" &&
-            auctions.map((auction) => (
-              <AuctionBox key={auction._id} auction={auction} />
-            ))}
+          {auctions.map((auction) => (
+            <AuctionBox
+              key={auction._id}
+              auction={auction}
+              activeButton={activeButton}
+            />
+          ))}
         </div>
       </main>
       <NavBar />
