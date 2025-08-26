@@ -12,7 +12,7 @@ import SignIn from './pages/SignIn'
 import ItemDetails from './components/ItemDetails'
 
 // 🔹 Import admin pages
-// import AdminListings from './pages/admin/AdminListings'
+import AdminListings from './pages/AdminListings'
 // import AdminDashboard from './pages/admin/AdminDashboard'
 // import AdminCategories from './pages/admin/AdminCategories'
 // import AdminSettings from './pages/admin/AdminSettings'
