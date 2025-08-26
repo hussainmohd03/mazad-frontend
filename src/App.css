@@ -57,13 +57,12 @@ body {
 
 nav {
   width: 100vw;
-  height: 9vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   bottom: 0;
   position: fixed;
-  border-top: 0.5px solid #cbcbcb;
+  background-color: white;
 }
 
 nav a {
@@ -163,10 +162,10 @@ nav a {
 }
 
 .home-page {
-  height: 90vh;
+  height: 100vh;
   width: 100vw;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 7fr 0.75fr;
 }
 
 .home-header {
@@ -179,6 +178,7 @@ nav a {
 
 .home-body {
   overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .search-bar {
@@ -190,12 +190,14 @@ nav a {
 }
 
 .home-categories {
+  padding-left: 30%;
   height: 12vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: auto;
+  overflow-x: scroll;
   overflow-y: hidden;
+  scrollbar-width: none;
 }
 
 .category-link {
@@ -223,12 +225,13 @@ nav a {
 }
 
 .items-container {
+  margin-top: 1%;
   height: 100vh;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  overflow-y: hidden;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .item-card {
@@ -237,6 +240,7 @@ nav a {
   flex-direction: column;
   align-self: center;
   justify-self: center;
+  font-size: small;
 }
 
 .item-card a {
@@ -357,7 +361,7 @@ nav a {
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-rows: 2fr 7fr 1fr;
+  grid-template-rows: 2fr 7fr 0.75fr;
 }
 
 .activity-page header {
