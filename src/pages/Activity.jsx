@@ -1,45 +1,53 @@
 import NavBar from "../components/NavBar";
-import auctions from '../objects/auctions.json'
-import { useNavigate } from "react-router-dom";
-const Activty=()=> {
-  const navigate = useNavigate()
+import auctions from "../objects/auctions.json";
+import { useState } from "react";
+import AuctionBox from "../components/AuctionBox";
+const Activity = () => {
+  const [activeButton, setActiveButton] = useState("Bids");
 
-  const formatRemainingTime=(endDate)=> {
-  const now = new Date()
-  const end = new Date(endDate)
-  let diff = end - now;
-
-  if (diff <= 0) return "0d 0h"
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24))
-  diff -= days * (1000 * 60 * 60 * 24)
-
-  const hours = Math.floor(diff / (1000 * 60 * 60))
-
-  return `${days}d ${hours}h`
-}
-
-  return <div className="activity-page">
-    <header>
-      <p><strong>Activity</strong></p>
-      <button>Bids</button><button>Purchases</button>
-    </header>
-    <main>
-      <div className="auctions-search-filter"><input type="text" name="search" placeholder="Search" /><span><img src="/design-images/filter-icon.png" alt="filter-auctions" /></span></div>
-      <div className="auctions-grid">
-        {auctions.map (auction =>(
-          <div className="auction-box" key={auction._id} onClick={()=>{navigate(`/auctions/${auction._id}`)}}>
-            <div className="auction-box-header">
-            <img src={`${auction.item.images}`} alt="item-image" className="auction-box-item-image"/> <div className="auction-box-description"><p className="primary-text">{auction.item.name}</p> <p className="secondary-text">{auction.item.category}</p></div>
-            </div><div className="auction-box-footer">
-              <p><strong>BHD </strong>{auction.currentPrice}</p><p><img src={`design-images/bids-count.png`} alt="total-bids" /> <span>4</span></p><p>{formatRemainingTime(auction.endDate)}<span><img src={`design-images/bids-time.png`} alt="time-left" /></span></p>
-              </div>
-            </div>
-        ))}
+  return (
+    <div className="activity-page">
+      <header>
+        <p>
+          <strong>Activity</strong>
+        </p>
+        <div className="toggle-buttons">
+          <button
+            className={activeButton === "Bids" ? "active" : ""}
+            onClick={() => setActiveButton("Bids")}
+          >
+            Bids
+          </button>
+          <button
+            className={activeButton === "Purchases" ? "active" : ""}
+            onClick={() => {
+              setActiveButton("Purchases");
+            }}
+          >
+            Purchases
+          </button>
         </div>
-    </main>
-    <NavBar/>
+        <div className="auctions-search-filter">
+          <input type="text" name="search" placeholder="Search" />
+          <span>
+            <img src="/design-images/filter-icon.png" alt="filter-auctions" />
+          </span>
+        </div>
+      </header>
+      <main>
+        <div className="auctions-grid">
+          {auctions.map((auction) => (
+            <AuctionBox
+              key={auction._id}
+              auction={auction}
+              activeButton={activeButton}
+            />
+          ))}
+        </div>
+      </main>
+      <NavBar />
     </div>
-}
+  );
+};
 
-export default Activty;
+export default Activity;
