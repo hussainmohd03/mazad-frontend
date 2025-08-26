@@ -322,7 +322,6 @@ input[type='text'] {
   align-items: center;
   overflow: hidden;
   margin-left: 5%;
-  
 }
 
 .item-images-container img {
@@ -343,10 +342,9 @@ input[type='text'] {
 
 .item-details {
   background-color: #f8f8f8;
-  padding-left:  11%;
+  padding-left: 11%;
   padding-top: 3%;
   width: 100%;
-
 }
 
 .item-description {
@@ -545,7 +543,6 @@ input[type='text'] {
   justify-items: start;
 }
 
-
 .currency {
   font-weight: 500;
 }
@@ -593,7 +590,7 @@ input[type='text'] {
 
 .content {
   flex: 1;
-  padding: 40px 60px;
+  padding: 40px 30px;
   background-color: #f9f9f9;
   margin: -12px 70px 1px 70px;
 }
@@ -802,14 +799,13 @@ tbody td:nth-child(5).rejected {
 
 /* for ListingTable.jsx end here */
 
-/* for AdminNav */
+/* for AdminNav start */
 .content p {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   color: #84919a;
   margin-top: 20px;
 }
-
 .admin-nav {
   display: flex;
   flex-direction: column;
@@ -908,6 +904,12 @@ tbody td:nth-child(5).rejected {
 .admin-nav-out .spacer {
   flex-grow: 1;
 }
+
+.admin-nav-out nav span:hover {
+  background-color: #1e3a8a;
+}
+
+/* for AdminNav end */
 
 .sell-page {
   height: 100vh;
