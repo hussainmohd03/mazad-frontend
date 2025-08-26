@@ -37,12 +37,12 @@ const AdminListings = () => {
           <button onClick={() => setFilter('approved')}>Complete</button>
           <button onClick={() => setFilter('pending')}>Pending</button>
           <button onClick={() => setFilter('rejected')}>Rejected</button>
-          {filteredListings.length === 0 ? (
-            <p> No listings found for this status. </p>
-          ) : (
-            <ListingTable listings={filteredListings} />
-          )}
         </div>
+        {filteredListings.length === 0 ? (
+          <p> No listings found for this status. </p>
+        ) : (
+          <ListingTable listings={filteredListings} />
+        )}
       </div>
     </div>
   )

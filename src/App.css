@@ -433,21 +433,20 @@ nav a {
   display: none;
 }
 
-/* General admin page layout */
+/* for listing table and admin listing  */
 .admin-page {
   display: flex;
   min-height: 100vh;
   background-color: #f9f9f9;
 }
 
-/* Content area */
 .content {
   flex: 1;
   padding: 40px 60px;
   background-color: #f9f9f9;
+  margin: -12px 70px 1px 70px;
 }
 
-/* Page title */
 .content h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 28px;
@@ -456,9 +455,9 @@ nav a {
   margin-bottom: 30px;
 }
 
-/* Filter buttons */
 .filter-buttons {
   display: flex;
+  flex-direction: row;
   gap: 15px;
   margin-bottom: 25px;
 }
@@ -470,16 +469,16 @@ nav a {
   font-weight: 600;
   border: 1px solid #ddd;
   border-radius: 20px;
-  background-color: #fff;
-  color: #303940;
+  background-color: #ececec;
+  color: #767676;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.filter-buttons button:hover {
-  background-color: #f2173162;
-  color: #fff;
-  border-color: #f21731;
+.filter-buttons button:focus {
+  background-color: #fff5f6;
+  color: #f90002;
+  border-color: #f90002;
 }
 
 .filter-buttons button.active {
@@ -488,18 +487,20 @@ nav a {
   border-color: #f21731;
 }
 
-/* Table styling */
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate; /* allow spacing */
+  border-spacing: 6px; /*vertical gap between rows*/
   background-color: #fff;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 thead tr {
   background-color: #f1f1f1;
+  border-collapse: separate;
+  border-spacing: 0 1em;
 }
 
 thead th {
@@ -509,14 +510,14 @@ thead th {
   font-size: 14px;
   font-weight: 600;
   color: #303940;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
 }
 
 tbody td {
-  padding: 12px 15px;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   color: #303940;
-  border-bottom: 1px solid #eee;
 }
 
 tbody tr:hover {
@@ -525,16 +526,15 @@ tbody tr:hover {
 }
 
 tbody img {
-  width: 60px;
-  height: 60px;
+  width: 35px;
+  height: 35px;
   object-fit: cover;
   border-radius: 8px;
+  border: #f0f0f0 solid 1px;
 }
 
-/* Status badges */
 tbody td:nth-child(5) {
   text-transform: capitalize;
-  padding: 6px 10px;
   border-radius: 12px;
   font-weight: 600;
   text-align: center;
@@ -556,10 +556,109 @@ tbody td:nth-child(5).rejected {
   color: #f21731;
 }
 
-/* Empty listing message */
+/* for AdminNav */
 .content p {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   color: #84919a;
   margin-top: 20px;
+}
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  width: 11rem;
+  height: 100vh;
+  background-color: #1e3a8a;
+  color: white;
+  padding: 10px 20px;
+}
+.admin-nav-out {
+  display: flex;
+  flex-direction: column;
+  width: 11rem;
+  height: 100vh;
+  background-color: #1e3a8a;
+  color: white;
+}
+
+.admin-nav-out .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.admin-nav-out .logo .red-text {
+  color: #dc2626;
+  margin-top: 40px;
+}
+
+#logout-btn {
+  color: #dc2626;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+  font-weight: bold;
+  background-color: #b91c1c;
+  color: white;
+  padding: 12px 29px;
+}
+
+#logout-btn:hover {
+  background-color: white;
+  color: #b91c1c;
+}
+.admin-nav-out .new-admin-btn,
+.admin-nav-out .logout-btn {
+  background-color: white;
+  color: #dc2626;
+  padding: 0.7rem 1.3rem;
+  border-radius: 0.45rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+  font-weight: bold;
+}
+
+.admin-nav-out .new-admin-btn:hover,
+.admin-nav-out .logout-btn:hover {
+  background-color: #b91c1c;
+  color: white;
+}
+
+.admin-nav-out nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-nav-out nav button {
+  text-align: left;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.admin-nav-out nav button:hover {
+  background-color: #1e40af;
+}
+
+.admin-nav-out nav .active {
+  background-color: #1e40af;
+  font-weight: 600;
+}
+
+.admin-nav-out .spacer {
+  flex-grow: 1;
 }

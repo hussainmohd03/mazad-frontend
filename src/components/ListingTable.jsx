@@ -8,7 +8,9 @@ const ListingTable = ({ listings }) => {
     <table className="">
       <thead>
         <tr className="">
-          <th className="">Image</th>
+          <th className="" res>
+            index
+          </th>
           <th className="">ID Listing</th>
           <th className="">Product Name</th>
           <th className="">Customer Name</th>
@@ -17,15 +19,16 @@ const ListingTable = ({ listings }) => {
           <th className="">Price</th>
         </tr>
       </thead>
+
       <tbody>
-        {listings.map((item) => (
+        {listings.map((item, index) => (
           <tr
             key={item._id}
             className=""
             onClick={() => navigate(`/admin/listings/${item._id}`)}
           >
             <td className="">
-              <img src={item.images?.[0]} alt={item.name} className="" />
+              <td className="">{index + 1}</td>
             </td>
             <td className="">{item._id}</td>
             <td className="">{item.name}</td>
@@ -40,7 +43,7 @@ const ListingTable = ({ listings }) => {
                 minute: 'numeric'
               })}
             </td>
-            <td className="">HD{item.price}</td>
+            <td className="">BHD {item.price}</td>
           </tr>
         ))}
       </tbody>
