@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useState } from "react";
 import NavBar from "../components/NavBar";
@@ -44,7 +45,7 @@ const Sell = () => {
       </main>
       <NavBar />
     </div>
-  );
-};
+  )
+}
 
-export default Sell;
+export default Sell

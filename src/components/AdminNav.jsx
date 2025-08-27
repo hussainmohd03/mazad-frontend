@@ -21,7 +21,12 @@ const AdminNav = () => {
         </span>
         <span>
           <img src="/design-images/AdminNav req icon.svg" alt="icon" />
-          <button className="active">Listings</button>
+          <button
+            onClick={() => navigate('/admin/listings')}
+            className="active"
+          >
+            Listings
+          </button>
         </span>
         <span>
           <img src="/design-images/AdminNav Mask group.svg" alt="icon" />
