@@ -141,11 +141,6 @@ nav a.nav-link.active img {
   font-size: 80%;
 }
 
-.activity-header {
-  font-weight: 500;
-  color: #2d3841;
-}
-
 .terms p {
   width: 90%;
 }
@@ -443,6 +438,11 @@ input[type="text"] {
 
 .activity-page header {
   text-align: center;
+}
+
+.activity-header {
+  font-weight: 500;
+  color: #2d3841;
 }
 
 .activity-page header button {
@@ -905,13 +905,6 @@ tbody td:nth-child(5).rejected {
   flex-grow: 1;
 }
 
-.sell-page {
-  height: 100vh;
-  width: 100vw;
-  display: grid;
-  grid-template-rows: 1fr 7fr 0.75fr;
-}
-
 .watch-list-grid {
   display: flex;
   flex-direction: column;
@@ -1005,6 +998,31 @@ tbody td:nth-child(5).rejected {
   align-items: center;
   width: 100%;
   aspect-ratio: 1/1;
+}
+
+.sell-page {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 2fr 7fr 0.75fr;
+}
+
+.sell-page header {
+  text-align: center;
+}
+
+.sell-page header p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  height: 40%;
+}
+
+.sell-page main {
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 @media (min-width: 1000px) {
