@@ -10,6 +10,7 @@ import Activity from './pages/Activity'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import ItemDetails from './components/ItemDetails'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
 // 🔹 Import admin pages
 import AdminListings from './pages/AdminListings'

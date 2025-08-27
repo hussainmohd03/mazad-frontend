@@ -911,6 +911,99 @@ tbody td:nth-child(5).rejected {
 
 /* for AdminNav end */
 
+/* AdminListingDetails.jsx start from */
+.admin-layout {
+  display: flex;
+  flex-direction: row;
+  overflow-y: hidden;
+}
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+}
+.action-buttons button {
+  padding: 10px 80px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 20px;
+  color: #d1f7dc;
+  border: #2d3841 solid 0px;
+  margin: 5px 10px;
+  width: 300px;
+}
+.approve-btn {
+  background-color: #1d3566;
+}
+.reject-btn {
+  background-color: #f90002;
+}
+.pending-btn {
+  background-color: #cca824;
+}
+
+.approve-btn:hover {
+  background-color: #15274a;
+}
+.reject-btn:hover {
+  background-color: #d10303;
+}
+.pending-btn:hover {
+  background-color: #9b7f1b;
+}
+.admin-content {
+  max-width: 24%;
+  max-height: none;
+  margin: 6% 12% 2% 12%;
+}
+.images {
+  max-width: 400px;
+  margin: 8% 10% 2% 2%;
+}
+.category-name-blue {
+  color: #1d3566;
+  margin-bottom: -30px;
+}
+.category-name-black {
+  color: #000000;
+  font-size: xx-large;
+  margin-bottom: -10px;
+}
+.listing-title-in-p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #303940;
+  margin: -10px 1px 40px 1px;
+}
+.listing-description {
+  margin-top: 90px;
+}
+
+.large-image-container {
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.large-listing-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.thumbnails .listing-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.thumbnails .listing-img:hover {
+  border-bottom: 2px solid #9b9b9b;
+}
+
+/* AdminListingDetails.jsx start from */
+
 .sell-page {
   height: 100vh;
   width: 100vw;
@@ -924,5 +1017,8 @@ tbody td:nth-child(5).rejected {
   }
   nav {
     align-items: center;
+  }
+  .admin-layout {
+    overflow-y: hidden;
   }
 }
