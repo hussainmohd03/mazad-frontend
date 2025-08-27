@@ -69,7 +69,7 @@ const AuctionBox = ({ auction, activeButton }) => {
       </div>
       <div className="auction-box-footer">
         <p>
-          <strong>BHD&nbsp;</strong>
+          <span className="currency">BHD&nbsp;</span>
           {auction.currentPrice.toLocaleString()}
         </p>
         <p>{auction.endDate.split("T")[0]}</p>
