@@ -15,6 +15,7 @@ const Profile = ({ handleLogOut }) => {
   useEffect(() => {
     user && setName(user.first_name)
   })
+  
   useEffect(() => {
     const getBalance = async () => {
       const user = await Client.get(`${BASE_URL}/users/me`)
