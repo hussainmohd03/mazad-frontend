@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 body {
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   color: black;
   font-weight: 400;
   overflow-x: hidden;
@@ -15,7 +15,7 @@ body {
 .landing-page {
   width: 100vw;
   height: 100vh;
-  background-image: url('design-images/background.svg');
+  background-image: url("design-images/background.svg");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -41,7 +41,7 @@ body {
   margin-bottom: 5%;
   height: 5vh;
   border: 1px white solid;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-size: 1em;
 }
 
@@ -63,7 +63,6 @@ nav {
   bottom: 0;
   position: fixed;
   background-color: white;
-  padding-bottom: 15px;
 }
 
 nav a.nav-link {
@@ -118,7 +117,7 @@ nav a.nav-link.active img {
 }
 
 .input-field {
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   color: #84919a;
   padding-left: 10px;
 }
@@ -130,7 +129,7 @@ nav a.nav-link.active img {
   height: 6vh;
   background-color: #ff0022;
   color: white;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   font-weight: 500;
 }
 
@@ -140,11 +139,6 @@ nav a.nav-link.active img {
   justify-content: space-between;
   align-items: center;
   font-size: 80%;
-}
-
-.activity-header {
-  font-weight: 500;
-  color: #2d3841;
 }
 
 .terms p {
@@ -178,8 +172,8 @@ nav a.nav-link.active img {
   font-size: 14px;
 }
 
-input[type='text'] {
-  font-family: 'Poppins', sans-serif !important;
+input[type="text"] {
+  font-family: "Poppins", sans-serif !important;
 }
 
 .sign-alternative a {
@@ -446,6 +440,11 @@ input[type='text'] {
   text-align: center;
 }
 
+.activity-header {
+  font-weight: 500;
+  color: #2d3841;
+}
+
 .activity-page header button {
   width: 40%;
   display: flex;
@@ -469,7 +468,7 @@ input[type='text'] {
   justify-content: space-evenly;
   align-items: end;
   border-bottom: #ededed 1px solid;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
 }
 
 .toggle-buttons button {
@@ -477,7 +476,7 @@ input[type='text'] {
   height: 70%;
   border: none;
   background-color: transparent;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   font-weight: 400;
   color: #6a7c88;
   font-size: 14.5px;
@@ -486,10 +485,9 @@ input[type='text'] {
 .toggle-buttons .active {
   border-bottom: #ff0022 3px solid;
   color: #ff0022;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   font-weight: 500;
 }
-
 .activity-page main {
   overflow-y: scroll;
   scrollbar-width: none;
@@ -582,11 +580,559 @@ input[type='text'] {
   display: none;
 }
 
+/* for listing table and admin listing  */
+.admin-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.content {
+  flex: 1;
+  padding: 40px 30px;
+  background-color: #f9f9f9;
+  margin: -12px 70px 1px 70px;
+}
+
+.content h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #303940;
+  margin-bottom: 30px;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.filter-buttons button {
+  padding: 8px 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: #ececec;
+  color: #767676;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-buttons button:focus {
+  background-color: #fff5f6;
+  color: #f90002;
+  border-color: #f90002;
+}
+
+.filter-buttons button.active {
+  background-color: #f21731;
+  color: #fff;
+  border-color: #f21731;
+}
+
+/* table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 4px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: scroll;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+thead tr {
+  background-color: #f1f1f1;
+}
+
+thead th {
+  text-align: left;
+  padding: 12px 15px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #303940;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+}
+
+tbody td {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #303940;
+}
+
+tbody tr:hover {
+  background-color: #f7f7f7;
+  cursor: pointer;
+}
+
+tbody img {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: #f0f0f0 solid 1px;
+} 
+
+tbody td:nth-child(5) {
+  text-transform: capitalize;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+  width: 100px;
+}
+
+tbody td:nth-child(5).approved {
+  background-color: #d1f7dc;
+  color: #21c36f;
+}
+
+tbody td:nth-child(5).pending {
+  background-color: #fff4d1;
+  color: #f2b01e;
+}
+
+tbody td:nth-child(5).rejected {
+  background-color: #f7d1d1;
+  color: #f21731;
+}
+*/
+
+/* for ListingTable.jsx start here */
+.listings-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.listing-row {
+  display: grid;
+  grid-template-columns:
+    50px
+    minmax(150px, 250px)
+    minmax(120px, 1fr)
+    minmax(120px, 1fr)
+    120px
+    minmax(160px, 240px)
+    100px;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  column-gap: 16px;
+}
+
+.listing-row {
+  font-weight: 600;
+  background-color: #ffffff;
+  cursor: default;
+}
+.header {
+  display: grid;
+  grid-template-columns:
+    50px
+    minmax(150px, 250px)
+    minmax(120px, 1fr)
+    minmax(120px, 1fr)
+    120px
+    minmax(160px, 240px)
+    100px;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  column-gap: 16px;
+
+  font-weight: 600;
+  background-color: #ffffff;
+  cursor: default;
+  border-bottom: #f4f4f4 2px solid;
+}
+
+.listing-header-cell {
+  color: #303940;
+}
+
+.listing-row:hover {
+  background-color: #ececec;
+  transition: 0.07s;
+}
+
+.listing-status.approved {
+  background-color: #d1f7dc;
+  color: #21c36f;
+  border-radius: 8px;
+  text-align: center;
+  padding: 2px 6px;
+}
+
+.listing-status.pending {
+  background-color: #fff4d1;
+  color: #f2b01e;
+  border-radius: 8px;
+  text-align: center;
+  padding: 2px 6px;
+}
+
+.listing-status.rejected {
+  background-color: #f7d1d1;
+  color: #f21731;
+  border-radius: 8px;
+  text-align: center;
+  padding: 2px 6px;
+}
+
+.listing-row span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* for ListingTable.jsx end here */
+
+/* for AdminNav start */
+.content p {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #84919a;
+  margin-top: 20px;
+}
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  width: 11rem;
+  height: 100vh;
+  background-color: #1e3a8a;
+  color: white;
+  padding: 10px 20px;
+}
+.admin-nav-out {
+  display: flex;
+  flex-direction: column;
+  width: 11rem;
+  height: 100vh;
+  background-color: #1e3a8a;
+  color: white;
+}
+
+.admin-nav-out .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.admin-nav-out .logo .red-text {
+  color: #dc2626;
+  margin-top: 40px;
+}
+
+#logout-btn {
+  color: #dc2626;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+  font-weight: bold;
+  background-color: #b91c1c;
+  color: white;
+  padding: 12px 29px;
+}
+
+#logout-btn:hover {
+  background-color: white;
+  color: #b91c1c;
+}
+.admin-nav-out .new-admin-btn,
+.admin-nav-out .logout-btn {
+  background-color: white;
+  color: #dc2626;
+  padding: 0.7rem 1.3rem;
+  border-radius: 0.45rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+  font-weight: bold;
+}
+
+.admin-nav-out .new-admin-btn:hover,
+.admin-nav-out .logout-btn:hover {
+  background-color: #b91c1c;
+  color: white;
+}
+
+.admin-nav-out nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-nav-out nav button {
+  text-align: left;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.admin-nav-out nav button:hover {
+  background-color: #1e40af;
+}
+
+.admin-nav-out nav .active {
+  background-color: #1e40af;
+  font-weight: 600;
+}
+
+.admin-nav-out .spacer {
+  flex-grow: 1;
+}
+
+
+.admin-nav-out nav span:hover {
+  background-color: #1e3a8a;
+}
+
+/* for AdminNav end */
+
+/* AdminListingDetails.jsx start from */
+.admin-layout {
+  display: flex;
+  flex-direction: row;
+  overflow-y: hidden;
+}
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+}
+.action-buttons button {
+  padding: 10px 80px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 20px;
+  color: #d1f7dc;
+  border: #2d3841 solid 0px;
+  margin: 5px 10px;
+  width: 300px;
+}
+.approve-btn {
+  background-color: #1d3566;
+}
+.reject-btn {
+  background-color: #f90002;
+}
+.pending-btn {
+  background-color: #cca824;
+}
+
+.approve-btn:hover {
+  background-color: #15274a;
+}
+.reject-btn:hover {
+  background-color: #d10303;
+}
+.pending-btn:hover {
+  background-color: #9b7f1b;
+}
+.admin-content {
+  max-width: 24%;
+  max-height: none;
+  margin: 6% 12% 2% 12%;
+}
+.images {
+  max-width: 400px;
+  margin: 8% 10% 2% 2%;
+}
+.category-name-blue {
+  color: #1d3566;
+  margin-bottom: -30px;
+}
+.category-name-black {
+  color: #000000;
+  font-size: xx-large;
+  margin-bottom: -10px;
+}
+.listing-title-in-p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #303940;
+  margin: -10px 1px 40px 1px;
+}
+.listing-description {
+  margin-top: 90px;
+}
+
+.large-image-container {
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.large-listing-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.thumbnails .listing-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.thumbnails .listing-img:hover {
+  border-bottom: 2px solid #9b9b9b;
+}
+
+/* AdminListingDetails.jsx start from */
+.watch-list-grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  row-gap: 3%;
+}
+
+.watchlist-box {
+  border-radius: 15px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.watchlist-box-header {
+  width: 100%;
+  height: 65%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: grid;
+  grid-template-columns: 2fr 4fr 1fr;
+  margin-bottom: 2%;
+}
+
+.watchlist-box-footer {
+  width: 100%;
+  height: 35%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+  background-color: #f8f8f8;
+}
+
+.watchlist-box-footer p {
+  font-size: small;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.watchlist-action-box {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.5rem;
+  padding: 5%;
+}
+
+.watchlist-action-box button {
+  background-color: #f8f8f8;
+  border: none;
+  justify-self: center;
+  align-items: center;
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+  width: 80%;
+}
+
+.watchlist-action-box button img {
+  width: 100%;
+}
+
+.active-bookmark {
+  filter: invert(21%) sepia(93%) saturate(7465%) hue-rotate(356deg)
+    brightness(80%) contrast(119%);
+}
+
+.watchlist-item-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.watchlist-item-name p {
+  font-size: small;
+}
+
+.watch-list-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
 .sell-page {
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-rows: 1fr 7fr 0.75fr;
+  grid-template-rows: 2fr 7fr 0.75fr;
+}
+
+.sell-page header {
+  text-align: center;
+}
+
+.sell-page header p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  height: 40%;
+}
+
+.sell-page main {
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+@media (min-width: 1000px) {
+  body {
+    overflow-y: scroll;
+  }
+  nav {
+    align-items: center;
+  }
+  .admin-layout {
+    overflow-y: hidden;
+  }
 }
 
 .bidding-limit-container {

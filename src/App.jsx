@@ -1,4 +1,5 @@
 import './App.css'
+
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { useState, useContext } from 'react'
 import Landing from './pages/Landing'
@@ -10,12 +11,23 @@ import Activity from './pages/Activity'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import ItemDetails from './components/ItemDetails'
+
 import EditProfile from './pages/EditProfile'
 import { useEffect } from 'react'
 import { CheckSession } from '../services/Auth'
 import UserContext from './context/UserContext'
 import ChangePassword from './pages/ChangePassword'
 
+// import 'bootstrap/dist/css/bootstrap.min.css'
+
+
+
+import AdminListings from './pages/AdminListings'
+// import AdminDashboard from './pages/admin/AdminDashboard'
+// import AdminCategories from './pages/admin/AdminCategories'
+// import AdminSettings from './pages/admin/AdminSettings'
+// import AdminAccounts from './pages/admin/AdminAccounts'
+import AdminListingDetails from './pages/AdminListingDetails'
 const App = () => {
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
@@ -54,8 +66,17 @@ const App = () => {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/auctions/:auctionId" element={<ItemDetails />} />
+
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="change-password" element={<ChangePassword />} />
+
+        {/* Admin routes */}
+        {/* <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}
+        <Route path="/admin/listings" element={<AdminListings />} />
+        <Route path="/admin/listings/:id" element={<AdminListingDetails />} />
+        {/* <Route path="/admin/categories" element={<AdminCategories />} />
+        <Route path="/admin/settings" element={<AdminSettings />} />
+        <Route path="/admin/admins" element={<AdminAccounts />} /> */}
       </Routes>
     </>
   )
