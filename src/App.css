@@ -634,75 +634,6 @@ input[type="text"] {
   border-color: #f21731;
 }
 
-/* table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 4px;
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: scroll;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
-}
-
-thead tr {
-  background-color: #f1f1f1;
-}
-
-thead th {
-  text-align: left;
-  padding: 12px 15px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #303940;
-  background-color: #ffffff;
-  border-bottom: 1px solid #eee;
-}
-
-tbody td {
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  color: #303940;
-}
-
-tbody tr:hover {
-  background-color: #f7f7f7;
-  cursor: pointer;
-}
-
-tbody img {
-  width: 35px;
-  height: 35px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: #f0f0f0 solid 1px;
-} 
-
-tbody td:nth-child(5) {
-  text-transform: capitalize;
-  border-radius: 12px;
-  font-weight: 600;
-  text-align: center;
-  width: 100px;
-}
-
-tbody td:nth-child(5).approved {
-  background-color: #d1f7dc;
-  color: #21c36f;
-}
-
-tbody td:nth-child(5).pending {
-  background-color: #fff4d1;
-  color: #f2b01e;
-}
-
-tbody td:nth-child(5).rejected {
-  background-color: #f7d1d1;
-  color: #f21731;
-}
-*/
-
-/* for ListingTable.jsx start here */
 .listings-wrapper {
   display: flex;
   flex-direction: column;
@@ -1121,6 +1052,92 @@ tbody td:nth-child(5).rejected {
 .sell-page main {
   overflow-y: scroll;
   scrollbar-width: none;
+}
+
+.item-form {
+  height: 100%;
+}
+
+.item-step {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr;
+}
+
+.category-grid {
+  gap: 2.5%;
+  padding: 5%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  border: 1px #dddddd solid;
+  border-radius: 10px;
+}
+
+.category-item p {
+  padding: 0%;
+  margin: 0%;
+  display: flex;
+  align-items: center;
+  font-size: x-small;
+  width: 100%;
+  padding-left: 7.5%;
+}
+
+.category-item img {
+  height: 70%;
+  width: 50%;
+}
+
+.description-field {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  align-self: baseline;
+}
+
+.description-field p {
+  margin: 0%;
+  padding: 0%;
+  margin-right: auto;
+}
+
+textarea {
+  width: 100%;
+  height: 60%;
+  border-radius: 10px;
+  border: 1px #ddd solid;
+  padding: 2%;
+  font-family: "Poppins", sans-serif !important;
+  resize: none;
+}
+
+.item-step-header {
+  row-gap: 20%;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.item-step-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (min-width: 1000px) {
