@@ -4,7 +4,9 @@ import auctions from "../objects/auctions.json";
 import ItemCard from "../components/ItemCard";
 import CategoryCard from "../components/CategoryCard";
 import NavBar from "../components/NavBar";
+import { listAuctions } from "../../services/Auction";
 const Home = () => {
+  listAuctions();
   return (
     <>
       <div className="home-page">
