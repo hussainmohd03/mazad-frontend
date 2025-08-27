@@ -52,7 +52,19 @@ const AdminListingDetails = () => {
   return (
     <div className="admin-layout">
       <AdminNav />
-      <div className="admin-content"></div>
+      <div className="admin-content">
+        <h1>{listing.name} Details</h1>
+        <div className="listing-details">
+          <p className="category-name-blue">{listing.category}</p>
+          <p>
+            {Intl.NumberFormat('en-US', {
+              style: 'currency',
+              currency: 'BHD',
+              minimumFractionDigits: 0
+            }).format(listing.price)}
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
