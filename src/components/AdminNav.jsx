@@ -12,7 +12,12 @@ const AdminNav = () => {
             <img src="/design-images/logo.svg" alt="Logo" />
           </span>
         </div>
-        <button className="new-admin-btn">+ New Admin</button>
+        <button
+          onClick={() => navigate('/admin/AddAdminAccount')}
+          className="new-admin-btn"
+        >
+          + New Admin
+        </button>
         <span>
           <img src="/design-images/AdminNav dashboard icon.svg" alt="icon" />
           <button onClick={() => navigate('/admin/dashboard')}>

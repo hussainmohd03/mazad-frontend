@@ -17,7 +17,7 @@ import AdminListings from './pages/AdminListings'
 // import AdminDashboard from './pages/admin/AdminDashboard'
 // import AdminCategories from './pages/admin/AdminCategories'
 // import AdminSettings from './pages/admin/AdminSettings'
-// import AdminAccounts from './pages/admin/AdminAccounts'
+import AddAdminAccounts from './pages/AddAdminAccounts'
 import AdminListingDetails from './pages/AdminListingDetails'
 const App = () => {
   return (
@@ -38,8 +38,8 @@ const App = () => {
         <Route path="/admin/listings" element={<AdminListings />} />
         <Route path="/admin/listings/:id" element={<AdminListingDetails />} />
         {/* <Route path="/admin/categories" element={<AdminCategories />} />
-        <Route path="/admin/settings" element={<AdminSettings />} />
-        <Route path="/admin/admins" element={<AdminAccounts />} /> */}
+        <Route path="/admin/settings" element={<AdminSettings />} />*/}
+        <Route path="/admin/AddAdminAccount" element={<AddAdminAccounts />} />
       </Routes>
     </>
   )
