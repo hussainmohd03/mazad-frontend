@@ -14,7 +14,7 @@ const AuctionBox = ({ auction, activeButton }) => {
     return `${days}d ${hours}h`;
   };
 
-  return activeButton === "Bids" ? (
+  return activeButton === "Bids" || activeButton === "on-auction" ? (
     <div
       className="auction-box"
       key={auction._id}

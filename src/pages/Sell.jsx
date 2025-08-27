@@ -3,6 +3,7 @@ import { useState } from "react";
 import NavBar from "../components/NavBar";
 import AuctionBox from "../components/AuctionBox";
 import auctions from "../objects/auctions.json";
+import ItemForm from "../components/ItemForm";
 const Sell = () => {
   const [activeButton, setActiveButton] = useState("on-auction");
 
@@ -28,15 +29,18 @@ const Sell = () => {
         </div>
       </header>
       <main>
-        <div className="auctions-grid">
-          {auctions.map((auction) => (
-            <AuctionBox
-              key={auction._id}
-              auction={auction}
-              activeButton={activeButton}
-            />
-          ))}
-        </div>
+        {activeButton === "on-auction" && (
+          <div className="auctions-grid">
+            {auctions.map((auction) => (
+              <AuctionBox
+                key={auction._id}
+                auction={auction}
+                activeButton={activeButton}
+              />
+            ))}
+          </div>
+        )}
+        {activeButton === "sell-item" && <ItemForm />}
       </main>
       <NavBar />
     </div>
