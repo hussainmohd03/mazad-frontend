@@ -36,7 +36,7 @@ const AdminListings = () => {
 
         <div className="filter-buttons">
           <button onClick={() => setFilter('all')}>All</button>
-          <button onClick={() => setFilter('approved')}>Complete</button>
+          <button onClick={() => setFilter('approved')}>Approved</button>
           <button onClick={() => setFilter('pending')}>Pending</button>
           <button onClick={() => setFilter('rejected')}>Rejected</button>
         </div>

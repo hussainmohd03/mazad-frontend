@@ -19,6 +19,8 @@ const AdminListingDetails = () => {
         setListing(item)
       } catch (err) {
         setError('Failed to fetch listing details')
+      } finally {
+        setLoading(false)
       }
     }
     fetchListing()
@@ -26,16 +28,31 @@ const AdminListingDetails = () => {
 
   const handleApprove = async () => {
     try {
-      const res = await Client.put(`{backendUrl}/admin/items/${id}/approve`)
+      const res = await Client.put(`{backendUrl}/admin/items/${id}/updateItem`)
       setListing(res.data)
     } catch (error) {
       console.error(error)
     }
   }
 
+  const updateStatus = async (action) => {
+    try {
+      const res = await Client.put(
+        `${backendUrl}/admin/items/${id}/updateItem?action=${action}`
+      )
+      setListing(res.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  if (loading) return <p className="loading-text"> Loading... </p>
+  if (error) return <p>{error}</p>
+  if (!listing) return <p>No details found </p>
   return (
     <div className="admin-layout">
       <AdminNav />
+      <div className="admin-content"></div>
     </div>
   )
 }
