@@ -1,20 +1,6 @@
 'use client'
 import { PieChart, Pie, Cell, Label, ResponsiveContainer } from 'recharts'
-
-const topUp = [
-  {
-    name: 'remaining',
-    date: '12-05-2005',
-    amount: 90
-  },
-  {
-    name: 'used',
-    date: '12-04-2009',
-    amount: 100
-  }
-]
-
-const colors = ['#F90002', '#E2E2E2']
+const colors = ['#E2E2E2', '#F90002']
 
 // https://stackoverflow.com/questions/45723641/recharts-donut-chart-w-two-labels-in-center
 function CustomLabel({ value1, value2 }) {
@@ -52,7 +38,17 @@ function CustomLabel({ value1, value2 }) {
   )
 }
 
-const AreaChartComponent = () => {
+const AreaChartComponent = ({ used }) => {
+  const topUp = [
+    {
+      name: 'remaining',
+      amount: (100 - used)
+    },
+    {
+      name: 'used',
+      amount: used
+    }
+  ]
   return (
     <ResponsiveContainer
       style={{
@@ -73,13 +69,15 @@ const AreaChartComponent = () => {
           dataKey="amount"
           outerRadius={80}
           innerRadius={60}
-          fill="#F90002"
+          // fill="#F90002"
           style={{ height: 53, width: 36 }}
         >
           <Label
             width={30}
             position="center"
-            content={<CustomLabel value1={'Used '} value2={'90%'} />}
+            content={
+              <CustomLabel value1={'Used '} value2={topUp[1].amount + '%'} />
+            }
           ></Label>
           {topUp.map((entry, i) => (
             <Cell key={`cell-${i}`} fill={colors[i % colors.length]} />
