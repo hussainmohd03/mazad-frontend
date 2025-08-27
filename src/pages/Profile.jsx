@@ -10,21 +10,24 @@ import AreaChartComponent from '../components/AreaChat'
 const Profile = ({ handleLogOut }) => {
   const { user } = useContext(UserContext)
   const [name, setName] = useState('')
-  const [balance, setBalance] = useState(0)
+  const [usedBalance, setUsedBalance] = useState(0)
 
   useEffect(() => {
     user && setName(user.first_name)
   })
-  
-  useEffect(() => {
-    const getBalance = async () => {
-      const user = await Client.get(`${BASE_URL}/users/me`)
-      setBalance(user.data.user.balance)
-    }
 
-    getBalance()
+  useEffect(() => {
+    const getRemaining = async () => {
+      const remaning = await Client.get(
+        `${BASE_URL}/auctions/my_bids/${user.id}`
+      )
+      setUsedBalance(remaning.data)
+    }
+    getRemaining()
   }, [])
 
+
+  
   return (
     <div>
       <div className="profile-headline-container">
@@ -44,13 +47,15 @@ const Profile = ({ handleLogOut }) => {
           <p className="your-bidding-limit-text">Your Bidding Limit</p>
           <div className="your-bidding-limit-details">
             <div className="graph-chart">
-              <AreaChartComponent />
+              <AreaChartComponent used={usedBalance.used_percentage} />
             </div>
             <div>
               <p className="tiny-text">Total bidding limit</p>
-              <p className="less-tiny-text">BHD 0</p>
+              <p className="less-tiny-text">BHD {usedBalance.bidding_limit}</p>
               <p className="tiny-text">Remaning</p>
-              <p className="less-tiny-text red-text">BHD {balance}</p>
+              <p className="less-tiny-text red-text">
+                BHD {usedBalance.remaining}
+              </p>
             </div>
           </div>
         </div>
@@ -60,7 +65,7 @@ const Profile = ({ handleLogOut }) => {
               Deposited amount
             </p>
             <p className="bidding-limit-footer-text deposited-amount less-tiny-text">
-              BHD 0
+              BHD {usedBalance.deposit}
             </p>
           </div>
           <div className="top-up-div">
@@ -78,9 +83,13 @@ const Profile = ({ handleLogOut }) => {
           src="/design-images/password.svg"
           alt=""
         />
-        
-          <p className="change-password-button"> <Link className='no-decor' to='/change-password'>Change password </Link></p>
 
+        <p className="change-password-button">
+          {' '}
+          <Link className="no-decor" to="/change-password">
+            Change password{' '}
+          </Link>
+        </p>
       </div>
       <div className="log-out-container">
         <img className="log-out-icon" src="/design-images/log_out.svg" alt="" />
