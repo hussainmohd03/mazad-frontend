@@ -23,7 +23,7 @@ const SignIn = () => {
     e.preventDefault()
     const user = await Login(formData)
     setFormData({ email: '', password: '' })
-    setUser(user)
+    setUser(user.user)
     navigate('/home')
   }
   return (

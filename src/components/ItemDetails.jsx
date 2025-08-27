@@ -1,7 +1,29 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { io } from 'socket.io-client'
 import { useNavigate, useParams } from 'react-router-dom'
+const socket = io('http://localhost:6000')
+
 const ItemDetails = () => {
   const auctionId = useParams().auctionId
+  useEffect(() => {
+    socket.emit('joinAuction', auctionId)
+
+    socket.on('newBid', (data) => {
+      // Update UI with new bid
+    })
+
+    socket.on('auctionStatusChanged', (data) => {
+      // Update UI with new status
+    })
+
+    return () => {
+      socket.emit('leaveAuction', auctionId)
+      socket.off('newBid')
+      socket.off('auctionStatusChanged')
+    }
+  }, [auctionId])
+
   const auction = {
     _id: '64f3a2c3d4e5f67890123441',
     ownerId: '64f1b2c3d4e5f67890123411',
@@ -57,7 +79,7 @@ const ItemDetails = () => {
           </p>
           <div className="item-description">
             <p className="description-title">Description</p>
-            <p className='description-text'> {auction.item.description}</p>
+            <p className="description-text"> {auction.item.description}</p>
           </div>
         </div>
       </div>

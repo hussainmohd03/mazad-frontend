@@ -14,7 +14,7 @@ const AuctionBox = ({ auction, activeButton }) => {
     return `${days}d ${hours}h`;
   };
 
-  return activeButton === "Bids" ? (
+  return activeButton === "Bids" || activeButton === "on-auction" ? (
     <div
       className="auction-box"
       key={auction._id}
@@ -69,7 +69,7 @@ const AuctionBox = ({ auction, activeButton }) => {
       </div>
       <div className="auction-box-footer">
         <p>
-          <strong>BHD&nbsp;</strong>
+          <span className="currency">BHD&nbsp;</span>
           {auction.currentPrice.toLocaleString()}
         </p>
         <p>{auction.endDate.split("T")[0]}</p>
