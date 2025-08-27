@@ -14,6 +14,7 @@ import EditProfile from './pages/EditProfile'
 import { useEffect } from 'react'
 import { CheckSession } from '../services/Auth'
 import UserContext from './context/UserContext'
+import ChangePassword from './pages/ChangePassword'
 
 const App = () => {
   const navigate = useNavigate()
@@ -54,6 +55,7 @@ const App = () => {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/auctions/:auctionId" element={<ItemDetails />} />
         <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="change-password" element={<ChangePassword />} />
       </Routes>
     </>
   )

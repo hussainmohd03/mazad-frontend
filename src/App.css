@@ -692,6 +692,31 @@ input[type='text'] {
   text-decoration: underline;
 }
 
+.change-password-button {
+  margin-left: 2%;
+  font-weight: 400;
+}
+
+.no-decor {
+  text-decoration: none;
+  color: #3f3e3a;
+}
+
+.change-password-container {
+  display: flex;
+}
+
+.password-icon {
+  margin-left: 7%;
+}
+
+.settings-header {
+  margin-left: 7%;
+  color: #bfbfbf;
+  font-weight: 450;
+  margin-bottom: 0;
+}
+
 .log-out-icon {
   margin-left: 7%;
 }
@@ -726,7 +751,6 @@ input[type='text'] {
   padding-top: 0px;
   margin-top: 0px;
   margin-bottom: 3px;
-
 }
 
 .ur-name {
@@ -734,5 +758,57 @@ input[type='text'] {
   margin-top: 0px;
   font-weight: 450;
   font-size: 15px;
+}
 
+.change-pass-header {
+  font-weight: 500;
+  color: #2d3841;
+  padding-top: 15%;
+}
+
+.less-tiny-header {
+  color: #403e3a;
+  padding-left: 5%;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.tiny-header-words {
+  color: #706e6b;
+  font-weight: 300;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 14px;
+}
+
+.bottom-indentation {
+  padding-bottom: 7px;
+}
+
+.side-indentation {
+  margin-left: 5%;
+}
+
+.change-pass {
+  border-radius: 7px;
+  height: 5vh;
+  border: 1px #dddddd solid;
+  width: 85%;
+}
+
+.field-bottom-indentation {
+  margin-bottom: 7px;
+}
+
+.change-password-submit {
+  width: 90%;
+  margin-top: 6%;
+  border: none;
+  border-radius: 25px;
+  height: 6vh;
+  background-color: #ff0022;
+  color: white;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 500;
+  margin-left: 20px;
 }

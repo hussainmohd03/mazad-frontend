@@ -32,8 +32,10 @@ const Profile = ({ handleLogOut }) => {
       <div className="profile-details-container">
         <img src="/design-images/default_icon.svg" alt="" />
         <div className="name-and-profile">
-          <p className='ur-name'>{name}</p>
-          <Link to={'/edit-profile'} className='edit-profile-button'>Edit profile</Link>
+          <p className="ur-name">{name}</p>
+          <Link to={'/edit-profile'} className="edit-profile-button">
+            Edit profile
+          </Link>
         </div>
       </div>
       <div className="bidding-limit-container">
@@ -66,6 +68,18 @@ const Profile = ({ handleLogOut }) => {
             </button>
           </div>
         </div>
+      </div>
+
+      <p className="settings-header">Settings</p>
+      <div className="change-password-container">
+        <img
+          className="password-icon"
+          src="/design-images/password.svg"
+          alt=""
+        />
+        
+          <p className="change-password-button"> <Link className='no-decor' to='/change-password'>Change password </Link></p>
+
       </div>
       <div className="log-out-container">
         <img className="log-out-icon" src="/design-images/log_out.svg" alt="" />
