@@ -17,8 +17,8 @@ import UserContext from './context/UserContext'
 
 const App = () => {
   const navigate = useNavigate()
-  const {setUser} = useContext(UserContext)
-  
+  const { user, setUser } = useContext(UserContext)
+
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
@@ -33,7 +33,11 @@ const App = () => {
     }
   }, [])
 
-
+  const handleLogOut = () => {
+    setUser(null)
+    localStorage.clear()
+    navigate('/sign-in')
+  }
   return (
     <>
       <Routes>
@@ -41,7 +45,10 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/sell" element={<Sell />} />
         <Route path="/watchlist" element={<Watchlist />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={<Profile handleLogOut={handleLogOut} />}
+        />
         <Route path="/activity" element={<Activity />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />

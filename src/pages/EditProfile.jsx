@@ -1,6 +1,6 @@
 const EditProfile =()=> {
   return (
-    <></>
+    <>hi</>
   )
 }
 
