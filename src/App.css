@@ -760,10 +760,27 @@ input[type='text'] {
   font-size: 15px;
 }
 
-.change-pass-header {
+.change-password-page {
+  display: grid;
+  grid-template-rows: 1fr 4fr 4fr;
+}
+
+.change-pass-header-container {
   font-weight: 500;
   color: #2d3841;
-  padding-top: 15%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding-top: 9%;
+}
+
+.change-pass-header {
+  display: flex;
+  align-items: center;
+  padding-left: 19px;
+}
+.change-pass-header-container img {
+  align-self: center;
+  padding-left: 15px;
 }
 
 .less-tiny-header {
@@ -811,4 +828,11 @@ input[type='text'] {
   font-family: 'Poppins', sans-serif !important;
   font-weight: 500;
   margin-left: 20px;
+}
+
+.top-padding {
+  margin-top: 2%;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ff0022;
 }
