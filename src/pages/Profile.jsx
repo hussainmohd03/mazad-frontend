@@ -2,7 +2,7 @@ import React from 'react'
 import NavBar from '../components/NavBar'
 import UserContext from '../context/UserContext'
 import { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import AreaChartComponent from '../components/AreaChat'
@@ -26,20 +26,24 @@ const Profile = ({ handleLogOut }) => {
   }, [])
 
   return (
-    <div>
-      <div className="profile-headline-container">
-        <p className="profile-header">Profile</p>
-      </div>
-      <div className="profile-details-container">
-        <img src="/design-images/default_icon.svg" alt="" />
-        <div className="name-and-profile">
-          <p className="ur-name">{name}</p>
-          <Link to={'/edit-profile'} className="edit-profile-button">
-            Edit profile
-          </Link>
+    
+    <div className='profile-page'>
+      <header>
+        <div className='profile-details'>
+          <div className='profile-title'>Profile</div>
+          <div className='profile-user-details'>
+            <img src="/design-images/default_icon.svg" alt="" />
+            <div className='profile-username'>
+              <p className='primary-text'>{name}</p>
+              <NavLink to={'/edit-profile'} className="edit-profile-button">
+                Edit profile
+              </NavLink>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="bidding-limit-container">
+      </header>
+      <main>
+        <div className="bidding-limit-container">
         <div className="your-bidding-limit-inner-container">
           <p className="your-bidding-limit-text">Your Bidding Limit</p>
           <div className="your-bidding-limit-details">
@@ -70,24 +74,23 @@ const Profile = ({ handleLogOut }) => {
           </div>
         </div>
       </div>
-
-      <p className="settings-header">Settings</p>
-      <div className="change-password-container">
-        <img
-          className="password-icon"
+      <div className='profile-footer'>
+        <p className="primary-text">Settings</p>
+        <div >
+          <img
           src="/design-images/password.svg"
           alt=""
-        />
-        
-          <p className="change-password-button"> <Link className='no-decor' to='/change-password'>Change password </Link></p>
-
+          />
+          <p > <NavLink to='/change-password'>Change password</NavLink></p>
       </div>
-      <div className="log-out-container">
-        <img className="log-out-icon" src="/design-images/log_out.svg" alt="" />
-        <p onClick={() => handleLogOut()} className="log-out-button">
+      <div>
+        <img src="/design-images/log_out.svg" alt="" />
+        <p onClick={() => handleLogOut()} className="under-line-text">
           Log out
         </p>
       </div>
+      </div>
+      </main>
       <NavBar />
     </div>
   )
