@@ -13,6 +13,19 @@ export const Register = async (full_name, email, password) => {
   }
 }
 
+export const RegisterAdmin = async (full_name, email, password) => {
+  try {
+    const res = await Client.post('/auth/admin/signup', {
+      email,
+      password,
+      full_name
+    })
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
 export const Login = async (data) => {
   try {
     const res = await Client.post('/auth/login', data)
@@ -23,6 +36,16 @@ export const Login = async (data) => {
   }
 }
 
+export const AdminLogin = async (data) => {
+  try {
+    console.log('reaches admin login from auth frontend')
+    const res = await Client.post('/auth/admin/login', data)
+    console.log('auth front end ', res)
+    localStorage.setItem('token', res.data.token)
+  } catch (error) {
+    throw error
+  }
+}
 export const CheckSession = async () => {
   try {
     const res = await Client.get('/auth/session')
