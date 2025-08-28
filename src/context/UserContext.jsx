@@ -1,9 +1,10 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 
 const UserContext = createContext(null)
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState('')
+  
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
@@ -11,6 +12,5 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   )
 }
-
 
 export default UserContext
