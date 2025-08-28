@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
-
+import { useContext } from 'react'
+import UserContext from '../context/UserContext'
 const EditProfile = () => {
   const navigate = useNavigate()
-
+  const { user, setUser } = useContext(UserContext)
   const [userDetails, setUserDetails] = useState({
     firstName: '',
     lastName: '',
@@ -21,6 +22,13 @@ const EditProfile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const updatedProfile = await Client.put(`${BASE_URL}/users/me`, userDetails)
+    setUser({
+      id: updatedProfile.data.user._id,
+      email: updatedProfile.data.user.email,
+      first_name: updatedProfile.data.user.firstName,
+      last_name: updatedProfile.data.user.lastName,
+      role: updatedProfile.data.user.type
+    })
   }
 
   useEffect(() => {
@@ -42,7 +50,7 @@ const EditProfile = () => {
         <input
           type="text"
           name="firstName"
-          placeholder={oldDetails.firstName}
+          placeholder={user.first_name}
           value={userDetails.firstName}
           onChange={handleChange}
         />
@@ -53,7 +61,7 @@ const EditProfile = () => {
         <input
           type="text"
           name="lastName"
-          placeholder={oldDetails.lastName}
+          placeholder={user.last_name}
           value={userDetails.lastName}
           onChange={handleChange}
         />
@@ -64,7 +72,7 @@ const EditProfile = () => {
         <input
           type="email"
           name="email"
-          placeholder={oldDetails.email}
+          placeholder={user.email}
           value={userDetails.email}
           onChange={handleChange}
         />
