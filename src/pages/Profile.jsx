@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import AreaChartComponent from '../components/AreaChat'
-
+import { Link } from 'react-router-dom'
 const Profile = ({ handleLogOut, financialData, setFinancialData }) => {
   const { user } = useContext(UserContext)
   const [name, setName] = useState('')
