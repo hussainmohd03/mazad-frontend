@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate, NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { RegisterAdmin } from '../../services/Auth'
 import Client from '../../services/api'
 const backendUrl = import.meta.env.VITE_BACKEND_URL
 
@@ -11,6 +12,7 @@ const AdminListingDetails = () => {
     password: '',
     confirmPassword: ''
   })
+
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(null)
 
@@ -29,11 +31,13 @@ const AdminListingDetails = () => {
     }
 
     try {
-      const res = await Client.post(`${backendUrl}/auth/admin/signup`, {
+      console.log('enters trycatch')
+      const admin = await RegisterAdmin(`${backendUrl}/auth/admin/signup`, {
         full_name: formData.full_name,
         email: formData.email,
         password: formData.password
       })
+      console.log('registered admin', admin)
       setSuccess('Admin created successfully')
       setFormData({
         full_name: '',

@@ -1,9 +1,47 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate, NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 const backendUrl = import.meta.env.VITE_BACKEND_URL
+import { useContext } from 'react'
+import UserContext from '../context/UserContext'
+import { AdminLogin } from '../../services/Auth'
 
 const AdminListingDetails = () => {
+  const { setUser } = useContext(UserContext)
+  const navigate = useNavigate()
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  })
+
+  const [error, setError] = useState(null)
+  const [success, setSuccess] = useState(null)
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (e) => {
+    console.log('handling submit')
+    e.preventDefault()
+    setError(null)
+    setSuccess(null)
+
+    try {
+      console.log('getting user')
+      const user = await AdminLogin(formData)
+      console.log(user)
+      setSuccess('SignIn successfully')
+      setFormData({
+        email: '',
+        password: ''
+      })
+      // navigate('/admin/listings')
+    } catch (err) {
+      setError(err.response?.data?.msg || 'Failed to SignIn')
+    }
+  }
+
   return (
     <div className="AdminListingDetails-container">
       <div className="both-logos">
@@ -19,11 +57,11 @@ const AdminListingDetails = () => {
         />
       </div>
       <div className="add-admin">
-        <form
-          className="add-admin-form"
-          // onSubmit={handleSubmit}
-        >
+        <form className="add-admin-form" onSubmit={handleSubmit}>
           <p className="pp">Sign in</p>
+
+          {error && <p className="error-text">{error}</p>}
+          {success && <p className="success-text">{success}</p>}
 
           <div className="form-row">
             <label htmlFor="email" className="input-key-admin">
@@ -34,8 +72,8 @@ const AdminListingDetails = () => {
               type="email"
               placeholder="Enter email"
               name="email"
-              // value={formData.email}
-              // onChange={handleChange}
+              value={formData.email}
+              onChange={handleChange}
               required
             />
 
@@ -47,8 +85,8 @@ const AdminListingDetails = () => {
               type="password"
               name="password"
               placeholder="Enter password"
-              // value={formData.password}
-              // onChange={handleChange}
+              value={formData.password}
+              onChange={handleChange}
               required
             />
           </div>
@@ -65,12 +103,9 @@ const AdminListingDetails = () => {
             <p>
               By continuing you agree to Mazad’s
               <a href="">Terms and conditions</a> and
-              <a href="">Privacy Policy</a>
+              <a href=""> Privacy Policy</a>
             </p>
           </div>
-          <p className="sign-alternative-signin">
-            Already have an account? <NavLink to="/sign-in">SIGN IN</NavLink>
-          </p>
         </form>
       </div>
     </div>

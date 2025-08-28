@@ -1213,9 +1213,6 @@ tbody td:nth-child(5).rejected {
 
 /*AddAdminAccounts.jsx style end */
 
-/* AdminSignin.jsx stle start */
-
-/* AdminSignin.jsx stle end */
 @media (min-width: 1000px) {
   body {
     overflow-y: scroll;

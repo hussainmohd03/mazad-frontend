@@ -4,6 +4,11 @@ import { useNavigate } from 'react-router-dom'
 const AdminNav = () => {
   const navigate = useNavigate()
 
+  const handleLogOut = () => {
+    localStorage.clear()
+    navigate('/admin/signin')
+  }
+
   return (
     <div className="admin-nav-out">
       <nav className="admin-nav">
@@ -48,7 +53,9 @@ const AdminNav = () => {
           <button onClick={() => navigate('/admin/admins')}>Admins</button>
         </span>
         <div className="spacer"></div>
-        <button id="logout-btn">Log out</button>
+        <button id="logout-btn" onClick={handleLogOut}>
+          Log out
+        </button>
       </nav>
     </div>
   )
