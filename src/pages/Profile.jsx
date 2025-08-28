@@ -7,27 +7,23 @@ import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import AreaChartComponent from '../components/AreaChat'
 
-const Profile = ({ handleLogOut }) => {
+const Profile = ({ handleLogOut, financialData, setFinancialData }) => {
   const { user } = useContext(UserContext)
   const [name, setName] = useState('')
-  const [usedBalance, setUsedBalance] = useState(0)
 
   useEffect(() => {
     user && setName(user.first_name)
   })
 
   useEffect(() => {
-    const getRemaining = async () => {
-      const remaning = await Client.get(
-        `${BASE_URL}/auctions/my_bids/${user.id}`
-      )
-      setUsedBalance(remaning.data)
+    const getFinancialData = async () => {
+      const res = await Client.get(`${BASE_URL}/auth/details`)
+      setFinancialData(res.data)
     }
-    getRemaining()
+
+    getFinancialData()
   }, [])
 
-
-  
   return (
     
     <div className='profile-page'>
@@ -51,14 +47,16 @@ const Profile = ({ handleLogOut }) => {
           <p className="your-bidding-limit-text">Your Bidding Limit</p>
           <div className="your-bidding-limit-details">
             <div className="graph-chart">
-              <AreaChartComponent used={usedBalance.used_percentage} />
+              <AreaChartComponent used={financialData.used_percentage} />
             </div>
             <div>
               <p className="tiny-text">Total bidding limit</p>
-              <p className="less-tiny-text">BHD {usedBalance.bidding_limit}</p>
+              <p className="less-tiny-text">
+                BHD {financialData.bidding_limit}
+              </p>
               <p className="tiny-text">Remaning</p>
               <p className="less-tiny-text red-text">
-                BHD {usedBalance.remaining}
+                BHD {financialData.remaining}
               </p>
             </div>
           </div>
@@ -69,12 +67,14 @@ const Profile = ({ handleLogOut }) => {
               Deposited amount
             </p>
             <p className="bidding-limit-footer-text deposited-amount less-tiny-text">
-              BHD {usedBalance.deposit}
+              BHD {financialData.deposit}
             </p>
           </div>
           <div className="top-up-div">
             <button className=" bidding-top-up-button bold-button">
-              Top up +
+              <Link className="no-decor" to="/top-up">
+                Top up +
+              </Link>
             </button>
           </div>
         </div>
