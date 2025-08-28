@@ -1,5 +1,4 @@
 import './App.css'
-
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { useState, useContext } from 'react'
 import Landing from './pages/Landing'
@@ -11,17 +10,13 @@ import Activity from './pages/Activity'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import ItemDetails from './components/ItemDetails'
-
+import TopUp from './pages/TopUp'
 import EditProfile from './pages/EditProfile'
 import { useEffect } from 'react'
 import { CheckSession } from '../services/Auth'
 import UserContext from './context/UserContext'
 import ChangePassword from './pages/ChangePassword'
-
 // import 'bootstrap/dist/css/bootstrap.min.css'
-
-
-
 import AdminListings from './pages/AdminListings'
 // import AdminDashboard from './pages/admin/AdminDashboard'
 // import AdminCategories from './pages/admin/AdminCategories'
@@ -31,6 +26,7 @@ import AdminListingDetails from './pages/AdminListingDetails'
 const App = () => {
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
+  const [financialData, setFinancialData] = useState({})
 
   const checkToken = async () => {
     const user = await CheckSession()
@@ -51,6 +47,7 @@ const App = () => {
     localStorage.clear()
     navigate('/sign-in')
   }
+
   return (
     <>
       <Routes>
@@ -60,7 +57,13 @@ const App = () => {
         <Route path="/watchlist" element={<Watchlist />} />
         <Route
           path="/profile"
-          element={<Profile handleLogOut={handleLogOut} />}
+          element={
+            <Profile
+              handleLogOut={handleLogOut}
+              financialData={financialData}
+              setFinancialData={setFinancialData}
+            />
+          }
         />
         <Route path="/activity" element={<Activity />} />
         <Route path="/sign-up" element={<SignUp />} />
@@ -77,6 +80,15 @@ const App = () => {
         {/* <Route path="/admin/categories" element={<AdminCategories />} />
         <Route path="/admin/settings" element={<AdminSettings />} />
         <Route path="/admin/admins" element={<AdminAccounts />} /> */}
+        <Route
+          path="/top-up"
+          element={
+            <TopUp
+              financialData={financialData}
+              setFinancialData={setFinancialData}
+            />
+          }
+        />
       </Routes>
     </>
   )
