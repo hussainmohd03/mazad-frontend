@@ -1247,80 +1247,74 @@ textarea {
 .bold-button {
   font-weight: 500;
 }
-
-.log-out-button {
-  margin-left: 2%;
-  color: #f90002;
-  font-weight: 400;
-  text-decoration: underline;
-}
-
-.change-password-button {
-  margin-left: 2%;
-  font-weight: 400;
-}
-
-.no-decor {
-  text-decoration: none;
-  color: #3f3e3a;
-}
-
-.change-password-container {
-  display: flex;
-}
-
-.password-icon {
-  margin-left: 7%;
-}
-
-.settings-header {
-  margin-left: 7%;
-  color: #bfbfbf;
-  font-weight: 450;
-  margin-bottom: 0;
-}
-
-.log-out-icon {
-  margin-left: 7%;
-}
-
-.log-out-container {
-  display: flex;
-}
-
-.profile-details-container {
+.profile-page {
+  height: 100%;
+  width: 100%;
   display: grid;
-  grid-template-columns: 80px auto;
-  padding-left: 6%;
-  align-items: center;
+  grid-template-rows: 2fr 7fr 0.75fr;
+  color: #2D3841;
 }
 
-.profile-header {
-  font-weight: 500;
-  color: #2d3841;
-  padding-top: 65%;
+.profile-page a{
+  text-decoration: none;
+  color: #2D3841;
 }
 
-.profile-headline-container {
+.profile-page header {
+  text-align: center;
+  display: grid;
+}
+
+.profile-details{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.profile-title{
   display: flex;
   align-items: center;
-  justify-self: center;
+  justify-content: center;
+  padding-top: 10%;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 500;
+      color: #2d3841;
 }
 
-.edit-profile-button {
-  color: #586772;
-  text-decoration: none;
-  font-size: 13px;
-  padding-top: 0px;
-  margin-top: 0px;
-  margin-bottom: 3px;
+.profile-user-details{
+  display: flex;
+  padding-left: 5%;
 }
 
-.ur-name {
-  margin-bottom: -7px;
-  margin-top: 0px;
-  font-weight: 450;
-  font-size: 15px;
+.profile-details img{
+  border-radius: 100%;
+}
+
+.profile-username{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  padding-left: 5%;
+}
+
+.profile-footer{
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.profile-footer div{
+  border-bottom: #ededed 1px solid;
+  width: 100%;
+  display: flex;  
+  column-gap: 2.5%;
+}
+
+.under-line-text{
+  color: #ff0022;
+  text-decoration: underline;
 }
 
 .change-password-page {
