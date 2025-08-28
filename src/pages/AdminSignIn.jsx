@@ -36,7 +36,7 @@ const AdminListingDetails = () => {
         email: '',
         password: ''
       })
-      // navigate('/admin/listings')
+      navigate('/admin/listings')
     } catch (err) {
       setError(err.response?.data?.msg || 'Failed to SignIn')
     }
