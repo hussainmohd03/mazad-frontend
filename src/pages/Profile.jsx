@@ -7,11 +7,16 @@ import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import AreaChartComponent from '../components/AreaChat'
 import { Link } from 'react-router-dom'
-const Profile = ({ handleLogOut, financialData, setFinancialData }) => {
+
+const Profile = ({
+  handleLogOut,
+  financialData,
+  setFinancialData,
+  handleDeleteAccount
+}) => {
   const { user } = useContext(UserContext)
   const [name, setName] = useState('')
 
-  console.log(user)
   useEffect(() => {
     user && setName(user.first_name)
   })
@@ -98,8 +103,10 @@ const Profile = ({ handleLogOut, financialData, setFinancialData }) => {
             </p>
           </div>
           <div>
-            <img src="" alt="" />
-            <p className="under-line-text">Delete</p>
+            <img src="/design-images/trash.svg" alt="" />
+            <p onClick={() => handleDeleteAccount()} className="no-decor">
+              Delete account
+            </p>
           </div>
         </div>
       </main>
