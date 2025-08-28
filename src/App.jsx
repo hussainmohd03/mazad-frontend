@@ -14,9 +14,10 @@ import ItemDetails from './components/ItemDetails'
 
 // 🔹 Import admin pages
 import AdminListings from './pages/AdminListings'
-// import AdminDashboard from './pages/admin/AdminDashboard'
-// import AdminCategories from './pages/admin/AdminCategories'
-// import AdminSettings from './pages/admin/AdminSettings'
+// import AdminDashboard from './pages/AdminDashboard'
+// import AdminCategories from './pages/AdminCategories'
+// import AdminSettings from './pages/AdminSettings'
+import AdminSignIn from './pages/AdminSignIn'
 import AddAdminAccounts from './pages/AddAdminAccounts'
 import AdminListingDetails from './pages/AdminListingDetails'
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
 
         {/* Admin routes */}
         {/* <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}
+        <Route path="/admin/signin" element={<AdminSignIn />} />
         <Route path="/admin/listings" element={<AdminListings />} />
         <Route path="/admin/listings/:id" element={<AdminListingDetails />} />
         {/* <Route path="/admin/categories" element={<AdminCategories />} />
