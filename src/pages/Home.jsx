@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom'
-import categories from '../objects/categories.json'
 import ItemCard from '../components/ItemCard'
 import CategoryCard from '../components/CategoryCard'
 import NavBar from '../components/NavBar'
@@ -16,6 +15,8 @@ const Home = () => {
     }
     getAuctions()
   }, [])
+
+
   return (
     <>
     {/* TODO 1: add search functionality */}

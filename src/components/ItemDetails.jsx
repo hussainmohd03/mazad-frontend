@@ -4,8 +4,7 @@ import { io } from 'socket.io-client'
 import { useNavigate, useParams } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
-
-const socket = io('http://localhost:5000')
+const socket = io('http://localhost:6000')
 
 const ItemDetails = () => {
   const [auction, setAuction] = useState('')
@@ -63,7 +62,6 @@ const ItemDetails = () => {
           <div className="item-description">
             <p className="description-title">Description</p>
             <p className="description-text">
-              {' '}
               {auction && auction.auction.itemId.description}
             </p>
           </div>
