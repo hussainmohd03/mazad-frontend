@@ -745,6 +745,7 @@ input[type='text'] {
   color: white;
   padding: 10px 20px;
 }
+
 .admin-nav-out {
   display: flex;
   flex-direction: column;
@@ -819,16 +820,6 @@ input[type='text'] {
   color: white;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.admin-nav-out nav button:hover {
-  background-color: #1e40af;
-}
-
-.admin-nav-out nav .active {
-  background-color: #1e40af;
-  font-weight: 600;
 }
 
 .admin-nav-out .spacer {
@@ -838,7 +829,21 @@ input[type='text'] {
 .admin-nav-out nav span:hover {
   background-color: #1e3a8a;
 }
-
+span.sp1 {
+  margin-left: 1%;
+}
+span.sp2 {
+  margin-left: -9%;
+}
+span.sp3 {
+  margin-left: -5%;
+}
+span.sp4 {
+  margin-left: -7%;
+}
+span.sp5 {
+  margin-left: -8%;
+}
 /* for AdminNav end */
 
 /* AdminListingDetails.jsx start from */
@@ -1211,7 +1216,7 @@ textarea {
   border-radius: 10px;
   border: 1px #ddd solid;
   padding: 2%;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   resize: none;
 }
 
@@ -1342,12 +1347,12 @@ textarea {
   width: 100%;
   display: grid;
   grid-template-rows: 2fr 7fr 0.75fr;
-  color: #2D3841;
+  color: #2d3841;
 }
 
-.profile-page a{
+.profile-page a {
   text-decoration: none;
-  color: #2D3841;
+  color: #2d3841;
 }
 
 .profile-page header {
@@ -1355,31 +1360,31 @@ textarea {
   display: grid;
 }
 
-.profile-details{
+.profile-details {
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
 
-.profile-title{
+.profile-title {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 10%;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 500;
-      color: #2d3841;
+  color: #2d3841;
 }
 
-.profile-user-details{
+.profile-user-details {
   display: flex;
   padding-left: 5%;
 }
 
-.profile-details img{
+.profile-details img {
   border-radius: 100%;
 }
 
-.profile-username{
+.profile-username {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1387,7 +1392,7 @@ textarea {
   padding-left: 5%;
 }
 
-.profile-footer{
+.profile-footer {
   padding: 5%;
   display: flex;
   flex-direction: column;
@@ -1395,14 +1400,14 @@ textarea {
   align-items: baseline;
 }
 
-.profile-footer div{
+.profile-footer div {
   border-bottom: #ededed 1px solid;
   width: 100%;
-  display: flex;  
+  display: flex;
   column-gap: 2.5%;
 }
 
-.under-line-text{
+.under-line-text {
   color: #ff0022;
   text-decoration: underline;
 }
