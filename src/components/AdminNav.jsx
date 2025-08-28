@@ -4,6 +4,11 @@ import { useNavigate } from 'react-router-dom'
 const AdminNav = () => {
   const navigate = useNavigate()
 
+  const handleLogOut = () => {
+    localStorage.clear()
+    navigate('/admin/signin')
+  }
+
   return (
     <div className="admin-nav-out">
       <nav className="admin-nav">
@@ -12,7 +17,12 @@ const AdminNav = () => {
             <img src="/design-images/logo.svg" alt="Logo" />
           </span>
         </div>
-        <button className="new-admin-btn">+ New Admin</button>
+        <button
+          onClick={() => navigate('/admin/AddAdminAccount')}
+          className="new-admin-btn"
+        >
+          + New Admin
+        </button>
         <span>
           <img src="/design-images/AdminNav dashboard icon.svg" alt="icon" />
           <button onClick={() => navigate('/admin/dashboard')}>
@@ -43,7 +53,9 @@ const AdminNav = () => {
           <button onClick={() => navigate('/admin/admins')}>Admins</button>
         </span>
         <div className="spacer"></div>
-        <button id="logout-btn">Log out</button>
+        <button id="logout-btn" onClick={handleLogOut}>
+          Log out
+        </button>
       </nav>
     </div>
   )
