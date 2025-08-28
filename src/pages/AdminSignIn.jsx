@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
-const backendUrl = import.meta.env.VITE_BACKEND_URL
 import { useContext } from 'react'
 import UserContext from '../context/UserContext'
 import { AdminLogin } from '../../services/Auth'
 
-const AdminListingDetails = () => {
+const AdminSignIn = () => {
   const { setUser } = useContext(UserContext)
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
@@ -14,8 +13,8 @@ const AdminListingDetails = () => {
     password: ''
   })
 
-  const [error, setError] = useState(null)
-  const [success, setSuccess] = useState(null)
+  // const [error, setError] = useState(null)
+  // const [success, setSuccess] = useState(null)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -24,21 +23,21 @@ const AdminListingDetails = () => {
   const handleSubmit = async (e) => {
     console.log('handling submit')
     e.preventDefault()
-    setError(null)
-    setSuccess(null)
-
+    // setError(null)
+    // setSuccess(null)
     try {
       console.log('getting user')
       const user = await AdminLogin(formData)
-      console.log(user)
-      setSuccess('SignIn successfully')
+      setUser(user.admin)
+      // setSuccess('SignIn successfully')
       setFormData({
         email: '',
         password: ''
       })
       navigate('/admin/listings')
     } catch (err) {
-      setError(err.response?.data?.msg || 'Failed to SignIn')
+      // setError(err.response?.data?.msg || 'Failed to SignIn')
+      console.log(err)
     }
   }
 
@@ -59,10 +58,6 @@ const AdminListingDetails = () => {
       <div className="add-admin">
         <form className="add-admin-form" onSubmit={handleSubmit}>
           <p className="pp">Sign in</p>
-
-          {error && <p className="error-text">{error}</p>}
-          {success && <p className="success-text">{success}</p>}
-
           <div className="form-row">
             <label htmlFor="email" className="input-key-admin">
               Email address
@@ -112,4 +107,4 @@ const AdminListingDetails = () => {
   )
 }
 
-export default AdminListingDetails
+export default AdminSignIn

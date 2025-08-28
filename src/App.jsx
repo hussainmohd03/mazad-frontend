@@ -1,5 +1,5 @@
 import './App.css'
-
+import Client from '../services/api'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { useState, useContext } from 'react'
 import Landing from './pages/Landing'
@@ -11,7 +11,7 @@ import Activity from './pages/Activity'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import ItemDetails from './components/ItemDetails'
-
+import AdminSignUp from './pages/AdminSignUp'
 // 🔹 Import admin pages
 import TopUp from './pages/TopUp'
 import EditProfile from './pages/EditProfile'
@@ -23,6 +23,7 @@ import AdminListings from './pages/AdminListings'
 import AdminSignIn from './pages/AdminSignIn'
 import AddAdminAccounts from './pages/AddAdminAccounts'
 import AdminListingDetails from './pages/AdminListingDetails'
+import { BASE_URL } from '../globals'
 // import AdminDashboard from './pages/AdminDashboard'
 // import AdminCategories from './pages/AdminCategories'
 // import AdminSettings from './pages/AdminSettings'
@@ -51,6 +52,13 @@ const App = () => {
     navigate('/sign-in')
   }
 
+  const handleDeleteAccount = async () => {
+    await Client.delete(`${BASE_URL}/users/me`)
+    setUser(null)
+    localStorage.clear()
+    navigate('/sign-in')
+  }
+
   return (
     <>
       <Routes>
@@ -65,6 +73,7 @@ const App = () => {
               handleLogOut={handleLogOut}
               financialData={financialData}
               setFinancialData={setFinancialData}
+              handleDeleteAccount={handleDeleteAccount}
             />
           }
         />
@@ -76,8 +85,9 @@ const App = () => {
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="change-password" element={<ChangePassword />} />
 
-        {/* Admin routes */}
-        <Route path="/admin/signin" element={<AdminSignIn />} />
+        <Route path="/admin/sign-in" element={<AdminSignIn />} />
+        <Route path="/admin/sign-up" element={<AdminSignUp />} />
+
         <Route path="/admin/listings" element={<AdminListings />} />
         <Route path="/admin/listings/:id" element={<AdminListingDetails />} />
         {/* <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}
