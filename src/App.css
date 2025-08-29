@@ -745,6 +745,7 @@ input[type='text'] {
   color: white;
   padding: 10px 20px;
 }
+
 .admin-nav-out {
   display: flex;
   flex-direction: column;
@@ -819,16 +820,6 @@ input[type='text'] {
   color: white;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.admin-nav-out nav button:hover {
-  background-color: #1e40af;
-}
-
-.admin-nav-out nav .active {
-  background-color: #1e40af;
-  font-weight: 600;
 }
 
 .admin-nav-out .spacer {
@@ -837,6 +828,21 @@ input[type='text'] {
 
 .admin-nav-out nav span:hover {
   background-color: #1e3a8a;
+}
+span.sp1 {
+  margin-left: 1%;
+}
+span.sp2 {
+  margin-left: -9%;
+}
+span.sp3 {
+  margin-left: -5%;
+}
+span.sp4 {
+  margin-left: -7%;
+}
+span.sp5 {
+  margin-left: -8%;
 }
 
 /* for AdminNav end */
@@ -1211,7 +1217,7 @@ textarea {
   border-radius: 10px;
   border: 1px #ddd solid;
   padding: 2%;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   resize: none;
 }
 
@@ -1365,7 +1371,7 @@ textarea {
   align-items: center;
   justify-content: center;
   padding-top: 10%;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 500;
   color: #2d3841;
 }
@@ -1493,6 +1499,44 @@ textarea {
   font-size: 14px;
   color: #ff0022;
 }
+
+
+/* admin dashboard start */
+.Admin-dashboard-container {
+  height: 92vh;
+  width: 190vh;
+  padding: 2rem;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: -47% 20% -195% 14%;
+}
+
+.Admin-dashboard-container h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #303940;
+  margin-bottom: 10px;
+  margin-left: 2%;
+}
+
+.chart-box {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 500px;
+  margin-left: 2%;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.121);
+}
+
+/* admin dashboard end */
 
 .images-step-body {
   height: 80%;

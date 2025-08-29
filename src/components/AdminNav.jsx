@@ -23,32 +23,28 @@ const AdminNav = () => {
         >
           + New Admin
         </button>
-        <span>
+
+        <span className="sp1">
           <img src="/design-images/AdminNav dashboard icon.svg" alt="icon" />
           <button onClick={() => navigate('/admin/dashboard')}>
             Dashboard
           </button>
         </span>
-        <span>
+        <span className="sp2">
           <img src="/design-images/AdminNav req icon.svg" alt="icon" />
-          <button
-            onClick={() => navigate('/admin/listings')}
-            className="active"
-          >
-            Listings
-          </button>
+          <button onClick={() => navigate('/admin/listings')}>Listings</button>
         </span>
-        <span>
+        <span className="sp3">
           <img src="/design-images/AdminNav Mask group.svg" alt="icon" />
           <button onClick={() => navigate('/admin/categories')}>
             Category
           </button>
         </span>
-        <span>
+        <span className="sp4">
           <img src="/design-images/AdminNav sitting icon.svg" alt="icon" />
           <button onClick={() => navigate('/admin/settings')}>Settings</button>
         </span>
-        <span>
+        <span className="sp5">
           <img src="/design-images/AdminNav admin icon.svg" alt="icon" />
           <button onClick={() => navigate('/admin/admins')}>Admins</button>
         </span>
