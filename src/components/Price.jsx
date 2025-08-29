@@ -1,16 +1,23 @@
 import React from "react";
 
-function Price({ setFormData, formData, setActiveStep, activeStep }) {
+const Price = ({ setFormData, formData, setActiveStep, activeStep }) => {
   return (
     <>
       <div className="item-step-header">
         <img src="/design-images/arrow.svg" alt="" />
         <div>
-          <p className="primary-text">What would you like to list?</p>
-          <p className="secondary-text">You can select one asset type only </p>
+          <p className="primary-text">Set your price</p>
         </div>
       </div>
-      <div className="category-grid"></div>
+      <div className="price-step-body">
+        <div className="info-box">
+          <img src="design-images/info-icon.svg" alt="" />
+          <div>
+            please insure all you information is accurate and complete, as no
+            edits can be made after this stage
+          </div>
+        </div>
+      </div>
       <div className="item-step-footer">
         <button
           className="action-button"
@@ -21,6 +28,6 @@ function Price({ setFormData, formData, setActiveStep, activeStep }) {
       </div>
     </>
   );
-}
+};
 
 export default Price;

@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useState } from "react";
 import NavBar from "../components/NavBar";
@@ -51,7 +52,7 @@ const Sell = () => {
         <ItemForm setActiveButton={setActiveButton} />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Sell;
+export default Sell

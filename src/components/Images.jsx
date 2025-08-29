@@ -1,16 +1,51 @@
 import React from "react";
+import { useState } from "react";
+const Images = ({ setFormData, formData, setActiveStep, activeStep }) => {
+  const [preview, setPreview] = useState([]);
 
-function Images({ setFormData, formData, setActiveStep, activeStep }) {
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPreview((prev) => [...prev, URL.createObjectURL(file)]);
+    }
+  };
   return (
     <>
       <div className="item-step-header">
         <img src="/design-images/arrow.svg" alt="" />
         <div>
           <p className="primary-text">Upload your images and videos</p>
-          <p className="secondary-text"> </p>
+          <p className="secondary-text">
+            Upload high quality images to make your assets stand out. show
+            multiple angles, and highlight key features{" "}
+          </p>
         </div>
       </div>
-      <div className="category-grid"></div>
+      <div className="images-step-body">
+        <div className="info-box">
+          <img src="design-images/info-icon.svg" alt="" />
+          <div>please upload only 4 images to proceed</div>
+        </div>
+        <label htmlFor="image-upload" className="image-upload-label">
+          +
+        </label>
+        <input
+          type="file"
+          id="image-upload"
+          accept="image/*"
+          onChange={handleFileChange}
+        />
+        <div className="preview-container">
+          {preview.map((src, index) => (
+            <img
+              key={index}
+              src={src}
+              alt={`Preview ${index}`}
+              className="preview-image"
+            />
+          ))}
+        </div>
+      </div>
       <div className="item-step-footer">
         <button
           className="action-button"
@@ -21,6 +56,6 @@ function Images({ setFormData, formData, setActiveStep, activeStep }) {
       </div>
     </>
   );
-}
+};
 
 export default Images;
