@@ -2,7 +2,9 @@ import React from 'react'
 import { useEffect } from 'react'
 import { io } from 'socket.io-client'
 import { useNavigate, useParams } from 'react-router-dom'
+
 const socket = io('http://localhost:5045')
+
 
 const ItemDetails = () => {
   const auctionId = useParams().auctionId
