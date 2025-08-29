@@ -13,7 +13,7 @@ const Landing = () => {
         >
           Get Started
         </button>
-        <button className="guest-btn">Browse as Guest</button>
+        <button className="guest-btn" onClick={()=>navigate('/admin/sign-in')}>Browse as Guest</button>
       </div>
     </div>
   );

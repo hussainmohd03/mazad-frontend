@@ -859,7 +859,7 @@ span.sp5 {
 }
 .action-buttons button {
   padding: 10px 80px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   border-radius: 20px;
   color: #d1f7dc;
   border: #2d3841 solid 0px;
@@ -904,7 +904,7 @@ span.sp5 {
   margin-bottom: -10px;
 }
 .listing-title-in-p {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 28px;
   font-weight: 600;
   color: #303940;
@@ -1287,7 +1287,7 @@ textarea {
   background: #ffffff;
   border: 1px solid #e3e3e3;
   border-radius: 21.5px;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   font-weight: 400;
 }
 
@@ -1478,9 +1478,19 @@ textarea {
   height: 6vh;
   background-color: #ff0022;
   color: white;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   font-weight: 500;
   margin-left: 20px;
+}
+
+.info-box {
+  background-color: #fff6e4;
+  color: #ffa000;
+  border: #ffe2a9 1px solid;
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  padding: 5%;
+  border-radius: 15px;
 }
 
 .top-padding {
@@ -1490,8 +1500,8 @@ textarea {
   color: #ff0022;
 }
 
-/* admin dashboard start */
 
+/* admin dashboard start */
 .Admin-dashboard-container {
   height: 92vh;
   width: 190vh;
@@ -1527,3 +1537,109 @@ textarea {
 }
 
 /* admin dashboard end */
+
+.images-step-body {
+  height: 80%;
+  display: grid;
+  grid-template-rows: 1fr 3fr 3fr;
+  row-gap: 5%;
+  padding: 5%;
+}
+
+.images-step-body label {
+  background-color: #eef0f2;
+  color: #aeb9c0;
+  font-size: 300%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.images-step-body input[type="file"] {
+  display: none;
+}
+
+.preview-container {
+  display: flex;
+  align-items: baseline;
+}
+
+.preview-container img {
+  width: 25%;
+  aspect-ratio: 1/1;
+}
+
+.price-step-body {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  padding: 5%;
+  row-gap: 5%;
+  padding-top: 0%;
+}
+
+.price-box{
+  border: #ff0022 1px solid;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5%;
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  padding: 5%;
+  height: 45%;
+}
+
+.price-box-body{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10%;
+}
+
+.price-box p{
+  width: 85%;
+  padding: 0%;
+  margin: 0%;
+}
+
+.price-input-box{
+  
+  display: flex;
+  height: 25%;
+  align-items: center;
+  justify-self: center;
+  padding: 3%;
+  border-radius: 15px;
+  border: 1px #dddddd solid;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.price-input-box button{
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+  height: 75%;
+  font-size: xxx-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-input{
+  height: 70%;
+  width: 100%;
+  padding: 0%;
+  text-align: center;
+  border: none;
+  font-size: xx-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

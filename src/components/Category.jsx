@@ -50,6 +50,7 @@ const Category = ({
         <button
           className="action-button"
           onClick={() => setActiveStep(activeStep + 1)}
+          disabled={!selectedCategory}
         >
           Next
         </button>
