@@ -6,35 +6,39 @@ import { NavLink } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import AreaChartComponent from '../components/AreaChat'
+import { Link } from 'react-router-dom'
 
-const Profile = ({ handleLogOut }) => {
+const Profile = ({
+  handleLogOut,
+  financialData,
+  setFinancialData,
+  handleDeleteAccount
+}) => {
   const { user } = useContext(UserContext)
   const [name, setName] = useState('')
-  const [balance, setBalance] = useState(0)
 
   useEffect(() => {
     user && setName(user.first_name)
   })
-  
+
   useEffect(() => {
-    const getBalance = async () => {
-      const user = await Client.get(`${BASE_URL}/users/me`)
-      setBalance(user.data.user.balance)
+    const getFinancialData = async () => {
+      const res = await Client.get(`${BASE_URL}/auth/details`)
+      setFinancialData(res.data)
     }
 
-    getBalance()
+    getFinancialData()
   }, [])
 
   return (
-    
-    <div className='profile-page'>
+    <div className="profile-page">
       <header>
-        <div className='profile-details'>
-          <div className='profile-title'>Profile</div>
-          <div className='profile-user-details'>
+        <div className="profile-details">
+          <div className="profile-title">Profile</div>
+          <div className="profile-user-details">
             <img src="/design-images/default_icon.svg" alt="" />
-            <div className='profile-username'>
-              <p className='primary-text'>{name}</p>
+            <div className="profile-username">
+              <p className="primary-text">{name}</p>
               <NavLink to={'/edit-profile'} className="edit-profile-button">
                 Edit profile
               </NavLink>
@@ -44,52 +48,67 @@ const Profile = ({ handleLogOut }) => {
       </header>
       <main>
         <div className="bidding-limit-container">
-        <div className="your-bidding-limit-inner-container">
-          <p className="your-bidding-limit-text">Your Bidding Limit</p>
-          <div className="your-bidding-limit-details">
-            <div className="graph-chart">
-              <AreaChartComponent />
+          <div className="your-bidding-limit-inner-container">
+            <p className="your-bidding-limit-text">Your Bidding Limit</p>
+            <div className="your-bidding-limit-details">
+              <div className="graph-chart">
+                <AreaChartComponent used={financialData.used_percentage} />
+              </div>
+              <div>
+                <p className="tiny-text">Total bidding limit</p>
+                <p className="less-tiny-text">
+                  BHD {financialData.bidding_limit}
+                </p>
+                <p className="tiny-text">Remaning</p>
+                <p className="less-tiny-text red-text">
+                  BHD {financialData.remaining}
+                </p>
+              </div>
             </div>
+          </div>
+          <div className="bidding-limit-container-footer">
             <div>
-              <p className="tiny-text">Total bidding limit</p>
-              <p className="less-tiny-text">BHD 0</p>
-              <p className="tiny-text">Remaning</p>
-              <p className="less-tiny-text red-text">BHD {balance}</p>
+              <p className="bidding-limit-footer-text tiny-text  lighter-grey">
+                Deposited amount
+              </p>
+              <p className="bidding-limit-footer-text deposited-amount less-tiny-text">
+                BHD {financialData.deposit}
+              </p>
+            </div>
+            <div className="top-up-div">
+              <button className=" bidding-top-up-button bold-button">
+                <Link className="no-decor" to="/top-up">
+                  Top up +
+                </Link>
+              </button>
             </div>
           </div>
         </div>
-        <div className="bidding-limit-container-footer">
+        <div className="profile-footer">
+          <p className="primary-text">Settings</p>
           <div>
-            <p className="bidding-limit-footer-text tiny-text  lighter-grey">
-              Deposited amount
-            </p>
-            <p className="bidding-limit-footer-text deposited-amount less-tiny-text">
-              BHD 0
+            <img src="/design-images/password.svg" alt="" />
+
+            <p className="change-password-button">
+              {' '}
+              <Link className="no-decor" to="/change-password">
+                Change password{' '}
+              </Link>
             </p>
           </div>
-          <div className="top-up-div">
-            <button className=" bidding-top-up-button bold-button">
-              Top up +
-            </button>
+          <div>
+            <img src="/design-images/log_out.svg" alt="" />
+            <p onClick={() => handleLogOut()} className="under-line-text">
+              Log out
+            </p>
+          </div>
+          <div>
+            <img src="/design-images/trash.svg" alt="" />
+            <p onClick={() => handleDeleteAccount()} className="no-decor">
+              Delete account
+            </p>
           </div>
         </div>
-      </div>
-      <div className='profile-footer'>
-        <p className="primary-text">Settings</p>
-        <div >
-          <img
-          src="/design-images/password.svg"
-          alt=""
-          />
-          <p > <NavLink to='/change-password'>Change password</NavLink></p>
-      </div>
-      <div>
-        <img src="/design-images/log_out.svg" alt="" />
-        <p onClick={() => handleLogOut()} className="under-line-text">
-          Log out
-        </p>
-      </div>
-      </div>
       </main>
       <NavBar />
     </div>
