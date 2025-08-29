@@ -8,8 +8,19 @@ ChartJS.register(ArcElement, Tooltip, Legend)
 
 const AdminDashboard = () => {
   const [listings, setListings] = useState([])
+  const [users, setUsers] = useState([])
+  const [biddings, setBiddings] = useState([])
 
   useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const res = await Client.get(`${backendUrl}/users/allusers`)
+        setUsers(res.data)
+      } catch (error) {
+        console.error('Error fetching Users:', error)
+      }
+    }
+
     const fetchListings = async () => {
       try {
         const res = await Client.get(`${backendUrl}/admin/items`)
@@ -18,7 +29,18 @@ const AdminDashboard = () => {
         console.error('Error fetching listings:', error)
       }
     }
+
+    const fetchBidding = async () => {
+      try {
+        const res = await Client.get(`${backendUrl}/admin/allbiddings`)
+        setBiddings(res.data)
+      } catch (error) {
+        console.error('Error fetching Biddings:', error)
+      }
+    }
+    fetchUsers()
     fetchListings()
+    fetchBidding()
   }, [])
 
   const statusCounts = listings.reduce((acc, item) => {
@@ -53,9 +75,17 @@ const AdminDashboard = () => {
     <>
       <NavBar />
       <div className="Admin-dashboard-container">
-        <h2>Dashboard</h2>
-
-        <div className="chart-box">
+        <h2 className="Dashboard-title">Dashboard</h2>
+        <div className="Total-listed-items"></div>
+        <div className="aproved-items"></div>
+        <div className="rejected-items"></div>
+        <div className="total-users">
+          <Doughnut
+            data={chartData}
+            options={{ ...chartOptions, maintainAspectRatio: false }}
+          />
+        </div>
+        <div className="all-biddings-over-time">
           <Doughnut
             data={chartData}
             options={{ ...chartOptions, maintainAspectRatio: false }}
