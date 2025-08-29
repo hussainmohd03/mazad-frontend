@@ -4,20 +4,22 @@ const Images = ({ setFormData, formData, setActiveStep, activeStep }) => {
   const [preview, setPreview] = useState([]);
 
   const handleFileChange = (e) => {
+    e.preventDefault();
     const file = e.target.files[0];
     if (file) {
       setPreview((prev) => [...prev, URL.createObjectURL(file)]);
+      setFormData({ ...formData, images: [...formData.images, file] });
+      console.log(formData);
     }
   };
   return (
     <>
       <div className="item-step-header">
-        <img src="/design-images/arrow.svg" alt="" />
+        <img src="/design-images/arrow.svg" alt="" onClick={() => setActiveStep(activeStep-1)}/>
         <div>
           <p className="primary-text">Upload your images and videos</p>
           <p className="secondary-text">
-            Upload high quality images to make your assets stand out. show
-            multiple angles, and highlight key features{" "}
+            Upload high quality images to make your assets stand out.
           </p>
         </div>
       </div>
@@ -50,6 +52,7 @@ const Images = ({ setFormData, formData, setActiveStep, activeStep }) => {
         <button
           className="action-button"
           onClick={() => setActiveStep(activeStep + 1)}
+          disabled={formData.images.length !== 4}
         >
           Next
         </button>

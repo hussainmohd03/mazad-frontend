@@ -5,14 +5,14 @@ import Price from "./Price";
 import Description from "./Description";
 import Images from "./Images";
 
-function ItemForm({ setActiveButton }) {
+const ItemForm=({ setActiveButton })=> {
   const [activeStep, setActiveStep] = useState(1);
   const [formData, setFormData] = useState({
     itemName: "",
     category: "",
     price: 0,
     endDate: null,
-    images: null,
+    images: [],
   });
   return (
     <>
