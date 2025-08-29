@@ -12,7 +12,6 @@ import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import ItemDetails from './components/ItemDetails'
 import AdminSignUp from './pages/AdminSignUp'
-// 🔹 Import admin pages
 import TopUp from './pages/TopUp'
 import EditProfile from './pages/EditProfile'
 import { useEffect } from 'react'

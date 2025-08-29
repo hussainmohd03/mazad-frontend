@@ -29,6 +29,7 @@ const EditProfile = () => {
       last_name: updatedProfile.data.user.lastName,
       role: updatedProfile.data.user.type
     })
+    navigate('/profile')
   }
 
   useEffect(() => {
