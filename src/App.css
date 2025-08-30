@@ -1764,7 +1764,6 @@ input::-webkit-inner-spin-button {
   font-family: 600;
 }
 .terms {
-  /* display: flex; */
   margin: 0 auto;
 }
 
@@ -1878,7 +1877,7 @@ input::-webkit-inner-spin-button {
 }
 
 .checkbox:checked + .switch {
-  background-color:red;
+  background-color: red;
 }
 
 .checkbox:checked + .switch .slider {

@@ -15,6 +15,8 @@ const ItemDetails = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [bidCount, setBidCount] = useState(0)
   const [showAutoBidInfo, setShowAutoBidInfo] = useState(false)
+  const [showMinIncrement, setShowMinIncrement] = useState(false)
+  const [minIncrement, setMinIncrement] = useState(10)
 
   const navigate = useNavigate()
 
@@ -139,13 +141,19 @@ const ItemDetails = () => {
                   onClick={() => setShowAutoBidInfo(true)}
                 />
               </div>
-              <div class="container">
-                <input type="checkbox" class="checkbox" id="checkbox" />
-                <label class="switch" for="checkbox">
-                  <span class="slider"></span>
+              <div className="container">
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                  id="checkbox"
+                  onClick={() => setShowMinIncrement((prev) => !prev)}
+                />
+                <label className="switch" htmlFor="checkbox">
+                  <span className="slider"></span>
                 </label>
               </div>
             </div>
+
             <div className="modal-bid-amount">
               <button
                 className="minus_button"
@@ -201,6 +209,78 @@ const ItemDetails = () => {
                 </svg>
               </button>
             </div>
+            {showMinIncrement && (
+              <div className="min-increment-field" style={{ margin: '16px 0' }}>
+                <label htmlFor="minIncrement">
+                  You need to set a minimum increment
+                  </label>
+                <div className="modal-bid-amount">
+                  <button
+                    className="minus_button"
+                    onClick={() =>
+                      setMinIncrement(
+                        minIncrement > 10 ? minIncrement - 1 : 10
+                      )
+                    }
+                  >
+                    <svg
+                      width="55"
+                      height="54"
+                      viewBox="0 0 55 54"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <ellipse
+                        cx="27.5"
+                        cy="27"
+                        rx="27.5"
+                        ry="27"
+                        fill="#F2F4F5"
+                      />
+                      <path
+                        d="M18 27H38"
+                        stroke="#303940"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </button>
+                  <span>BHD {minIncrement}</span>
+                  <button
+                    className="plus_button"
+                    onClick={() => setMinIncrement(minIncrement + 1)}
+                  >
+                    <svg
+                      width="55"
+                      height="54"
+                      viewBox="0 0 55 54"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <ellipse
+                        cx="27.5"
+                        cy="27"
+                        rx="27.5"
+                        ry="27"
+                        fill="#F2F4F5"
+                      />
+                      <path
+                        d="M18 27H38"
+                        stroke="#303940"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d="M27.999 37.0001V17.0001"
+                        stroke="#303940"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            )}
             <button onClick={placeBid} className="sign-button">
               Add Deposit
             </button>
