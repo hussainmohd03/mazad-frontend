@@ -5,21 +5,20 @@ import NavBar from '../components/NavBar'
 import { useEffect, useState } from 'react'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
+import categories from '../objects/categories.json'
 const Home = () => {
   const [auctions, setAuctions] = useState('')
   useEffect(() => {
     const getAuctions = async () => {
-      const res = await Client(`${BASE_URL}/auctions?status=ongoing`)
-      console.log(res.data)
+      const res = await Client.get(`${BASE_URL}/auctions?status=ongoing`)
       setAuctions(res.data)
     }
     getAuctions()
   }, [])
 
-
   return (
     <>
-    {/* TODO 1: add search functionality */}
+      {/* TODO 1: add search functionality */}
       <div className="home-page">
         <div className="home-header">
           <input
