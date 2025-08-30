@@ -27,9 +27,9 @@ import AdminDashboard from './pages/AdminDashboard'
 
 import { BASE_URL } from '../globals'
 // import AdminDashboard from './pages/AdminDashboard'
-
 // import AdminCategories from './pages/AdminCategories'
 // import AdminSettings from './pages/AdminSettings'
+
 const App = () => {
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
