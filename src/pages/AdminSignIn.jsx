@@ -26,7 +26,7 @@ const AdminSignIn = () => {
     // setError(null)
     // setSuccess(null)
     try {
-      console.log('getting user')
+      console.log('getting user', formData)
       const user = await AdminLogin(formData)
       setUser(user.admin)
       // setSuccess('SignIn successfully')

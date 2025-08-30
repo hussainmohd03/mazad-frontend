@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import AdminNav from '../components/AdminNav'
-import axios from 'axios'
-
 import ListingTable from '../components/ListingTable'
 import Client from '../../services/api'
 const backendUrl = import.meta.env.VITE_BACKEND_URL
