@@ -130,10 +130,8 @@ const ItemDetails = () => {
               </div>
             </div>
             <div className="modal-auto-bidding">
-              <div className='auto-bid-info'>
-              <p>
-                Use Auto Bid{' '}
-              </p>
+              <div className="auto-bid-info">
+                <p>Use Auto Bid </p>
                 <img
                   src="/design-images/info.svg"
                   alt=""
@@ -141,7 +139,12 @@ const ItemDetails = () => {
                   onClick={() => setShowAutoBidInfo(true)}
                 />
               </div>
-              <div className="bidding-time2">5d:08h:17m</div>
+              <div class="container">
+                <input type="checkbox" class="checkbox" id="checkbox" />
+                <label class="switch" for="checkbox">
+                  <span class="slider"></span>
+                </label>
+              </div>
             </div>
             <div className="modal-bid-amount">
               <button

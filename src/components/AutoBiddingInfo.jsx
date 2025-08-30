@@ -10,11 +10,13 @@ const AutoBiddingInfo = ({ setShowAutoBidInfo }) => {
     >
       <div className="modal-content2">
         <div className="modal_header2">
-        <button onClick={() => setShowAutoBidInfo(false)}>x</button>
-        <p>Auto Bid</p>
+          <button onClick={() => setShowAutoBidInfo(false)}>
+            <img src="/design-images/exit_button.svg" alt="" />
+          </button>
+          <p>Auto Bid</p>
         </div>
         <div>
-          {/* <img src="/design-images/auction-hammer.svg" alt="Auto Bid" /> */}
+          <img src="/design-images/auto_bid_hammer.svg" alt="Auto Bid" />
         </div>
         <h2>First time auto bidding?</h2>
         <p className="auto-bid-text">
