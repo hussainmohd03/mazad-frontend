@@ -1574,16 +1574,21 @@ textarea {
   background-color: #f8f8f8;
   border: none;
   border-radius: 100%;
-  aspect-ratio: 1/1;
-  height: 75%;
-  font-size: xxx-large;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 20%;
+  aspect-ratio: 1/1;
 }
 
+.price-input-box button img{
+  width: 50%;
+  height: 50%;
+}
+
+
 .price-input{
-  height: 70%;
+  height: 100%;
   width: 100%;
   padding: 0%;
   text-align: center;
