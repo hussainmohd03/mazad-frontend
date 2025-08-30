@@ -4,7 +4,10 @@ import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import { useContext } from 'react'
 import UserContext from '../context/UserContext'
-const EditProfile = () => {
+import { io } from 'socket.io-client'
+const socket = io('http://localhost:5045')
+
+const EditProfile = ({ setNotification }) => {
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
   const [userDetails, setUserDetails] = useState({
@@ -12,6 +15,7 @@ const EditProfile = () => {
     lastName: '',
     email: ''
   })
+  const [id, setId] = useState('')
 
   const [oldDetails, setOldSets] = useState({})
 
@@ -29,6 +33,13 @@ const EditProfile = () => {
       last_name: updatedProfile.data.user.lastName,
       role: updatedProfile.data.user.type
     })
+    setId(updatedProfile.data.user._id)
+
+    // socket.on here to update ui
+    socket.on('updateAccount', (id) => {
+      
+    })
+    setNotification('Profile updated successfully')
     navigate('/profile')
   }
 

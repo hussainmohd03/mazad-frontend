@@ -30,6 +30,7 @@ const App = () => {
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
   const [financialData, setFinancialData] = useState({})
+  const [notification, setNotification] = useState('')
 
   const checkToken = async () => {
     const user = await CheckSession()
@@ -73,6 +74,8 @@ const App = () => {
               financialData={financialData}
               setFinancialData={setFinancialData}
               handleDeleteAccount={handleDeleteAccount}
+              notification={notification}
+              setNotification={setNotification}
             />
           }
         />
@@ -81,7 +84,10 @@ const App = () => {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/auctions/:auctionId" element={<ItemDetails />} />
 
-        <Route path="/edit-profile" element={<EditProfile />} />
+        <Route
+          path="/edit-profile"
+          element={<EditProfile setNotification={setNotification} />}
+        />
         <Route path="change-password" element={<ChangePassword />} />
 
         <Route path="/admin/sign-in" element={<AdminSignIn />} />
