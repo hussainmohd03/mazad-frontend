@@ -36,10 +36,6 @@ const Profile = ({
     <div className="profile-page">
       <header>
         <div className="profile-details">
-          <div className="notification-banner">
-            {notification && notification}
-            {/* {setNotification('')} */}
-          </div>
           <div className="profile-title">Profile</div>
           <div className="profile-user-details">
             <img src="/design-images/default_icon.svg" alt="" />

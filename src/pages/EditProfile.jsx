@@ -36,20 +36,31 @@ const EditProfile = ({ setNotification }) => {
     setId(updatedProfile.data.user._id)
 
     // socket.on here to update ui
-    socket.on('updateAccount', (id) => {
-      
+
+    socket.on('updateAccount', (notification) => {
+      // setNotification(notification)
+      console.log('from frontend', notification)
     })
-    setNotification('Profile updated successfully')
+
+    // socket.emit('disconnect')
+
+    // setNotification('Profile updated successfully')
     navigate('/profile')
   }
 
   useEffect(() => {
     const getUserProfile = async () => {
+      socket.emit('connection')
       const res = await Client.get(`${BASE_URL}/users/me`)
       setOldSets(res.data.user)
     }
 
     getUserProfile()
+    console.log(user.id)
+    socket.emit('joinUser', user.id)
+    return () => {
+      socket.emit('leaveUser', user.id)
+    }
   }, [])
   return (
     <>

@@ -1,7 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
+import UserContext from '../context/UserContext'
+import { io } from 'socket.io-client'
+const socket = io('http://localhost:5045')
 
 const ChangePassword = () => {
   const navigate = useNavigate()
@@ -10,6 +13,7 @@ const ChangePassword = () => {
     new_password: '',
     confirm_new_password: ''
   }
+  const { user } = useContext(UserContext)
   const [credentials, setCredentials] = useState(credentialsInitial)
   const [condition, setCondition] = useState(false)
   const [message, setMessage] = useState('')
@@ -34,17 +38,28 @@ const ChangePassword = () => {
     return setMessage('One of the conditions has not been met')
   }
 
+  useEffect(() => {
+    socket.emit('connection')
+    socket.emit('joinUser', user.id)
+    return () => {
+      socket.emit('leaveUser', user.id)
+    }
+  }, [])
   const handleSubmit = async (e) => {
     e.preventDefault()
     // checkRequirements()
-    console.log(condition)
-    if (condition) {
+    // console.log(condition)
+    // if (condition) {
       await Client.put(`${BASE_URL}/users/me/password`, {
         old_password: credentials.old_password,
         new_password: credentials.new_password
       })
+      socket.on('updatePassword', (notification) => {
+        // setNotification(notification)
+        console.log('from frontend', notification)
+      })
       navigate('/profile')
-    }
+    // }
   }
 
   return (
@@ -56,7 +71,7 @@ const ChangePassword = () => {
             src="/design-images/back-arrow-with-circle.svg"
             alt="back"
           />
-            <div className="change-pass-header">Change password</div>          
+          <div className="change-pass-header">Change password</div>
         </div>
         <div>
           <p className="less-tiny-header">About change password policies </p>

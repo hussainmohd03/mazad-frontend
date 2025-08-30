@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../components/AdminNav'
 import Client from '../../services/api'
-import { Doughnut } from 'react-chartjs-2'
+// import { Doughnut } from 'react-chartjs-2'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 const backendUrl = import.meta.env.VITE_BACKEND_URL
 ChartJS.register(ArcElement, Tooltip, Legend)
