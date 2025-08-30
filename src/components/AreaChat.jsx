@@ -68,7 +68,8 @@ const AreaChartComponent = ({ used }) => {
           data={topUp}
           dataKey="amount"
           outerRadius={80}
-          innerRadius={60}
+          cornerRadius={4}
+          innerRadius={57}
           // fill="#F90002"
           style={{ height: 53, width: 36 }}
         >

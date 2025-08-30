@@ -23,7 +23,7 @@ import AdminSignIn from './pages/AdminSignIn'
 import AddAdminAccounts from './pages/AddAdminAccounts'
 import AdminListingDetails from './pages/AdminListingDetails'
 import AdminDashboard from './pages/AdminDashboard'
-
+import Notificiation from './components/Notification'
 import { BASE_URL } from '../globals'
 // import AdminDashboard from './pages/AdminDashboard'
 // import AdminCategories from './pages/AdminCategories'
@@ -64,6 +64,10 @@ const App = () => {
 
   return (
     <>
+      {/* <Notificiation
+        notification={notification}
+        setNotification={setNotification}
+      /> */}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
@@ -89,7 +93,12 @@ const App = () => {
 
         <Route
           path="/edit-profile"
-          element={<EditProfile setNotification={setNotification} />}
+          element={
+            <EditProfile
+              notification={notification}
+              setNotification={setNotification}
+            />
+          }
         />
         <Route path="change-password" element={<ChangePassword />} />
 

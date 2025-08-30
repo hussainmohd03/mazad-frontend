@@ -7,7 +7,7 @@ import UserContext from '../context/UserContext'
 import { io } from 'socket.io-client'
 const socket = io('http://localhost:5045')
 
-const EditProfile = ({ setNotification }) => {
+const EditProfile = ({ setNotification, notification }) => {
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
   const [userDetails, setUserDetails] = useState({
@@ -37,15 +37,11 @@ const EditProfile = ({ setNotification }) => {
 
     // socket.on here to update ui
 
-    socket.on('updateAccount', (notification) => {
-      // setNotification(notification)
-      console.log('from frontend', notification)
+    socket.on('updateAccount', (notif) => {
+      console.log('from frontend', notif)
+      setNotification(notif)
     })
-
-    // socket.emit('disconnect')
-
-    // setNotification('Profile updated successfully')
-    navigate('/profile')
+      navigate('/profile')
   }
 
   useEffect(() => {

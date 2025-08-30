@@ -28,7 +28,6 @@ const Profile = ({
       const res = await Client.get(`${BASE_URL}/auth/details`)
       setFinancialData(res.data)
     }
-
     getFinancialData()
   }, [])
 

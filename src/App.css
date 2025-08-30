@@ -1692,3 +1692,34 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.notif-container {
+  font-family: BlinkMacSystemFont, sans-serif;
+  font-weight: 550;
+  background: rgba(171, 171, 171, 0.4);
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  border-radius: 2cap;
+}
+
+.notif-upper-label {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.notif-main-text {
+  display: grid;
+  justify-content: left;
+  align-items: left;
+  color: #000000;
+  opacity: 100 !important;
+  margin-top: 10px;
+
+}
+
+.notif-secondary-text {
+  color: rgba(0, 0, 0, 0.36);
+  font-size: small;
+  font-weight: 500;
+}
