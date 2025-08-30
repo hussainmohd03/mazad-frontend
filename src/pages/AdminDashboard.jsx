@@ -34,6 +34,7 @@ const AdminDashboard = () => {
       try {
         const res = await Client.get(`${backendUrl}/admin/allbiddings`)
         setBiddings(res.data)
+        console.log(biddings)
       } catch (error) {
         console.error('Error fetching Biddings:', error)
       }
