@@ -13,7 +13,7 @@ import {
   PieChart,
   Pie,
   Cell,
-  Area
+  Label
 } from 'recharts'
 const backendUrl = import.meta.env.VITE_BACKEND_URL
 
@@ -65,10 +65,30 @@ const AdminDashboard = () => {
   const totalUsers = users.length
 
   const userData = [
-    { name: 'verified', value: approvedUsers },
-    { name: 'Not verified', value: notApprovedUsers }
+    { name: 'Sellers', value: approvedUsers },
+    { name: 'Users', value: notApprovedUsers },
+    { name: 'Both', value: totalUsers }
   ]
-  const COLORS = ['#16a34a', '#dc2626']
+  const COLORS = ['#16537e', '#ffd966', '#f44336']
+
+  // Group listings by date and status
+  const listingsOverTime = listings.reduce((acc, listing) => {
+    const date = new Date(listing.updatedAt).toLocaleDateString()
+
+    if (!acc[date]) {
+      acc[date] = { date, total: 0, approved: 0, rejected: 0 }
+    }
+
+    acc[date].total += 1
+    if (listing.status === 'approved') acc[date].approved += 1
+    if (listing.status === 'rejected') acc[date].rejected += 1
+
+    return acc
+  }, {})
+
+  const listingsChartData = Object.values(listingsOverTime).sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  )
 
   //  Biddings over time (group by date)
   const biddingData = biddings.reduce((acc, bid) => {
@@ -89,8 +109,24 @@ const AdminDashboard = () => {
         <h2 className="Dashboard-title">Dashboard</h2>
         <div className="Total-listed-items">
           <p className="p-in-dashbaard">Statistics</p>
-          <h3>Total Listed Items</h3>
+          <h3>Listed Items Overview</h3>
           <p style={{ fontSize: '24px', fontWeight: '600' }}>{totalListed}</p>
+          <ResponsiveContainer
+            width="15%"
+            height="15%"
+            className="Responsive-Container-1"
+          >
+            <LineChart data={listingsChartData}>
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="total"
+                stroke="#2563eb"
+                strokeWidth={2}
+                dot={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
         <div className="aproved-items">
           <p className="p-in-dashbaard">Statistics</p>
@@ -98,6 +134,22 @@ const AdminDashboard = () => {
           <p style={{ fontSize: '24px', fontWeight: '600' }}>
             {approvedListed}
           </p>
+          <ResponsiveContainer
+            width="15%"
+            height="15%"
+            className="Responsive-Container-2"
+          >
+            <LineChart data={listingsChartData}>
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="approved"
+                stroke="#16a34a"
+                strokeWidth={2}
+                dot={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
         <div className="rejected-items">
           <p className="p-in-dashbaard">Statistics</p>
@@ -105,20 +157,27 @@ const AdminDashboard = () => {
           <p style={{ fontSize: '24px', fontWeight: '600' }}>
             {rejectedListed}
           </p>
+          <ResponsiveContainer
+            width="15%"
+            height="15%"
+            className="Responsive-Container-3"
+          >
+            <LineChart data={listingsChartData}>
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="rejected"
+                stroke="#dc2626"
+                strokeWidth={2}
+                dot={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
         <div className="total-users">
           <p className="p-in-dashbaard-user">Statistics</p>
           <h3>Total Users</h3>
-          <p
-            className="total-users-title"
-            style={{
-              textAlign: 'center',
-              fontSize: '20px',
-              fontWeight: '600'
-            }}
-          >
-            Total Count: {totalUsers}
-          </p>
+
           <hr />
           <ResponsiveContainer width="100%" height="65%" className="pie-chart">
             <PieChart>
@@ -132,12 +191,22 @@ const AdminDashboard = () => {
                 innerRadius={60}
                 outerRadius={100}
                 cornerRadius={5}
-                paddingAngle={5}
+                paddingAngle={-5}
               >
                 {userData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index]} />
                 ))}
+                <Label
+                  value={`Total: ${totalUsers}`}
+                  position="center"
+                  fill="#333"
+                  style={{
+                    fontSize: '16px',
+                    fontWeight: '600'
+                  }}
+                />
               </Pie>
+
               <Tooltip />
               <Legend verticalAlign="bottom" height={36} />
             </PieChart>
@@ -158,7 +227,6 @@ const AdminDashboard = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-
               <Line
                 type="monotone"
                 dataKey="count"
