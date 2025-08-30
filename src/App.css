@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   color: black;
   font-weight: 400;
   overflow-x: hidden;
@@ -15,7 +15,7 @@ body {
 .landing-page {
   width: 100vw;
   height: 100vh;
-  background-image: url("design-images/background.svg");
+  background-image: url('design-images/background.svg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -41,7 +41,7 @@ body {
   margin-bottom: 5%;
   height: 5vh;
   border: 1px white solid;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 1em;
 }
 
@@ -117,7 +117,7 @@ nav a.nav-link.active img {
 }
 
 .input-field {
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   color: #84919a;
   padding-left: 10px;
 }
@@ -129,7 +129,7 @@ nav a.nav-link.active img {
   height: 6vh;
   background-color: #ff0022;
   color: white;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 500;
 }
 
@@ -172,8 +172,8 @@ nav a.nav-link.active img {
   font-size: 14px;
 }
 
-input[type="text"] {
-  font-family: "Poppins", sans-serif !important;
+input[type='text'] {
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .sign-alternative a {
@@ -468,7 +468,7 @@ input[type="text"] {
   justify-content: space-evenly;
   align-items: end;
   border-bottom: #ededed 1px solid;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .toggle-buttons button {
@@ -476,7 +476,7 @@ input[type="text"] {
   height: 70%;
   border: none;
   background-color: transparent;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 400;
   color: #6a7c88;
   font-size: 14.5px;
@@ -485,7 +485,7 @@ input[type="text"] {
 .toggle-buttons .active {
   border-bottom: #ff0022 3px solid;
   color: #ff0022;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 500;
 }
 .activity-page main {
@@ -595,7 +595,7 @@ input[type="text"] {
 }
 
 .content h1 {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 28px;
   font-weight: 600;
   color: #303940;
@@ -611,7 +611,7 @@ input[type="text"] {
 
 .filter-buttons button {
   padding: 8px 20px;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 600;
   border: 1px solid #ddd;
@@ -731,7 +731,7 @@ input[type="text"] {
 
 /* for AdminNav start */
 .content p {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
   color: #84919a;
   margin-top: 20px;
@@ -745,6 +745,7 @@ input[type="text"] {
   color: white;
   padding: 10px 20px;
 }
+
 .admin-nav-out {
   display: flex;
   flex-direction: column;
@@ -819,25 +820,29 @@ input[type="text"] {
   color: white;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.admin-nav-out nav button:hover {
-  background-color: #1e40af;
-}
-
-.admin-nav-out nav .active {
-  background-color: #1e40af;
-  font-weight: 600;
 }
 
 .admin-nav-out .spacer {
   flex-grow: 1;
 }
 
-
 .admin-nav-out nav span:hover {
   background-color: #1e3a8a;
+}
+span.sp1 {
+  margin-left: 1%;
+}
+span.sp2 {
+  margin-left: -9%;
+}
+span.sp3 {
+  margin-left: -5%;
+}
+span.sp4 {
+  margin-left: -7%;
+}
+span.sp5 {
+  margin-left: -8%;
 }
 
 /* for AdminNav end */
@@ -1054,6 +1059,97 @@ input[type="text"] {
   scrollbar-width: none;
 }
 
+/*AddAdminAccounts.jsx style start */
+.AdminListingDetails-container {
+  background-color: #1d3566;
+  margin: -6px;
+}
+
+.both-logos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 25px;
+}
+.logo1-AdminListingDetails {
+  width: 10%;
+}
+.logo2-AdminListingDetails {
+  width: 10%;
+}
+
+.add-admin-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-start;
+  background-color: #ffffff;
+  margin: 0 0 80px 0;
+  max-width: 380px;
+  width: 100%;
+  height: auto;
+  border-radius: 3%;
+  padding: 30px 40px;
+}
+
+.add-admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+  width: 100%;
+}
+.sign-button-admin {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  height: 7vh;
+  background-color: #f21731;
+  color: white;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 500;
+}
+.pp {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 5px 0 15px 0;
+  text-align: left;
+  width: 100%;
+  color: #000000;
+}
+.terms-admin {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 80%;
+}
+.lock-img {
+  padding: 2px 5%;
+}
+.input-key-admin {
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  margin: 8px 1px;
+}
+.input-field-admin {
+  font-family: 'Poppins', sans-serif;
+  color: #84919a;
+  padding: 10px 100px 10px 10px;
+  border-radius: 8px;
+  border: 1px solid #dddddd;
+  width: auto;
+}
+
+/*AddAdminAccounts.jsx style end */
+
 .item-form {
   height: 100%;
 }
@@ -1121,7 +1217,7 @@ textarea {
   border-radius: 10px;
   border: 1px #ddd solid;
   padding: 2%;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   resize: none;
 }
 
@@ -1252,12 +1348,12 @@ textarea {
   width: 100%;
   display: grid;
   grid-template-rows: 2fr 7fr 0.75fr;
-  color: #2D3841;
+  color: #2d3841;
 }
 
-.profile-page a{
+.profile-page a {
   text-decoration: none;
-  color: #2D3841;
+  color: #2d3841;
 }
 
 .profile-page header {
@@ -1265,31 +1361,31 @@ textarea {
   display: grid;
 }
 
-.profile-details{
+.profile-details {
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
 
-.profile-title{
+.profile-title {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 10%;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 500;
-      color: #2d3841;
+  color: #2d3841;
 }
 
-.profile-user-details{
+.profile-user-details {
   display: flex;
   padding-left: 5%;
 }
 
-.profile-details img{
+.profile-details img {
   border-radius: 100%;
 }
 
-.profile-username{
+.profile-username {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1297,7 +1393,7 @@ textarea {
   padding-left: 5%;
 }
 
-.profile-footer{
+.profile-footer {
   padding: 5%;
   display: flex;
   flex-direction: column;
@@ -1305,14 +1401,14 @@ textarea {
   align-items: baseline;
 }
 
-.profile-footer div{
+.profile-footer div {
   border-bottom: #ededed 1px solid;
   width: 100%;
-  display: flex;  
+  display: flex;
   column-gap: 2.5%;
 }
 
-.under-line-text{
+.under-line-text {
   color: #ff0022;
   text-decoration: underline;
 }
@@ -1387,9 +1483,212 @@ textarea {
   margin-left: 20px;
 }
 
+.info-box {
+  background-color: #fff6e4;
+  color: #ffa000;
+  border: #ffe2a9 1px solid;
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  padding: 5%;
+  border-radius: 15px;
+}
+
 .top-padding {
   margin-top: 2%;
   font-weight: 400;
   font-size: 14px;
   color: #ff0022;
+}
+
+/* admin dashboard start */
+.Admin-dashboard-container {
+  height: 92vh;
+  width: 190vh;
+  padding: 2rem;
+  background: #f5f5f5;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+  margin: -47% 20% -195% 13%;
+}
+
+.Dashboard-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #303940;
+  margin-bottom: 10px;
+  margin-left: 2%;
+  grid-column: 1 / 7;
+  grid-row: 1 / 2;
+}
+
+.Total-listed-items {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  height: auto;
+  width: auto;
+  margin-left: 6%;
+  margin-right: 10%;
+
+  box-shadow: 5px 5px 10px rgba(97, 97, 97, 0.079);
+  grid-column: 1 / 3;
+  grid-row: 2 / 4;
+}
+.aproved-items {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  height: auto;
+  width: auto;
+  margin-left: -11%;
+  margin-right: 25%;
+  box-shadow: 5px 5px 10px rgba(97, 97, 97, 0.079);
+  grid-column: 3 / 5;
+  grid-row: 2 / 4;
+}
+.rejected-items {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  height: auto;
+  width: auto;
+  margin-left: -25%;
+  margin-right: 40%;
+  box-shadow: 5px 5px 10px rgba(97, 97, 97, 0.079);
+  grid-column: 5 / 7;
+  grid-row: 2 / 4;
+}
+
+.total-users {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  height: auto;
+  width: auto;
+  margin-left: 4%;
+  box-shadow: 5px 5px 10px rgba(97, 97, 97, 0.079);
+  grid-column: 1 / 4;
+  grid-row: 4 / 7;
+}
+
+.all-biddings-over-time {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  height: auto;
+  width: auto;
+  margin-right: -14%;
+  box-shadow: 5px 5px 10px rgba(97, 97, 97, 0.079);
+  grid-column: 4 / 6;
+  grid-row: 4 / 7;
+}
+
+/* admin dashboard end */
+
+.images-step-body {
+  height: 80%;
+  display: grid;
+  grid-template-rows: 1fr 3fr 3fr;
+  row-gap: 5%;
+  padding: 5%;
+}
+
+.images-step-body label {
+  background-color: #eef0f2;
+  color: #aeb9c0;
+  font-size: 300%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.images-step-body input[type='file'] {
+  display: none;
+}
+
+.preview-container {
+  display: flex;
+  align-items: baseline;
+}
+
+.preview-container img {
+  width: 25%;
+  aspect-ratio: 1/1;
+}
+
+.price-step-body {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  padding: 5%;
+  row-gap: 5%;
+  padding-top: 0%;
+}
+
+.price-box {
+  border: #ff0022 1px solid;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5%;
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  padding: 5%;
+  height: 45%;
+}
+
+.price-box-body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10%;
+}
+
+.price-box p {
+  width: 85%;
+  padding: 0%;
+  margin: 0%;
+}
+
+.price-input-box {
+  display: flex;
+  height: 25%;
+  align-items: center;
+  justify-self: center;
+  padding: 3%;
+  border-radius: 15px;
+  border: 1px #dddddd solid;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.price-input-box button {
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+  height: 75%;
+  font-size: xxx-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-input {
+  height: 70%;
+  width: 100%;
+  padding: 0%;
+  text-align: center;
+  border: none;
+  font-size: xx-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

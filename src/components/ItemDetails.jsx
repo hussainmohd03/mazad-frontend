@@ -6,6 +6,7 @@ import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 const socket = io('http://localhost:5045')
 
+
 const ItemDetails = () => {
   const [auction, setAuction] = useState('')
   const auctionId = useParams().auctionId

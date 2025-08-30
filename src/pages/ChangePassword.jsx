@@ -110,7 +110,6 @@ const ChangePassword = () => {
             className="input-field side-indentation change-pass field-bottom-indentation"
           />
           <br />
-
           <label className="less-tiny-header" htmlFor="confirm_new_password">
             Confirm your new password
           </label>

@@ -6,8 +6,14 @@ import { NavLink, Link } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import AreaChartComponent from '../components/AreaChat'
+import { Link } from 'react-router-dom'
 
-const Profile = ({ handleLogOut, financialData, setFinancialData }) => {
+const Profile = ({
+  handleLogOut,
+  financialData,
+  setFinancialData,
+  handleDeleteAccount
+}) => {
   const { user } = useContext(UserContext)
   const [name, setName] = useState('')
 
@@ -94,6 +100,13 @@ const Profile = ({ handleLogOut, financialData, setFinancialData }) => {
             <img src="/design-images/log_out.svg" alt="" />
             <p onClick={() => handleLogOut()} className="under-line-text">
               Log out
+            </p>
+
+          </div>
+          <div>
+            <img src="/design-images/trash.svg" alt="" />
+            <p onClick={() => handleDeleteAccount()} className="no-decor">
+              Delete account
             </p>
           </div>
         </div>
