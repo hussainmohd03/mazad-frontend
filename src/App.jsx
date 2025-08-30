@@ -22,10 +22,13 @@ import AdminListings from './pages/AdminListings'
 import AdminSignIn from './pages/AdminSignIn'
 import AddAdminAccounts from './pages/AddAdminAccounts'
 import AdminListingDetails from './pages/AdminListingDetails'
+import AdminDashboard from './pages/AdminDashboard'
+
 import { BASE_URL } from '../globals'
 // import AdminDashboard from './pages/AdminDashboard'
 // import AdminCategories from './pages/AdminCategories'
 // import AdminSettings from './pages/AdminSettings'
+
 const App = () => {
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
@@ -95,7 +98,7 @@ const App = () => {
 
         <Route path="/admin/listings" element={<AdminListings />} />
         <Route path="/admin/listings/:id" element={<AdminListingDetails />} />
-        {/* <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
         {/* <Route path="/admin/categories" element={<AdminCategories />} />
         <Route path="/admin/settings" element={<AdminSettings />} />*/}
         <Route path="/admin/AddAdminAccount" element={<AddAdminAccounts />} />

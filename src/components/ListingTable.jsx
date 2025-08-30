@@ -22,27 +22,31 @@ const ListingTable = ({ listings }) => {
           </span>
         ))}
       </div>
-      {listings.map((item, index) => (
-        <div
-          key={item._id}
-          className="listing-row"
-          onClick={() => navigate(`/admin/listings/${item._id}`)}
-        >
-          <span>{index + 1}</span>
-          <span>
-            {item._id.slice(0, 4)}...{item._id.slice(-4)}
-          </span>
-          <span>{item.name}</span>
-          <span>
-            {item.ownerId.firstName} {item.ownerId.lastName}
-          </span>
-          <span className={`listing-status ${item.status}`}>{item.status}</span>
-          <span className="listing-date">
-            {String(item.createdAt).split('T')[0]}
-          </span>
-          <span>BHD {item.price}</span>
-        </div>
-      ))}
+      {listings.lengh !== 0 &&
+        listings.map((item, index) => (
+          <div
+            key={item._id}
+            className="listing-row"
+            onClick={() => navigate(`/admin/listings/${item._id}`)}
+          >
+            {console.log(item)}
+            <span>{index + 1}</span>
+            <span>
+              {item._id.slice(0, 4)}...{item._id.slice(-4)}
+            </span>
+            <span>{item.name}</span>
+            <span>
+              {item.ownerId.firstName} {item.ownerId.lastName}
+            </span>
+            <span className={`listing-status ${item.status}`}>
+              {item.status}
+            </span>
+            <span className="listing-date">
+              {String(item.createdAt).split('T')[0]}
+            </span>
+            <span>BHD {item.price}</span>
+          </div>
+        ))}
     </div>
   )
 }

@@ -59,6 +59,7 @@ const AdminListingDetails = () => {
           alt="logo-image"
         />
         <img
+          onClick={() => navigate('/admin/listings')}
           className="logo1-AdminListingDetails"
           src="/design-images/logo.png"
           alt="logo-image"
