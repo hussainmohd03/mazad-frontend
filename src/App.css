@@ -1527,7 +1527,7 @@ textarea {
 .Total-listed-items {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.8rem;
   height: auto;
   width: auto;
   margin-left: 6%;
@@ -1539,7 +1539,7 @@ textarea {
 .aproved-items {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.8rem;
   height: auto;
   width: auto;
   margin-left: -11%;
@@ -1551,7 +1551,7 @@ textarea {
 .rejected-items {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.8rem;
   height: auto;
   width: auto;
   margin-left: -25%;
@@ -1564,7 +1564,7 @@ textarea {
 .total-users {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.6rem;
   height: auto;
   width: auto;
   margin-left: 4%;
@@ -1576,7 +1576,7 @@ textarea {
 .all-biddings-over-time {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.6rem;
   height: auto;
   width: auto;
   margin-right: -14%;
@@ -1613,7 +1613,7 @@ hr {
 .Responsive-Container-1 {
   position: absolute;
   top: 30%;
-  left: 25%;
+  left: 24%;
 }
 .Responsive-Container-2 {
   position: absolute;
@@ -1623,7 +1623,7 @@ hr {
 .Responsive-Container-3 {
   position: absolute;
   top: 30%;
-  left: 75%;
+  left: 77%;
 }
 
 /* admin dashboard end */
@@ -1714,8 +1714,7 @@ hr {
   aspect-ratio: 1/1;
 }
 
-
-.price-input-box button img{
+.price-input-box button img {
   width: 50%;
   height: 50%;
 }

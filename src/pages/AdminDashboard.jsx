@@ -13,7 +13,9 @@ import {
   PieChart,
   Pie,
   Cell,
-  Label
+  Label,
+  Area,
+  AreaChart
 } from 'recharts'
 const backendUrl = import.meta.env.VITE_BACKEND_URL
 
@@ -208,7 +210,7 @@ const AdminDashboard = () => {
               </Pie>
 
               <Tooltip />
-              <Legend verticalAlign="bottom" height={36} />
+              <Legend verticalAlign="bottom" height={36} iconType="circle" />
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -216,8 +218,8 @@ const AdminDashboard = () => {
           <p className="p-in-dashbaard-user">Statistics</p>
           <h3>Biddings Over Time</h3>
           <ResponsiveContainer width="95%" height="75%">
-            <LineChart data={biddingChartData}>
-              <CartesianGrid strokeDasharray="3 3" />
+            <AreaChart data={biddingChartData}>
+              <CartesianGrid strokeDasharray="6 6" />
               <XAxis
                 dataKey="date"
                 tickFormatter={(dateStr) =>
@@ -227,14 +229,16 @@ const AdminDashboard = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line
-                type="monotone"
+
+              <Area
                 dataKey="count"
                 stroke="#2563eb"
-                strokeWidth={2}
-                fillOpacity={0.9}
+                fill="#93c5fd"
+                strokeWidth={3}
+                fillOpacity={0.3}
+                dot={{ r: 0 }}
               />
-            </LineChart>
+            </AreaChart>
           </ResponsiveContainer>
         </div>
       </div>
