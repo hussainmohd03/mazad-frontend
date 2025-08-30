@@ -1532,7 +1532,6 @@ textarea {
   width: auto;
   margin-left: 6%;
   margin-right: 10%;
-
   box-shadow: 5px 5px 10px rgba(97, 97, 97, 0.079);
   grid-column: 1 / 3;
   grid-row: 2 / 4;
@@ -1584,6 +1583,47 @@ textarea {
   box-shadow: 5px 5px 10px rgba(97, 97, 97, 0.079);
   grid-column: 4 / 6;
   grid-row: 4 / 7;
+}
+.p-in-dashbaard {
+  font-size: 15px;
+  margin: 1% 1% -5% 0%;
+  color: #9291a5;
+}
+.p-in-dashbaard-user {
+  font-size: 15px;
+  margin: 1% 1% -3% 0%;
+  color: #9291a5;
+}
+.total-users-title {
+  position: absolute;
+  /* margin: 0% 0% 0% 0%; */
+  left: 34%;
+  top: 83%;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 16px;
+}
+.pie-chart {
+  margin: 5% 0% 0% 0%;
+}
+hr {
+  border: #00000017 solid 0.1px;
+  margin: 1px 2px;
+}
+.Responsive-Container-1 {
+  position: absolute;
+  top: 30%;
+  left: 25%;
+}
+.Responsive-Container-2 {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+}
+.Responsive-Container-3 {
+  position: absolute;
+  top: 30%;
+  left: 75%;
 }
 
 /* admin dashboard end */
