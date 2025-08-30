@@ -6,25 +6,39 @@ import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 const socket = io('http://localhost:5045')
 
-
 const ItemDetails = () => {
   const [auction, setAuction] = useState('')
   const auctionId = useParams().auctionId
+  const [error, setError] = useState('')
+  const [bidAmount, setBidAmount] = useState()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [bidCount, setBidCount] = useState(0)
+  const navigate = useNavigate()
+
   useEffect(() => {
     const getAuction = async () => {
       const res = await Client(`${BASE_URL}/auctions/${auctionId}`)
+      setBidCount(res.data.bidCount)
       setAuction(res.data)
     }
     socket.emit('joinAuction', auctionId)
 
     socket.on('newBid', (data) => {
-      // Update UI with new bid
+      setBidCount(data.bidCount)
+      setAuction((prev) => ({
+        ...prev,
+        auction: {
+          ...prev.auction,
+          currentPrice: data.currentPrice
+        }
+      }))
+      setError('')
     })
 
     socket.on('outBid', (data) => {
       // inform user
     })
-    
+
     getAuction()
     return () => {
       socket.emit('leaveAuction', auctionId)
@@ -32,7 +46,16 @@ const ItemDetails = () => {
     }
   }, [auctionId])
 
-  const placeBid = async () => {}
+  const placeBid = async () => {
+    try {
+      const res = await Client.post(`${BASE_URL}/auctions/${auctionId}/bids`, {
+        amount: bidAmount
+      })
+      setError('')
+    } catch (error) {
+      setError(error.response.data)
+    }
+  }
 
   const getDateFormatted = (dateString) => {
     const formatedDate = new Date(dateString)
@@ -43,7 +66,12 @@ const ItemDetails = () => {
     const minutes = String(formatedDate.getMinutes())
     return `${month}/${day}/${year} at ${hours}:${minutes}`
   }
-  const navigate = useNavigate()
+  useEffect(() => {
+    if (auction && auction.auction && auction.auction.currentPrice) {
+      setBidAmount(auction.auction.currentPrice + 21)
+    }
+  }, [auction])
+
   return (
     <div className="item-page">
       <div className="item-page-header" onClick={() => navigate(-1)}>
@@ -64,7 +92,7 @@ const ItemDetails = () => {
             BHD {auction && auction.auction.currentPrice}
           </p>
           <p className="bids-count">
-            0 Bids • Closes on:{' '}
+            {bidCount && `${bidCount}`} Bids • Closes on:{' '}
             {getDateFormatted(auction && auction.auction.endDate)}
           </p>
           <div className="item-description">
@@ -77,8 +105,109 @@ const ItemDetails = () => {
       </div>
       <div className="item-page-footer">
         <div className="bidding-time">5 Days : 8 Hours : 17 Min</div>
-        <button className="action-button">Bid Now</button>
+        <button className="action-button" onClick={() => setIsModalOpen(true)}>
+          Bid Now
+        </button>
       </div>
+      {isModalOpen && (
+        <div
+          className="modal"
+          onClick={(e) => {
+            if (e.target.classList.contains('modal')) {
+              setIsModalOpen(false)
+            }
+          }}
+        >
+          <div className="modal-content">
+            <div className="modal-header">
+              <p>Place Bid</p>
+              <div className="bidding-time2">
+                <img src="/design-images/stopwatch.svg" alt="" />
+                5d:08h:17m
+              </div>
+            </div>
+            <div className="modal-auto-bidding">
+              <p>
+                Use Auto Bid{' '}
+                <img
+                  src="/design-images/info.svg"
+                  alt=""
+                  className="info-icon"
+                />
+              </p>
+              <div className="bidding-time2">5d:08h:17m</div>
+            </div>
+            <div className="modal-bid-amount">
+              <button
+                className="minus_button"
+                onClick={() =>
+                  setBidAmount(
+                    bidAmount > (auction?.auction?.currentPrice || 0)
+                      ? bidAmount - 1
+                      : bidAmount
+                  )
+                }
+              >
+                <svg
+                  width="55"
+                  height="54"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <ellipse cx="27.5" cy="27" rx="27.5" ry="27" fill="#F2F4F5" />
+                  <path
+                    d="M18 27H38"
+                    stroke="#303940"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </button>
+              <span>BHD {bidAmount}</span>
+              <button
+                className="plus_button"
+                onClick={() => setBidAmount(bidAmount + 1)}
+              >
+                <svg
+                  width="55"
+                  height="54"
+                  viewBox="0 0 55 54"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <ellipse cx="27.5" cy="27" rx="27.5" ry="27" fill="#F2F4F5" />
+                  <path
+                    d="M18 27H38"
+                    stroke="#303940"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M27.999 37.0001V17.0001"
+                    stroke="#303940"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </button>
+            </div>
+            <button onClick={placeBid} className="sign-button">
+              Add Deposit
+            </button>
+            <div className="terms">
+              <p>
+                We ensure your information is kept secure. For more information,
+                check our <span>Privacy Policy</span> and{' '}
+                <span>Terms & Conditions</span>
+              </p>
+            </div>
+            <div className="error">
+              <p>{error && error}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

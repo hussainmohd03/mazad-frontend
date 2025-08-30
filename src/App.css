@@ -1692,3 +1692,86 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(76, 76, 76, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 22px;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  width: 100%;
+  margin-top: 40%;
+  height: 85%;
+  border-radius: 25px;
+  text-align: center;
+}
+.modal-header,
+.modal-auto-bidding {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2%;
+  font-size: 19px;
+}
+.modal-header p {
+  color: #303940;
+  font-weight: 500;
+}
+.modal-auto-bidding p {
+  font-size: 17px;
+  font-weight: 500;
+  color: #303940;
+}
+
+.bidding-time2 {
+  font-size: 13px;
+  color: #666666;
+  font-family: 600;
+}
+.terms {
+  /* display: flex; */
+
+  margin: 0 auto;
+}
+.terms p {
+  text-align: left;
+  color: #84919a;
+  width: 100%;
+  font-weight: 400;
+}
+.terms span {
+  color: black;
+  text-decoration: underline;
+  margin: 0 auto;
+}
+.sign-button {
+  width: 100%;
+}
+.minus_button,
+.plus_button {
+  all: unset;
+}
+
+.modal-bid-amount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5% 0;
+}
+.modal-bid-amount span {
+  font-size: 24px;
+  font-weight: 600;
+  color: #303940;
+}
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
