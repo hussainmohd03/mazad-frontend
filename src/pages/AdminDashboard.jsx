@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../components/AdminNav'
 import Client from '../../services/api'
-import { Doughnut } from 'react-chartjs-2'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell
+} from 'recharts'
 const backendUrl = import.meta.env.VITE_BACKEND_URL
-ChartJS.register(ArcElement, Tooltip, Legend)
 
 const AdminDashboard = () => {
   const [listings, setListings] = useState([])
@@ -34,7 +44,6 @@ const AdminDashboard = () => {
       try {
         const res = await Client.get(`${backendUrl}/admin/allbiddings`)
         setBiddings(res.data)
-        console.log(biddings)
       } catch (error) {
         console.error('Error fetching Biddings:', error)
       }
@@ -44,33 +53,32 @@ const AdminDashboard = () => {
     fetchBidding()
   }, [])
 
-  const statusCounts = listings.reduce((acc, item) => {
-    const status = item.status || 'pending'
-    acc[status] = (acc[status] || 0) + 1
+  // counter for the line chart
+  const totalListed = listings.length
+  const approvedListed = listings.filter((l) => l.status === 'approved').length
+  const rejectedListed = listings.filter((l) => l.status === 'rejected').length
+
+  // Users approved or not
+  const approvedUsers = users.filter((u) => u.verified === true).length
+  const notApprovedUsers = users.filter((u) => u.verified === false).length
+  const totalUsers = users.length
+
+  const userData = [
+    { name: 'verified', value: approvedUsers },
+    { name: 'Not verified', value: notApprovedUsers }
+  ]
+  const COLORS = ['#16a34a', '#dc2626']
+  //  Biddings over time (group by date)
+  const biddingData = biddings.reduce((acc, bid) => {
+    const date = new Date(bid.createdAt).toLocaleDateString()
+    acc[date] = (acc[date] || 0) + 1
     return acc
   }, {})
 
-  const chartData = {
-    labels: Object.keys(statusCounts),
-    datasets: [
-      {
-        label: 'Total: ',
-        data: Object.values(statusCounts),
-        backgroundColor: ['#facc15', '#dc2626', '#16a34a'],
-        borderColor: ['#fff', '#fff', '#fff'],
-        borderWidth: 3
-      }
-    ]
-  }
-
-  const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { position: 'bottom' },
-      title: { display: true, text: 'Items by Status' }
-    }
-  }
+  const biddingChartData = Object.keys(biddingData).map((date) => ({
+    date,
+    count: biddingData[date]
+  }))
 
   return (
     <>
@@ -80,18 +88,8 @@ const AdminDashboard = () => {
         <div className="Total-listed-items"></div>
         <div className="aproved-items"></div>
         <div className="rejected-items"></div>
-        <div className="total-users">
-          <Doughnut
-            data={chartData}
-            options={{ ...chartOptions, maintainAspectRatio: false }}
-          />
-        </div>
-        <div className="all-biddings-over-time">
-          <Doughnut
-            data={chartData}
-            options={{ ...chartOptions, maintainAspectRatio: false }}
-          />
-        </div>
+        <div className="total-users"></div>
+        <div className="all-biddings-over-time"></div>
       </div>
     </>
   )
