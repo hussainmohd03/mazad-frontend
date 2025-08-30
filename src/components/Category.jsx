@@ -47,10 +47,11 @@ const Category = ({
         ))}
       </div>
       <div className="item-step-footer">
+        
         <button
           className="action-button"
-          onClick={() => setActiveStep(activeStep + 1)}
-          disabled={!selectedCategory}
+          onClick={() => { setActiveStep(activeStep + 1) , console.log(formData) }}
+          // disabled={!selectedCategory}
         >
           Next
         </button>

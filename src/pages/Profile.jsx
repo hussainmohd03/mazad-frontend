@@ -2,11 +2,10 @@ import React from 'react'
 import NavBar from '../components/NavBar'
 import UserContext from '../context/UserContext'
 import { useContext, useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import AreaChartComponent from '../components/AreaChat'
-import { Link } from 'react-router-dom'
 
 const Profile = ({
   handleLogOut,
@@ -102,6 +101,7 @@ const Profile = ({
             <p onClick={() => handleLogOut()} className="under-line-text">
               Log out
             </p>
+
           </div>
           <div>
             <img src="/design-images/trash.svg" alt="" />
