@@ -3,7 +3,7 @@ import React from "react";
 const Description = ({ setFormData, formData, setActiveStep, activeStep }) => {
   const [charsCount, setCharsCount] = React.useState(0);
   const handleChange = (e) => {
-    setFormData({ ...formData, description: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
     setCharsCount(e.target.value.length);
   };
   return (
@@ -17,14 +17,15 @@ const Description = ({ setFormData, formData, setActiveStep, activeStep }) => {
       </div>
 
       <div className="description-field">
+        <input type="text" required value={formData.name} name="name" onChange={handleChange} />
         <p>Description</p>
-        <textarea onChange={handleChange} maxLength={500} />
+        <textarea onChange={handleChange} required maxLength={500} name="description" />
         <p>{charsCount} / 500</p>
       </div>
       <div className="item-step-footer">
         <button
           className="action-button"
-          onClick={() => setActiveStep(activeStep + 1)}
+          onClick={() => {setActiveStep(activeStep + 1), console.log(formData)}}
           disabled={charsCount === 0}
         >
           Next
