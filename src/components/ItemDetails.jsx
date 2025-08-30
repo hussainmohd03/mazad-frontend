@@ -4,7 +4,7 @@ import { io } from 'socket.io-client'
 import { useNavigate, useParams } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
-const socket = io('http://localhost:5045')
+const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5045')
 
 const ItemDetails = () => {
   const [auction, setAuction] = useState('')
