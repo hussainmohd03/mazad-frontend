@@ -4,6 +4,7 @@ import { io } from 'socket.io-client'
 import { useNavigate, useParams } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
+import AutoBiddingInfo from './AutoBiddingInfo'
 const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5045')
 
 const ItemDetails = () => {
@@ -13,6 +14,8 @@ const ItemDetails = () => {
   const [bidAmount, setBidAmount] = useState()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [bidCount, setBidCount] = useState(0)
+  const [showAutoBidInfo, setShowAutoBidInfo] = useState(false)
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -127,14 +130,17 @@ const ItemDetails = () => {
               </div>
             </div>
             <div className="modal-auto-bidding">
+              <div className='auto-bid-info'>
               <p>
                 Use Auto Bid{' '}
+              </p>
                 <img
                   src="/design-images/info.svg"
                   alt=""
                   className="info-icon"
+                  onClick={() => setShowAutoBidInfo(true)}
                 />
-              </p>
+              </div>
               <div className="bidding-time2">5d:08h:17m</div>
             </div>
             <div className="modal-bid-amount">
@@ -207,6 +213,9 @@ const ItemDetails = () => {
             </div>
           </div>
         </div>
+      )}
+      {showAutoBidInfo && (
+        <AutoBiddingInfo setShowAutoBidInfo={setShowAutoBidInfo} />
       )}
     </div>
   )
