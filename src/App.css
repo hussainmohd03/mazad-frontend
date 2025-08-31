@@ -1778,9 +1778,7 @@ input::-webkit-inner-spin-button {
   text-decoration: underline;
   margin: 0 auto;
 }
-.sign-button {
-  width: 100%;
-}
+
 .minus_button,
 .plus_button {
   all: unset;

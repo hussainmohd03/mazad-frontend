@@ -53,9 +53,21 @@ const ItemDetails = () => {
 
   const placeBid = async () => {
     try {
-      const res = await Client.post(`${BASE_URL}/auctions/${auctionId}/bids`, {
-        amount: bidAmount
-      })
+      if (showMinIncrement) {
+        await Client.post(`${BASE_URL}/auctions/autobid`, {
+          auctionId,
+          increment_amount: minIncrement,
+          max_bid_amount: bidAmount
+        })
+        setIsModalOpen(false)
+      } else {
+        const res = await Client.post(
+          `${BASE_URL}/auctions/${auctionId}/bids`,
+          {
+            amount: bidAmount
+          }
+        )
+      }
       setError('')
     } catch (error) {
       setError(error.response.data)
@@ -141,6 +153,8 @@ const ItemDetails = () => {
                   onClick={() => setShowAutoBidInfo(true)}
                 />
               </div>
+
+
               <div className="container">
                 <input
                   type="checkbox"
@@ -213,14 +227,12 @@ const ItemDetails = () => {
               <div className="min-increment-field" style={{ margin: '16px 0' }}>
                 <label htmlFor="minIncrement">
                   You need to set a minimum increment
-                  </label>
+                </label>
                 <div className="modal-bid-amount">
                   <button
                     className="minus_button"
                     onClick={() =>
-                      setMinIncrement(
-                        minIncrement > 10 ? minIncrement - 1 : 10
-                      )
+                      setMinIncrement(minIncrement > 10 ? minIncrement - 1 : 10)
                     }
                   >
                     <svg
