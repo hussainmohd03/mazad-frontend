@@ -36,7 +36,7 @@ const ListingTable = ({ listings }) => {
             </span>
             <span>{item.name}</span>
             <span>
-              {item.ownerId.firstName} {item.ownerId.lastName}
+              {/* {item.ownerId.firstName} {item.ownerId.lastName} */}
             </span>
             <span className={`listing-status ${item.status}`}>
               {item.status}
