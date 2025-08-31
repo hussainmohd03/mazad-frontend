@@ -292,12 +292,11 @@ input[type="text"] {
 
 .item-page-header {
   z-index: 1000;
-  width: 100%;
+  width: 98%;
   height: 5%;
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   padding: 1%;
 }
 
@@ -310,9 +309,16 @@ input[type="text"] {
   justify-content: center;
   align-items: center;
 }
+.back {
+  justify-self: start;
+}
+
+.favorite {
+  justify-self: end;
+}
 
 .blurry-circle img {
-  width: 70%;
+  width: 60%;
   aspect-ratio: 1/1;
 }
 
@@ -348,10 +354,11 @@ input[type="text"] {
 }
 
 .description-text {
+  height: 100%;
   color: #5b6871;
   font-weight: 300;
-  padding-top: 0px;
-  margin-top: 0px;
+  margin: 0%;
+  padding: 0%;
   font-size: 96%;
 }
 

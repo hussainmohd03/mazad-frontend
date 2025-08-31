@@ -4,6 +4,12 @@ import { io } from "socket.io-client";
 import { useNavigate, useParams } from "react-router-dom";
 import Client from "../../services/api";
 import { BASE_URL } from "../../globals";
+import {
+  addToWatchList,
+  removeFromWatchList,
+  getWatchList,
+} from "../../services/WatchList";
+
 const socket = io(import.meta.env.VITE_SOCKET_URL || "http://localhost:5045");
 
 const ItemDetails = () => {
@@ -14,6 +20,18 @@ const ItemDetails = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bidCount, setBidCount] = useState(0);
   const navigate = useNavigate();
+
+  const getList = async () => {
+    const watchList = await getWatchList();
+    watchList.some((item) => item.auctionId === auctionId);
+    console.log(auctionId);
+    console.log(watchList);
+    watchList.forEach((item) => console.log(item.auctionId));
+    // const isInWatchList = watchList.some((item) => item.auctionId === auctionId);
+    // console.log(isInWatchList);
+  };
+
+  getList();
 
   useEffect(() => {
     const getAuction = async () => {
@@ -74,18 +92,25 @@ const ItemDetails = () => {
 
   return (
     <div className="item-page">
-      <div className="item-page-header" onClick={() => navigate(-1)}>
-        <div className="blurry-circle">
+      <div className="item-page-header">
+        <div className="blurry-circle back" onClick={() => navigate(-1)}>
           <img
             src="/design-images/arrow.svg"
             alt="back"
             className="back-arrow"
           />
         </div>
-        <div className="blurry-circle">
+        <div
+          className="blurry-circle favorite"
+          onClick={() =>
+            isInWatchList
+              ? removeFromWatchList(auctionId)
+              : addToWatchList(auction)
+          }
+        >
           <img
-            src="/design-images/arrow.svg"
-            alt="back"
+            src="/design-images/book-mark.svg"
+            alt="favorite"
             className="back-arrow"
           />
         </div>
