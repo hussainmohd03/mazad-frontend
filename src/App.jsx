@@ -18,16 +18,18 @@ import { useEffect } from 'react'
 import { CheckSession } from '../services/Auth'
 import UserContext from './context/UserContext'
 import ChangePassword from './pages/ChangePassword'
-import AdminListings from './pages/AdminListings'
-import AdminSignIn from './pages/AdminSignIn'
-import AddAdminAccounts from './pages/AddAdminAccounts'
-import AdminListingDetails from './pages/AdminListingDetails'
-import AdminDashboard from './pages/AdminDashboard'
+// import AdminListings from './pages/AdminListings'
+// import AdminSignIn from './pages/AdminSignIn'
+// import AddAdminAccounts from './pages/AddAdminAccounts'
+// import AdminListingDetails from './pages/AdminListingDetails'
+// import AdminDashboard from './pages/AdminDashboard'
 import Notificiation from './components/Notification'
 import { BASE_URL } from '../globals'
 // import AdminDashboard from './pages/AdminDashboard'
 // import AdminCategories from './pages/AdminCategories'
 // import AdminSettings from './pages/AdminSettings'
+import { io } from 'socket.io-client'
+const socket = io('http://localhost:5045')
 
 const App = () => {
   const navigate = useNavigate()
@@ -44,6 +46,12 @@ const App = () => {
     const token = localStorage.getItem('token')
     if (token) {
       checkToken()
+      socket.emit('joinUser', user.id)
+      console.log('emitted')
+      socket.on('outBid', (notif) => {
+        console.log('from frontend', notif)
+        setNotification(notif)
+      })
     } else {
       navigate('/')
     }
@@ -61,9 +69,16 @@ const App = () => {
     localStorage.clear()
     navigate('/sign-in')
   }
+  console.log(notification)
 
   return (
     <>
+      {notification && (
+        <Notificiation
+          notification={notification}
+          setNotification={setNotification}
+        />
+      )}
       {/* <Notificiation
         notification={notification}
         setNotification={setNotification}
@@ -72,7 +87,15 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/sell" element={<Sell />} />
-        <Route path="/watchlist" element={<Watchlist />} />
+        <Route
+          path="/watchlist"
+          element={
+            <Watchlist
+              notification={notification}
+              setNotification={setNotification}
+            />
+          }
+        />
         <Route
           path="/profile"
           element={
@@ -100,17 +123,17 @@ const App = () => {
             />
           }
         />
-        <Route path="change-password" element={<ChangePassword />} />
+        {/* <Route path="change-password" element={<ChangePassword />} />
 
         <Route path="/admin/sign-in" element={<AdminSignIn />} />
         <Route path="/admin/sign-up" element={<AdminSignUp />} />
 
         <Route path="/admin/listings" element={<AdminListings />} />
         <Route path="/admin/listings/:id" element={<AdminListingDetails />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}
         {/* <Route path="/admin/categories" element={<AdminCategories />} />
         <Route path="/admin/settings" element={<AdminSettings />} />*/}
-        <Route path="/admin/AddAdminAccount" element={<AddAdminAccounts />} />
+        {/* <Route path="/admin/AddAdminAccount" element={<AddAdminAccounts />} /> */}
         {/* <Route path="/admin/settings" element={<AdminSettings />} />
         <Route path="/admin/admins" element={<AdminAccounts />} />  */}
         <Route

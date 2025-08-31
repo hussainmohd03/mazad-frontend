@@ -41,7 +41,7 @@ const EditProfile = ({ setNotification, notification }) => {
       console.log('from frontend', notif)
       setNotification(notif)
     })
-      navigate('/profile')
+    navigate('/profile')
   }
 
   useEffect(() => {
@@ -72,6 +72,7 @@ const EditProfile = ({ setNotification, notification }) => {
           placeholder={user.first_name}
           value={userDetails.firstName}
           onChange={handleChange}
+          required
         />
 
         <label htmlFor="lastName" className="input-key">
@@ -83,6 +84,7 @@ const EditProfile = ({ setNotification, notification }) => {
           placeholder={user.last_name}
           value={userDetails.lastName}
           onChange={handleChange}
+          required
         />
 
         <label htmlFor="email" className="input-key">
@@ -94,6 +96,7 @@ const EditProfile = ({ setNotification, notification }) => {
           placeholder={user.email}
           value={userDetails.email}
           onChange={handleChange}
+          required
         />
         <button type="submit">Save</button>
       </form>

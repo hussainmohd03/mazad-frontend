@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 
 const Notificiation = ({ notification, setNotification }) => {
   useEffect(() => {
-    // setTimeout(() => {
-    //   setNotification('')
-    // }, 2000)
+    console.log('notifi', notification)
+
+    setTimeout(() => {
+      setNotification('')
+    }, 2000)
   }, [])
   return (
     <>

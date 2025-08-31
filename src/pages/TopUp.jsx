@@ -9,9 +9,6 @@ const TopUp = ({ financialData, setFinancialData }) => {
   const navigate = useNavigate()
 
   let total = 0
-  const handleDecrement = () => {
-    setAmount(amount - 10)
-  }
 
   const handleIncrement = () => {
     setAmount(amount + 10)
