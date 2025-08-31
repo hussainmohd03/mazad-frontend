@@ -50,8 +50,6 @@ const AdminListingDetails = () => {
         email: listing.email
       }
 
-      console.log('Sending email with params:', templateParams)
-
       await emailjs.send(serviceId, templateId, templateParams, publicKey)
 
       console.log('Email sent successfully!')
