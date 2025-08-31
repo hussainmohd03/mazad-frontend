@@ -1527,12 +1527,11 @@ textarea {
 .Total-listed-items {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.8rem;
   height: auto;
   width: auto;
   margin-left: 6%;
   margin-right: 10%;
-
   box-shadow: 5px 5px 10px rgba(97, 97, 97, 0.079);
   grid-column: 1 / 3;
   grid-row: 2 / 4;
@@ -1540,7 +1539,7 @@ textarea {
 .aproved-items {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.8rem;
   height: auto;
   width: auto;
   margin-left: -11%;
@@ -1552,7 +1551,7 @@ textarea {
 .rejected-items {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.8rem;
   height: auto;
   width: auto;
   margin-left: -25%;
@@ -1565,7 +1564,7 @@ textarea {
 .total-users {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.6rem;
   height: auto;
   width: auto;
   margin-left: 4%;
@@ -1577,13 +1576,54 @@ textarea {
 .all-biddings-over-time {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.6rem;
   height: auto;
   width: auto;
   margin-right: -14%;
   box-shadow: 5px 5px 10px rgba(97, 97, 97, 0.079);
   grid-column: 4 / 6;
   grid-row: 4 / 7;
+}
+.p-in-dashbaard {
+  font-size: 15px;
+  margin: 1% 1% -5% 0%;
+  color: #9291a5;
+}
+.p-in-dashbaard-user {
+  font-size: 15px;
+  margin: 1% 1% -3% 0%;
+  color: #9291a5;
+}
+.total-users-title {
+  position: absolute;
+  /* margin: 0% 0% 0% 0%; */
+  left: 34%;
+  top: 83%;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 16px;
+}
+.pie-chart {
+  margin: 5% 0% 0% 0%;
+}
+hr {
+  border: #00000017 solid 0.1px;
+  margin: 1px 2px;
+}
+.Responsive-Container-1 {
+  position: absolute;
+  top: 30%;
+  left: 24%;
+}
+.Responsive-Container-2 {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+}
+.Responsive-Container-3 {
+  position: absolute;
+  top: 30%;
+  left: 77%;
 }
 
 /* admin dashboard end */
@@ -1667,16 +1707,21 @@ textarea {
   background-color: #f8f8f8;
   border: none;
   border-radius: 100%;
-  aspect-ratio: 1/1;
-  height: 75%;
-  font-size: xxx-large;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 20%;
+  aspect-ratio: 1/1;
+}
+
+.price-input-box button img {
+  width: 50%;
+  height: 50%;
 }
 
 .price-input {
   height: 70%;
+
   width: 100%;
   padding: 0%;
   text-align: center;

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import AdminNav from '../components/AdminNav'
 import Client from '../../services/api'
-import { BASE_URL } from '../../globals'
 import { useNavigate } from 'react-router-dom'
 const backendUrl = import.meta.env.VITE_BACKEND_URL
 
@@ -17,7 +16,7 @@ const AdminListingDetails = () => {
   useEffect(() => {
     const fetchListing = async () => {
       try {
-        const res = await Client.get(`${BASE_URL}/admin/items`)
+        const res = await Client.get(`${backendUrl}/admin/items`)
         const item = res.data.item.find((i) => i._id == id)
         setListing(item)
         setMainImage(item?.images[0] || null)
@@ -31,10 +30,9 @@ const AdminListingDetails = () => {
   }, [])
   const updateStatus = async (action) => {
     try {
-      console.log(`${BASE_URL}/admin/items/${id}/updateItem?action=${action}`)
       const res = await Client.put(
-        `${BASE_URL}/admin/items/${id}/updateItem?action=${action}`
-      , )
+        `${backendUrl}/admin/items/${id}/updateItem?action=${action}`
+      )
       setListing(res.data)
       navigate('/admin/listings')
     } catch (error) {

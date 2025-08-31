@@ -1,6 +1,6 @@
 import React from "react";
 
-const Price = ({ setFormData, formData, setActiveStep, activeStep }) => {
+const Price = ({ setFormData, formData, setActiveStep, activeStep , handleSubmit}) => {
   return (
     <>
       <div className="item-step-header">
@@ -26,7 +26,7 @@ const Price = ({ setFormData, formData, setActiveStep, activeStep }) => {
           <div className="price-box-body">
             <p className="primary-text">Set your reserve amount</p>
             <div className="price-input-box">
-              <button onClick={()=>{setFormData({price : formData.price - 10})}} className="">-</button>
+              <button onClick={()=>{setFormData({...formData,price : formData.price - 10})}} className=""><img src="design-images/minus.svg" alt="" /></button>
               <input 
                 type="number"
                 className="price-input"
@@ -35,7 +35,7 @@ const Price = ({ setFormData, formData, setActiveStep, activeStep }) => {
                 value={formData.price}
                 onChange={(e) => setFormData({ ...formData, price: e.target.value })} 
             />
-              <button onClick={()=>{setFormData({price : formData.price + 10})}}>+</button>
+              <button onClick={()=>{setFormData({...formData,price : formData.price + 10})}}><img src="design-images/plus.svg" alt="" /></button>
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@ const Price = ({ setFormData, formData, setActiveStep, activeStep }) => {
       <div className="item-step-footer">
         <button
           className="action-button"
-          onClick={() => setActiveStep(activeStep + 1)}
+          onClick={handleSubmit}
           disabled={formData.price < 1}
         >
           Next
