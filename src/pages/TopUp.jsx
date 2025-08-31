@@ -31,16 +31,21 @@ const TopUp = ({ financialData, setFinancialData }) => {
 
   return (
     <>
-      <p>Top up</p>
-      <p>Select the amount you would like to deposit into your account</p>
-      <button onClick={handleDecrement}>-</button>
-      <p>BHD {amount}</p>
-      <button onClick={handleIncrement}>+</button>
-      <button onClick={handleClick}>Top up</button>
-      <p>
-        We ensure your information is kept secure. For more information, check
-        our Privacy Policy and Terms & Conditions
-      </p>
+      <div className="item-page">
+        <div className="item-page-header" onClick={() => navigate(-1)}>
+          <img src="/design-images/arrow.svg" alt="back" />
+        </div>
+        <p>Top up</p>
+        <p>Select the amount you would like to deposit into your account</p>
+        <button onClick={handleDecrement}>-</button>
+        <p>BHD {amount}</p>
+        <button onClick={handleIncrement}>+</button>
+        <button onClick={handleClick}>Top up</button>
+        <p>
+          We ensure your information is kept secure. For more information, check
+          our Privacy Policy and Terms & Conditions
+        </p>
+      </div>
     </>
   )
 }

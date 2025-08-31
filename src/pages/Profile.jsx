@@ -6,6 +6,7 @@ import { NavLink, Link } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import AreaChartComponent from '../components/AreaChat'
+import Notificiation from '../components/Notification'
 
 const Profile = ({
   handleLogOut,
@@ -33,6 +34,12 @@ const Profile = ({
   return (
     <div className="profile-page">
       <header>
+        {notification && (
+          <Notificiation
+            notification={notification}
+            setNotification={setNotification}
+          />
+        )}
         <div className="profile-details">
           <div className="profile-title">Profile</div>
           <div className="profile-user-details">
@@ -101,7 +108,6 @@ const Profile = ({
             <p onClick={() => handleLogOut()} className="under-line-text">
               Log out
             </p>
-
           </div>
           <div>
             <img src="/design-images/trash.svg" alt="" />

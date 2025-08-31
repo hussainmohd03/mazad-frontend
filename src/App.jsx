@@ -28,6 +28,8 @@ import { BASE_URL } from '../globals'
 // import AdminDashboard from './pages/AdminDashboard'
 // import AdminCategories from './pages/AdminCategories'
 // import AdminSettings from './pages/AdminSettings'
+import { io } from 'socket.io-client'
+const socket = io('http://localhost:5045')
 
 const App = () => {
   const navigate = useNavigate()
@@ -44,6 +46,11 @@ const App = () => {
     const token = localStorage.getItem('token')
     if (token) {
       checkToken()
+      socket.emit('joinUser', user.id)
+      socket.on('removedItem', (notif) => {
+        console.log('from frontend', notif)
+        setNotification(notif)
+      })
     } else {
       navigate('/')
     }
