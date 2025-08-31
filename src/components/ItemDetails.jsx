@@ -30,18 +30,32 @@ const ItemDetails = () => {
     ended: false
   })
   const navigate = useNavigate()
-
-  const getList = async () => {
-    const watchList = await getWatchList()
-    watchList.some((item) => item.auctionId === auctionId)
-    console.log(auctionId)
-    console.log(watchList)
-    watchList.forEach((item) => console.log(item.auctionId))
-    // const isInWatchList = watchList.some((item) => item.auctionId === auctionId);
-    // console.log(isInWatchList);
-  }
-
-  getList()
+  useEffect(() => {
+    let timer
+    const updateCountdown = () => {
+      if (auction && auction.auction.endDate) {
+        const end = new Date(auction.auction.endDate).getTime()
+        const now = new Date().getTime()
+        const diff = end - now
+        if (diff <= 0) {
+          setTimeLeft({ ended: true })
+          setAuctionEnded(true)
+          return
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24)
+        const minutes = Math.floor((diff / (1000 * 60)) % 60)
+        setTimeLeft({ days, hours, minutes, ended: false })
+        setAuctionEnded(false)
+      }
+    }
+    updateCountdown()
+    timer = setInterval(updateCountdown, 1000)
+    if (auction && auction.auction && auction.auction.currentPrice) {
+      setBidAmount(auction.auction.currentPrice + 21)
+    }
+    return () => clearInterval(timer)
+  }, [auction])
 
   useEffect(() => {
     const getAuction = async () => {
@@ -74,6 +88,18 @@ const ItemDetails = () => {
     }
   }, [auctionId])
 
+  const getList = async () => {
+    const watchList = await getWatchList()
+    watchList.some((item) => item.auctionId === auctionId)
+    console.log(auctionId)
+    console.log(watchList)
+    watchList.forEach((item) => console.log(item.auctionId))
+    // const isInWatchList = watchList.some((item) => item.auctionId === auctionId);
+    // console.log(isInWatchList);
+  }
+
+  getList()
+
   const placeBid = async () => {
     try {
       if (showMinIncrement) {
@@ -96,34 +122,6 @@ const ItemDetails = () => {
       setError(error.response.data)
     }
   }
-
-  useEffect(() => {
-    let timer
-    console.log(auction)
-    const updateCountdown = () => {
-      if (auction && auction.auction.endDate) {
-        const end = new Date(auction.auction.endDate).getTime()
-        const now = new Date().getTime()
-        const diff = end - now
-        if (diff <= 0) {
-          setTimeLeft({ ended: true })
-          setAuctionEnded(true)
-          return
-        }
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24))
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24)
-        const minutes = Math.floor((diff / (1000 * 60)) % 60)
-        setTimeLeft({ days, hours, minutes, ended: false })
-        setAuctionEnded(false)
-      }
-    }
-    updateCountdown()
-    timer = setInterval(updateCountdown, 1000)
-    if (auction && auction.auction && auction.auction.currentPrice) {
-      setBidAmount(auction.auction.currentPrice + 21)
-    }
-    return () => clearInterval(timer)
-  }, [auction])
 
   const getDateFormatted = (dateString) => {
     const formatedDate = new Date(dateString)
@@ -188,11 +186,13 @@ const ItemDetails = () => {
           ) : (
             <>
               <span className="countdown">
-                <span className="countdown-num">{timeLeft.days}</span> <span className="countdown-label">Days</span>{' '}
+                <span className="countdown-num">{timeLeft.days}</span>{' '}
+                <span className="countdown-label">Days</span>{' '}
               </span>
               :{' '}
               <span className="countdown">
-                <span className="countdown-num">{timeLeft.hours}</span> <span className="countdown-label">Hours</span>{' '}
+                <span className="countdown-num">{timeLeft.hours}</span>{' '}
+                <span className="countdown-label">Hours</span>{' '}
               </span>
               :{' '}
               <span className="countdown">
@@ -262,6 +262,7 @@ const ItemDetails = () => {
                       : bidAmount
                   )
                 }
+              disabled={bidAmount <= (auction?.auction?.currentPrice)}
               >
                 <svg
                   width="55"
