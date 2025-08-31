@@ -6,4 +6,8 @@ export const createItem = async (itemData) => {
     console.log(response.data);
 }
 
-
+export const getSellerItems = async () => {
+    const response = await Client.get("/items")
+    console.log(response.data);
+    return response.data;
+}

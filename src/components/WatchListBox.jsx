@@ -1,16 +1,33 @@
 import React from "react";
+import { useEffect, useState } from "react"
+import {
+  addToWatchList,
+  removeFromWatchList,
+  getWatchList,
+} from "../../services/WatchList"
 
 const WatchListBox = ({ auction }) => {
   const formatRemainingTime = (endDate) => {
-    const now = new Date();
-    const end = new Date(endDate);
+    const now = new Date()
+    const end = new Date(endDate)
     let diff = end - now;
-    if (diff <= 0) return "0d 0h";
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    if (diff <= 0) return "0d 0h"
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24))
     diff -= days * (1000 * 60 * 60 * 24);
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    return `${days}d ${hours}h`;
-  };
+    const hours = Math.floor(diff / (1000 * 60 * 60))
+    return `${days}d ${hours}h`
+  }
+
+  const [isInWatchList, setIsInWatchList] = useState(false)
+
+  useEffect(() => {
+    const fetchWatchList = async () => {
+      const watchList = await getWatchList()
+      setIsInWatchList(watchList.some((item) => item.auctionId === auction._id))
+    }
+    fetchWatchList()
+  }, [])
+
   return (
     <div className="watchlist-box">
       <div className="watchlist-box-header">
@@ -20,11 +37,19 @@ const WatchListBox = ({ auction }) => {
           <p className="secondary-text">{auction.item.category}</p>
         </div>
         <div className="watchlist-action-box">
-          <button>
+          <button   onClick={async () => {
+                      if (isInWatchList) {
+                        await removeFromWatchList(auction._id);
+                        setIsInWatchList(false)
+                      } else {
+                        await addToWatchList(auction._id)
+                        setIsInWatchList(true)
+                      }
+                    }}>
             <img
               src="/design-images/book-mark.svg"
               alt="remove"
-              className="active-bookmark"
+              className={isInWatchList ? "active-bookmark" : ""}
             />
           </button>
           <button>

@@ -1950,6 +1950,20 @@ input::-webkit-inner-spin-button {
   top: calc(50% - 27px / 2);
 }
 
+
+.empty-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.empty-page img {
+  max-width: 100%;
+  height: auto;
+}
+
 .countdown {
   margin-right: 24px;
 }
@@ -1970,3 +1984,4 @@ input::-webkit-inner-spin-button {
   color: #2d3841;
   font-weight: 400;
 }
+
