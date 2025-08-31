@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../components/AdminNav'
 import Client from '../../services/api'
+
 import {
   LineChart,
   Line,
@@ -17,6 +18,7 @@ import {
   Area,
   AreaChart
 } from 'recharts'
+
 const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 const AdminDashboard = () => {

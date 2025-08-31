@@ -1,11 +1,24 @@
-import React from "react";
-import NavBar from "../components/NavBar";
-import WatchListBox from "../components/WatchListBox";
+import React from 'react'
+import NavBar from '../components/NavBar'
+import auctions from '../objects/auctions.json'
+import WatchListBox from '../components/WatchListBox'
+import { useEffect, useState, useContext } from 'react'
+import { io } from 'socket.io-client'
+const socket = io('http://localhost:5045')
+import UserContext from '../context/UserContext'
+import Notificiation from '../components/Notification'
 import { getWatchList } from "../../services/WatchList"
-import { useEffect, useState } from "react"
 import EmptyPage from "../components/EmptyPage";
 const Watchlist = () => {
+  const { user } = useContext(UserContext)
   const [auctions, setAuctions] = useState([])
+  useEffect(() => {
+    console.log('entered use effect on mount')
+    console.log(user)
+    socket.emit('joinUser', user.id)
+  }, [])
+  
+
 
   useEffect(() => {
     const fetchWatchList = async () => {
@@ -15,12 +28,17 @@ const Watchlist = () => {
     fetchWatchList()
   }, [])
 
+
   return (
     <div className="activity-page">
       <header>
-        <p className="activity-header">WatchList</p>
-
-        <div className="auctions-search-filter">
+        {notification && (
+          <Notificiation
+            notification={notification}
+            setNotification={setNotification}
+          />
+        )}
+        <p className="activity-header">WatchList</p>        <div className="auctions-search-filter">
           <input type="text" name="search" placeholder="Search" />
           <span>
             <img src="/design-images/filter-icon.png" alt="filter-auctions" />
@@ -40,7 +58,7 @@ const Watchlist = () => {
       </main>
       <NavBar />
     </div>
-  );
-};
+  )
+}
 
-export default Watchlist;
+export default Watchlist
