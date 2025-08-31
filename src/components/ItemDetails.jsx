@@ -1,27 +1,24 @@
-
-import React from "react";
-import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
-import { useNavigate, useParams } from "react-router-dom";
-import Client from "../../services/api";
-import { BASE_URL } from "../../globals";
+import React from 'react'
+import { useEffect, useState } from 'react'
+import { io } from 'socket.io-client'
+import { useNavigate, useParams } from 'react-router-dom'
+import Client from '../../services/api'
+import { BASE_URL } from '../../globals'
 import {
   addToWatchList,
   removeFromWatchList,
-  getWatchList,
-} from "../../services/WatchList";
+  getWatchList
+} from '../../services/WatchList'
 import AutoBiddingInfo from './AutoBiddingInfo'
 const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5045')
 
-
-
 const ItemDetails = () => {
-  const [auction, setAuction] = useState("");
-  const auctionId = useParams().auctionId;
-  const [error, setError] = useState("");
-  const [bidAmount, setBidAmount] = useState();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [bidCount, setBidCount] = useState(0);
+  const [auction, setAuction] = useState('')
+  const auctionId = useParams().auctionId
+  const [error, setError] = useState('')
+  const [bidAmount, setBidAmount] = useState()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [bidCount, setBidCount] = useState(0)
   const [showAutoBidInfo, setShowAutoBidInfo] = useState(false)
   const [showMinIncrement, setShowMinIncrement] = useState(false)
   const [minIncrement, setMinIncrement] = useState(10)
@@ -32,55 +29,53 @@ const ItemDetails = () => {
     minutes: 0,
     ended: false
   })
-  const navigate = useNavigate();
-
+  const navigate = useNavigate()
 
   const getList = async () => {
-    const watchList = await getWatchList();
-    watchList.some((item) => item.auctionId === auctionId);
-    console.log(auctionId);
-    console.log(watchList);
-    watchList.forEach((item) => console.log(item.auctionId));
+    const watchList = await getWatchList()
+    watchList.some((item) => item.auctionId === auctionId)
+    console.log(auctionId)
+    console.log(watchList)
+    watchList.forEach((item) => console.log(item.auctionId))
     // const isInWatchList = watchList.some((item) => item.auctionId === auctionId);
     // console.log(isInWatchList);
-  };
+  }
 
-  getList();
+  getList()
 
   useEffect(() => {
     const getAuction = async () => {
-      const res = await Client(`${BASE_URL}/auctions/${auctionId}`);
-      setBidCount(res.data.bidCount);
-      setAuction(res.data);
-    };
-    socket.emit("joinAuction", auctionId);
+      const res = await Client(`${BASE_URL}/auctions/${auctionId}`)
+      setBidCount(res.data.bidCount)
+      setAuction(res.data)
+    }
+    socket.emit('joinAuction', auctionId)
 
-    socket.on("newBid", (data) => {
-      setBidCount(data.bidCount);
+    socket.on('newBid', (data) => {
+      setBidCount(data.bidCount)
       setAuction((prev) => ({
         ...prev,
         auction: {
           ...prev.auction,
-          currentPrice: data.currentPrice,
-        },
-      }));
-      setError("");
-    });
+          currentPrice: data.currentPrice
+        }
+      }))
+      setError('')
+    })
 
-    socket.on("outBid", (data) => {
+    socket.on('outBid', (data) => {
       // inform user
-    });
+    })
 
-    getAuction();
+    getAuction()
     return () => {
-      socket.emit("leaveAuction", auctionId);
-      socket.off("newBid");
-    };
-  }, [auctionId]);
+      socket.emit('leaveAuction', auctionId)
+      socket.off('newBid')
+    }
+  }, [auctionId])
 
   const placeBid = async () => {
     try {
-
       if (showMinIncrement) {
         await Client.post(`${BASE_URL}/auctions/autobid`, {
           auctionId,
@@ -98,15 +93,15 @@ const ItemDetails = () => {
       }
       setError('')
     } catch (error) {
-      setError(error.response.data);
+      setError(error.response.data)
     }
-  };
-
+  }
 
   useEffect(() => {
     let timer
+    console.log(auction)
     const updateCountdown = () => {
-      if (auction && auction.auction && auction.auction.endDate) {
+      if (auction && auction.auction.endDate) {
         const end = new Date(auction.auction.endDate).getTime()
         const now = new Date().getTime()
         const diff = end - now
@@ -125,21 +120,20 @@ const ItemDetails = () => {
     updateCountdown()
     timer = setInterval(updateCountdown, 1000)
     if (auction && auction.auction && auction.auction.currentPrice) {
-      setBidAmount(auction.auction.currentPrice + 21);
+      setBidAmount(auction.auction.currentPrice + 21)
     }
     return () => clearInterval(timer)
   }, [auction])
 
   const getDateFormatted = (dateString) => {
-    const formatedDate = new Date(dateString);
-    const year = formatedDate.getFullYear();
-    const month = String(formatedDate.getMonth());
-    const day = String(formatedDate.getDate());
-    const hours = String(formatedDate.getHours());
-    const minutes = String(formatedDate.getMinutes());
-    return `${month}/${day}/${year} at ${hours}:${minutes}`;
-  };
-
+    const formatedDate = new Date(dateString)
+    const year = formatedDate.getFullYear()
+    const month = String(formatedDate.getMonth())
+    const day = String(formatedDate.getDate())
+    const hours = String(formatedDate.getHours())
+    const minutes = String(formatedDate.getMinutes())
+    return `${month}/${day}/${year} at ${hours}:${minutes}`
+  }
 
   return (
     <div className="item-page">
@@ -176,7 +170,7 @@ const ItemDetails = () => {
           <p className="">Current Bid</p>
           <p className="">BHD {auction && auction.auction.currentPrice}</p>
           <p className="bids-count">
-            {bidCount && `${bidCount}`} Bids • Closes on:{" "}
+            {bidCount && `${bidCount}`} Bids • Closes on:{' '}
             {getDateFormatted(auction && auction.auction.endDate)}
           </p>
           <div className="item-description">
@@ -193,9 +187,18 @@ const ItemDetails = () => {
             'Auction closed'
           ) : (
             <>
-              <span className="countdown-num">{timeLeft.days}</span> Days :{' '}
-              <span className="countdown-num">{timeLeft.hours}</span> Hours :{' '}
-              <span className="countdown-num">{timeLeft.minutes}</span> Minutes
+              <span className="countdown">
+                <span className="countdown-num">{timeLeft.days}</span> <span className="countdown-label">Days</span>{' '}
+              </span>
+              :{' '}
+              <span className="countdown">
+                <span className="countdown-num">{timeLeft.hours}</span> <span className="countdown-label">Hours</span>{' '}
+              </span>
+              :{' '}
+              <span className="countdown">
+                <span className="countdown-num">{timeLeft.minutes}</span>{' '}
+                <span className="countdown-label">Minutes</span>
+              </span>
             </>
           )}
         </div>
@@ -211,8 +214,8 @@ const ItemDetails = () => {
         <div
           className="modal"
           onClick={(e) => {
-            if (e.target.classList.contains("modal")) {
-              setIsModalOpen(false);
+            if (e.target.classList.contains('modal')) {
+              setIsModalOpen(false)
             }
           }}
         >
@@ -225,8 +228,6 @@ const ItemDetails = () => {
               </div>
             </div>
             <div className="modal-auto-bidding">
-              
-                Use Auto Bid{" "}
               <div className="auto-bid-info">
                 <p>Use Auto Bid </p>
 
@@ -382,7 +383,7 @@ const ItemDetails = () => {
             <div className="terms">
               <p>
                 We ensure your information is kept secure. For more information,
-                check our <span>Privacy Policy</span> and{" "}
+                check our <span>Privacy Policy</span> and{' '}
                 <span>Terms & Conditions</span>
               </p>
             </div>
@@ -396,7 +397,7 @@ const ItemDetails = () => {
         <AutoBiddingInfo setShowAutoBidInfo={setShowAutoBidInfo} />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ItemDetails;
+export default ItemDetails
