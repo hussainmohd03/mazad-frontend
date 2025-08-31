@@ -1,8 +1,19 @@
 import React from "react";
 import NavBar from "../components/NavBar";
-import auctions from "../objects/auctions.json";
 import WatchListBox from "../components/WatchListBox";
+import { getWatchList } from "../../services/WatchList"
+import { useEffect, useState } from "react"
 const Watchlist = () => {
+  const [auctions, setAuctions] = useState([])
+
+  useEffect(() => {
+    const fetchWatchList = async () => {
+      const watchList = await getWatchList()
+      setAuctions(watchList)
+    }
+    fetchWatchList()
+  }, [])
+
   return (
     <div className="activity-page">
       <header>
@@ -17,8 +28,8 @@ const Watchlist = () => {
       </header>
       <main>
         <div className="watch-list-grid">
-          {auctions.map((auction) => (
-            <WatchListBox key={auction.id} auction={auction} />
+          {auctions.map((watchList) => (
+            <WatchListBox key={watchList.id} auction={watchList} />
           ))}
         </div>
       </main>
