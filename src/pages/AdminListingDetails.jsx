@@ -7,11 +7,10 @@ import emailjs from '@emailjs/browser'
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL
 
-const serviceId = 'service_xfa2nmx' // from EmailJS
-const templateId = 'YOUR_TEMPLATE_ID' // from EmailJS
-const publicKey = 'YOUR_PUBLIC_KEY' // from EmailJS
-
 const AdminListingDetails = () => {
+  const serviceId = 'service_xfa2nmx'
+  const templateId = 'template_hzs50s8'
+  const publicKey = 'Fxi0xwrKA_XPTOzbg'
   const { id } = useParams()
   const [listing, setListing] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -25,7 +24,6 @@ const AdminListingDetails = () => {
         const res = await Client.get(`${backendUrl}/admin/items`)
         const item = res.data.item.find((i) => i._id == id)
         setListing(item)
-        console.log(item)
         setMainImage(item?.images[0] || null)
       } catch (err) {
         setError('Failed to fetch listing details')
@@ -44,6 +42,19 @@ const AdminListingDetails = () => {
       )
       setListing(res.data)
       navigate('/admin/listings')
+
+      const templateParams = {
+        firstName: listing.ownerId.firstName,
+        name: listing.name,
+        status: action,
+        email: listing.email
+      }
+
+      console.log('Sending email with params:', templateParams)
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+
+      console.log('Email sent successfully!')
     } catch (error) {
       console.error(error)
     }
