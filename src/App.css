@@ -1696,11 +1696,11 @@ hr {
   display: flex;
   height: 25%;
   align-items: center;
-  justify-self: center;
+  justify-content: center;
   padding: 3%;
   border-radius: 15px;
-  border: 1px #dddddd solid;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .price-input-box button {
@@ -1721,8 +1721,7 @@ hr {
 
 .price-input {
   height: 70%;
-
-  width: 100%;
+  width: 60%;
   padding: 0%;
   text-align: center;
   border: none;
@@ -1730,6 +1729,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 input::-webkit-outer-spin-button,
@@ -1760,7 +1760,6 @@ input::-webkit-inner-spin-button {
   color: #000000;
   opacity: 100 !important;
   margin-top: 10px;
-
 }
 
 .notif-secondary-text {
@@ -1768,26 +1767,32 @@ input::-webkit-inner-spin-button {
   font-size: small;
   font-weight: 500;
 }
+
 .modal {
-  position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgb(76, 76, 76, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 22px;
+  padding-top: 30%;
 }
 
 .modal-content {
   background: white;
-  padding: 20px;
   width: 100%;
-  margin-top: 40%;
   height: 85%;
   border-radius: 25px;
   text-align: center;
+  display: grid;
+  grid-template-rows: 0.7fr 1fr 1fr 1fr 3fr;
+  padding: 0%;
 }
+
+.modal-content div {
+  padding: 0 2.5% 0 2.5%;
+}
+
 .modal2 {
   position: fixed;
   width: 100%;
@@ -1811,20 +1816,28 @@ input::-webkit-inner-spin-button {
 .modal-header,
 .modal-auto-bidding {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 0 2%;
   font-size: 19px;
+  border-bottom: #d5dadd 1px solid;
 }
+
 .auto-bid-info {
   display: flex;
   align-items: center;
 }
+
 .auto-bid-info img {
   margin-bottom: 2px;
   margin-left: 6px;
 }
+
 .modal-header p {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  padding-left: 5%;
   color: #303940;
   font-weight: 500;
 }
@@ -1834,11 +1847,19 @@ input::-webkit-inner-spin-button {
   color: #303940;
 }
 
+.modal-sentence {
+  padding-left: 30px;
+  padding-right: 30px;
+  color: #2d3841;
+  font-weight: 300;
+}
+
 .bidding-time2 {
   font-size: 13px;
   color: #666666;
   font-family: 600;
 }
+
 .terms {
   margin: 0 auto;
 }
@@ -1862,10 +1883,12 @@ input::-webkit-inner-spin-button {
 
 .modal-bid-amount {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  margin: 5% 0;
+  justify-content: space-around;
+  height: 100%;
 }
+
 .modal-bid-amount span {
   font-size: 24px;
   font-weight: 600;
@@ -1957,4 +1980,9 @@ input::-webkit-inner-spin-button {
 .checkbox:checked + .switch .slider {
   left: calc(50% - 27px / 2 + 10px);
   top: calc(50% - 27px / 2);
+}
+
+.edit-profile-button {
+  font-size: 80%;
+  font-weight: 450;
 }

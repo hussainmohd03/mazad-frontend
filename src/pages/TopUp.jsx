@@ -6,20 +6,15 @@ import { useNavigate } from 'react-router-dom'
 const TopUp = ({ financialData, setFinancialData }) => {
   const [amount, setAmount] = useState(100)
   const { user } = useContext(UserContext)
-
   const navigate = useNavigate()
 
   let total = 0
   const handleDecrement = () => {
-    if (amount > 0) {
-      total = amount - 10
-      setAmount(total)
-    }
+    setAmount(amount - 10)
   }
 
   const handleIncrement = () => {
-    total = amount + 10
-    setAmount(total)
+    setAmount(amount + 10)
   }
 
   const handleClick = async () => {
@@ -31,23 +26,40 @@ const TopUp = ({ financialData, setFinancialData }) => {
 
   return (
     <>
-      <div className="item-page">
-        <div className="item-page-header" onClick={() => navigate(-1)}>
-          <img src="/design-images/arrow.svg" alt="back" />
+        <div className="modal">
+          <div className="modal-content">
+            <div className="modal-header">
+            <p>Top Up</p>
+            </div>
+            <p className='modal-sentence'>Select the amount you would like to deposit into your account</p>
+            <div className="modal-bid-amount">
+              <div className="price-input-box">
+              <button onClick={()=>setAmount(amount-10)} className=""><img src="design-images/minus.svg" alt="" /></button>
+              <input 
+                type="number"
+                className="price-input"
+                placeholder="0"
+                min={1}
+                value={amount}
+                onChange={(e)=>setAmount(e.target.value)} 
+            />
+              <button onClick={handleIncrement}><img src="design-images/plus.svg" alt="" /></button>
+            </div>
+            <button className="sign-button" onClick={handleClick}>
+              Top up
+            </button>
+            </div>
+            <div className="terms">
+              <p>
+                We ensure your information is kept secure. For more information,
+                check our <span>Privacy Policy</span> and{' '}
+                <span>Terms & Conditions</span>
+              </p>
+            </div>
+              <div className='white-space'></div>
+          </div>
         </div>
-        <p>Top up</p>
-        <p>Select the amount you would like to deposit into your account</p>
-        <button onClick={handleDecrement}>-</button>
-        <p>BHD {amount}</p>
-        <button onClick={handleIncrement}>+</button>
-        <button onClick={handleClick}>Top up</button>
-        <p>
-          We ensure your information is kept secure. For more information, check
-          our Privacy Policy and Terms & Conditions
-        </p>
-      </div>
     </>
   )
 }
-
 export default TopUp

@@ -224,7 +224,7 @@ const ItemDetails = () => {
               </button>
             </div>
             {showMinIncrement && (
-              <div className="min-increment-field" style={{ margin: '16px 0' }}>
+              <div className="min-increment-field">
                 <label htmlFor="minIncrement">
                   You need to set a minimum increment
                 </label>
