@@ -29,14 +29,13 @@ const ListingTable = ({ listings }) => {
             className="listing-row"
             onClick={() => navigate(`/admin/listings/${item._id}`)}
           >
-            {console.log(item)}
             <span>{index + 1}</span>
             <span>
               {item._id.slice(0, 4)}...{item._id.slice(-4)}
             </span>
             <span>{item.name}</span>
             <span>
-              {item.ownerId.firstName} {item.ownerId.lastName}
+              {/* {item.ownerId.firstName} {item.ownerId.lastName} */}
             </span>
             <span className={`listing-status ${item.status}`}>
               {item.status}
