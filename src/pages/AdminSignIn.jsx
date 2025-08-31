@@ -28,7 +28,7 @@ const AdminSignIn = () => {
     try {
       console.log('getting user', formData)
       const user = await AdminLogin(formData)
-      setUser(user.admin)
+      setUser(user.payload)
       // setSuccess('SignIn successfully')
       setFormData({
         email: '',
