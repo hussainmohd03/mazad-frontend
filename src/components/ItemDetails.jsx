@@ -17,6 +17,13 @@ const ItemDetails = () => {
   const [showAutoBidInfo, setShowAutoBidInfo] = useState(false)
   const [showMinIncrement, setShowMinIncrement] = useState(false)
   const [minIncrement, setMinIncrement] = useState(10)
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    ended: false
+  })
+  const [auctionEnded, setAuctionEnded] = useState(false)
 
   const navigate = useNavigate()
 
@@ -74,19 +81,28 @@ const ItemDetails = () => {
     }
   }
 
-  const getDateFormatted = (dateString) => {
-    const formatedDate = new Date(dateString)
-    const year = formatedDate.getFullYear()
-    const month = String(formatedDate.getMonth())
-    const day = String(formatedDate.getDate())
-    const hours = String(formatedDate.getHours())
-    const minutes = String(formatedDate.getMinutes())
-    return `${month}/${day}/${year} at ${hours}:${minutes}`
-  }
   useEffect(() => {
-    if (auction && auction.auction && auction.auction.currentPrice) {
-      setBidAmount(auction.auction.currentPrice + 21)
+    let timer
+    const updateCountdown = () => {
+      if (auction && auction.auction && auction.auction.endDate) {
+        const end = new Date(auction.auction.endDate).getTime()
+        const now = new Date().getTime()
+        const diff = end - now
+        if (diff <= 0) {
+          setTimeLeft({ ended: true })
+          setAuctionEnded(true)
+          return
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24)
+        const minutes = Math.floor((diff / (1000 * 60)) % 60)
+        setTimeLeft({ days, hours, minutes, ended: false })
+        setAuctionEnded(false)
+      }
     }
+    updateCountdown()
+    timer = setInterval(updateCountdown, 1000)
+    return () => clearInterval(timer)
   }, [auction])
 
   return (
@@ -110,7 +126,6 @@ const ItemDetails = () => {
           </p>
           <p className="bids-count">
             {bidCount && `${bidCount}`} Bids • Closes on:{' '}
-            {getDateFormatted(auction && auction.auction.endDate)}
           </p>
           <div className="item-description">
             <p className="description-title">Description</p>
@@ -121,12 +136,26 @@ const ItemDetails = () => {
         </div>
       </div>
       <div className="item-page-footer">
-        <div className="bidding-time">5 Days : 8 Hours : 17 Min</div>
-        <button className="action-button" onClick={() => setIsModalOpen(true)}>
-          Bid Now
+        <div className="bidding-time">
+          {timeLeft.ended ? (
+            'Auction closed'
+          ) : (
+            <>
+              <span className="countdown-num">{timeLeft.days}</span> Days :{' '}
+              <span className="countdown-num">{timeLeft.hours}</span> Hours :{' '}
+              <span className="countdown-num">{timeLeft.minutes}</span> Minutes
+            </>
+          )}
+        </div>
+        <button
+          className="action-button"
+          onClick={() => setIsModalOpen(true)}
+          disabled={auctionEnded}
+        >
+          {auctionEnded ? 'Auction Ended' : 'Bid Now'}
         </button>
       </div>
-      {isModalOpen && (
+      {isModalOpen && !auctionEnded && (
         <div
           className="modal"
           onClick={(e) => {
@@ -140,7 +169,7 @@ const ItemDetails = () => {
               <p>Place Bid</p>
               <div className="bidding-time2">
                 <img src="/design-images/stopwatch.svg" alt="" />
-                5d:08h:17m
+                {`${timeLeft.days}d:${timeLeft.hours}h:${timeLeft.minutes}m`}
               </div>
             </div>
             <div className="modal-auto-bidding">
@@ -153,7 +182,6 @@ const ItemDetails = () => {
                   onClick={() => setShowAutoBidInfo(true)}
                 />
               </div>
-
 
               <div className="container">
                 <input
