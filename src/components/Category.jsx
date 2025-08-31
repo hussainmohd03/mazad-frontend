@@ -1,7 +1,6 @@
 import React from "react";
 import categories from "../objects/categories.json";
 import { useState } from "react";
-import AuctionBox from "./AuctionBox";
 const Category = ({
   setFormData,
   formData,
@@ -35,7 +34,9 @@ const Category = ({
           <div
             id={category.name}
             key={category.name}
-            className="category-item"
+            className={`category-item${
+              selectedCategory === category.name ? " active" : ""
+            }`}
             onClick={handleClick}
           >
             <img
@@ -49,7 +50,9 @@ const Category = ({
       <div className="item-step-footer">
         <button
           className="action-button"
-          onClick={() => setActiveStep(activeStep + 1)}
+          onClick={() => {
+            setActiveStep(activeStep + 1), console.log(formData);
+          }}
           disabled={!selectedCategory}
         >
           Next
