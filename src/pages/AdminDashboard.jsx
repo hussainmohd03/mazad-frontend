@@ -116,14 +116,13 @@ const AdminDashboard = () => {
           <h3>Listed Items Overview</h3>
           <p style={{ fontSize: '24px', fontWeight: '600' }}>{totalListed}</p>
           <ResponsiveContainer
-            width="15%"
-            height="15%"
+            width="12%"
+            height="12%"
             className="Responsive-Container-1"
           >
             <LineChart data={listingsChartData}>
               <Tooltip />
               <Line
-                type="monotone"
                 dataKey="total"
                 stroke="#2563eb"
                 strokeWidth={2}
@@ -139,14 +138,13 @@ const AdminDashboard = () => {
             {approvedListed}
           </p>
           <ResponsiveContainer
-            width="15%"
-            height="15%"
+            width="12%"
+            height="12%"
             className="Responsive-Container-2"
           >
             <LineChart data={listingsChartData}>
               <Tooltip />
               <Line
-                type="monotone"
                 dataKey="approved"
                 stroke="#16a34a"
                 strokeWidth={2}
@@ -162,14 +160,13 @@ const AdminDashboard = () => {
             {rejectedListed}
           </p>
           <ResponsiveContainer
-            width="15%"
-            height="15%"
+            width="12%"
+            height="12%"
             className="Responsive-Container-3"
           >
             <LineChart data={listingsChartData}>
               <Tooltip />
               <Line
-                type="monotone"
                 dataKey="rejected"
                 stroke="#dc2626"
                 strokeWidth={2}
