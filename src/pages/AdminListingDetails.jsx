@@ -3,7 +3,13 @@ import { useParams } from 'react-router-dom'
 import AdminNav from '../components/AdminNav'
 import Client from '../../services/api'
 import { useNavigate } from 'react-router-dom'
+import emailjs from '@emailjs/browser'
+
 const backendUrl = import.meta.env.VITE_BACKEND_URL
+
+const serviceId = 'service_xfa2nmx' // from EmailJS
+const templateId = 'YOUR_TEMPLATE_ID' // from EmailJS
+const publicKey = 'YOUR_PUBLIC_KEY' // from EmailJS
 
 const AdminListingDetails = () => {
   const { id } = useParams()
@@ -19,6 +25,7 @@ const AdminListingDetails = () => {
         const res = await Client.get(`${backendUrl}/admin/items`)
         const item = res.data.item.find((i) => i._id == id)
         setListing(item)
+        console.log(item)
         setMainImage(item?.images[0] || null)
       } catch (err) {
         setError('Failed to fetch listing details')
@@ -28,6 +35,8 @@ const AdminListingDetails = () => {
     }
     fetchListing()
   }, [])
+
+  // emailjs.
   const updateStatus = async (action) => {
     try {
       const res = await Client.put(
