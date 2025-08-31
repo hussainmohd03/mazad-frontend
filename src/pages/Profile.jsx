@@ -34,12 +34,6 @@ const Profile = ({
   return (
     <div className="profile-page">
       <header>
-        {notification && (
-          <Notificiation
-            notification={notification}
-            setNotification={setNotification}
-          />
-        )}
         <div className="profile-details">
           <div className="profile-title">Profile</div>
           <div className="profile-user-details">

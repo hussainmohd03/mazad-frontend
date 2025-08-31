@@ -1,14 +1,26 @@
 import NavBar from '../components/NavBar'
 import auctions from '../objects/auctions.json'
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import AuctionBox from '../components/AuctionBox'
-const Activity = () => {
+import Notificiation from '../components/Notification'
+import UserContext from '../context/UserContext'
+import { io } from 'socket.io-client'
+const socket = io('http://localhost:5045')
+
+const Activity = ({ notification, setNotification }) => {
   const [activeButton, setActiveButton] = useState('Bids')
+  const { user } = useContext(UserContext)
 
   return (
     <div className="activity-page">
+      {notification && (
+        <Notificiation
+          notification={notification}
+          setNotification={setNotification}
+        />
+      )}
       <header>
-        <p className='activity-header'>Activity</p>
+        <p className="activity-header">Activity</p>
         <div className="toggle-buttons">
           <button
             className={activeButton === 'Bids' ? 'active' : ''}

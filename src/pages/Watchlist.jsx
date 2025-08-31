@@ -15,12 +15,8 @@ const Watchlist = ({ setNotification, notification }) => {
     console.log('entered use effect on mount')
     console.log(user)
     socket.emit('joinUser', user.id)
-
-    socket.on('removedItem', (notif) => {
-      console.log('from frontend', notif)
-      setNotification(notif)
-    })
   }, [])
+  
   return (
     <div className="activity-page">
       <header>

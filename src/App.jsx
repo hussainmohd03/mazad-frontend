@@ -46,16 +46,21 @@ const App = () => {
     const token = localStorage.getItem('token')
     if (token) {
       checkToken()
-      socket.emit('joinUser', user.id)
-      console.log('emitted')
-      socket.on('outBid', (notif) => {
-        console.log('from frontend', notif)
-        setNotification(notif)
-      })
     } else {
       navigate('/')
     }
   }, [])
+
+  useEffect(() => {
+    if (user.id) {
+      socket.emit('joinUser', user.id)
+      console.log('emitted')
+      socket.on('notify', (notif) => {
+        console.log('from frontend', notif)
+        setNotification(notif)
+      })
+    }
+  }, [notification, socket, user])
 
   const handleLogOut = () => {
     setUser(null)
@@ -69,7 +74,6 @@ const App = () => {
     localStorage.clear()
     navigate('/sign-in')
   }
-  console.log(notification)
 
   return (
     <>
@@ -109,7 +113,15 @@ const App = () => {
             />
           }
         />
-        <Route path="/activity" element={<Activity />} />
+        <Route
+          path="/activity"
+          element={
+            <Activity
+              notification={notification}
+              setNotification={setNotification}
+            />
+          }
+        />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/auctions/:auctionId" element={<ItemDetails />} />

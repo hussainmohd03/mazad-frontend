@@ -36,11 +36,6 @@ const EditProfile = ({ setNotification, notification }) => {
     setId(updatedProfile.data.user._id)
 
     // socket.on here to update ui
-
-    socket.on('updateAccount', (notif) => {
-      console.log('from frontend', notif)
-      setNotification(notif)
-    })
     navigate('/profile')
   }
 

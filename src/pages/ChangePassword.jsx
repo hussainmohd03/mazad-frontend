@@ -54,10 +54,6 @@ const ChangePassword = () => {
         old_password: credentials.old_password,
         new_password: credentials.new_password
       })
-      socket.on('updatePassword', (notification) => {
-        // setNotification(notification)
-        console.log('from frontend', notification)
-      })
       navigate('/profile')
     }
   }
