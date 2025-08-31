@@ -6,7 +6,7 @@ const AdminNav = () => {
 
   const handleLogOut = () => {
     localStorage.clear()
-    navigate('/admin/signin')
+    navigate('/admin/sign-in')
   }
 
   return (
