@@ -1,6 +1,6 @@
 import React from "react";
 
-function SellerItems() {
+const SellerItems = () => {
   return <div>SellerItems</div>;
 }
 

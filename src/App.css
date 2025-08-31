@@ -1948,3 +1948,16 @@ input::-webkit-inner-spin-button {
   left: calc(50% - 27px / 2 + 10px);
   top: calc(50% - 27px / 2);
 }
+
+.empty-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.empty-page img {
+  max-width: 100%;
+  height: auto;
+}

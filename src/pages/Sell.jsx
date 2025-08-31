@@ -1,18 +1,27 @@
-
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import AuctionBox from "../components/AuctionBox";
-import auctions from "../objects/auctions.json";
 import ItemForm from "../components/ItemForm";
+import { getSellerItems } from "../../services/item";
+import EmptyPage from "../components/EmptyPage";
 const Sell = () => {
   const [activeButton, setActiveButton] = useState("on-auction");
+  const [sellerItems, setSellerItems] = useState([]);
+
+  useEffect(() => {
+    const fetchSellerItems = async () => {
+      const items = await getSellerItems();
+      setSellerItems(items.items);
+    };
+
+    fetchSellerItems();
+  }, []);
 
   return (
     <div className="sell-page">
-      {/* {activeButton === "on-auction" && ( */}
 
-      {activeButton === "on-auction" && (
+      { activeButton === "on-auction" && (
         <>
           <header>
             <p className="activity-header">Sell</p>
@@ -34,20 +43,23 @@ const Sell = () => {
             </div>
           </header>
           <main>
-            <div className="auctions-grid">
-              {auctions.map((auction) => (
-                <AuctionBox
-                  key={auction._id}
-                  auction={auction}
-                  activeButton={activeButton}
-                />
-              ))}
-            </div>
+            {sellerItems.length === 0 ? (
+              <EmptyPage image={"design-images/no-assets-listed.svg"} />
+            ) : (
+              <div className="auctions-grid">
+                {/* {sellerItems.map((auction) => (
+                  <AuctionBox
+                    key={auction._id}
+                    auction={auction}
+                    activeButton={activeButton}
+                  />
+                ))} */}
+              </div>
+            )}
           </main>
           <NavBar />
         </>
-      )}
-
+      )} 
       {activeButton === "sell-item" && (
         <ItemForm setActiveButton={setActiveButton} />
       )}

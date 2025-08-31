@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar";
 import WatchListBox from "../components/WatchListBox";
 import { getWatchList } from "../../services/WatchList"
 import { useEffect, useState } from "react"
+import EmptyPage from "../components/EmptyPage";
 const Watchlist = () => {
   const [auctions, setAuctions] = useState([])
 
@@ -27,11 +28,15 @@ const Watchlist = () => {
         </div>
       </header>
       <main>
-        <div className="watch-list-grid">
-          {auctions.map((watchList) => (
-            <WatchListBox key={watchList.id} auction={watchList} />
-          ))}
-        </div>
+        {auctions.length === 0 ? (
+          <EmptyPage image="/design-images/no-assets-listed.svg" />
+        ) : (
+          <div className="watch-list-grid">
+            {auctions.map((auction) => (
+              <WatchListBox key={auction.id} auction={auction} />
+            ))}
+          </div>
+        )}
       </main>
       <NavBar />
     </div>
