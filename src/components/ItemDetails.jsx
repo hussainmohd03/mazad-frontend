@@ -4,6 +4,7 @@ import { io } from 'socket.io-client'
 import { useNavigate, useParams } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
+import AutoBiddingInfo from './AutoBiddingInfo'
 const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5045')
 
 const ItemDetails = () => {
@@ -13,6 +14,10 @@ const ItemDetails = () => {
   const [bidAmount, setBidAmount] = useState()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [bidCount, setBidCount] = useState(0)
+  const [showAutoBidInfo, setShowAutoBidInfo] = useState(false)
+  const [showMinIncrement, setShowMinIncrement] = useState(false)
+  const [minIncrement, setMinIncrement] = useState(10)
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -48,9 +53,21 @@ const ItemDetails = () => {
 
   const placeBid = async () => {
     try {
-      const res = await Client.post(`${BASE_URL}/auctions/${auctionId}/bids`, {
-        amount: bidAmount
-      })
+      if (showMinIncrement) {
+        await Client.post(`${BASE_URL}/auctions/autobid`, {
+          auctionId,
+          increment_amount: minIncrement,
+          max_bid_amount: bidAmount
+        })
+        setIsModalOpen(false)
+      } else {
+        const res = await Client.post(
+          `${BASE_URL}/auctions/${auctionId}/bids`,
+          {
+            amount: bidAmount
+          }
+        )
+      }
       setError('')
     } catch (error) {
       setError(error.response.data)
@@ -127,16 +144,30 @@ const ItemDetails = () => {
               </div>
             </div>
             <div className="modal-auto-bidding">
-              <p>
-                Use Auto Bid{' '}
+              <div className="auto-bid-info">
+                <p>Use Auto Bid </p>
                 <img
                   src="/design-images/info.svg"
                   alt=""
                   className="info-icon"
+                  onClick={() => setShowAutoBidInfo(true)}
                 />
-              </p>
-              <div className="bidding-time2">5d:08h:17m</div>
+              </div>
+
+
+              <div className="container">
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                  id="checkbox"
+                  onClick={() => setShowMinIncrement((prev) => !prev)}
+                />
+                <label className="switch" htmlFor="checkbox">
+                  <span className="slider"></span>
+                </label>
+              </div>
             </div>
+
             <div className="modal-bid-amount">
               <button
                 className="minus_button"
@@ -192,6 +223,76 @@ const ItemDetails = () => {
                 </svg>
               </button>
             </div>
+            {showMinIncrement && (
+              <div className="min-increment-field" style={{ margin: '16px 0' }}>
+                <label htmlFor="minIncrement">
+                  You need to set a minimum increment
+                </label>
+                <div className="modal-bid-amount">
+                  <button
+                    className="minus_button"
+                    onClick={() =>
+                      setMinIncrement(minIncrement > 10 ? minIncrement - 1 : 10)
+                    }
+                  >
+                    <svg
+                      width="55"
+                      height="54"
+                      viewBox="0 0 55 54"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <ellipse
+                        cx="27.5"
+                        cy="27"
+                        rx="27.5"
+                        ry="27"
+                        fill="#F2F4F5"
+                      />
+                      <path
+                        d="M18 27H38"
+                        stroke="#303940"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </button>
+                  <span>BHD {minIncrement}</span>
+                  <button
+                    className="plus_button"
+                    onClick={() => setMinIncrement(minIncrement + 1)}
+                  >
+                    <svg
+                      width="55"
+                      height="54"
+                      viewBox="0 0 55 54"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <ellipse
+                        cx="27.5"
+                        cy="27"
+                        rx="27.5"
+                        ry="27"
+                        fill="#F2F4F5"
+                      />
+                      <path
+                        d="M18 27H38"
+                        stroke="#303940"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d="M27.999 37.0001V17.0001"
+                        stroke="#303940"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            )}
             <button onClick={placeBid} className="sign-button">
               Add Deposit
             </button>
@@ -207,6 +308,9 @@ const ItemDetails = () => {
             </div>
           </div>
         </div>
+      )}
+      {showAutoBidInfo && (
+        <AutoBiddingInfo setShowAutoBidInfo={setShowAutoBidInfo} />
       )}
     </div>
   )
