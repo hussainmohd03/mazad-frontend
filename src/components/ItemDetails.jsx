@@ -1,6 +1,4 @@
-
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { useNavigate, useParams } from "react-router-dom";
 import Client from "../../services/api";
@@ -10,122 +8,123 @@ import {
   removeFromWatchList,
   getWatchList,
 } from "../../services/WatchList";
-import AutoBiddingInfo from './AutoBiddingInfo'
-const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5045')
+import AutoBiddingInfo from "./AutoBiddingInfo";
+import Modal from "./Modal";
 
-
+const socket = io(import.meta.env.VITE_SOCKET_URL || "http://localhost:5045");
 
 const ItemDetails = () => {
-  const [auction, setAuction] = useState("");
-  const auctionId = useParams().auctionId;
-  const [error, setError] = useState("");
-  const [bidAmount, setBidAmount] = useState();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [bidCount, setBidCount] = useState(0);
+  const { auctionId } = useParams()
+  const navigate = useNavigate()
+
+  const [auction, setAuction] = useState(null)
+  const [bidAmount, setBidAmount] = useState(0)
+  const [minIncrement, setMinIncrement] = useState(10)
+  const [bidCount, setBidCount] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [showAutoBidInfo, setShowAutoBidInfo] = useState(false)
   const [showMinIncrement, setShowMinIncrement] = useState(false)
-  const [minIncrement, setMinIncrement] = useState(10)
-  const navigate = useNavigate();
+  const [isInWatchList, setIsInWatchList] = useState(false)
+  const [error, setError] = useState("")
 
-  const getList = async () => {
-    const watchList = await getWatchList();
-    watchList.some((item) => item.auctionId === auctionId);
-    console.log(auctionId);
-    console.log(watchList);
-    watchList.forEach((item) => console.log(item.auctionId));
-    // const isInWatchList = watchList.some((item) => item.auctionId === auctionId);
-    // console.log(isInWatchList);
-  };
+  useEffect(() => {
+    const fetchWatchList = async () => {
+      const watchList = await getWatchList()
+      setIsInWatchList(watchList.some((item) => item.auctionId === auctionId))
+    }
+    fetchWatchList()
+  }, [auctionId])
 
-  getList();
 
   useEffect(() => {
     const getAuction = async () => {
-      const res = await Client(`${BASE_URL}/auctions/${auctionId}`);
-      setBidCount(res.data.bidCount);
-      setAuction(res.data);
+      const res = await Client(`${BASE_URL}/auctions/${auctionId}`)
+      setAuction(res.data.auction || res.data)
+      setBidCount(res.data.bidCount || 0)
     };
-    socket.emit("joinAuction", auctionId);
+
+    socket.emit("joinAuction", auctionId)
 
     socket.on("newBid", (data) => {
-      setBidCount(data.bidCount);
+      setBidCount(data.bidCount)
       setAuction((prev) => ({
         ...prev,
-        auction: {
-          ...prev.auction,
-          currentPrice: data.currentPrice,
-        },
-      }));
-      setError("");
+        currentPrice: data.currentPrice,
+      }))
+      setError("")
+    })
+
+    socket.on("outBid", () => {
+
     });
 
-    socket.on("outBid", (data) => {
-      // inform user
-    });
+    getAuction()
 
-    getAuction();
     return () => {
-      socket.emit("leaveAuction", auctionId);
-      socket.off("newBid");
-    };
-  }, [auctionId]);
+      socket.emit("leaveAuction", auctionId)
+      socket.off("newBid")
+      socket.off("outBid")
+    }
+  }, [auctionId])
+
+
+  useEffect(() => {
+    if (auction?.currentPrice) {
+      setBidAmount(auction.currentPrice + 21)
+    }
+  }, [auction])
+
+
+  const getDateFormatted = (dateString) => {
+    const formatedDate = new Date(dateString)
+    const year = formatedDate.getFullYear()
+    const month = String(formatedDate.getMonth())
+    const day = String(formatedDate.getDate())
+    const hours = String(formatedDate.getHours())
+    const minutes = String(formatedDate.getMinutes())
+    return `${month}/${day}/${year} at ${hours}:${minutes}`
+  }
+
 
   const placeBid = async () => {
     try {
-
       if (showMinIncrement) {
         await Client.post(`${BASE_URL}/auctions/autobid`, {
           auctionId,
           increment_amount: minIncrement,
-          max_bid_amount: bidAmount
-        })
-        setIsModalOpen(false)
+          max_bid_amount: bidAmount,
+        });
       } else {
-        const res = await Client.post(
-          `${BASE_URL}/auctions/${auctionId}/bids`,
-          {
-            amount: bidAmount
-          }
-        )
+        await Client.post(`${BASE_URL}/auctions/${auctionId}/bids`, {
+          amount: bidAmount,
+        });
       }
-      setError('')
-    } catch (error) {
-      setError(error.response.data);
+      setIsModalOpen(false)
+      setError("");
+    } catch (err) {
+      setError(err.response?.data || "Something went wrong");
     }
   };
 
-  const getDateFormatted = (dateString) => {
-    const formatedDate = new Date(dateString);
-    const year = formatedDate.getFullYear();
-    const month = String(formatedDate.getMonth());
-    const day = String(formatedDate.getDate());
-    const hours = String(formatedDate.getHours());
-    const minutes = String(formatedDate.getMinutes());
-    return `${month}/${day}/${year} at ${hours}:${minutes}`;
-  };
-  useEffect(() => {
-    if (auction && auction.auction && auction.auction.currentPrice) {
-      setBidAmount(auction.auction.currentPrice + 21);
-    }
-  }, [auction]);
+  if (!auction) return <p>Loading...</p>
 
   return (
     <div className="item-page">
       <div className="item-page-header">
         <div className="blurry-circle back" onClick={() => navigate(-1)}>
-          <img
-            src="/design-images/arrow.svg"
-            alt="back"
-            className="back-arrow"
-          />
+          <img src="/design-images/arrow.svg" alt="back" className="back-arrow" />
         </div>
         <div
           className="blurry-circle favorite"
-          onClick={() =>
-            isInWatchList
-              ? removeFromWatchList(auctionId)
-              : addToWatchList(auction)
-          }
+          onClick={async () => {
+            if (isInWatchList) {
+              await removeFromWatchList(auctionId);
+              setIsInWatchList(false)
+            } else {
+              await addToWatchList(auction)
+              setIsInWatchList(true)
+            }
+          }}
         >
           <img
             src="/design-images/book-mark.svg"
@@ -139,19 +138,16 @@ const ItemDetails = () => {
           <img src="/items/watch.webp" alt="item-image" />
         </div>
         <div className="item-details">
-          <p className="">Lot ID # {auction && auction.auction.itemId._id}</p>
-          <p className="">{auction && auction.auction.itemId.name}</p>
-          <p className="">Current Bid</p>
-          <p className="">BHD {auction && auction.auction.currentPrice}</p>
+          <p>Lot ID # {auction.itemId?._id}</p>
+          <p>{auction.itemId?.name}</p>
+          <p>Current Bid</p>
+          <p>BHD {auction.currentPrice}</p>
           <p className="bids-count">
-            {bidCount && `${bidCount}`} Bids • Closes on:{" "}
-            {getDateFormatted(auction && auction.auction.endDate)}
+            {bidCount} Bids Closes on: {getDateFormatted(auction.endDate)}
           </p>
           <div className="item-description">
             <p className="description-title">Description</p>
-            <p className="description-text">
-              {auction && auction.auction.itemId.description}
-            </p>
+            <p className="description-text">{auction.itemId?.description}</p>
           </div>
         </div>
       </div>
@@ -162,196 +158,24 @@ const ItemDetails = () => {
         </button>
       </div>
       {isModalOpen && (
-        <div
-          className="modal"
-          onClick={(e) => {
-            if (e.target.classList.contains("modal")) {
-              setIsModalOpen(false);
-            }
-          }}
-        >
-          <div className="modal-content">
-            <div className="modal-header">
-              <p>Place Bid</p>
-              <div className="bidding-time2">
-                <img src="/design-images/stopwatch.svg" alt="" />
-                5d:08h:17m
-              </div>
-            </div>
-            <div className="modal-auto-bidding">
-              <p>
-                Use Auto Bid{" "}
-              <div className="auto-bid-info">
-                <p>Use Auto Bid </p>
-
-                <img
-                  src="/design-images/info.svg"
-                  alt=""
-                  className="info-icon"
-                  onClick={() => setShowAutoBidInfo(true)}
-                />
-              </div>
-
-
-              <div className="container">
-                <input
-                  type="checkbox"
-                  className="checkbox"
-                  id="checkbox"
-                  onClick={() => setShowMinIncrement((prev) => !prev)}
-                />
-                <label className="switch" htmlFor="checkbox">
-                  <span className="slider"></span>
-                </label>
-              </div>
-            </div>
-
-            <div className="modal-bid-amount">
-              <button
-                className="minus_button"
-                onClick={() =>
-                  setBidAmount(
-                    bidAmount > (auction?.auction?.currentPrice || 0)
-                      ? bidAmount - 1
-                      : bidAmount
-                  )
-                }
-              >
-                <svg
-                  width="55"
-                  height="54"
-                  viewBox="0 0 55 54"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <ellipse cx="27.5" cy="27" rx="27.5" ry="27" fill="#F2F4F5" />
-                  <path
-                    d="M18 27H38"
-                    stroke="#303940"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </button>
-              <span>BHD {bidAmount}</span>
-              <button
-                className="plus_button"
-                onClick={() => setBidAmount(bidAmount + 1)}
-              >
-                <svg
-                  width="55"
-                  height="54"
-                  viewBox="0 0 55 54"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <ellipse cx="27.5" cy="27" rx="27.5" ry="27" fill="#F2F4F5" />
-                  <path
-                    d="M18 27H38"
-                    stroke="#303940"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M27.999 37.0001V17.0001"
-                    stroke="#303940"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </button>
-            </div>
-            {showMinIncrement && (
-              <div className="min-increment-field" style={{ margin: '16px 0' }}>
-                <label htmlFor="minIncrement">
-                  You need to set a minimum increment
-                </label>
-                <div className="modal-bid-amount">
-                  <button
-                    className="minus_button"
-                    onClick={() =>
-                      setMinIncrement(minIncrement > 10 ? minIncrement - 1 : 10)
-                    }
-                  >
-                    <svg
-                      width="55"
-                      height="54"
-                      viewBox="0 0 55 54"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <ellipse
-                        cx="27.5"
-                        cy="27"
-                        rx="27.5"
-                        ry="27"
-                        fill="#F2F4F5"
-                      />
-                      <path
-                        d="M18 27H38"
-                        stroke="#303940"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </button>
-                  <span>BHD {minIncrement}</span>
-                  <button
-                    className="plus_button"
-                    onClick={() => setMinIncrement(minIncrement + 1)}
-                  >
-                    <svg
-                      width="55"
-                      height="54"
-                      viewBox="0 0 55 54"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <ellipse
-                        cx="27.5"
-                        cy="27"
-                        rx="27.5"
-                        ry="27"
-                        fill="#F2F4F5"
-                      />
-                      <path
-                        d="M18 27H38"
-                        stroke="#303940"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        d="M27.999 37.0001V17.0001"
-                        stroke="#303940"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            )}
-            <button onClick={placeBid} className="sign-button">
-              Add Deposit
-            </button>
-            <div className="terms">
-              <p>
-                We ensure your information is kept secure. For more information,
-                check our <span>Privacy Policy</span> and{" "}
-                <span>Terms & Conditions</span>
-              </p>
-            </div>
-            <div className="error">
-              <p>{error && error}</p>
-            </div>
-          </div>
-        </div>
+        <Modal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          auction={auction}
+          bidAmount={bidAmount}
+          setBidAmount={setBidAmount}
+          minIncrement={minIncrement}
+          setMinIncrement={setMinIncrement}
+          showMinIncrement={showMinIncrement}
+          setShowMinIncrement={setShowMinIncrement}
+          error={error}
+          placeBid={placeBid}
+          setShowAutoBidInfo={setShowAutoBidInfo}
+        />
       )}
-      {showAutoBidInfo && (
-        <AutoBiddingInfo setShowAutoBidInfo={setShowAutoBidInfo} />
-      )}
+      {showAutoBidInfo && <AutoBiddingInfo setShowAutoBidInfo={setShowAutoBidInfo} />}
     </div>
-  );
-};
+  )
+}
 
-export default ItemDetails;
+export default ItemDetails
