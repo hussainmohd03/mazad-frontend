@@ -2,7 +2,12 @@ import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { Register } from '../../services/Auth'
+import emailjs from '@emailjs/browser'
+
 const SignUp = () => {
+  const serviceId = 'service_xfa2nmx'
+  const templateId = 'template_inrpxj1'
+  const publicKey = 'Fxi0xwrKA_XPTOzbg'
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     full_name: '',
@@ -22,6 +27,16 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await Register(formData.full_name, formData.email, formData.password)
+
+    const templateParams = {
+      firstName: formData.full_name.split(' ')[0],
+      name: formData.full_name,
+      status: 'registered successfully',
+      email: formData.email
+    }
+
+    await emailjs.send(serviceId, templateId, templateParams, publicKey)
+
     setFormData({
       full_name: '',
       email: '',

@@ -43,8 +43,8 @@ export const AdminLogin = async (data) => {
     console.log('reaches admin login from auth frontend')
     console.log(data)
     const res = await Client.post('/auth/admin/login', data)
-    console.log('auth front end ', res)
     localStorage.setItem('token', res.data.token)
+
     return res.data
   } catch (error) {
     throw error

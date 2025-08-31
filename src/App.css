@@ -1548,12 +1548,11 @@ textarea {
 .Total-listed-items {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.8rem;
   height: auto;
   width: auto;
   margin-left: 6%;
   margin-right: 10%;
-
   box-shadow: 5px 5px 10px rgba(97, 97, 97, 0.079);
   grid-column: 1 / 3;
   grid-row: 2 / 4;
@@ -1561,7 +1560,7 @@ textarea {
 .aproved-items {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.8rem;
   height: auto;
   width: auto;
   margin-left: -11%;
@@ -1573,7 +1572,7 @@ textarea {
 .rejected-items {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.8rem;
   height: auto;
   width: auto;
   margin-left: -25%;
@@ -1586,7 +1585,7 @@ textarea {
 .total-users {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.6rem;
   height: auto;
   width: auto;
   margin-left: 4%;
@@ -1598,13 +1597,54 @@ textarea {
 .all-biddings-over-time {
   background: #fff;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1.6rem;
   height: auto;
   width: auto;
   margin-right: -14%;
   box-shadow: 5px 5px 10px rgba(97, 97, 97, 0.079);
   grid-column: 4 / 6;
   grid-row: 4 / 7;
+}
+.p-in-dashbaard {
+  font-size: 15px;
+  margin: 1% 1% -5% 0%;
+  color: #9291a5;
+}
+.p-in-dashbaard-user {
+  font-size: 15px;
+  margin: 1% 1% -3% 0%;
+  color: #9291a5;
+}
+.total-users-title {
+  position: absolute;
+  /* margin: 0% 0% 0% 0%; */
+  left: 34%;
+  top: 83%;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 16px;
+}
+.pie-chart {
+  margin: 5% 0% 0% 0%;
+}
+hr {
+  border: #00000017 solid 0.1px;
+  margin: 1px 2px;
+}
+.Responsive-Container-1 {
+  position: absolute;
+  top: 32%;
+  left: 27%;
+}
+.Responsive-Container-2 {
+  position: absolute;
+  top: 32%;
+  left: 53%;
+}
+.Responsive-Container-3 {
+  position: absolute;
+  top: 32%;
+  left: 79%;
 }
 
 /* admin dashboard end */
@@ -1738,6 +1778,26 @@ input::-webkit-inner-spin-button {
   border-radius: 25px;
   text-align: center;
 }
+.modal2 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(12, 12, 12, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 22px;
+}
+.modal-content2 {
+  background: white;
+  padding: 20px;
+  width: 100%;
+  margin-top: 140%;
+  height: 57%;
+  border-radius: 15px;
+  text-align: center;
+}
+
 .modal-header,
 .modal-auto-bidding {
   display: flex;
@@ -1745,6 +1805,14 @@ input::-webkit-inner-spin-button {
   align-items: center;
   margin: 0 2%;
   font-size: 19px;
+}
+.auto-bid-info {
+  display: flex;
+  align-items: center;
+}
+.auto-bid-info img {
+  margin-bottom: 2px;
+  margin-left: 6px;
 }
 .modal-header p {
   color: #303940;
@@ -1762,10 +1830,9 @@ input::-webkit-inner-spin-button {
   font-family: 600;
 }
 .terms {
-  /* display: flex; */
-
   margin: 0 auto;
 }
+
 .terms p {
   text-align: left;
   color: #84919a;
@@ -1777,9 +1844,7 @@ input::-webkit-inner-spin-button {
   text-decoration: underline;
   margin: 0 auto;
 }
-.sign-button {
-  width: 100%;
-}
+
 .minus_button,
 .plus_button {
   all: unset;
@@ -1800,4 +1865,86 @@ input::-webkit-inner-spin-button {
   color: red;
   font-size: 14px;
   margin-top: 10px;
+}
+.modal_header2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2%;
+  font-size: 19px;
+}
+.modal_header2 p {
+  color: #2d3841;
+  font-weight: 600;
+  margin-right: 39%;
+}
+.auto-bid-text {
+  font-weight: 500;
+}
+.modal_header2 button {
+  all: unset;
+  margin-left: -15px;
+}
+/* From Uiverse.io by zanina-yassine */
+/* Remove this container when use*/
+.component-title {
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+  top: 30px;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #888;
+  text-align: center;
+}
+
+/* The switch - the box around the slider */
+.container {
+  width: 51px;
+  height: 31px;
+  position: relative;
+}
+
+/* Hide default HTML checkbox */
+.checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.switch {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #e9e9eb;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+/* The slider */
+.slider {
+  width: 27px;
+  height: 27px;
+  position: absolute;
+  left: calc(50% - 27px / 2 - 10px);
+  top: calc(50% - 27px / 2);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15), 0px 3px 1px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+.checkbox:checked + .switch {
+  background-color: red;
+}
+
+.checkbox:checked + .switch .slider {
+  left: calc(50% - 27px / 2 + 10px);
+  top: calc(50% - 27px / 2);
 }
