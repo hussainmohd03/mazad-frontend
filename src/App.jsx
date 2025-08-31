@@ -21,7 +21,6 @@ import UserContext from './context/UserContext'
 import ChangePassword from './pages/ChangePassword'
 import AdminListings from './pages/AdminListings'
 import AdminSignIn from './pages/AdminSignIn'
-import AddAdminAccounts from './pages/AddAdminAccounts'
 import AdminListingDetails from './pages/AdminListingDetails'
 import AdminDashboard from './pages/AdminDashboard'
 
@@ -96,7 +95,6 @@ const App = () => {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         {/* <Route path="/admin/categories" element={<AdminCategories />} />
         <Route path="/admin/settings" element={<AdminSettings />} />*/}
-        <Route path="/admin/AddAdminAccount" element={<AddAdminAccounts />} />
         {/* <Route path="/admin/settings" element={<AdminSettings />} />
         <Route path="/admin/admins" element={<AdminAccounts />} />  */}
         <Route

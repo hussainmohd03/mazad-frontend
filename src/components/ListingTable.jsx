@@ -29,7 +29,6 @@ const ListingTable = ({ listings }) => {
             className="listing-row"
             onClick={() => navigate(`/admin/listings/${item._id}`)}
           >
-            {console.log(item)}
             <span>{index + 1}</span>
             <span>
               {item._id.slice(0, 4)}...{item._id.slice(-4)}
