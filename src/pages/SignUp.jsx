@@ -34,7 +34,7 @@ const SignUp = () => {
       status: 'registered successfully',
       email: formData.email
     }
-
+    console.log(formData.email)
     await emailjs.send(serviceId, templateId, templateParams, publicKey)
 
     setFormData({
