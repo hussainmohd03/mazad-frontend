@@ -8,8 +8,6 @@ body {
   font-family: 'Poppins', sans-serif !important;
   color: black;
   font-weight: 400;
-  overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 .landing-page {
@@ -1739,9 +1737,15 @@ input::-webkit-inner-spin-button {
 }
 
 .notif-container {
+  position: absolute;
+  z-index: 6;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  width: 335px;
   font-family: BlinkMacSystemFont, sans-serif;
   font-weight: 550;
-  background: rgba(171, 171, 171, 0.4);
+  background: rgba(171, 171, 171, 0.8);
   padding: 10px;
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -1749,8 +1753,8 @@ input::-webkit-inner-spin-button {
 }
 
 .notif-upper-label {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
 }
 
 .notif-main-text {
@@ -1760,12 +1764,29 @@ input::-webkit-inner-spin-button {
   color: #000000;
   opacity: 100 !important;
   margin-top: 10px;
+  margin-left: 5px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 .notif-secondary-text {
   color: rgba(0, 0, 0, 0.36);
   font-size: small;
   font-weight: 500;
+}
+
+.title {
+  margin-right: auto;
+  padding-left: 10px;
+}
+.time {
+  margin-right: auto;
+  padding-right: 10px;
+}
+.notif-upper-label img {
+  margin: 5px;
+  width: 32px;
+  height: 32px;
 }
 
 .modal {
@@ -1985,4 +2006,75 @@ input::-webkit-inner-spin-button {
 .edit-profile-button {
   font-size: 80%;
   font-weight: 450;
+}
+
+.transactions-header {
+  padding-top: 9%;
+  font-weight: 500;
+  color: #2d3841;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  
+}
+
+.transactions-header img {
+  justify-self: center;
+  align-self: center;
+}
+
+.no-transaction-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center;
+  height: 70vh;
+}
+
+.main-text-transaction {
+  color: #b0babf;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.sub-text-transac {
+  margin: 20px;
+  color: #c8cfd3;
+  font-weight: 300;
+}
+
+.transactions-page {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 12fr;
+}
+
+.transactions-grid {
+  height: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-box-left {
+  align-items: start;
+}
+
+.transaction-box-right {
+  align-items: end;
+}
+
+.transaction-box {
+  display: flex;
+  width: 90%;
+  height: 100%;
+  align-self: center;
+  justify-content: space-between;
+  border-bottom: #ededed 1px solid;
+}
+
+.transaction-box div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
 }

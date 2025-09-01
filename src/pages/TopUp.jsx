@@ -16,7 +16,7 @@ const TopUp = ({ financialData, setFinancialData }) => {
 
   const handleClick = async () => {
     const res = await Client.put(`${BASE_URL}/users/me`, {
-      balance: financialData.deposit - financialData.bidding_limit + amount
+      balance: (financialData.deposit - financialData.bidding_limit)+ amount
     })
     navigate('/profile')
   }
