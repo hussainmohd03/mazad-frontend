@@ -3,9 +3,15 @@ import { useParams } from 'react-router-dom'
 import AdminNav from '../components/AdminNav'
 import Client from '../../services/api'
 import { useNavigate } from 'react-router-dom'
+import emailjs from '@emailjs/browser'
+
 const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 const AdminListingDetails = () => {
+  const serviceId = 'service_xfa2nmx'
+  const templateId = 'template_hzs50s8'
+  const publicKey = 'Fxi0xwrKA_XPTOzbg'
+
   const { id } = useParams()
   const [listing, setListing] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -28,6 +34,7 @@ const AdminListingDetails = () => {
     }
     fetchListing()
   }, [])
+
   const updateStatus = async (action) => {
     try {
       const res = await Client.put(
@@ -35,6 +42,16 @@ const AdminListingDetails = () => {
       )
       setListing(res.data)
       navigate('/admin/listings')
+
+      const templateParams = {
+        firstName: listing.ownerId.firstName,
+        name: listing.name,
+        status: action,
+        email: listing.email
+      }
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+
     } catch (error) {
       console.error(error)
     }

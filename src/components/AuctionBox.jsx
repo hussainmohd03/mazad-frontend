@@ -57,11 +57,11 @@ const AuctionBox = ({ auction, activeButton }) => {
       }}
     >
       <div className="auction-box-header">
-        <img
+        {/* <img
           src={`${auction.item.images}`}
           alt="item-image"
           className="auction-box-item-image"
-        />
+        /> */}
         <div className="auction-box-description">
           <p className="primary-text">{auction.item.name}</p>
           <p className="secondary-text">{auction.item.category}</p>

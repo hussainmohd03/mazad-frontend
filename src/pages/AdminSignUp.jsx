@@ -27,7 +27,6 @@ const AdminSignUp = () => {
       formData.email,
       formData.password
     )
-    console.log('admin', admin)
     setFormData({
       full_name: '',
       email: '',

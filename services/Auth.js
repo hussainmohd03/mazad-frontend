@@ -15,13 +15,11 @@ export const Register = async (full_name, email, password) => {
 
 export const RegisterAdmin = async (full_name, email, password) => {
   try {
-    console.log('enters back end register admin ')
     const res = await Client.post('/auth/admin/signup', {
       email,
       password,
       full_name
     })
-    console.log(res, 'from auth file in services')
     return res.data
   } catch (error) {
     throw error
@@ -40,11 +38,9 @@ export const Login = async (data) => {
 
 export const AdminLogin = async (data) => {
   try {
-    console.log('reaches admin login from auth frontend')
-    console.log(data)
     const res = await Client.post('/auth/admin/login', data)
-    console.log('auth front end ', res)
     localStorage.setItem('token', res.data.token)
+
     return res.data
   } catch (error) {
     throw error

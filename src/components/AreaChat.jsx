@@ -2,7 +2,6 @@
 import { PieChart, Pie, Cell, Label, ResponsiveContainer } from 'recharts'
 const colors = ['#E2E2E2', '#F90002']
 
-// https://stackoverflow.com/questions/45723641/recharts-donut-chart-w-two-labels-in-center
 function CustomLabel({ value1, value2 }) {
   return (
     <>
@@ -68,9 +67,9 @@ const AreaChartComponent = ({ used }) => {
           data={topUp}
           dataKey="amount"
           outerRadius={80}
+
           cornerRadius={4}
           innerRadius={57}
-          // fill="#F90002"
           style={{ height: 53, width: 36 }}
         >
           <Label
