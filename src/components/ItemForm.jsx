@@ -24,9 +24,7 @@ const ItemForm=({ setActiveButton })=> {
     formData.images.forEach((image) => {
       itemData.append("images", image);
     });
-    console.log(formData);
     for (let [key, value] of itemData.entries()) {
-  console.log(key, value);
 }
     createItem(itemData);
   };

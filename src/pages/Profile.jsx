@@ -6,12 +6,16 @@ import { NavLink, Link } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import AreaChartComponent from '../components/AreaChat'
+import Notificiation from '../components/Notification'
+import ChangePassword from './ChangePassword'
 
 const Profile = ({
   handleLogOut,
   financialData,
   setFinancialData,
-  handleDeleteAccount
+  handleDeleteAccount,
+  notification,
+  setNotification
 }) => {
   const { user } = useContext(UserContext)
   const [name, setName] = useState('')
@@ -25,7 +29,6 @@ const Profile = ({
       const res = await Client.get(`${BASE_URL}/auth/details`)
       setFinancialData(res.data)
     }
-
     getFinancialData()
   }, [])
 
@@ -86,6 +89,18 @@ const Profile = ({
         <div className="profile-footer">
           <p className="primary-text">Settings</p>
           <div>
+            <img
+              src="/design-images/transaction.svg"
+              alt=""
+            />
+            <p className="change-password-button">
+              {' '}
+              <Link className="no-decor" to="/transaction-history">
+                Transactions{' '}
+              </Link>
+            </p>
+          </div>
+          <div>
             <img src="/design-images/password.svg" alt="" />
 
             <p className="change-password-button">
@@ -100,7 +115,6 @@ const Profile = ({
             <p onClick={() => handleLogOut()} className="under-line-text">
               Log out
             </p>
-
           </div>
           <div>
             <img src="/design-images/trash.svg" alt="" />

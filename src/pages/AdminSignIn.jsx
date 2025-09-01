@@ -13,30 +13,21 @@ const AdminSignIn = () => {
     password: ''
   })
 
-  // const [error, setError] = useState(null)
-  // const [success, setSuccess] = useState(null)
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async (e) => {
-    console.log('handling submit')
     e.preventDefault()
-    // setError(null)
-    // setSuccess(null)
     try {
-      console.log('getting user', formData)
       const user = await AdminLogin(formData)
       setUser(user.admin)
-      // setSuccess('SignIn successfully')
       setFormData({
         email: '',
         password: ''
       })
       navigate('/admin/listings')
     } catch (err) {
-      // setError(err.response?.data?.msg || 'Failed to SignIn')
       console.log(err)
     }
   }
