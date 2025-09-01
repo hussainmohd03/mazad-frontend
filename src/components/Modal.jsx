@@ -89,7 +89,7 @@ const Modal = ({
                   setMinIncrement(minIncrement > 10 ? minIncrement - 1 : 10)
                 }
               >
-                -
+                <img src="/design-images/minus.svg" alt="" />
               </button>
               <span>BHD {minIncrement}</span>
               <button
@@ -101,7 +101,7 @@ const Modal = ({
             </div>
           </div>
         )}
-        <button onClick={placeBid} className="sign-button">
+        <button onClick={placeBid} className="sign-button placeBid-btn">
           Add Deposit
         </button>
         <div className="terms">

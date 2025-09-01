@@ -7,6 +7,7 @@ import Modal from "./Modal";
 import {
   addToWatchList,
   removeFromWatchList,
+  getWatchList,
 } from "../../services/WatchList";
 import AutoBiddingInfo from "./AutoBiddingInfo";
 const socket = io(import.meta.env.VITE_SOCKET_URL || "http://localhost:5045");
@@ -86,8 +87,8 @@ const ItemDetails = () => {
 
     getAuction();
     const fetchWatchList = async () => {
-      const response = await Client.get("/watchlist/me");
-      setIsInWatchList(response.data.some((item) => item.auctionId === auctionId));
+      const watchList = await getWatchList();
+      setIsInWatchList(watchList.some((item) => item.auctionId === auctionId));
     };
     fetchWatchList();
     return () => {
@@ -140,12 +141,11 @@ const ItemDetails = () => {
         <div
           className="blurry-circle favorite"
           onClick={async () => {
-            console.log(auctionId);
             if (isInWatchList) {
-              await Client.put(`/watchlist/me/remove/${auctionId.toString()}`);
+              await removeFromWatchList(auctionId);
               setIsInWatchList(false);
             } else {
-              await Client.put(`/watchlist/me/add/${auctionId.toString()}`);
+              await addToWatchList(auction);
               setIsInWatchList(true);
             }
           }}
@@ -153,7 +153,7 @@ const ItemDetails = () => {
           <img
             src="/design-images/book-mark.svg"
             alt="favorite"
-            className={`back-arrow ${isInWatchList ? "active-bookmark" : ""}`}
+            className="back-arrow"
           />
         </div>
       </div>
