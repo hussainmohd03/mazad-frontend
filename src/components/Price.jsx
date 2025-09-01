@@ -49,6 +49,7 @@ const Price = ({ setFormData, formData, setActiveStep, activeStep , handleSubmit
         >
           Next
         </button>
+        
       </div>
     </>
   );
