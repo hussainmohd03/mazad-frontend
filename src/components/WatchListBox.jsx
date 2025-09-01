@@ -1,11 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react"
-import {
-  addToWatchList,
-  removeFromWatchList,
-  getWatchList,
-} from "../../services/WatchList"
-
+import { addToWatchList,removeFromWatchList,} from "../../services/WatchList"
+import Client from "../../services/api"
+import { BASE_URL } from "../../globals"
 const WatchListBox = ({ auction }) => {
   const formatRemainingTime = (endDate) => {
     const now = new Date()
@@ -22,8 +19,8 @@ const WatchListBox = ({ auction }) => {
 
   useEffect(() => {
     const fetchWatchList = async () => {
-      const watchList = await getWatchList()
-      setIsInWatchList(watchList.some((item) => item.auctionId === auction._id))
+      const response = await Client.get("/watchlist/me");
+      setIsInWatchList(response.data.some((item) => item.auctionId === auction._id))
     }
     fetchWatchList()
   }, [])
@@ -47,7 +44,7 @@ const WatchListBox = ({ auction }) => {
                       }
                     }}>
             <img
-              src="/design-images/book-mark.svg"
+              src={`${BASE_URL}/design-images/book-mark.svg`}
               alt="remove"
               className={isInWatchList ? "active-bookmark" : ""}
             />

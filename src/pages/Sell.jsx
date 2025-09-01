@@ -10,7 +10,11 @@ import SellerItemBox from "../components/SellerItemBox";
 const Sell = () => {
   const [activeButton, setActiveButton] = useState("on-auction");
   const [sellerItems, setSellerItems] = useState([]);
-
+  const [inSell , setInSell] = useState(false);
+  const getAllItems = async () => {
+    const items = await getSellerItems();
+    setSellerItems(items.items);
+  };
   useEffect(() => {
     const fetchSellerItems = async () => {
       try {
@@ -21,6 +25,7 @@ const Sell = () => {
       }
     };
     fetchSellerItems();
+    setInSell(true);
   }, []);
 
   return (
@@ -63,7 +68,7 @@ const Sell = () => {
           )}
         </div>
       </main>
-      <NavBar />
+      <NavBar inSell={inSell} setInSell={setInSell} />
     </div>
   );
 };

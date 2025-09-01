@@ -1,7 +1,8 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const Description = ({ setFormData, formData, setActiveStep, activeStep }) => {
   const [charsCount, setCharsCount] = React.useState(0);
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     if (e.target.name === "description") {
@@ -14,7 +15,7 @@ const Description = ({ setFormData, formData, setActiveStep, activeStep }) => {
         <img
           src="/design-images/arrow.svg"
           alt=""
-          onClick={() => setActiveStep(activeStep - 1)}
+          onClick={() => navigate(-1)}
         />
         <div>
           <p className="primary-text">What would you like to list?</p>

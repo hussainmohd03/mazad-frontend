@@ -1,15 +1,15 @@
 import React from "react";
 import categories from "../objects/categories.json";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const Category = ({
   setFormData,
   formData,
   setActiveStep,
   activeStep,
-  setActiveButton,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
-
+  const navigate = useNavigate();
   const handleClick = (e) => {
     setSelectedCategory(e.target.id);
     setFormData({ ...formData, category: e.target.id });
@@ -21,7 +21,7 @@ const Category = ({
         <img
           src="/design-images/arrow.svg"
           alt=""
-          onClick={() => setActiveButton("on-auction")}
+          onClick={() => navigate(-1)}
         />
         <div>
           <p className="primary-text">What would you like to list?</p>
@@ -50,7 +50,7 @@ const Category = ({
         <button
           className="action-button"
           onClick={() => {
-            setActiveStep(activeStep + 1), console.log(formData);
+            setActiveStep(activeStep + 1)
           }}
           disabled={!selectedCategory}
         >

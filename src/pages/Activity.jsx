@@ -46,13 +46,13 @@ const Activity = ({ notification, setNotification }) => {
       </header>
       <main>
         <div className="auctions-grid">
-          {auctions.map((auction) => (
+          {/* {auctions.map((auction) => (
             <AuctionBox
               key={auction._id}
               auction={auction}
               activeButton={activeButton}
             />
-          ))}
+          ))} */}
         </div>
       </main>
       <NavBar />

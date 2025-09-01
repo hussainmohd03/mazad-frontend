@@ -52,9 +52,9 @@ const Home = () => {
               ))}
           </div>
         </div>
+        <NavBar />
       </div>
 
-      <NavBar />
     </>
   )
 }
