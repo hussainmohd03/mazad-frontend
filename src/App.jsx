@@ -11,6 +11,7 @@ import Activity from './pages/Activity'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import ItemDetails from './components/ItemDetails'
+import ItemForm from './components/ItemForm'
 import AdminSignUp from './pages/AdminSignUp'
 import TopUp from './pages/TopUp'
 import EditProfile from './pages/EditProfile'
@@ -93,6 +94,7 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/sell" element={<Sell />} />
+        <Route path="/item-form" element={<ItemForm />} />
         <Route
           path="/watchlist"
           element={

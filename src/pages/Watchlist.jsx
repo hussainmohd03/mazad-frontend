@@ -1,14 +1,12 @@
 import React from "react";
 import NavBar from "../components/NavBar";
-import auctions from "../objects/auctions.json";
 import WatchListBox from "../components/WatchListBox";
 import { useEffect, useState, useContext } from "react";
 import { io } from "socket.io-client";
 const socket = io("http://localhost:5045");
 import UserContext from "../context/UserContext";
-import { getWatchList } from "../../services/WatchList";
 import EmptyPage from "../components/EmptyPage";
-
+import Client from "../../services/api";
 const Watchlist = () => {
   const { user } = useContext(UserContext);
   const [auctions, setAuctions] = useState([]);
@@ -19,11 +17,18 @@ const Watchlist = () => {
   }, []);
 
   useEffect(() => {
-    const fetchWatchList = async () => {
-      const watchList = await getWatchList();
-      setAuctions(watchList);
-    };
-    fetchWatchList();
+    const getWatchList = async () => {
+      try {
+        const response = await Client.get("/watchlist/me");
+        console.log(response.data);
+        return response.data;
+      } catch (error) {
+    console.error("Error fetching watchlist:", error);
+    throw error;
+  }
+};
+
+    getWatchList();
   }, []);
 
   return (
@@ -52,5 +57,6 @@ const Watchlist = () => {
     </div>
   );
 };
+
 
 export default Watchlist;
