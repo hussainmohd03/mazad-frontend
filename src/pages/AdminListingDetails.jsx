@@ -11,6 +11,7 @@ const AdminListingDetails = () => {
   const serviceId = 'service_xfa2nmx'
   const templateId = 'template_hzs50s8'
   const publicKey = 'Fxi0xwrKA_XPTOzbg'
+
   const { id } = useParams()
   const [listing, setListing] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -34,7 +35,6 @@ const AdminListingDetails = () => {
     fetchListing()
   }, [])
 
-  // emailjs.
   const updateStatus = async (action) => {
     try {
       const res = await Client.put(
@@ -52,7 +52,6 @@ const AdminListingDetails = () => {
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey)
 
-      console.log('Email sent successfully!')
     } catch (error) {
       console.error(error)
     }

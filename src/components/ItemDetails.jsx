@@ -80,6 +80,7 @@ const ItemDetails = () => {
       setError("");
     });
 
+
     socket.on("outBid", (data) => {
       // inform user
     });

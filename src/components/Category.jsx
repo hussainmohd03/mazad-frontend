@@ -12,7 +12,6 @@ const Category = ({
 
   const handleClick = (e) => {
     setSelectedCategory(e.target.id);
-    console.log(selectedCategory);
     setFormData({ ...formData, category: e.target.id });
   };
 
