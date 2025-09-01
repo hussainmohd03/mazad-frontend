@@ -6,9 +6,9 @@ import { useEffect, useState, useContext } from "react";
 import { io } from "socket.io-client";
 const socket = io("http://localhost:5045");
 import UserContext from "../context/UserContext";
-import Notificiation from "../components/Notification";
 import { getWatchList } from "../../services/WatchList";
 import EmptyPage from "../components/EmptyPage";
+
 const Watchlist = () => {
   const { user } = useContext(UserContext);
   const [auctions, setAuctions] = useState([]);
