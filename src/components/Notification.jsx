@@ -19,8 +19,11 @@ const Notificiation = ({ notification, setNotification }) => {
               src="/design-images/mazad_logo.png"
               alt=""
             />
-            <p className="notif-secondary-text">MAZAD</p>
-            <p className="notif-secondary-text">Just now</p>
+            <p className="notif-secondary-text title">MAZAD</p>
+
+            <span>
+              <p className="notif-secondary-text time">Just now</p>
+            </span>
           </div>
           <p className="notif-main-text">{notification}</p>
         </div>

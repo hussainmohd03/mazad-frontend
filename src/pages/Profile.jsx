@@ -7,6 +7,7 @@ import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import AreaChartComponent from '../components/AreaChat'
 import Notificiation from '../components/Notification'
+import ChangePassword from './ChangePassword'
 
 const Profile = ({
   handleLogOut,
@@ -87,6 +88,18 @@ const Profile = ({
         </div>
         <div className="profile-footer">
           <p className="primary-text">Settings</p>
+          <div>
+            <img
+              src="/design-images/transaction.svg"
+              alt=""
+            />
+            <p className="change-password-button">
+              {' '}
+              <Link className="no-decor" to="/transaction-history">
+                Transactions{' '}
+              </Link>
+            </p>
+          </div>
           <div>
             <img src="/design-images/password.svg" alt="" />
 
