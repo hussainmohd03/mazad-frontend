@@ -18,18 +18,25 @@ import { useEffect } from 'react'
 import { CheckSession } from '../services/Auth'
 import UserContext from './context/UserContext'
 import ChangePassword from './pages/ChangePassword'
+
 import AdminListings from './pages/AdminListings'
 import AdminSignIn from './pages/AdminSignIn'
 import AdminListingDetails from './pages/AdminListingDetails'
 import AdminDashboard from './pages/AdminDashboard'
+import Notificiation from './components/Notification'
+
+
 
 import { BASE_URL } from '../globals'
+import { io } from 'socket.io-client'
+const socket = io('http://localhost:5045')
 
 
 const App = () => {
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
   const [financialData, setFinancialData] = useState({})
+  const [notification, setNotification] = useState('')
 
   const checkToken = async () => {
     const user = await CheckSession()
@@ -44,6 +51,17 @@ const App = () => {
       navigate('/')
     }
   }, [])
+
+  useEffect(() => {
+    if (user.id) {
+      socket.emit('joinUser', user.id)
+      console.log('emitted')
+      socket.on('notify', (notif) => {
+        console.log('from frontend', notif)
+        setNotification(notif)
+      })
+    }
+  }, [notification, socket, user])
 
   const handleLogOut = () => {
     setUser(null)
@@ -60,11 +78,29 @@ const App = () => {
 
   return (
     <>
+      {notification && (
+        <Notificiation
+          notification={notification}
+          setNotification={setNotification}
+        />
+      )}
+      {/* <Notificiation
+        notification={notification}
+        setNotification={setNotification}
+      /> */}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/sell" element={<Sell />} />
-        <Route path="/watchlist" element={<Watchlist />} />
+        <Route
+          path="/watchlist"
+          element={
+            <Watchlist
+              notification={notification}
+              setNotification={setNotification}
+            />
+          }
+        />
         <Route
           path="/profile"
           element={
@@ -73,15 +109,33 @@ const App = () => {
               financialData={financialData}
               setFinancialData={setFinancialData}
               handleDeleteAccount={handleDeleteAccount}
+              notification={notification}
+              setNotification={setNotification}
             />
           }
         />
-        <Route path="/activity" element={<Activity />} />
+        <Route
+          path="/activity"
+          element={
+            <Activity
+              notification={notification}
+              setNotification={setNotification}
+            />
+          }
+        />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/auctions/:auctionId" element={<ItemDetails />} />
 
-        <Route path="/edit-profile" element={<EditProfile />} />
+        <Route
+          path="/edit-profile"
+          element={
+            <EditProfile
+              notification={notification}
+              setNotification={setNotification}
+            />
+          }
+        />
         <Route path="change-password" element={<ChangePassword />} />
 
         <Route path="/admin/sign-in" element={<AdminSignIn />} />
@@ -89,7 +143,8 @@ const App = () => {
 
         <Route path="/admin/listings" element={<AdminListings />} />
         <Route path="/admin/listings/:id" element={<AdminListingDetails />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />}
+
         <Route
           path="/top-up"
           element={
