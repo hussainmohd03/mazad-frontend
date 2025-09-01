@@ -41,7 +41,6 @@ const ItemDetails = () => {
     })
 
     socket.on('outBid', (data) => {
-      // inform user
     })
 
     getAuction()

@@ -52,7 +52,6 @@ const AdminListingDetails = () => {
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey)
 
-      console.log('Email sent successfully!')
     } catch (error) {
       console.error(error)
     }

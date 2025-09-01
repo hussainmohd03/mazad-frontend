@@ -9,7 +9,6 @@ const Images = ({ setFormData, formData, setActiveStep, activeStep }) => {
     if (file) {
       setPreview((prev) => [...prev, URL.createObjectURL(file)]);
       setFormData({ ...formData, images: [...formData.images, file] });
-      console.log(formData);
     }
   };
   return (

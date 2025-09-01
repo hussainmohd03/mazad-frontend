@@ -12,7 +12,6 @@ import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import ItemDetails from './components/ItemDetails'
 import AdminSignUp from './pages/AdminSignUp'
-// 🔹 Import admin pages
 import TopUp from './pages/TopUp'
 import EditProfile from './pages/EditProfile'
 import { useEffect } from 'react'
@@ -25,9 +24,7 @@ import AdminListingDetails from './pages/AdminListingDetails'
 import AdminDashboard from './pages/AdminDashboard'
 
 import { BASE_URL } from '../globals'
-// import AdminDashboard from './pages/AdminDashboard'
-// import AdminCategories from './pages/AdminCategories'
-// import AdminSettings from './pages/AdminSettings'
+
 
 const App = () => {
   const navigate = useNavigate()
@@ -93,10 +90,6 @@ const App = () => {
         <Route path="/admin/listings" element={<AdminListings />} />
         <Route path="/admin/listings/:id" element={<AdminListingDetails />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        {/* <Route path="/admin/categories" element={<AdminCategories />} />
-        <Route path="/admin/settings" element={<AdminSettings />} />*/}
-        {/* <Route path="/admin/settings" element={<AdminSettings />} />
-        <Route path="/admin/admins" element={<AdminAccounts />} />  */}
         <Route
           path="/top-up"
           element={

@@ -36,8 +36,6 @@ const ChangePassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // checkRequirements()
-    console.log(condition)
     if (condition) {
       await Client.put(`${BASE_URL}/users/me/password`, {
         old_password: credentials.old_password,
@@ -134,5 +132,4 @@ const ChangePassword = () => {
   )
 }
 
-//   confirm_new_password: ''
 export default ChangePassword
