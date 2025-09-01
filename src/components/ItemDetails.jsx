@@ -1,4 +1,3 @@
-import React from 'react'
 import { useEffect, useState } from 'react'
 import { io } from 'socket.io-client'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -161,10 +160,10 @@ const ItemDetails = () => {
           <img src="/items/watch.webp" alt="item-image" />
         </div>
         <div className="item-details">
-          <p>Lot ID # {auction.itemId?._id}</p>
-          <p>{auction.itemId?.name}</p>
+          <p>Lot ID # {auction.auction.itemId?._id}</p>
+          <p>{auction.auction.itemId?.name}</p>
           <p>Current Bid</p>
-          <p>BHD {auction.currentPrice}</p>
+          <p>BHD {auction.auction.currentPrice}</p>
           <p className="bids-count">
             {bidCount} Bids Closes on:{' '}
             {getDateFormatted(auction.auction.endDate)}
