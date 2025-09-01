@@ -85,8 +85,8 @@ const ItemDetails = () => {
 
     getAuction();
     const fetchWatchList = async () => {
-      const watchList = await getWatchList();
-      setIsInWatchList(watchList.some((item) => item.auctionId === auctionId));
+      const response = await Client.get("/watchlist/me");
+      setIsInWatchList(response.data.some((item) => item.auctionId === auctionId));
     };
     fetchWatchList();
     return () => {
@@ -139,11 +139,12 @@ const ItemDetails = () => {
         <div
           className="blurry-circle favorite"
           onClick={async () => {
+            console.log(auctionId);
             if (isInWatchList) {
-              await removeFromWatchList(auctionId);
+              await Client.put(`/watchlist/me/remove/${auctionId.toString()}`);
               setIsInWatchList(false);
             } else {
-              await addToWatchList(auction);
+              await Client.put(`/watchlist/me/add/${auctionId.toString()}`);
               setIsInWatchList(true);
             }
           }}
@@ -151,7 +152,7 @@ const ItemDetails = () => {
           <img
             src="/design-images/book-mark.svg"
             alt="favorite"
-            className="back-arrow"
+            className={`back-arrow ${isInWatchList ? "active-bookmark" : ""}`}
           />
         </div>
       </div>
