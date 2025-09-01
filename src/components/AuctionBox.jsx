@@ -24,13 +24,13 @@ const AuctionBox = ({ auction, activeButton }) => {
     >
       <div className="auction-box-header">
         <img
-          src={`${auction.item.images}`}
+          src={`${auction.images[0]}`}
           alt="item-image"
           className="auction-box-item-image"
         />
         <div className="auction-box-description">
-          <p className="primary-text">{auction.item.name}</p>
-          <p className="secondary-text">{auction.item.category}</p>
+          <p className="primary-text">{auction.name}</p>
+          <p className="secondary-text">{auction.category}</p>
         </div>
       </div>
       <div className="auction-box-footer">
@@ -63,16 +63,16 @@ const AuctionBox = ({ auction, activeButton }) => {
           className="auction-box-item-image"
         /> */}
         <div className="auction-box-description">
-          <p className="primary-text">{auction.item.name}</p>
-          <p className="secondary-text">{auction.item.category}</p>
+          <p className="primary-text">{auction.name}</p>
+          <p className="secondary-text">{auction.category}</p>
         </div>
       </div>
       <div className="auction-box-footer">
         <p>
           <span className="currency">BHD&nbsp;</span>
-          {auction.currentPrice.toLocaleString()}
+          {auction.price.toLocaleString()}
         </p>
-        <p>{auction.endDate.split("T")[0]}</p>
+        {/* <p>{auction.endDate.split("T")[0]}</p> */}
       </div>
     </div>
   );

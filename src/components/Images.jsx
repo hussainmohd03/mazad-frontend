@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const Images = ({ setFormData, formData, setActiveStep, activeStep }) => {
   const [preview, setPreview] = useState([]);
-
+  const navigate = useNavigate();
   const handleFileChange = (e) => {
     e.preventDefault();
     const file = e.target.files[0];
@@ -15,7 +16,7 @@ const Images = ({ setFormData, formData, setActiveStep, activeStep }) => {
   return (
     <>
       <div className="item-step-header">
-        <img src="/design-images/arrow.svg" alt="" onClick={() => setActiveStep(activeStep-1)}/>
+        <img src="/design-images/arrow.svg" alt="" onClick={() => navigate(-1)}/>
         <div>
           <p className="primary-text">Upload your images and videos</p>
           <p className="secondary-text">

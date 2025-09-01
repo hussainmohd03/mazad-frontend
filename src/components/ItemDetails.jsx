@@ -7,7 +7,6 @@ import Modal from "./Modal";
 import {
   addToWatchList,
   removeFromWatchList,
-  getWatchList,
 } from "../../services/WatchList";
 import AutoBiddingInfo from "./AutoBiddingInfo";
 const socket = io(import.meta.env.VITE_SOCKET_URL || "http://localhost:5045");

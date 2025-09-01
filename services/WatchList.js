@@ -21,14 +21,3 @@ export const removeFromWatchList = async (id) => {
     throw error;
   }
 };
-
-export const getWatchList = async () => {
-  try {
-    const response = await Client.get("watchlist/me");
-    console.log(response.data);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching watchlist:", error);
-    throw error;
-  }
-};

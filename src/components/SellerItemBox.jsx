@@ -1,5 +1,7 @@
 import React from "react";
 import Client from "../../services/api";
+import { BASE_URL } from "../../globals";
+
 import { useEffect } from "react";
 const SellerItemBox = ({ auction }) => {
   useEffect(() => {}, []);
@@ -7,13 +9,13 @@ const SellerItemBox = ({ auction }) => {
     <div className="seller-box" key={auction._id}>
       <div className="seller-box-header">
         <img
-          src={`${auction.item.images}`}
+          src={`${BASE_URL}/${auction.images[0]}`}
           alt="item-image"
           className="seller-box-item-image"
         />
         <div className="seller-box-description">
-          <p className="primary-text">{auction.item.name}</p>
-          <p className="secondary-text">{auction.item.category}</p>
+          <p className="primary-text">{auction.name}</p>
+          <p className="secondary-text">{auction.category}</p>
         </div>
         <div className={"status-box"}>
           <div className="approved status-container">{auction.status}</div>

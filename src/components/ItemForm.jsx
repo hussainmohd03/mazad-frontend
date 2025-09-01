@@ -5,7 +5,8 @@ import Price from "./Price";
 import Description from "./Description";
 import Images from "./Images";
 import { createItem } from "../../services/item";
-const ItemForm=({ setActiveButton })=> {
+import { useNavigate } from "react-router-dom";
+const ItemForm=()=> {
   const [activeStep, setActiveStep] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
@@ -30,10 +31,9 @@ const ItemForm=({ setActiveButton })=> {
     createItem(itemData);
   };
   return (
-    <>
+    <div className="sell-page">
       {activeStep === 1 && (
         <Category
-          setActiveButton={setActiveButton}
           setActiveStep={setActiveStep}
           activeStep={activeStep}
           setFormData={setFormData}
@@ -65,7 +65,7 @@ const ItemForm=({ setActiveButton })=> {
           handleSubmit={handleSubmit}
         />
       )}
-    </>
+    </div>
   );
 }
 
