@@ -1,8 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { BASE_URL } from "../../globals";
 
 const AuctionBox = ({ auction, activeButton }) => {
+  const [userPurchases, setUserPurchases] = useState([]);
+  // const user
+
   const navigate = useNavigate();
   const formatRemainingTime = (endDate) => {
     const now = new Date();
@@ -50,32 +54,33 @@ const AuctionBox = ({ auction, activeButton }) => {
       </div>
     </div>
   ) : (
-    <div
-      className="auction-box"
-      key={auction._id}
-      onClick={() => {
-        navigate(`/auctions/${auction._id}`);
-      }}
-    >
-      <div className="auction-box-header">
-        <img
-          src={`${BASE_URL}/${auction.itemId.images[0]}`}
-          alt="item-image"
-          className="auction-box-item-image"
-        />
-        <div className="auction-box-description">
-          <p className="primary-text">{auction.item.name}</p>
-          <p className="secondary-text">{auction.item.category}</p>
-        </div>
-      </div>
-      <div className="auction-box-footer">
-        <p>
-          <span className="currency">BHD&nbsp;</span>
-          {auction.currentPrice}
-        </p>
-        {/* <p>{auction.endDate.split("T")[0]}</p> */}
-      </div>
-    </div>
+    <div>something</div>
+    // <div
+    //   className="auction-box"
+    //   key={auction._id}
+    //   onClick={() => {
+    //     navigate(`/auctions/${auction._id}`);
+    //   }}
+    // >
+    //   <div className="auction-box-header">
+    //     <img
+    //       src={`${BASE_URL}/${auction.itemId.images[0]}`}
+    //       alt="item-image"
+    //       className="auction-box-item-image"
+    //     />
+    //     <div className="auction-box-description">
+    //       <p className="primary-text">{auction.item.name}</p>
+    //       <p className="secondary-text">{auction.item.category}</p>
+    //     </div>
+    //   </div>
+    //   <div className="auction-box-footer">
+    //     <p>
+    //       <span className="currency">BHD&nbsp;</span>
+    //       {auction.currentPrice}
+    //     </p>
+    //     {/* <p>{auction.endDate.split("T")[0]}</p> */}
+    //   </div>
+    // </div>
   );
 };
 
