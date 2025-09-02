@@ -4,10 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Client from "../../services/api";
 import { BASE_URL } from "../../globals";
 import Modal from "./Modal";
-import {
-  addToWatchList,
-  removeFromWatchList,
-} from "../../services/WatchList";
 import AutoBiddingInfo from "./AutoBiddingInfo";
 const socket = io(import.meta.env.VITE_SOCKET_URL || "http://localhost:5045");
 
@@ -78,7 +74,6 @@ const ItemDetails = () => {
       }));
       setError("");
     });
-
 
     socket.on("outBid", (data) => {
       // inform user

@@ -11,7 +11,6 @@ import Activity from './pages/Activity'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import ItemDetails from './components/ItemDetails'
-import ItemForm from './components/ItemForm'
 import AdminSignUp from './pages/AdminSignUp'
 import TopUp from './pages/TopUp'
 import EditProfile from './pages/EditProfile'
@@ -19,14 +18,9 @@ import { useEffect } from 'react'
 import { CheckSession } from '../services/Auth'
 import UserContext from './context/UserContext'
 import ChangePassword from './pages/ChangePassword'
+
 import CategorizedItems from './components/CategorizedItems'
 import Transaction from './pages/Transaction'
-// import AdminListings from './pages/AdminListings'
-// import AdminSignIn from './pages/AdminSignIn'
-// import AddAdminAccounts from './pages/AddAdminAccounts'
-// import AdminListingDetails from './pages/AdminListingDetails'
-// import AdminDashboard from './pages/AdminDashboard'
-
 import AdminListings from './pages/AdminListings'
 import AdminSignIn from './pages/AdminSignIn'
 import AdminListingDetails from './pages/AdminListingDetails'
@@ -36,7 +30,6 @@ import Notificiation from './components/Notification'
 import { BASE_URL } from '../globals'
 import { io } from 'socket.io-client'
 const socket = io('http://localhost:5045')
-import dayjs from 'dayjs'
 
 const App = () => {
   const navigate = useNavigate()
@@ -46,6 +39,7 @@ const App = () => {
 
   const checkToken = async () => {
     const user = await CheckSession()
+    console.log(user)
     setUser(user)
   }
 
@@ -90,11 +84,14 @@ const App = () => {
           setNotification={setNotification}
         />
       )}
+      {/* <Notificiation
+        notification={notification}
+        setNotification={setNotification}
+      /> */}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/sell" element={<Sell />} />
-        <Route path="/item-form" element={<ItemForm />} />
         <Route
           path="/watchlist"
           element={
@@ -129,18 +126,13 @@ const App = () => {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/auctions/:auctionId" element={<ItemDetails />} />
-
-        <Route
-          path="/edit-profile"
-          element={
-            <EditProfile
-              notification={notification}
-              setNotification={setNotification}
-            />
-          }
-        />
-        <Route path="/transaction-history" element={<Transaction />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="change-password" element={<ChangePassword />} />
+        <Route path="/admin/sign-in" element={<AdminSignIn />} />
+        <Route path="/admin/sign-up" element={<AdminSignUp />} />
+        <Route path="/admin/listings" element={<AdminListings />} />
+        <Route path="/admin/listings/:id" element={<AdminListingDetails />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route
           path="/top-up"
           element={
