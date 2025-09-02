@@ -48,9 +48,7 @@ const EditProfile = ({ setNotification, notification }) => {
       setUserDetails({
         firstName: res.data.user.firstName || '',
         lastName: res.data.user.lastName || '',
-        email: res.data.user.email || '',
-        mobile: res.data.user.mobile || '',
-        companyReg: res.data.user.companyReg || ''
+        email: res.data.user.email || ''
       })
     }
     getUserProfile()
@@ -81,12 +79,22 @@ const EditProfile = ({ setNotification, notification }) => {
       </div>
       <form className="edit-profile-form" onSubmit={handleSubmit}>
         <div className="input-group">
-          <label>Name</label>
+          <label>First name</label>
 
           <input
             type="text"
             name="firstName"
             value={userDetails.firstName}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="input-group">
+          <label>Last name</label>
+
+          <input
+            type="text"
+            name="firstName"
+            value={userDetails.lastName}
             onChange={handleChange}
           />
         </div>

@@ -27,16 +27,12 @@ const TopUp = ({ financialData, setFinancialData }) => {
         <div className="modal-content">
           <div className="modal-header">
             <p>Top Up</p>
-          </div>
-          <p className="modal-sentence">
-            Select the amount you would like to deposit into your account
-          </p>
-          <div className="modal-bid-amount">
-            <div className="price-input-box">
-              <button onClick={() => setAmount(amount - 10)} className="">
-                <img src="design-images/minus.svg" alt="minus icon" />
-              </button>
-              <input
+            </div>
+            <p className='modal-sentence'>Select the amount you would like to deposit into your account</p>
+            <div className="modal-bid-amount topup-modal">
+              <div className="price-input-box">
+              <button onClick={()=>setAmount(amount-10)} className=""><img src="design-images/minus.svg" alt="" /></button>
+              <input 
                 type="number"
                 className="price-input"
                 placeholder="0"

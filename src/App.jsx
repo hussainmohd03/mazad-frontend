@@ -106,6 +106,7 @@ const App = () => {
             />
           }
         />
+        <Route path="/item-form" element={<ItemForm />} />
         <Route
           path="/profile"
           element={

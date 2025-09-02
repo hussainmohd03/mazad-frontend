@@ -13,7 +13,9 @@ const Price = ({
       <div className="item-step-header">
         <img
           src="/design-images/arrow.svg"
+
           alt="arrow"
+
           onClick={() => navigate(-1)}
         />
         <div>
@@ -43,11 +45,16 @@ const Price = ({
             <div className="price-input-box">
               <button
                 onClick={() => {
-                  setFormData({ ...formData, price: formData.price - 10 })
+
+                  setFormData({
+                    ...formData,
+                    price: Math.max(0, formData.price - 10)
+                  })
                 }}
                 className=""
               >
-                <img src="design-images/minus.svg" alt="minus icon" />
+                <img src="design-images/minus.svg" alt="" />
+
               </button>
               <input
                 type="number"
@@ -64,6 +71,7 @@ const Price = ({
                   setFormData({ ...formData, price: formData.price + 10 })
                 }}
               >
+
                 <img src="design-images/plus.svg" alt="plus icon" />
               </button>
             </div>

@@ -28,6 +28,7 @@ const Modal = ({
           <p>Place Bid</p>
           <div className="bidding-time2">
             <img src="/design-images/stopwatch.svg" alt="stopwatch images" />
+
             {timeLeft.days}d:{timeLeft.hours}h:{timeLeft.minutes}m
           </div>
         </div>
@@ -78,7 +79,7 @@ const Modal = ({
           </button>
         </div>
         {showMinIncrement && (
-          <div className="min-increment-field" style={{ margin: '16px 0' }}>
+          <div className="min-increment-field">
             <label className="auto-bid-labels">
               You need to set a minimum increment
             </label>

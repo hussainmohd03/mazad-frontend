@@ -272,7 +272,7 @@ input[type='text'] {
 .item-card img {
   width: 100%;
   border-radius: 10px;
-  aspect-ratio: 1/1;
+  aspect-ratio: 5/4;
 }
 
 .item-name {
@@ -401,14 +401,17 @@ input[type='text'] {
 
 .primary-text {
   color: black;
-  margin: 0%;
+  margin: 0;
   padding: 0%;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 450;
 }
 
 .secondary-text {
   margin: 0%;
   padding: 0%;
-  font-size: 70%;
+  font-size: 14px;
   color: #84919a;
 }
 
@@ -1193,18 +1196,20 @@ span.sp5 {
 }
 
 .category-item p {
-  padding: 0%;
+  padding: 5%;
   margin: 0%;
   display: flex;
   align-items: center;
   font-size: x-small;
-  width: 100%;
-  padding-left: 7.5%;
+  width: 90%;
+  justify-self: center;
 }
 
 .category-item img {
   height: 70%;
-  width: 50%;
+  width: 80%;
+  padding-top: 4%;
+  align-self: center;
 }
 
 .name-field {
@@ -1228,6 +1233,7 @@ span.sp5 {
 }
 
 .description-field p {
+  font-weight: 500;
   margin: 5% 0 0 0;
   padding: 0%;
   margin-right: auto;
@@ -1236,11 +1242,17 @@ span.sp5 {
 textarea {
   width: 100%;
   height: 60%;
-  border-radius: 10px;
+  border-radius: 7px;
   border: 1px #ddd solid;
   padding: 2%;
   font-family: 'Poppins', sans-serif !important;
   resize: none;
+  margin-left: 5%;
+  margin-right: 4%;
+}
+.word-count {
+  font-size: 15px;
+  margin-left: 0.5%;
 }
 
 .item-step-header {
@@ -1716,7 +1728,7 @@ hr {
 
 .price-input-box {
   display: flex;
-  height: 25%;
+  height: 35%;
   align-items: center;
   justify-content: center;
   padding: 3%;
@@ -2362,10 +2374,13 @@ input::-webkit-inner-spin-button {
 
 .edit-profile-header div {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
   color: #23272e;
 }
-
+input.name-field.input-field.side-indentation.change-pass.field-bottom-indentation{
+  width: 100%;
+  margin-right: 4%;
+}
 .profile-img-section {
   width: 100%;
   display: flex;
@@ -2440,7 +2455,7 @@ input::-webkit-inner-spin-button {
 }
 
 .save-btn {
-  margin-top: 90%;
+  margin-top: 66%;
   width: 100%;
   background: #f2f2f2;
   color: #bdbdbd;
@@ -2464,6 +2479,10 @@ input::-webkit-inner-spin-button {
   color: #303940;
   margin-left: 7%;
 }
+
+.topup-modal {
+  flex-direction: column;
+
 
 .sell-with-us-container h3 {
   font-weight: 450;
@@ -2506,4 +2525,5 @@ input::-webkit-inner-spin-button {
   font-weight: 450;
   font-family: 'Poppins', sans-serif !important;
   font-size: 13px;
+
 }
