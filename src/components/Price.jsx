@@ -81,6 +81,7 @@ const Price = ({
         >
           Next
         </button>
+        
       </div>
     </>
   )

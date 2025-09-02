@@ -33,7 +33,7 @@ const Home = () => {
             type="text"
             name="search"
             className="search-bar"
-            placeholder="What are you looking for?"
+            placeholder="   What are you looking for?"
           />
           <NavLink to="">
             <img src="design-images/cart.png" alt="cart" />

@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../globals";
 
 const AuctionBox = ({ auction, activeButton }) => {
   const navigate = useNavigate();
@@ -24,13 +25,13 @@ const AuctionBox = ({ auction, activeButton }) => {
     >
       <div className="auction-box-header">
         <img
-          src={`${auction.images[0]}`}
+          src={`${auction.item.images}`}
           alt="item-image"
           className="auction-box-item-image"
         />
         <div className="auction-box-description">
-          <p className="primary-text">{auction.name}</p>
-          <p className="secondary-text">{auction.category}</p>
+          <p className="primary-text">{auction.item.name}</p>
+          <p className="secondary-text">{auction.item.category}</p>
         </div>
       </div>
       <div className="auction-box-footer">
@@ -57,20 +58,20 @@ const AuctionBox = ({ auction, activeButton }) => {
       }}
     >
       <div className="auction-box-header">
-        {/* <img
-          src={`${auction.item.images}`}
+        <img
+          src={`${BASE_URL}/${auction.itemId.images[0]}`}
           alt="item-image"
           className="auction-box-item-image"
-        /> */}
+        />
         <div className="auction-box-description">
-          <p className="primary-text">{auction.name}</p>
-          <p className="secondary-text">{auction.category}</p>
+          <p className="primary-text">{auction.item.name}</p>
+          <p className="secondary-text">{auction.item.category}</p>
         </div>
       </div>
       <div className="auction-box-footer">
         <p>
           <span className="currency">BHD&nbsp;</span>
-          {auction.price.toLocaleString()}
+          {auction.currentPrice}
         </p>
         {/* <p>{auction.endDate.split("T")[0]}</p> */}
       </div>
