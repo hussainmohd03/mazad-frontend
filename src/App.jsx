@@ -35,8 +35,8 @@ import Notificiation from './components/Notification'
 
 import { BASE_URL } from '../globals'
 import { io } from 'socket.io-client'
-const socket = io('http://localhost:5045')
 import dayjs from 'dayjs'
+const socket = io('http://localhost:5045')
 
 const App = () => {
   const navigate = useNavigate()

@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { Register } from '../../services/Auth'
 import emailjs from '@emailjs/browser'
+import { useGoogleOneTapLogin } from '@react-oauth/google'
 
 const SignUp = () => {
   const serviceId = 'service_xfa2nmx'
