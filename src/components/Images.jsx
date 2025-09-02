@@ -17,7 +17,6 @@ const Images = ({ setFormData, formData, setActiveStep, activeStep }) => {
       <div className="item-step-header">
         <img
           src="/design-images/arrow.svg"
-
           alt="arrow"
           onClick={() => navigate(-1)}
         />

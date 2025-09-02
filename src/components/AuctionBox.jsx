@@ -27,7 +27,7 @@ const AuctionBox = ({ auction, activeButton }) => {
       <div className="auction-box-header">
         <img
 
-       src={`${BASE_URL}/${auction.itemId.images[0]}`}
+        src={`${BASE_URL}/${auction.itemId.images[0]}`}
           alt="item-image"
           className="auction-box-item-image"
         />
@@ -41,7 +41,6 @@ const AuctionBox = ({ auction, activeButton }) => {
           <span className="currency">BHD&nbsp;{auction.currentPrice}</span>
         </p>
         <p>
-
           <img src={`design-images/bids-count.svg`} alt="total-bids" />{" "}
           <span>&nbsp;{auction.biddings.length}</span>
         </p>

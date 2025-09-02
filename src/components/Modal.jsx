@@ -28,7 +28,6 @@ const Modal = ({
           <p>Place Bid</p>
           <div className="bidding-time2">
             <img src="/design-images/stopwatch.svg" alt="stopwatch images" />
-
             {timeLeft.days}d:{timeLeft.hours}h:{timeLeft.minutes}m
           </div>
         </div>
