@@ -2278,3 +2278,52 @@ input::-webkit-inner-spin-button {
   display: grid;
   grid-template-rows: 1fr auto;
 }
+
+.sell-with-us-container {
+  display: grid;
+  grid-template-rows: 4fr 1fr 1fr 1fr 1fr 1fr;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.feature img{
+  height: 15%;
+}
+
+.banner {
+  background-color: rgb(153, 148, 148);
+  height: 100%;
+}
+
+.banner img{
+  width: 100%;
+  height: 100%; 
+}
+
+.ctn-action{
+  display: flex;
+  justify-content: center;
+  left: auto;
+  align-items: center;
+}
+
+.ctn-action button{
+  z-index: 10000;
+}
+
+#mazad-title {
+  color: #F90002;
+}
+.feature {
+  display: flex;
+  justify-content: center;
+  margin-left: 5%;
+  align-items: center;
+}
+
+.sell-with-us-container h3 {
+  margin-left: 5%;
+}
+.feature p{
+  margin-left: 5%
+}

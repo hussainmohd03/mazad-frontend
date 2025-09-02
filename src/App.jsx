@@ -26,7 +26,7 @@ import Transaction from './pages/Transaction'
 // import AddAdminAccounts from './pages/AddAdminAccounts'
 // import AdminListingDetails from './pages/AdminListingDetails'
 // import AdminDashboard from './pages/AdminDashboard'
-
+import Verification from './pages/Verification'
 import AdminListings from './pages/AdminListings'
 import AdminSignIn from './pages/AdminSignIn'
 import AdminListingDetails from './pages/AdminListingDetails'
@@ -151,6 +151,7 @@ const App = () => {
           }
         />
         <Route path="/category/:name" element={<CategorizedItems />} />
+        <Route path="/verification" element={<Verification />} />
       </Routes>
     </>
   )
