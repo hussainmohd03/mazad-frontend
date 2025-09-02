@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   color: black;
   font-weight: 400;
 }
@@ -13,7 +13,7 @@ body {
 .landing-page {
   width: 100vw;
   height: 100vh;
-  background-image: url("design-images/background.svg");
+  background-image: url('design-images/background.svg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -39,7 +39,7 @@ body {
   margin-bottom: 5%;
   height: 5vh;
   border: 1px white solid;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 1em;
 }
 
@@ -115,7 +115,7 @@ nav a.nav-link.active img {
 }
 
 .input-field {
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   color: #84919a;
   padding-left: 10px;
 }
@@ -127,7 +127,7 @@ nav a.nav-link.active img {
   height: 6vh;
   background-color: #ff0022;
   color: white;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 500;
 }
 
@@ -170,8 +170,8 @@ nav a.nav-link.active img {
   font-size: 14px;
 }
 
-input[type="text"] {
-  font-family: "Poppins", sans-serif !important;
+input[type='text'] {
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .sign-alternative a {
@@ -383,6 +383,9 @@ input[type="text"] {
   height: 6vh;
   background-color: #ff0022;
   color: white;
+  font-weight: 450;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 13px;
 }
 
 .action-button:disabled {
@@ -475,7 +478,7 @@ input[type="text"] {
   justify-content: space-evenly;
   align-items: end;
   border-bottom: #ededed 1px solid;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .toggle-buttons button {
@@ -483,7 +486,7 @@ input[type="text"] {
   height: 70%;
   border: none;
   background-color: transparent;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 400;
   color: #6a7c88;
   font-size: 14.5px;
@@ -492,7 +495,7 @@ input[type="text"] {
 .toggle-buttons .active {
   border-bottom: #ff0022 3px solid;
   color: #ff0022;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 500;
 }
 .activity-page main {
@@ -602,7 +605,7 @@ input[type="text"] {
 }
 
 .content h1 {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 28px;
   font-weight: 600;
   color: #303940;
@@ -618,7 +621,7 @@ input[type="text"] {
 
 .filter-buttons button {
   padding: 8px 20px;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 600;
   border: 1px solid #ddd;
@@ -738,7 +741,7 @@ input[type="text"] {
 
 /* for AdminNav start */
 .content p {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
   color: #84919a;
   margin-top: 20px;
@@ -866,7 +869,7 @@ span.sp5 {
 }
 .action-buttons button {
   padding: 10px 80px;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   border-radius: 20px;
   color: #d1f7dc;
   border: #2d3841 solid 0px;
@@ -911,7 +914,7 @@ span.sp5 {
   margin-bottom: -10px;
 }
 .listing-title-in-p {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 28px;
   font-weight: 600;
   color: #303940;
@@ -1121,7 +1124,7 @@ span.sp5 {
   height: 7vh;
   background-color: #f21731;
   color: white;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 500;
 }
 .pp {
@@ -1143,12 +1146,12 @@ span.sp5 {
   padding: 2px 5%;
 }
 .input-key-admin {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   width: 100%;
   margin: 8px 1px;
 }
 .input-field-admin {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: #84919a;
   padding: 10px 100px 10px 10px;
   border-radius: 8px;
@@ -1214,7 +1217,7 @@ span.sp5 {
   height: 7.5%;
   border-radius: 10px;
   border: 1px #ddd solid;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   resize: none;
 }
 
@@ -1242,7 +1245,7 @@ textarea {
   border-radius: 7px;
   border: 1px #ddd solid;
   padding: 2%;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   resize: none;
   margin-left: 5%;
   margin-right: 4%;
@@ -1318,7 +1321,7 @@ textarea {
   background: #ffffff;
   border: 1px solid #e3e3e3;
   border-radius: 21.5px;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 400;
 }
 
@@ -1402,7 +1405,7 @@ textarea {
   align-items: center;
   justify-content: center;
   padding-top: 10%;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 500;
   color: #2d3841;
 }
@@ -1509,7 +1512,7 @@ textarea {
   height: 6vh;
   background-color: #ff0022;
   color: white;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 500;
   margin-left: 20px;
 }
@@ -1545,7 +1548,7 @@ textarea {
 }
 
 .Dashboard-title {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 28px;
   font-weight: 600;
   color: #303940;
@@ -1677,7 +1680,7 @@ hr {
   border-radius: 15px;
 }
 
-.images-step-body input[type="file"] {
+.images-step-body input[type='file'] {
   display: none;
 }
 
@@ -1731,7 +1734,7 @@ hr {
   padding: 3%;
   border-radius: 15px;
   border: none;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .price-input-box button {
@@ -1760,7 +1763,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 input::-webkit-outer-spin-button,
@@ -1915,7 +1918,7 @@ input::-webkit-inner-spin-button {
 .bidding-time2 {
   font-size: 13px;
   color: #666666;
-  font-family: "Poppins", sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 600;
 }
 
@@ -2301,10 +2304,65 @@ input::-webkit-inner-spin-button {
   grid-template-rows: 1fr auto;
 }
 
+.sell-with-us-container {
+  display: grid;
+  grid-template-rows: 4fr 1fr auto 1fr 1fr 1fr;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.feature img {
+  height: 15%;
+}
+
+.feature h4 {
+  font-weight: 400;
+  margin-top: 0px;
+}
+
+.banner {
+  background-image: url('/design-images/sell_page_image.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+}
+
+.ctn-action {
+  display: flex;
+  justify-content: center;
+  left: auto;
+  align-items: center;
+  margin-top: 0px;
+}
+
+.ctn-action button {
+  z-index: 10000;
+}
+
+#mazad-title {
+  color: #f90002;
+}
+.feature {
+  display: flex;
+  margin-left: 5%;
+  align-items: center;
+}
+
+.sell-with-us-container h3 {
+  margin: 0 0 0 5%;
+}
+.feature p {
+  margin-left: 5%;
+}
 .edit-profile-container {
   background: #fff;
   min-height: 100vh;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   display: grid;
   grid-template-rows: auto 20% auto;
 }
@@ -2421,6 +2479,51 @@ input.name-field.input-field.side-indentation.change-pass.field-bottom-indentati
   color: #303940;
   margin-left: 7%;
 }
+
 .topup-modal {
   flex-direction: column;
+
+
+.sell-with-us-container h3 {
+  font-weight: 450;
+}
+
+.verification-page {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 11fr;
+}
+
+.button-sell-val-page {
+  margin-top:600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+.grey-back-button {
+  width: 40%;
+  border: none;
+  border-radius: 25px;
+  height: 6vh;
+  background-color: #b8b8b8;
+  color: white;
+  font-weight: 450;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 13px;
+}
+
+
+.red-forward-button {
+    width: 40%;
+  border: none;
+  border-radius: 25px;
+  height: 6vh;
+  background-color: #FF0022;
+  color: white;
+  font-weight: 450;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 13px;
+
 }
