@@ -38,7 +38,7 @@ const Profile = ({
         <div className="profile-details">
           <div className="profile-title">Profile</div>
           <div className="profile-user-details">
-            <img src="/design-images/default_icon.svg" alt="" />
+            <img src="/design-images/default_icon.svg" alt="default_icon" />
             <div className="profile-username">
               <p className="primary-text">{name}</p>
               <NavLink to={'/edit-profile'} className="edit-profile-button">
@@ -89,10 +89,7 @@ const Profile = ({
         <div className="profile-footer">
           <p className="primary-text">Settings</p>
           <div>
-            <img
-              src="/design-images/transaction.svg"
-              alt=""
-            />
+            <img src="/design-images/transaction.svg" alt="transaction icon" />
             <p className="change-password-button">
               {' '}
               <Link className="no-decor" to="/transaction-history">
@@ -101,7 +98,7 @@ const Profile = ({
             </p>
           </div>
           <div>
-            <img src="/design-images/password.svg" alt="" />
+            <img src="/design-images/password.svg" alt="password" />
 
             <p className="change-password-button">
               {' '}
@@ -111,13 +108,13 @@ const Profile = ({
             </p>
           </div>
           <div>
-            <img src="/design-images/log_out.svg" alt="" />
+            <img src="/design-images/log_out.svg" alt="log out" />
             <p onClick={() => handleLogOut()} className="under-line-text">
               Log out
             </p>
           </div>
           <div>
-            <img src="/design-images/trash.svg" alt="" />
+            <img src="/design-images/trash.svg" alt="trash icon" />
             <p onClick={() => handleDeleteAccount()} className="no-decor">
               Delete account
             </p>

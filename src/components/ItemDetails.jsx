@@ -81,12 +81,12 @@ const ItemDetails = () => {
 
     getAuction()
     const fetchWatchList = async () => {
-      const response = await Client.get('/watchlist/me')
+      const response = await Client.get("/watchlist/me");
       setIsInWatchList(
-        response.data.some((item) => item.auctionId === auctionId)
-      )
-    }
-    fetchWatchList()
+        response.data.some((item) => item.auctionId._id === auctionId)
+      );
+    };
+    fetchWatchList();
     return () => {
       socket.emit('leaveAuction', auctionId)
       socket.off('newBid')
@@ -137,7 +137,6 @@ const ItemDetails = () => {
         <div
           className="blurry-circle favorite"
           onClick={async () => {
-            console.log(auctionId)
             if (isInWatchList) {
               await Client.put(`/watchlist/me/remove/${auctionId.toString()}`)
               setIsInWatchList(false)

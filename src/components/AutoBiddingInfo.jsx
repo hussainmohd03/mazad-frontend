@@ -11,7 +11,7 @@ const AutoBiddingInfo = ({ setShowAutoBidInfo }) => {
       <div className="modal-content2">
         <div className="modal_header2">
           <button onClick={() => setShowAutoBidInfo(false)}>
-            <img src="/design-images/exit_button.svg" alt="" />
+            <img src="/design-images/exit_button.svg" alt="exit button" />
           </button>
           <p>Auto Bid</p>
         </div>

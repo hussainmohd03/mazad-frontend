@@ -3,8 +3,6 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 dayjs.extend(relativeTime)
 
 const TransactionBox = ({ transaction }) => {
-  // let momentDate = moment(transaction.createdAt)
-  // console.log(momentDate.format('YYYY-MM-DD hh:mm:ss A Z'))
   return (
     <>
       <div className="transaction-box">
