@@ -17,7 +17,7 @@ const Notificiation = ({ notification, setNotification }) => {
               width="30px"
               className="notif-logo"
               src="/design-images/mazad_logo.png"
-              alt=""
+              alt="mazad logo"
             />
             <p className="notif-secondary-text title">MAZAD</p>
 
