@@ -1,19 +1,14 @@
-import React from "react";
-import categories from "../objects/categories.json";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-const Category = ({
-  setFormData,
-  formData,
-  setActiveStep,
-  activeStep,
-}) => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const navigate = useNavigate();
+import React from 'react'
+import categories from '../objects/categories.json'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+const Category = ({ setFormData, formData, setActiveStep, activeStep }) => {
+  const [selectedCategory, setSelectedCategory] = useState(null)
+  const navigate = useNavigate()
   const handleClick = (e) => {
-    setSelectedCategory(e.target.id);
-    setFormData({ ...formData, category: e.target.id });
-  };
+    setSelectedCategory(e.target.id)
+    setFormData({ ...formData, category: e.target.id })
+  }
 
   return (
     <>
@@ -34,7 +29,7 @@ const Category = ({
             id={category.name}
             key={category.name}
             className={`category-item${
-              selectedCategory === category.name ? " active" : ""
+              selectedCategory === category.name ? ' active' : ''
             }`}
             onClick={handleClick}
           >
@@ -42,7 +37,11 @@ const Category = ({
               src={`/design-images/categories/${category.image}`}
               alt={category.name}
             />
-            <p className="primary-text">{category.name}</p>
+            <p className="primary-text">
+              {category.name
+                .toLowerCase()
+                .replace(/\b\w/g, (s) => s.toUpperCase())}
+            </p>
           </div>
         ))}
       </div>
@@ -58,7 +57,7 @@ const Category = ({
         </button>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Category;
+export default Category

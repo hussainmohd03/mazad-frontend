@@ -30,7 +30,7 @@ const Description = ({ setFormData, formData, setActiveStep, activeStep }) => {
           required
           value={formData.name}
           name="name"
-          className="name-field"
+          className="name-field input-field side-indentation change-pass field-bottom-indentation"
           onChange={handleChange}
         />
         <p>Description</p>
@@ -40,7 +40,7 @@ const Description = ({ setFormData, formData, setActiveStep, activeStep }) => {
           maxLength={500}
           name="description"
         />
-        <p>{charsCount} / 500</p>
+        <p className="word-count">{charsCount} / 500</p>
       </div>
       <div className="item-step-footer">
         <button
