@@ -38,9 +38,10 @@ export const Login = async (data) => {
 
 export const AdminLogin = async (data) => {
   try {
+    console.log('inside admin login')
     const res = await Client.post('/auth/admin/login', data)
+    console.log(res)
     localStorage.setItem('token', res.data.token)
-
     return res.data
   } catch (error) {
     throw error
