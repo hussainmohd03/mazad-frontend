@@ -33,12 +33,6 @@ const SellerItemBox = ({ auction }) => {
             type="date"
             min={new Date(Date.now() + 345600000).toISOString().split("T")[0]}
             onChange={(e) => {
-              console.log(
-                auction._id,
-                new Date(e.target.value).toISOString(),
-                new Date(Date.now() + 86400000).toISOString(),
-                auction.price
-              );
               Client.post("/auctions", {
                 itemId: auction._id,
                 endDate: new Date(e.target.value).toISOString(),

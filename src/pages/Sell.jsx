@@ -24,9 +24,7 @@ const Sell = () => {
       }
     };
     const getSellerAuctions = async () => {
-      console.log("getting seller auctions");
       const auctions = await Client.get(`${BASE_URL}/auctions/me`);
-      console.log(auctions.data.items);
       setSellerAuctions(auctions.data.items);
     };
 

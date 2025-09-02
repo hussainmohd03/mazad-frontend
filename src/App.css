@@ -1024,6 +1024,7 @@ span.sp5 {
   flex-direction: column;
   justify-content: center;
   align-items: baseline;
+  padding: 5%;
 }
 
 .watchlist-item-name p {

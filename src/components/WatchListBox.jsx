@@ -1,21 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { addToWatchList, removeFromWatchList } from "../../services/WatchList";
 import Client from "../../services/api";
 import { BASE_URL } from "../../globals";
-const WatchListBox = ({ auction }) => {
-  console.log(auction);
-  const formatRemainingTime = (endDate) => {
-    const now = new Date();
-    const end = new Date(endDate);
-    let diff = end - now;
-    if (diff <= 0) return "0d 0h";
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    diff -= days * (1000 * 60 * 60 * 24);
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    return `${days}d ${hours}h`;
-  };
 
+const WatchListBox = ({ auction }) => {
   const [isInWatchList, setIsInWatchList] = useState(true);
 
   useEffect(() => {
@@ -42,15 +30,16 @@ const WatchListBox = ({ auction }) => {
         </div>
         <div className="watchlist-action-box">
           <button
-          // onClick={async () => {
-          //   await removeFromWatchList(auction._id);
-          //   setIsInWatchList(false);
-          // }}
+            onClick={async () => {
+              await Client.put(`/watchlist/me/remove/${auction.auctionId._id}`);
+              setIsInWatchList(false);
+              window.location.reload();
+            }}
           >
             <img
               src={`/design-images/book-mark.svg`}
               alt="remove"
-              className={isInWatchList ? "active-bookmark" : ""}
+              className={"active-bookmark"}
             />
           </button>
           <button>

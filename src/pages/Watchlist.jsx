@@ -20,7 +20,6 @@ const Watchlist = () => {
     const getWatchList = async () => {
       try {
         const response = await Client.get("/watchlist/me");
-        console.log(response.data);
         setAuctions(response.data);
       } catch (error) {
         console.error("Error fetching watchlist:", error);
@@ -48,7 +47,7 @@ const Watchlist = () => {
         ) : (
           <div className="watch-list-grid">
             {auctions.map((auction) => (
-              <WatchListBox key={auction.id} auction={auction} />
+              <WatchListBox key={auction._id} auction={auction} />
             ))}
           </div>
         )}

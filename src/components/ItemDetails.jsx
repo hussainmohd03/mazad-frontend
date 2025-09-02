@@ -82,7 +82,9 @@ const ItemDetails = () => {
     getAuction();
     const fetchWatchList = async () => {
       const response = await Client.get("/watchlist/me");
-      setIsInWatchList(response.data.some((item) => item.auctionId === auctionId));
+      setIsInWatchList(
+        response.data.some((item) => item.auctionId === auctionId)
+      );
     };
     fetchWatchList();
     return () => {
@@ -135,7 +137,6 @@ const ItemDetails = () => {
         <div
           className="blurry-circle favorite"
           onClick={async () => {
-            console.log(auctionId);
             if (isInWatchList) {
               await Client.put(`/watchlist/me/remove/${auctionId.toString()}`);
               setIsInWatchList(false);
