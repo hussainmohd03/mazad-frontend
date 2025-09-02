@@ -67,14 +67,19 @@ const AreaChartComponent = ({ used }) => {
           data={topUp}
           dataKey="amount"
           outerRadius={80}
-          innerRadius={60}
+
+          cornerRadius={4}
+          innerRadius={57}
           style={{ height: 53, width: 36 }}
         >
           <Label
             width={30}
             position="center"
             content={
-              <CustomLabel value1={'Used '} value2={topUp[1].amount + '%'} />
+              <CustomLabel
+                value1={'Used '}
+                value2={topUp[1].amount ? topUp[1].amount + '%' : '0%'}
+              />
             }
           ></Label>
           {topUp.map((entry, i) => (

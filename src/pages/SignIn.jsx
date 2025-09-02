@@ -1,9 +1,10 @@
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Login } from '../../services/Auth'
 import UserContext from '../context/UserContext'
+
 const SignIn = () => {
   const navigate = useNavigate()
   const { setUser } = useContext(UserContext)
@@ -26,6 +27,7 @@ const SignIn = () => {
     setUser(user.user)
     navigate('/home')
   }
+
   return (
     <div className="sign-page">
       <form className="sign-form" onSubmit={handleSubmit}>

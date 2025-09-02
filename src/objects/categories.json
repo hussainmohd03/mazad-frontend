@@ -1,19 +1,14 @@
 [
-  { "name": "heavy-machinery", "image": "heavy-machinery.png" },
-  { "name": "art", "image": "art.png" },
-  { "name": "pearls", "image": "pearls.png" },
-  { "name": "jewellery", "image": "jewellery.png" },
-  { "name": "gold", "image": "gold.png" },
+  { "name": "furniture", "image": "furniture.png" },
   { "name": "electronics", "image": "electronics.png" },
   { "name": "industrial", "image": "industrial.png" },
-  { "name": "watches", "image": "watches.png" },
-  { "name": "bags", "image": "bags.png" },
+  { "name": "jewelry", "image": "jewelry.png" },
   { "name": "properties", "image": "properties.png" },
-  { "name": "scrap", "image": "scrap.png" },
+  { "name": "scrap", "image": "scrap-&-metal.png" },
   { "name": "boats", "image": "boats.png" },
   { "name": "machinery", "image": "machinery.png" },
   { "name": "vehicles", "image": "vehicles.png" },
   { "name": "general", "image": "general-items.png" },
-  { "name": "court", "image": "court-properties.png" },
-  { "name": "plates", "image": "car-plates.png" }
+  { "name": "taxi plates", "image": "taxi-plates.png" },
+  { "name": "car plates", "image": "cat-plates.png" }
 ]

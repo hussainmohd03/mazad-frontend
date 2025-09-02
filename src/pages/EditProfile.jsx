@@ -4,7 +4,10 @@ import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import { useContext } from 'react'
 import UserContext from '../context/UserContext'
-const EditProfile = () => {
+import { io } from 'socket.io-client'
+const socket = io('http://localhost:5045')
+
+const EditProfile = ({ setNotification, notification }) => {
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
   const [userDetails, setUserDetails] = useState({
@@ -12,6 +15,7 @@ const EditProfile = () => {
     lastName: '',
     email: ''
   })
+  const [id, setId] = useState('')
 
   const [oldDetails, setOldSets] = useState({})
 
@@ -29,15 +33,25 @@ const EditProfile = () => {
       last_name: updatedProfile.data.user.lastName,
       role: updatedProfile.data.user.type
     })
+    setId(updatedProfile.data.user._id)
+
+    // socket.on here to update ui
+    navigate('/profile')
   }
 
   useEffect(() => {
     const getUserProfile = async () => {
+      socket.emit('connection')
       const res = await Client.get(`${BASE_URL}/users/me`)
       setOldSets(res.data.user)
     }
 
     getUserProfile()
+    console.log(user.id)
+    socket.emit('joinUser', user.id)
+    return () => {
+      socket.emit('leaveUser', user.id)
+    }
   }, [])
   return (
     <>
@@ -53,6 +67,7 @@ const EditProfile = () => {
           placeholder={user.first_name}
           value={userDetails.firstName}
           onChange={handleChange}
+          required
         />
 
         <label htmlFor="lastName" className="input-key">
@@ -64,6 +79,7 @@ const EditProfile = () => {
           placeholder={user.last_name}
           value={userDetails.lastName}
           onChange={handleChange}
+          required
         />
 
         <label htmlFor="email" className="input-key">
@@ -75,6 +91,7 @@ const EditProfile = () => {
           placeholder={user.email}
           value={userDetails.email}
           onChange={handleChange}
+          required
         />
         <button type="submit">Save</button>
       </form>
