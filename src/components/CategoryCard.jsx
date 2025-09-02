@@ -1,5 +1,6 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+
 const CategoryCard = ({ category }) => {
   return (
     <NavLink
@@ -13,7 +14,7 @@ const CategoryCard = ({ category }) => {
       />
       <p>{category.name}</p>
     </NavLink>
-  );
-};
+  )
+}
 
-export default CategoryCard;
+export default CategoryCard

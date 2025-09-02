@@ -19,6 +19,8 @@ import { CheckSession } from '../services/Auth'
 import UserContext from './context/UserContext'
 import ChangePassword from './pages/ChangePassword'
 
+import CategorizedItems from './components/CategorizedItems'
+import Transaction from './pages/Transaction'
 import AdminListings from './pages/AdminListings'
 import AdminSignIn from './pages/AdminSignIn'
 import AdminListingDetails from './pages/AdminListingDetails'
@@ -140,6 +142,7 @@ const App = () => {
             />
           }
         />
+        <Route path="/category/:name" element={<CategorizedItems />} />
       </Routes>
     </>
   )
