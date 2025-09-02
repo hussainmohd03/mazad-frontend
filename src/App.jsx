@@ -18,60 +18,60 @@ import { useEffect } from 'react'
 import { CheckSession } from '../services/Auth'
 import UserContext from './context/UserContext'
 import ChangePassword from './pages/ChangePassword'
-import ItemForm from './components/ItemForm'
 import CategorizedItems from './components/CategorizedItems'
-import Transaction from './pages/Transaction'
 import AdminListings from './pages/AdminListings'
 import AdminSignIn from './pages/AdminSignIn'
 import AdminListingDetails from './pages/AdminListingDetails'
 import AdminDashboard from './pages/AdminDashboard'
 import Notificiation from './components/Notification'
-
-import { BASE_URL } from "../globals";
-import { io } from "socket.io-client";
-const socket = io("http://localhost:5045");
+import Verification from './pages/Verification'
+import Transaction from './pages/Transaction'
+import { BASE_URL } from '../globals'
+import { io } from 'socket.io-client'
+const socket = io('http://localhost:5045')
 
 const App = () => {
-  const navigate = useNavigate();
-  const { user, setUser } = useContext(UserContext);
-  const [financialData, setFinancialData] = useState({});
-  const [notification, setNotification] = useState("");
+  const navigate = useNavigate()
+  const { user, setUser } = useContext(UserContext)
+  const [financialData, setFinancialData] = useState({})
+  const [notification, setNotification] = useState('')
+  const [verification, setVerification] = useState(false)
 
   const checkToken = async () => {
-    const user = await CheckSession();
-    setUser(user);
-  };
+    const user = await CheckSession()
+    setUser(user)
+  }
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token')
     if (token) {
-      checkToken();
+      checkToken()
     } else {
-      navigate("/");
+      navigate('/')
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
     if (user.id) {
-      socket.emit("joinUser", user.id);
-      socket.on("notify", (notif) => {
-        setNotification(notif);
-      });
+      socket.emit('joinUser', user.id)
+      socket.on('notify', (notif) => {
+        setNotification(notif)
+      })
     }
-  }, [notification, socket, user]);
+  }, [notification, socket, user])
 
   const handleLogOut = () => {
-    setUser(null);
-    localStorage.clear();
-    navigate("/sign-in");
-  };
+    setUser(null)
+    localStorage.clear()
+    navigate('/sign-in')
+  }
 
   const handleDeleteAccount = async () => {
-    await Client.delete(`${BASE_URL}/users/me`);
-    setUser(null);
-    localStorage.clear();
-    navigate("/sign-in");
-  };
+    await Client.delete(`${BASE_URL}/users/me`)
+    setUser(null)
+    localStorage.clear()
+    navigate('/sign-in')
+  }
 
   return (
     <>
@@ -88,7 +88,15 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/sell" element={<Sell />} />
+        <Route
+          path="/sell"
+          element={
+            <Sell
+              setVerification={setVerification}
+              verification={verification}
+            />
+          }
+        />
         <Route
           path="/watchlist"
           element={
@@ -141,9 +149,19 @@ const App = () => {
           }
         />
         <Route path="/category/:name" element={<CategorizedItems />} />
+        <Route
+          path="/verification"
+          element={
+            <Verification
+              setVerification={setVerification}
+              verification={verification}
+            />
+          }
+        />
+        <Route path="/transaction-history" element={<Transaction />} />
       </Routes>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App

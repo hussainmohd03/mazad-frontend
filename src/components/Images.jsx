@@ -29,8 +29,9 @@ const Images = ({ setFormData, formData, setActiveStep, activeStep }) => {
       </div>
       <div className="images-step-body">
         <div className="info-box">
-          <img src="design-images/info-icon.svg" alt="info icon" />
-          <div>please upload only 4 images to proceed</div>
+          <img src="design-images/info-icon.svg" alt="" />
+          <div>Please upload 4 images to proceed. Ensure clarity.</div>
+
         </div>
         <label htmlFor="image-upload" className="image-upload-label">
           +

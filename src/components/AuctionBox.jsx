@@ -1,7 +1,7 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { BASE_URL } from "../../globals";
+
 
 const AuctionBox = ({ auction, activeButton }) => {
   const navigate = useNavigate()
@@ -26,7 +26,8 @@ const AuctionBox = ({ auction, activeButton }) => {
     >
       <div className="auction-box-header">
         <img
-          src={`${BASE_URL}/${auction.itemId.images[0]}`}
+
+        src={`${BASE_URL}/${auction.itemId.images[0]}`}
           alt="item-image"
           className="auction-box-item-image"
         />
@@ -64,6 +65,7 @@ const AuctionBox = ({ auction, activeButton }) => {
           className="auction-box-item-image"
         />
         <div className="auction-box-description">
+
           <p className="primary-text">{auction.itemId.name}</p>
           <p className="secondary-text">{auction.itemId.category}</p>
         </div>

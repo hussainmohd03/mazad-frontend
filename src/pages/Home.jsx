@@ -54,7 +54,6 @@ const Home = () => {
         </div>
         <NavBar />
       </div>
-
     </>
   )
 }
