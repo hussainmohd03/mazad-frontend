@@ -155,7 +155,7 @@ const ItemDetails = () => {
       </div>
       <div className="item-page-body">
         <div className="item-images-container">
-          <img src="/items/watch.webp" alt="item-image" />
+        <img src={`${BASE_URL}/${auction.auction.itemId.images[0]}`} alt="item-image" />
         </div>
         <div className="item-details">
           <p>Lot ID # {auction.auction.itemId?._id}</p>
