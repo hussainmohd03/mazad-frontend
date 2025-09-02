@@ -1,10 +1,11 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const Price = ({ setFormData, formData, setActiveStep, activeStep , handleSubmit}) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="item-step-header">
-        <img src="/design-images/arrow.svg" alt="" onClick={() => setActiveStep(activeStep-1)}/>
+        <img src="/design-images/arrow.svg" alt="" onClick={() => navigate(-1)}/>
         <div>
           <p className="primary-text">Set your price</p>
           <p className="secondary-text">Price can't be 0 or less and cannot be changed after</p>
@@ -48,6 +49,7 @@ const Price = ({ setFormData, formData, setActiveStep, activeStep , handleSubmit
         >
           Next
         </button>
+        
       </div>
     </>
   );

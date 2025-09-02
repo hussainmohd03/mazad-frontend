@@ -4,6 +4,8 @@ import { useContext } from 'react'
 import { useState, useEffect } from 'react'
 import { Login } from '../../services/Auth'
 import UserContext from '../context/UserContext'
+import { GoogleLogin } from '@react-oauth/google'
+import { jwtDecode } from 'jwt-decode'
 
 const SignIn = () => {
   const navigate = useNavigate()
@@ -66,11 +68,10 @@ const SignIn = () => {
             <a href="">Privacy Policy</a>
           </p>
         </div>
-        {/* <img src="design-images\or.png" alt="or" />
-        <button className="google-btn">
-          <img src="design-images\google.png" alt="" />
-          Sign up with Google
-        </button> */}
+        <GoogleLogin
+          onSuccess={(creds) => console.log(jwtDecode(creds.credential))}
+          onError={() => console.log('login failed')}
+        />
         <p className="sign-alternative">
           Don't have an account? <NavLink to="/sign-up">SIGN UP</NavLink>
         </p>

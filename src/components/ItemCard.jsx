@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../../globals'
 const ItemCard = ({ auction }) => {
   const navigate = useNavigate()
   return (
@@ -10,9 +11,7 @@ const ItemCard = ({ auction }) => {
         navigate(`/auctions/${auction._id}`)
       }}
     >
-      {/* <img src={`${auction.itemId.images}`} alt="item-image" /> */}
-      {/* TODO 1: change the hard coded image */}
-      <img src="items/watch.webp" alt="item-image" />
+      <img src={`${BASE_URL}/${auction.itemId.images[0]}`} alt="item-image" />
       <div className="item-name">
         <p className="primary-text">{auction.itemId.name}</p>
         <p className="secondary-text">Price</p>
