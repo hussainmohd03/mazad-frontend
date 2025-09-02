@@ -35,7 +35,6 @@ const Sell = ({ verification, setVerification }) => {
         }
       }
       const getSellerAuctions = async () => {
-        console.log('getting seller auctions')
         const auctions = await Client.get(`${BASE_URL}/auctions/me`)
         setSellerAuctions(auctions.data.items)
       }
@@ -44,7 +43,6 @@ const Sell = ({ verification, setVerification }) => {
       fetchSellerItems()
       setInSell(true)
     }
-    console.log('enetered use effect in sell')
     checkValidation()
   }, [])
 

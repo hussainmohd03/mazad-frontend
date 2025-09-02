@@ -141,7 +141,6 @@ const ItemDetails = () => {
               await Client.put(`/watchlist/me/remove/${auctionId.toString()}`)
               setIsInWatchList(false)
             } else {
-              console.log(`/watchlist/me/add/${auctionId.toString()}`)
               await Client.put(`/watchlist/me/add/${auctionId.toString()}`)
               setIsInWatchList(true)
             }
