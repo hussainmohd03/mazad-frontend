@@ -1,9 +1,10 @@
 import React from "react";
 import Client from "../../services/api";
 import { BASE_URL } from "../../globals";
-
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 const SellerItemBox = ({ auction }) => {
+  const [endDate, setEndDate] = useState("");
+
   useEffect(() => {}, []);
   return (
     <div className="seller-box" key={auction._id}>
@@ -18,7 +19,9 @@ const SellerItemBox = ({ auction }) => {
           <p className="secondary-text">{auction.category}</p>
         </div>
         <div className={"status-box"}>
-          <div className="approved status-container">{auction.status}</div>
+          <div className={`status-box`}>
+            <p className={`${auction.status}`}>{auction.status}</p>
+          </div>
         </div>
       </div>
       <div className="seller-box-footer">
@@ -28,7 +31,15 @@ const SellerItemBox = ({ auction }) => {
         {auction.status === "approved" && (
           <input
             type="date"
-            min={new Date(Date.now() + 86400000).toISOString().split("T")[0]}
+            min={new Date(Date.now() + 345600000).toISOString().split("T")[0]}
+            onChange={(e) => {
+              Client.post("/auctions", {
+                itemId: auction._id,
+                endDate: new Date(e.target.value).toISOString(),
+                startDate: new Date(Date.now() + 86400000).toISOString(),
+                initialPrice: auction.price,
+              });
+            }}
           />
         )}
       </div>

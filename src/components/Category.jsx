@@ -20,7 +20,7 @@ const Category = ({
       <div className="item-step-header">
         <img
           src="/design-images/arrow.svg"
-          alt=""
+          alt="arrow"
           onClick={() => navigate(-1)}
         />
         <div>

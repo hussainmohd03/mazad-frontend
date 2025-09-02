@@ -50,6 +50,7 @@ const Sell = () => {
     checkValidation()
   }, [])
 
+
   return (!verification) ? (
                 <div className="sell-with-us-container">
             <div className="banner">
@@ -96,42 +97,43 @@ const Sell = () => {
         <p className="activity-header">Sell</p>
         <div className="toggle-buttons">
           <button
-            className={activeButton === 'on-auction' ? 'active' : ''}
-            onClick={() => setActiveButton('on-auction')}
+            className={activeButton === "on-auction" ? "active" : ""}
+            onClick={() => setActiveButton("on-auction")}
           >
             On Auction
           </button>
           <button
-            className={activeButton === 'for-sale' ? 'active' : ''}
+            className={activeButton === "for-sale" ? "active" : ""}
             onClick={() => {
-              setActiveButton('for-sale')
+              setActiveButton("for-sale");
             }}
           >
             For Sale
           </button>
         </div>
       </header>
-        <main>
-          <div className="auctions-grid">
-            {activeButton === 'for-sale' ? (
-              sellerItems.length > 0 ? (
-                sellerItems.map((item) => (
-                  <SellerItemBox key={item._id} auction={item} />
-                ))
-              ) : (
-                <EmptyPage image={'design-images/no-assets-listed.svg'} />
-              )
-            ) : sellerAuctions.length > 0 ? (
-              sellerAuctions.map((auction) => (
-                <AuctionBox key={auction._id} auction={auction} />
+      <main>
+        <div className="auctions-grid">
+          {activeButton === "for-sale" ? (
+            sellerItems.length > 0 ? (
+              sellerItems.map((item) => (
+                <SellerItemBox key={item._id} auction={item} />
               ))
             ) : (
-              <EmptyPage image={'design-images/no-assets-listed.svg'} />
-            )}
-          </div>
+              <EmptyPage image={"design-images/no-assets-listed.svg"} />
+            )
+          ) : sellerAuctions.length > 0 ? (
+            sellerAuctions.map((auction) => (
+              <AuctionBox key={auction._id} auction={auction} />
+            ))
+          ) : (
+            <EmptyPage image={"design-images/no-assets-listed.svg"} />
+          )}
+        </div>
       </main>
       <NavBar inSell={inSell} setInSell={setInSell} />
     </div>
-    )}
+  );
+};
 
-export default Sell
+export default Sell;

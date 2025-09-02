@@ -4,10 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Client from "../../services/api";
 import { BASE_URL } from "../../globals";
 import Modal from "./Modal";
-import {
-  addToWatchList,
-  removeFromWatchList,
-} from "../../services/WatchList";
 import AutoBiddingInfo from "./AutoBiddingInfo";
 const socket = io(import.meta.env.VITE_SOCKET_URL || "http://localhost:5045");
 
@@ -79,7 +75,6 @@ const ItemDetails = () => {
       setError("");
     });
 
-
     socket.on("outBid", (data) => {
       // inform user
     });
@@ -87,7 +82,9 @@ const ItemDetails = () => {
     getAuction();
     const fetchWatchList = async () => {
       const response = await Client.get("/watchlist/me");
-      setIsInWatchList(response.data.some((item) => item.auctionId === auctionId));
+      setIsInWatchList(
+        response.data.some((item) => item.auctionId._id === auctionId)
+      );
     };
     fetchWatchList();
     return () => {
@@ -140,7 +137,6 @@ const ItemDetails = () => {
         <div
           className="blurry-circle favorite"
           onClick={async () => {
-            console.log(auctionId);
             if (isInWatchList) {
               await Client.put(`/watchlist/me/remove/${auctionId.toString()}`);
               setIsInWatchList(false);

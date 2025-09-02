@@ -1,21 +1,25 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 const Images = ({ setFormData, formData, setActiveStep, activeStep }) => {
-  const [preview, setPreview] = useState([]);
-  const navigate = useNavigate();
+  const [preview, setPreview] = useState([])
+  const navigate = useNavigate()
   const handleFileChange = (e) => {
-    e.preventDefault();
-    const file = e.target.files[0];
+    e.preventDefault()
+    const file = e.target.files[0]
     if (file) {
-      setPreview((prev) => [...prev, URL.createObjectURL(file)]);
-      setFormData({ ...formData, images: [...formData.images, file] });
+      setPreview((prev) => [...prev, URL.createObjectURL(file)])
+      setFormData({ ...formData, images: [...formData.images, file] })
     }
-  };
+  }
   return (
     <>
       <div className="item-step-header">
-        <img src="/design-images/arrow.svg" alt="" onClick={() => navigate(-1)}/>
+        <img
+          src="/design-images/arrow.svg"
+          alt="arrow"
+          onClick={() => navigate(-1)}
+        />
         <div>
           <p className="primary-text">Upload your images and videos</p>
           <p className="secondary-text">
@@ -25,7 +29,7 @@ const Images = ({ setFormData, formData, setActiveStep, activeStep }) => {
       </div>
       <div className="images-step-body">
         <div className="info-box">
-          <img src="design-images/info-icon.svg" alt="" />
+          <img src="design-images/info-icon.svg" alt="info icon" />
           <div>please upload only 4 images to proceed</div>
         </div>
         <label htmlFor="image-upload" className="image-upload-label">
@@ -58,7 +62,7 @@ const Images = ({ setFormData, formData, setActiveStep, activeStep }) => {
         </button>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Images;
+export default Images

@@ -1,20 +1,20 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 const Description = ({ setFormData, formData, setActiveStep, activeStep }) => {
-  const [charsCount, setCharsCount] = React.useState(0);
-  const navigate = useNavigate();
+  const [charsCount, setCharsCount] = React.useState(0)
+  const navigate = useNavigate()
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    if (e.target.name === "description") {
-      setCharsCount(e.target.value.length);
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+    if (e.target.name === 'description') {
+      setCharsCount(e.target.value.length)
     }
-  };
+  }
   return (
     <>
       <div className="item-step-header">
         <img
           src="/design-images/arrow.svg"
-          alt=""
+          alt="arrow"
           onClick={() => navigate(-1)}
         />
         <div>
@@ -46,7 +46,7 @@ const Description = ({ setFormData, formData, setActiveStep, activeStep }) => {
         <button
           className="action-button"
           onClick={() => {
-            setActiveStep(activeStep + 1), console.log(formData);
+            setActiveStep(activeStep + 1), console.log(formData)
           }}
           disabled={charsCount === 0}
         >
@@ -54,7 +54,7 @@ const Description = ({ setFormData, formData, setActiveStep, activeStep }) => {
         </button>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Description;
+export default Description

@@ -11,13 +11,3 @@ export const addToWatchList = async (id) => {
     throw error;
   }
 };
-
-export const removeFromWatchList = async (id) => {
-  try {
-    const response = await Client.put(`/watchlist/me/remove/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error("Error removing from watchlist:", error);
-    throw error;
-  }
-};

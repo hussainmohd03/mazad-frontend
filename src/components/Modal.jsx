@@ -27,7 +27,7 @@ const Modal = ({
         <div className="modal-header">
           <p>Place Bid</p>
           <div className="bidding-time2">
-            <img src="/design-images/stopwatch.svg" alt="" />
+            <img src="/design-images/stopwatch.svg" alt="stopwatch images" />
             {timeLeft.days}d:{timeLeft.hours}h:{timeLeft.minutes}m
           </div>
         </div>
@@ -36,12 +36,12 @@ const Modal = ({
             <p>Use Auto Bid</p>
             <img
               src="/design-images/info.svg"
-              alt=""
+              alt="info"
               className="info-icon"
               onClick={() => setShowAutoBidInfo(true)}
             />
           </div>
-          <div className="container">
+          <div className="container auto-bid-btn">
             <input
               type="checkbox"
               className="checkbox"
@@ -67,14 +67,14 @@ const Modal = ({
               )
             }
           >
-            -
+            <img src="/design-images/minus.svg" alt="minus" />
           </button>
           <span>BHD {bidAmount}</span>
           <button
             className="plus_button"
             onClick={() => setBidAmount(bidAmount + 1)}
           >
-            +
+            <img src="/design-images/plus.svg" alt="plus icon" />
           </button>
         </div>
         {showMinIncrement && (
@@ -89,7 +89,7 @@ const Modal = ({
                   setMinIncrement(minIncrement > 10 ? minIncrement - 1 : 10)
                 }
               >
-                -
+                <img src="/design-images/minus.svg" alt="minus icon" />
               </button>
               <span>BHD {minIncrement}</span>
               <button
@@ -101,10 +101,10 @@ const Modal = ({
             </div>
           </div>
         )}
-        <button onClick={placeBid} className="sign-button">
+        <button onClick={placeBid} className="sign-button placeBid-btn">
           Add Deposit
         </button>
-        <div className="terms">
+        <div className="terms terms-margin-width">
           <p>
             We ensure your information is kept secure. For more information,
             check our <span>Privacy Policy</span> and{' '}

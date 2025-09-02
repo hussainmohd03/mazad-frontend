@@ -66,11 +66,7 @@ const SignIn = () => {
             <a href="">Privacy Policy</a>
           </p>
         </div>
-        {/* <img src="design-images\or.png" alt="or" />
-        <button className="google-btn">
-          <img src="design-images\google.png" alt="" />
-          Sign up with Google
-        </button> */}
+
         <p className="sign-alternative">
           Don't have an account? <NavLink to="/sign-up">SIGN UP</NavLink>
         </p>
