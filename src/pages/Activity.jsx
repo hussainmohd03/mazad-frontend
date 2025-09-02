@@ -1,15 +1,15 @@
-import NavBar from '../components/NavBar'
-import auctions from '../objects/auctions.json'
-import { useState, useEffect, useContext } from 'react'
-import AuctionBox from '../components/AuctionBox'
-import Notificiation from '../components/Notification'
-import UserContext from '../context/UserContext'
-import { io } from 'socket.io-client'
-const socket = io('http://localhost:5045')
+import NavBar from "../components/NavBar";
+import auctions from "../objects/auctions.json";
+import { useState, useEffect, useContext } from "react";
+import AuctionBox from "../components/AuctionBox";
+import Notificiation from "../components/Notification";
+import UserContext from "../context/UserContext";
+import { io } from "socket.io-client";
+const socket = io("http://localhost:5045");
 
 const Activity = ({ notification, setNotification }) => {
-  const [activeButton, setActiveButton] = useState('Bids')
-  const { user } = useContext(UserContext)
+  const [activeButton, setActiveButton] = useState("Bids");
+  const { user } = useContext(UserContext);
 
   return (
     <div className="activity-page">
@@ -23,15 +23,15 @@ const Activity = ({ notification, setNotification }) => {
         <p className="activity-header">Activity</p>
         <div className="toggle-buttons">
           <button
-            className={activeButton === 'Bids' ? 'active' : ''}
-            onClick={() => setActiveButton('Bids')}
+            className={activeButton === "Bids" ? "active" : ""}
+            onClick={() => setActiveButton("Bids")}
           >
             Bids
           </button>
           <button
-            className={activeButton === 'Purchases' ? 'active' : ''}
+            className={activeButton === "Purchases" ? "active" : ""}
             onClick={() => {
-              setActiveButton('Purchases')
+              setActiveButton("Purchases");
             }}
           >
             Purchases
@@ -46,18 +46,18 @@ const Activity = ({ notification, setNotification }) => {
       </header>
       <main>
         <div className="auctions-grid">
-          {/* {auctions.map((auction) => (
+          {auctions.map((auction) => (
             <AuctionBox
               key={auction._id}
               auction={auction}
               activeButton={activeButton}
             />
-          ))} */}
+          ))}
         </div>
       </main>
       <NavBar />
     </div>
-  )
-}
+  );
+};
 
-export default Activity
+export default Activity;
