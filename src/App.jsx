@@ -18,7 +18,7 @@ import { useEffect } from 'react'
 import { CheckSession } from '../services/Auth'
 import UserContext from './context/UserContext'
 import ChangePassword from './pages/ChangePassword'
-
+import ItemForm from './components/ItemForm'
 import CategorizedItems from './components/CategorizedItems'
 import Transaction from './pages/Transaction'
 import AdminListings from './pages/AdminListings'
@@ -101,6 +101,7 @@ const App = () => {
             />
           }
         />
+        <Route path="/item-form" element={<ItemForm />} />
         <Route
           path="/profile"
           element={
