@@ -28,7 +28,7 @@ const AdminSignIn = () => {
       })
       navigate('/admin/listings')
     } catch (err) {
-      console.log(err)
+      throw err
     }
   }
 
