@@ -64,8 +64,9 @@ const AuctionBox = ({ auction, activeButton }) => {
           className="auction-box-item-image"
         />
         <div className="auction-box-description">
-          <p className="primary-text">{auction.item.name}</p>
-          <p className="secondary-text">{auction.item.category}</p>
+          {console.log(auction)}
+          <p className="primary-text">{auction.itemId.name}</p>
+          <p className="secondary-text">{auction.itemId.category}</p>
         </div>
       </div>
       <div className="auction-box-footer">
