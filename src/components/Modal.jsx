@@ -41,7 +41,7 @@ const Modal = ({
               onClick={() => setShowAutoBidInfo(true)}
             />
           </div>
-          <div className="container">
+          <div className="container auto-bid-btn">
             <input
               type="checkbox"
               className="checkbox"
@@ -67,14 +67,14 @@ const Modal = ({
               )
             }
           >
-            -
+            <img src="/design-images/minus.svg" alt="" />
           </button>
           <span>BHD {bidAmount}</span>
           <button
             className="plus_button"
             onClick={() => setBidAmount(bidAmount + 1)}
           >
-            +
+            <img src="/design-images/plus.svg" alt="" />
           </button>
         </div>
         {showMinIncrement && (
@@ -104,7 +104,7 @@ const Modal = ({
         <button onClick={placeBid} className="sign-button placeBid-btn">
           Add Deposit
         </button>
-        <div className="terms">
+        <div className="terms terms-margin-width">
           <p>
             We ensure your information is kept secure. For more information,
             check our <span>Privacy Policy</span> and{' '}
