@@ -18,13 +18,13 @@ import { useEffect } from 'react'
 import { CheckSession } from '../services/Auth'
 import UserContext from './context/UserContext'
 import ChangePassword from './pages/ChangePassword'
+
 import AdminListings from './pages/AdminListings'
 import AdminSignIn from './pages/AdminSignIn'
 import AdminListingDetails from './pages/AdminListingDetails'
 import AdminDashboard from './pages/AdminDashboard'
 
 import { BASE_URL } from '../globals'
-
 
 const App = () => {
   const navigate = useNavigate()
@@ -79,17 +79,18 @@ const App = () => {
         <Route path="/activity" element={<Activity />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/auctions/:auctionId" element={<ItemDetails />} />
 
+        <Route path="/auctions/:auctionId" element={<ItemDetails />} />
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="change-password" element={<ChangePassword />} />
 
         <Route path="/admin/sign-in" element={<AdminSignIn />} />
         <Route path="/admin/sign-up" element={<AdminSignUp />} />
-
         <Route path="/admin/listings" element={<AdminListings />} />
+
         <Route path="/admin/listings/:id" element={<AdminListingDetails />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
         <Route
           path="/top-up"
           element={
