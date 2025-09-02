@@ -16,16 +16,16 @@ const TopUp = ({ financialData, setFinancialData }) => {
 
   const handleClick = async () => {
     const res = await Client.put(`${BASE_URL}/users/me`, {
-      balance: (financialData.deposit - financialData.bidding_limit)+ amount
+      balance: financialData.deposit - financialData.bidding_limit + amount
     })
     navigate('/profile')
   }
 
   return (
     <>
-        <div className="modal">
-          <div className="modal-content">
-            <div className="modal-header">
+      <div className="modal">
+        <div className="modal-content">
+          <div className="modal-header">
             <p>Top Up</p>
             </div>
             <p className='modal-sentence'>Select the amount you would like to deposit into your account</p>
@@ -38,24 +38,26 @@ const TopUp = ({ financialData, setFinancialData }) => {
                 placeholder="0"
                 min={1}
                 value={amount}
-                onChange={(e)=>setAmount(e.target.value)} 
-            />
-              <button onClick={handleIncrement}><img src="design-images/plus.svg" alt="" /></button>
+                onChange={(e) => setAmount(e.target.value)}
+              />
+              <button onClick={handleIncrement}>
+                <img src="design-images/plus.svg" alt="plus icon" />
+              </button>
             </div>
             <button className="sign-button" onClick={handleClick}>
               Top up
             </button>
-            </div>
-            <div className="terms">
-              <p>
-                We ensure your information is kept secure. For more information,
-                check our <span>Privacy Policy</span> and{' '}
-                <span>Terms & Conditions</span>
-              </p>
-            </div>
-              <div className='white-space'></div>
           </div>
+          <div className="terms">
+            <p>
+              We ensure your information is kept secure. For more information,
+              check our <span>Privacy Policy</span> and{' '}
+              <span>Terms & Conditions</span>
+            </p>
+          </div>
+          <div className="white-space"></div>
         </div>
+      </div>
     </>
   )
 }

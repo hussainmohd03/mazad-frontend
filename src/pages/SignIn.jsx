@@ -4,8 +4,7 @@ import { useContext } from 'react'
 import { useState, useEffect } from 'react'
 import { Login } from '../../services/Auth'
 import UserContext from '../context/UserContext'
-// import { GoogleLogin } from '@react-oauth/google'
-// import { jwtDecode } from 'jwt-decode'
+
 
 const SignIn = () => {
   const navigate = useNavigate()

@@ -17,7 +17,8 @@ const Images = ({ setFormData, formData, setActiveStep, activeStep }) => {
       <div className="item-step-header">
         <img
           src="/design-images/arrow.svg"
-          alt=""
+
+          alt="arrow"
           onClick={() => navigate(-1)}
         />
         <div>
@@ -31,6 +32,7 @@ const Images = ({ setFormData, formData, setActiveStep, activeStep }) => {
         <div className="info-box">
           <img src="design-images/info-icon.svg" alt="" />
           <div>Please upload 4 images to proceed. Ensure clarity.</div>
+
         </div>
         <label htmlFor="image-upload" className="image-upload-label">
           +

@@ -1,6 +1,7 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { BASE_URL } from '../../globals'
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { BASE_URL } from "../../globals";
+
 
 const AuctionBox = ({ auction, activeButton }) => {
   const navigate = useNavigate()
@@ -25,7 +26,8 @@ const AuctionBox = ({ auction, activeButton }) => {
     >
       <div className="auction-box-header">
         <img
-          src={`${auction.itemId.images[0]}`}
+
+       src={`${BASE_URL}/${auction.itemId.images[0]}`}
           alt="item-image"
           className="auction-box-item-image"
         />
@@ -36,16 +38,16 @@ const AuctionBox = ({ auction, activeButton }) => {
       </div>
       <div className="auction-box-footer">
         <p>
-          <span className="currency">BHD&nbsp;</span>
-          {auction.currentPrice.toLocaleString()}
+          <span className="currency">BHD&nbsp;{auction.currentPrice}</span>
         </p>
         <p>
-          <img src={`design-images/bids-count.svg`} alt="total-bids" />{' '}
-          <span>&nbsp;4</span>
+
+          <img src={`design-images/bids-count.svg`} alt="total-bids" />{" "}
+          <span>&nbsp;{auction.biddings.length}</span>
         </p>
         <p>
           <img src={`design-images/bids-time.svg`} alt="time-left" />
-          <span>&nbsp; {formatRemainingTime(auction.endDate)}</span>
+          <span>&nbsp;{formatRemainingTime(auction.endDate)}</span>
         </p>
       </div>
     </div>
