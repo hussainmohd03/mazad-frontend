@@ -2298,7 +2298,7 @@ input::-webkit-inner-spin-button {
 .auction-page {
   display: grid;
   grid-template-rows: 1fr auto;
-
+}
 .edit-profile-container {
   background: #fff;
   min-height: 100vh;
