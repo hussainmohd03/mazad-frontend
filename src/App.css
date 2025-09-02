@@ -2304,7 +2304,6 @@ input::-webkit-inner-spin-button {
   grid-template-rows: 1fr auto;
 }
 
-
 .sell-with-us-container {
   display: grid;
   grid-template-rows: 4fr 1fr auto 1fr 1fr 1fr;
@@ -2360,7 +2359,6 @@ input::-webkit-inner-spin-button {
 .feature p {
   margin-left: 5%;
 }
->>>>>>> cfc585ccee3fef9a7f6e290d758bd9a05b9e43cc
 .edit-profile-container {
   background: #fff;
   min-height: 100vh;
