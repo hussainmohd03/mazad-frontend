@@ -14,7 +14,6 @@ const Sell = () => {
   const [inSell, setInSell] = useState(false);
 
   useEffect(() => {
-    console.log("enetered use effect in sell");
     const fetchSellerItems = async () => {
       try {
         const items = await getSellerItems();

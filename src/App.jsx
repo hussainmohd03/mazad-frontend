@@ -54,9 +54,7 @@ const App = () => {
   useEffect(() => {
     if (user.id) {
       socket.emit("joinUser", user.id);
-      console.log("emitted");
       socket.on("notify", (notif) => {
-        console.log("from frontend", notif);
         setNotification(notif);
       });
     }

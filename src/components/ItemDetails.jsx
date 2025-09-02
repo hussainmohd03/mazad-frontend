@@ -82,7 +82,6 @@ const ItemDetails = () => {
     getAuction();
     const fetchWatchList = async () => {
       const response = await Client.get("/watchlist/me");
-      console.log(response.data);
       setIsInWatchList(
         response.data.some((item) => item.auctionId._id === auctionId)
       );
