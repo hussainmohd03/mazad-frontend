@@ -51,7 +51,6 @@ const AdminListingDetails = () => {
       }
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey)
-
     } catch (error) {
       console.error(error)
     }
@@ -109,7 +108,7 @@ const AdminListingDetails = () => {
       <div className="images">
         <div className="large-image-container">
           <img
-            src={mainImage}
+            src={`http://localhost:3000/${mainImage}`}
             alt="Main Listing"
             className="large-listing-img"
           />
@@ -119,7 +118,7 @@ const AdminListingDetails = () => {
           {listing.images.map((img, i) => (
             <img
               key={i}
-              src={img}
+              src={`http://localhost:3000/${img}`}
               alt={`Thumbnail ${i}`}
               className="listing-img"
               onMouseEnter={() => setMainImage(img)}
