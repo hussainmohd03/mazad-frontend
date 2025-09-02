@@ -1,9 +1,7 @@
-import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { Register } from '../../services/Auth'
 import emailjs from '@emailjs/browser'
-import { useGoogleOneTapLogin } from '@react-oauth/google'
 
 const SignUp = () => {
   const serviceId = 'service_xfa2nmx'
@@ -106,11 +104,6 @@ const SignUp = () => {
             <a href="">Privacy Policy</a>
           </p>
         </div>
-        {/* <img src="design-images\or.png" alt="or" />
-        <button className="google-btn">
-          <img src="design-images\google.png" alt="" />
-          Sign up with Google
-        </button> */}
         <p className="sign-alternative">
           Already have an account? <NavLink to="/sign-in">SIGN IN</NavLink>
         </p>

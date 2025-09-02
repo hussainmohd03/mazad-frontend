@@ -27,7 +27,7 @@ const Modal = ({
         <div className="modal-header">
           <p>Place Bid</p>
           <div className="bidding-time2">
-            <img src="/design-images/stopwatch.svg" alt="" />
+            <img src="/design-images/stopwatch.svg" alt="stopwatch images" />
             {timeLeft.days}d:{timeLeft.hours}h:{timeLeft.minutes}m
           </div>
         </div>
@@ -36,7 +36,7 @@ const Modal = ({
             <p>Use Auto Bid</p>
             <img
               src="/design-images/info.svg"
-              alt=""
+              alt="info"
               className="info-icon"
               onClick={() => setShowAutoBidInfo(true)}
             />
@@ -67,14 +67,14 @@ const Modal = ({
               )
             }
           >
-            <img src="/design-images/minus.svg" alt="" />
+            <img src="/design-images/minus.svg" alt="minus" />
           </button>
           <span>BHD {bidAmount}</span>
           <button
             className="plus_button"
             onClick={() => setBidAmount(bidAmount + 1)}
           >
-            <img src="/design-images/plus.svg" alt="" />
+            <img src="/design-images/plus.svg" alt="plus icon" />
           </button>
         </div>
         {showMinIncrement && (
@@ -89,7 +89,7 @@ const Modal = ({
                   setMinIncrement(minIncrement > 10 ? minIncrement - 1 : 10)
                 }
               >
-                <img src="/design-images/minus.svg" alt="" />
+                <img src="/design-images/minus.svg" alt="minus icon" />
               </button>
               <span>BHD {minIncrement}</span>
               <button

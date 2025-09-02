@@ -66,7 +66,7 @@ const EditProfile = ({ setNotification, notification }) => {
         <img
           onClick={() => navigate(-1)}
           src="/design-images/back-arrow-with-circle.svg"
-          alt="back"
+          alt="back-arrow-with-circle"
         />
         <div className="change-pass-header edit-header">Edit Personal Info</div>
       </div>

@@ -1,20 +1,19 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import Client from "../../services/api";
-import { BASE_URL } from "../../globals";
+import { useEffect, useState } from 'react'
+import Client from '../../services/api'
+import { BASE_URL } from '../../globals'
 
 const WatchListBox = ({ auction }) => {
-  const [isInWatchList, setIsInWatchList] = useState(true);
+  const [isInWatchList, setIsInWatchList] = useState(true)
 
   useEffect(() => {
     const fetchWatchList = async () => {
-      const response = await Client.get("/watchlist/me");
+      const response = await Client.get('/watchlist/me')
       setIsInWatchList(
         response.data.some((item) => item.auctionId === auction._id)
-      );
-    };
-    fetchWatchList();
-  }, []);
+      )
+    }
+    fetchWatchList()
+  }, [])
 
   return (
     <div className="watchlist-box">
@@ -31,19 +30,19 @@ const WatchListBox = ({ auction }) => {
         <div className="watchlist-action-box">
           <button
             onClick={async () => {
-              await Client.put(`/watchlist/me/remove/${auction.auctionId._id}`);
-              setIsInWatchList(false);
-              window.location.reload();
+              await Client.put(`/watchlist/me/remove/${auction.auctionId._id}`)
+              setIsInWatchList(false)
+              window.location.reload()
             }}
           >
             <img
               src={`/design-images/book-mark.svg`}
               alt="remove"
-              className={"active-bookmark"}
+              className={'active-bookmark'}
             />
           </button>
           <button>
-            <img src={"/design-images/bids-count.svg"} alt="bids" />
+            <img src={'/design-images/bids-count.svg'} alt="bids" />
           </button>
         </div>
       </div>
@@ -53,16 +52,16 @@ const WatchListBox = ({ auction }) => {
           {auction.itemDetails.price.toLocaleString()}
         </p>
         <p>
-          <img src={`design-images/bids-count.svg`} alt="total-bids" />{" "}
+          <img src={`design-images/bids-count.svg`} alt="total-bids" />{' '}
           <span>&nbsp;{auction.totalBids}</span>
         </p>
         <p>
           <img src={`design-images/bids-time.svg`} alt="time-left" />
-          <span>&nbsp;{auction.auctionId.endDate.split("T")[0]}</span>
+          <span>&nbsp;{auction.auctionId.endDate.split('T')[0]}</span>
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default WatchListBox;
+export default WatchListBox
