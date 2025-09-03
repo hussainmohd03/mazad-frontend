@@ -1544,7 +1544,7 @@ textarea {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 2rem;
-  margin: -47% 20% -195% 13%;
+  margin: -55% 20% -195% 13%;
 }
 
 .Dashboard-title {
