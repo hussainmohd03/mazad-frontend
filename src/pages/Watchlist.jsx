@@ -3,7 +3,7 @@ import NavBar from '../components/NavBar'
 import WatchListBox from '../components/WatchListBox'
 import { useEffect, useState, useContext } from 'react'
 import { io } from 'socket.io-client'
-const socket = io('http://localhost:5045')
+const socket = io('https://mazad-704ecf2af46e.herokuapp.com:5045')
 import UserContext from '../context/UserContext'
 import EmptyPage from '../components/EmptyPage'
 import Client from '../../services/api'

@@ -49,7 +49,7 @@ const AdminListingDetails = () => {
         status: action,
         email: listing.email
       }
-
+      console.log(templateParams)
       await emailjs.send(serviceId, templateId, templateParams, publicKey)
     } catch (error) {
       console.error(error)
