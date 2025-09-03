@@ -1,4 +1,4 @@
-![header](public/design-images/banner.png)
+![header](/public/design-images/banner.png)
 
 # MAZAD
 
@@ -27,7 +27,7 @@ Project planning commenced with the creation of a [Notion Planner](https://www.n
 
 ### **Branding**
 
-![branding board](/mazad-frontend/public/design-images/branding.png)
+![branding board](/public/design-images/branding.png)
 
 The branding of this project was directly influenced by the Mazad application as illustrated above to provide a cohesive clone in respect to the original.
 
@@ -59,7 +59,7 @@ Relationships:
 These relationships ensure a consistent flow of data across the entities to support the core functionality of the application and insure an organised and clean logic is being implemented.
 
 
-![erd](/mazad-frontend/public/design-images/image.png)
+![erd](/public/design-images/image.png)
 
 ## **Extra Features (implemented)**
 
