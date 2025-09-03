@@ -28,8 +28,8 @@ import Notificiation from './components/Notification'
 import Verification from './pages/Verification'
 import Transaction from './pages/Transaction'
 import { BASE_URL } from '../globals'
-import { io } from 'socket.io-client'
-const socket = io('http://localhost:5045')
+import { io } from 'socket.io-client'  
+const socket = io('https://mazad-704ecf2af46e.herokuapp.com:5045')
 
 const App = () => {
   const navigate = useNavigate()

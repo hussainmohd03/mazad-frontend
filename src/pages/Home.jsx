@@ -7,7 +7,7 @@ import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import categories from '../objects/categories.json'
 import { io } from 'socket.io-client'
-const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5045')
+const socket = io(import.meta.env.VITE_SOCKET_URL || 'https://mazad-704ecf2af46e.herokuapp.com:5045')
 
 const Home = () => {
   const [auctions, setAuctions] = useState([])

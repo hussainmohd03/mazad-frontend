@@ -5,7 +5,7 @@ import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import Modal from './Modal'
 import AutoBiddingInfo from './AutoBiddingInfo'
-const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5045')
+const socket = io(import.meta.env.VITE_SOCKET_URL || 'https://mazad-704ecf2af46e.herokuapp.com:5045')
 
 const ItemDetails = () => {
   const auctionId = useParams().auctionId

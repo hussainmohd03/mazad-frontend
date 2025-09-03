@@ -5,7 +5,7 @@ import { BASE_URL } from '../../globals'
 import { useContext } from 'react'
 import UserContext from '../context/UserContext'
 import { io } from 'socket.io-client'
-const socket = io('http://localhost:5045')
+const socket = io('https://mazad-704ecf2af46e.herokuapp.com:5045')
 
 const EditProfile = ({ setNotification, notification }) => {
   const navigate = useNavigate()
