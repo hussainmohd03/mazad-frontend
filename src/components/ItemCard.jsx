@@ -15,7 +15,7 @@ const ItemCard = ({ auction }) => {
       <div className="item-name">
         <p className="primary-text">{auction.itemId.name}</p>
         <p className="secondary-text">Price</p>
-        <p className="primary-text">BHD {auction.initialPrice}</p>
+        <p className="primary-text">BHD {auction.currentPrice}</p>
       </div>
     </div>
   )

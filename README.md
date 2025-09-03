@@ -1,4 +1,4 @@
-![header](/mazad-frontend/public/design-images/banner.png)
+![header](public/design-images/banner.png)
 
 # MAZAD
 
