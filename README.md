@@ -11,6 +11,25 @@
 ## **Description**
 This project is a MERN stack Mazad clone, built with MongoDB, Express.js, React, and Node.js. The app allows users to browse, bid, and sell items through live auctions. Sellers can list products with details and images, while buyers can place bids in real time. The platform also includes user authentication, transaction history, and delivering a smooth auction experience similar to Mazad.
 
+## **Key Features**
+### **Live auctions** 
+Users can view live auctions and place biddings on them; sockets reflect the change instantly. 
+
+### **Watchlist** 
+Users of Mazad can keep track of their favorite auctions via a watchlist feature. Once the auction is closed (meaning sold) it will be automatically removed and the user will be notified.
+
+### **In-app notifications** 
+Certain events in the application like edits to a users profile, an outbidding, or a successful bid trigger in-app notifications live.
+
+### **Autobidding** 
+On place bid, users can choose to turn on an autobidding feature which tops up the current highest bid with the chosen increment and places a bid on behalf of the current user.
+
+### **Admin console** 
+Alongside the regular user of Mazad, we accounted for admins to manage approving and rejecting products, see statistics about the website
+
+### **Top up** 
+Users can top up their balance in the app to place biddings on auctions
+
 ## **Technologies Used**
 
 - Built in MERN (MongoDB, Express.js, React, Node.js) creatively directed using CSS
