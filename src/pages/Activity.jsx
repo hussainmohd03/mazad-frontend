@@ -6,7 +6,7 @@ import UserContext from "../context/UserContext";
 import EmptyPage from "../components/EmptyPage";
 import { io } from "socket.io-client";
 import Client from "../../services/api";
-const socket = io("https://mazad-704ecf2af46e.herokuapp.com:5045");
+const socket = io("wss://mazad-704ecf2af46e.herokuapp.com");
 
 const Activity = ({ notification, setNotification }) => {
   const [auctions, setAuctions] = useState([]);
