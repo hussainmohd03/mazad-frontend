@@ -7,7 +7,9 @@ import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import categories from '../objects/categories.json'
 import { io } from 'socket.io-client'
-const socket = io(import.meta.env.VITE_SOCKET_URL || 'https://mazad-704ecf2af46e.herokuapp.com:5045')
+const socket = io(
+  import.meta.env.VITE_SOCKET_URL || 'wss://mazad-704ecf2af46e.herokuapp.com'
+)
 
 const Home = () => {
   const [auctions, setAuctions] = useState([])
@@ -15,7 +17,6 @@ const Home = () => {
     const getAuctions = async () => {
       const res = await Client.get(`${BASE_URL}/auctions?status=ongoing`)
       setAuctions(res.data)
-
     }
     getAuctions()
 
