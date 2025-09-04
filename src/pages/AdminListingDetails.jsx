@@ -24,6 +24,7 @@ const AdminListingDetails = () => {
       try {
         const res = await Client.get(`${backendUrl}/admin/items`)
         const item = res.data.item.find((i) => i._id == id)
+
         setListing(item)
         setMainImage(item?.images[0] || null)
       } catch (err) {
@@ -44,12 +45,11 @@ const AdminListingDetails = () => {
       navigate('/admin/listings')
 
       const templateParams = {
-        firstName: listing.ownerId.firstName,
-        name: listing.name,
-        status: action,
-        email: listing.email
+        firstName: 'maryam',
+        name: 'gold',
+        status: 'approved',
+        email: 'maryamaliredha@gmail.com'
       }
-      console.log(templateParams)
       await emailjs.send(serviceId, templateId, templateParams, publicKey)
     } catch (error) {
       console.error(error)
