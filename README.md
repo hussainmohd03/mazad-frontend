@@ -24,11 +24,14 @@ Certain events in the application like edits to a users profile, an outbidding, 
 ### **Autobidding** 
 On place bid, users can choose to turn on an autobidding feature which tops up the current highest bid with the chosen increment and places a bid on behalf of the current user.
 
+### **Internal admin creation**
+Admins sign up through a script allowing them to create admin-based users via the terminal for security purposes. 
+
 ### **Admin console** 
-Alongside the regular user of Mazad, we accounted for admins to manage approving and rejecting products, see statistics about the website
+Alongside the regular user of Mazad, we accounted for admins to manage approving and rejecting products, see statistics about the website.
 
 ### **Top up** 
-Users can top up their balance in the app to place biddings on auctions
+Users can top up their balance in the app to place biddings on auctions.
 
 ## **Technologies Used**
 
