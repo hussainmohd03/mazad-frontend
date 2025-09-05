@@ -30,7 +30,7 @@ const WatchListBox = ({ auction }) => {
         <div className="watchlist-action-box">
           <button
             onClick={async () => {
-              await Client.put(`/watchlist/me/remove/${auction.auctionId._id}`)
+              await Client.delete(`/watchlist/me/${auction.auctionId._id}`)
               setIsInWatchList(false)
               window.location.reload()
             }}

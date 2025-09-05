@@ -2,7 +2,7 @@ import Client from "./api";
 
 export const addToWatchList = async (id) => {
   try {
-    const response = await Client.put(`/watchlist/me/add/${id}`, {
+    const response = await Client.post(`/watchlist/me/${id}`, {
       auctionId: id,
     });
     return response.data;

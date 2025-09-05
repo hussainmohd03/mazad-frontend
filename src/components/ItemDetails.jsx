@@ -138,10 +138,10 @@ const ItemDetails = () => {
           className="blurry-circle favorite"
           onClick={async () => {
             if (isInWatchList) {
-              await Client.put(`/watchlist/me/remove/${auctionId.toString()}`)
+              await Client.delete(`/watchlist/me/${auctionId.toString()}`)
               setIsInWatchList(false)
             } else {
-              await Client.put(`/watchlist/me/add/${auctionId.toString()}`)
+              await Client.delete(`/watchlist/me/${auctionId.toString()}`)
               setIsInWatchList(true)
             }
           }}
