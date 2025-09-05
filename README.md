@@ -4,7 +4,7 @@
 
 ## Date: 03/09/2025
 
-### [MAZAD BACKEND REPO](https://github.com/hussainmohd03/mazad-backend) | [DEPLOYED VERSION]()
+### [MAZAD BACKEND REPO](https://github.com/hussainmohd03/mazad-backend) | [DEPLOYED VERSION](http://mazad-bh.surge.sh/)
 
 ### By: [Hussain Ahmed](https://github.com/hussainmohd03) | [Manaf Hujairi](https://github.com/Manaf-10) | [Mohammed Alsaegh](https://github.com/MohamedAlsaegh) | [Maryam Ali Redha](https://github.com/maryamalihasanebrahim)
 
@@ -53,25 +53,25 @@ The branding of this project was directly influenced by the Mazad application as
 ### **Entity Relationship Diagram (ERD)**
 The ERD below illustrates the database structure of the application, defining how entities relate to each other.
 
-- USER: each user will have firstName ,Lastname , email, password, a default avatar(image), type(role), balance, verified(as seller), and notifications.
+- USER: each user will have firstName, Lastname , email, password, a default avatar(image), type(role), balance, verified(as seller), and notifications.
 - ITEMS: each item will have name, description, price, category, image (array), status(pending, approved or rejected).
-- AUCTION: each auction will have itemId, ownerId(user as seller), startDate, endDate, status(upcoming , ongoing or closed), initialPrice, currentPrice, and winningBid.
-- BIDDING: each bidding will have auctionId, userId, amount,and createdAt.
-- AUTOBIDDING: each autobidding will have increment_amount,max_bid_amount, userId, and auctionId.
+- AUCTION: each auction will have itemId, ownerId(user as seller), startDate, endDate, status(upcoming, ongoing or closed), initialPrice, currentPrice, and winningBid.
+- BIDDING: each bidding will have auctionId, userId, amount, and createdAt.
+- AUTOBIDDING: each autobidding will have increment_amount, max_bid_amount, userId, and auctionId.
 - TRANSACTION: each transaction will have sellerId(user as seller), BuyerId, itemId, price, and date.
-- WATCHLIST: each watchlist will have auctionId , and userId.
+- WATCHLIST: each watchlist will have auctionId and userId.
 
 Relationships:
-- User owns many items, and each item belongs to one user.
-- User can run many auctions, and each auction is created by one user.
-- User has a watchlist of auctions, and a watchlist entry belongs to one user and one auction.
-- User places many bids, and each bid belongs to one user.
-- User has many autobiddings, and each autobidding belongs to one user (one autobidding in each auction).
-- Auction lists one item, and an item can appear in one and only one.
-- Auction receives many bids, and each bid belongs to one auction.
-- Auction has one autobidding by each user, and each autobidding is linked to one auction.
-- Auction is contained in many users’ watchlists, and each watchlist entry references one auction.
-- A transaction comes from a closed auction, and each transaction is tied to one auction/item.
+- User owns many items and each item belongs to one user.
+- User can run many auctions and each auction is created by one user.
+- User has a watchlist of auctions and a watchlist entry belongs to one user and one auction.
+- User places many bids and each bid belongs to one user.
+- User has many autobiddings and each autobidding belongs to one user (one autobidding in each auction).
+- Auction lists one item and an item can appear in one and only one.
+- Auction receives many bids and each bid belongs to one auction.
+- Auction has one autobidding by each user and each autobidding is linked to one auction.
+- Auction is contained in many users’ watchlists and each watchlist entry references one auction.
+- A transaction comes from a closed auction and each transaction is tied to one auction/item.
 - Bid belongs to one auction and an auction may have many bids.
 - A transaction has a seller (user) and a buyer (user).
 

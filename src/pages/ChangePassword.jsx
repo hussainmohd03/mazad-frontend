@@ -4,7 +4,7 @@ import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import UserContext from '../context/UserContext'
 import { io } from 'socket.io-client'
-const socket = io('http://localhost:5045')
+const socket = io('wss://mazad-704ecf2af46e.herokuapp.com')
 
 const ChangePassword = () => {
   const navigate = useNavigate()

@@ -29,7 +29,7 @@ import Verification from './pages/Verification'
 import Transaction from './pages/Transaction'
 import { BASE_URL } from '../globals'
 import { io } from 'socket.io-client'
-const socket = io('http://localhost:5045')
+const socket = io('wss://mazad-704ecf2af46e.herokuapp.com')
 
 const App = () => {
   const navigate = useNavigate()
@@ -53,12 +53,13 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    if (user.id) {
-      socket.emit('joinUser', user.id)
-      socket.on('notify', (notif) => {
-        setNotification(notif)
-      })
-    }
+    if (user)
+      if (user.id) {
+        socket.emit('joinUser', user.id)
+        socket.on('notify', (notif) => {
+          setNotification(notif)
+        })
+      }
   }, [notification, socket, user])
 
   const handleLogOut = () => {

@@ -13,7 +13,7 @@ body {
 .landing-page {
   width: 100vw;
   height: 100vh;
-  background-image: url('design-images/background.svg');
+  background-image: url('/design-images/background.svg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -41,6 +41,10 @@ body {
   border: 1px white solid;
   font-family: 'Poppins';
   font-size: 1em;
+}
+
+.h3-final-boss {
+  font-size: 1.5em;
 }
 
 .get-started-btn {
@@ -2359,104 +2363,74 @@ input::-webkit-inner-spin-button {
 .feature p {
   margin-left: 5%;
 }
+
 .edit-profile-container {
-  background: #fff;
-  min-height: 100vh;
-  font-family: 'Inter', sans-serif;
   display: grid;
-  grid-template-rows: auto 20% auto;
+  grid-template-rows: 50px 100px 1fr auto;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 2rem 1rem 0 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+  background: #fff;
+  min-height: 95vh;
+  position: relative;
 }
 
-.edit-profile-header {
-  border-bottom: 1px solid #dfdfdf;
-  padding-bottom: 27px;
+.edit-profile-header-grid {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+.edit-header {
+  justify-self: center;
+  text-align: center;
+  margin-right: 50px;
 }
 
-.edit-profile-header div {
-  font-size: 18px;
-  font-weight: 500;
-  color: #23272e;
-}
-input.name-field.input-field.side-indentation.change-pass.field-bottom-indentation{
-  width: 100%;
-  margin-right: 4%;
-}
-.profile-img-section {
-  width: 100%;
+.profile-img-section-grid {
   display: flex;
   justify-content: center;
-  margin: 24px 17px;
-  padding: 24px 0 16px 0;
-  border-bottom: 1px solid #dfdfdf;
+  align-items: center;
 }
 
-.profile-img-wrapper {
-  position: relative;
-  width: 96px;
-  /* height: 96px; */
-}
-
-.profile-img {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: #f2f2f2;
-  object-fit: cover;
-  /* margin-top: -30px; */
-}
-
-.edit-profile-form {
-  display: grid;
-  gap: 18px;
-  padding: 0 18px;
-  max-width: 480px;
-  margin: 0 auto;
-  width: 100%;
+.edit-profile-form-grid {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  height: 100%;
 }
 
 .input-group {
-  background: #fff;
+  display: grid;
+  gap: 0.5rem;
   border: 1px #bfbfbf solid;
   border-radius: 12px;
-  padding: 14px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  position: relative;
-}
-
-.input-group label {
-  font-size: 15px;
-  color: #403e3a;
-  font-weight: 600;
 }
 
 .input-group input {
   border: none;
-  outline: none;
-  font-size: 16px;
-  background: transparent;
   color: #b3b3b3;
+  font-size: 16px;
 }
-
-.input-group-edit {
-  flex-direction: row;
-  align-items: center;
-  padding-right: 0;
+.input-group input:focus {
+  outline: none;
 }
-
-.input-group-edit label {
-  flex: 1 0 120px;
-  margin-bottom: 0;
+.input-group {
+  font-size: 15px;
+  color: #403e3a;
+  font-weight: 600;
 }
-
-.input-group-edit input {
-  flex: 2 1 auto;
-  margin-right: 8px;
+.input-group label {
+  margin-bottom: -6px;
 }
 
 .save-btn {
-  margin-top: 66%;
-  width: 100%;
   background: #f2f2f2;
   color: #bdbdbd;
   border: none;
@@ -2495,12 +2469,11 @@ input.name-field.input-field.side-indentation.change-pass.field-bottom-indentati
 }
 
 .button-sell-val-page {
-  margin-top:600px;
+  margin-top: 600px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
-
 
 .grey-back-button {
   width: 40%;
@@ -2514,16 +2487,14 @@ input.name-field.input-field.side-indentation.change-pass.field-bottom-indentati
   font-size: 13px;
 }
 
-
 .red-forward-button {
-    width: 40%;
+  width: 40%;
   border: none;
   border-radius: 25px;
   height: 6vh;
-  background-color: #FF0022;
+  background-color: #ff0022;
   color: white;
   font-weight: 450;
   font-family: 'Poppins', sans-serif !important;
   font-size: 13px;
-
 }

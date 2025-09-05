@@ -5,7 +5,9 @@ import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
 import Modal from './Modal'
 import AutoBiddingInfo from './AutoBiddingInfo'
-const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5045')
+const socket = io(
+  import.meta.env.VITE_SOCKET_URL || 'wss://mazad-704ecf2af46e.herokuapp.com'
+)
 
 const ItemDetails = () => {
   const auctionId = useParams().auctionId
@@ -81,12 +83,12 @@ const ItemDetails = () => {
 
     getAuction()
     const fetchWatchList = async () => {
-      const response = await Client.get("/watchlist/me");
+      const response = await Client.get('/watchlist/me')
       setIsInWatchList(
         response.data.some((item) => item.auctionId._id === auctionId)
-      );
-    };
-    fetchWatchList();
+      )
+    }
+    fetchWatchList()
     return () => {
       socket.emit('leaveAuction', auctionId)
       socket.off('newBid')
@@ -155,7 +157,10 @@ const ItemDetails = () => {
       </div>
       <div className="item-page-body">
         <div className="item-images-container">
-        <img src={`${BASE_URL}/${auction.auction.itemId.images[0]}`} alt="item-image" />
+          <img
+            src={`${BASE_URL}/${auction.auction.itemId.images[0]}`}
+            alt="item-image"
+          />
         </div>
         <div className="item-details">
           <p>Lot ID # {auction.auction.itemId?._id}</p>

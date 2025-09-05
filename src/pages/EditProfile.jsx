@@ -5,7 +5,7 @@ import { BASE_URL } from '../../globals'
 import { useContext } from 'react'
 import UserContext from '../context/UserContext'
 import { io } from 'socket.io-client'
-const socket = io('http://localhost:5045')
+const socket = io('wss://mazad-704ecf2af46e.herokuapp.com')
 
 const EditProfile = ({ setNotification, notification }) => {
   const navigate = useNavigate()
@@ -59,16 +59,16 @@ const EditProfile = ({ setNotification, notification }) => {
   }, [])
 
   return (
-    <div className=".edit-profile-container">
-      <div className="change-pass-header-container edit-profile-header">
+    <div className="edit-profile-container">
+      <div className="edit-profile-header-grid ">
         <img
           onClick={() => navigate(-1)}
           src="/design-images/back-arrow-with-circle.svg"
           alt="back-arrow-with-circle"
         />
-        <div className="change-pass-header edit-header">Edit Personal Info</div>
+        <div className="edit-header">Edit Personal Info</div>
       </div>
-      <div className="profile-img-section">
+      <div className="profile-img-section-grid">
         <div className="profile-img-wrapper">
           <img
             src="/design-images/default_icon.svg"
@@ -77,10 +77,9 @@ const EditProfile = ({ setNotification, notification }) => {
           />
         </div>
       </div>
-      <form className="edit-profile-form" onSubmit={handleSubmit}>
+      <form className="edit-profile-form-grid">
         <div className="input-group">
           <label>First name</label>
-
           <input
             type="text"
             name="firstName"
@@ -90,10 +89,9 @@ const EditProfile = ({ setNotification, notification }) => {
         </div>
         <div className="input-group">
           <label>Last name</label>
-
           <input
             type="text"
-            name="firstName"
+            name="lastName"
             value={userDetails.lastName}
             onChange={handleChange}
           />
@@ -109,10 +107,15 @@ const EditProfile = ({ setNotification, notification }) => {
             required
           />
         </div>
-        <button type="submit" className="save-btn" disabled={!isChanged}>
-          Save
-        </button>
       </form>
+      <button
+        type="submit"
+        className="save-btn"
+        disabled={!isChanged}
+        onClick={handleSubmit}
+      >
+        Save
+      </button>
     </div>
   )
 }
