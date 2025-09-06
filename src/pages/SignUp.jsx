@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Register } from '../../services/Auth'
 import emailjs from '@emailjs/browser'
 
-const SignUp = () => {
+const SignUp = ({ message, setMessage }) => {
   const serviceId = 'service_xfa2nmx'
   const templateId = 'template_inrpxj1'
   const publicKey = 'Fxi0xwrKA_XPTOzbg'
@@ -14,6 +14,7 @@ const SignUp = () => {
     password: '',
     confirmPassword: ''
   })
+  const [condition, setCondition] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -23,25 +24,67 @@ const SignUp = () => {
     })
   }
 
+  const checkRequirements = () => {
+    const symbols = ['@', '%', '&', '#']
+    for (let i = 0; i < formData.password.length; i++) {
+      if (formData.password[i] in symbols) {
+        if (
+          formData.password === formData.confirmPassword &&
+          formData.password.length > 8
+        ) {
+          return setCondition(true)
+        }
+      }
+    }
+
+    return setMessage(
+      'Password must be 8 characters long and contain special characters.'
+    )
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await Register(formData.full_name, formData.email, formData.password)
+    try {
+      if (formData.full_name.includes(' ')) {
+        checkRequirements()
+        setTimeout(() => {
+          setMessage('')
+        }, 2000)
+        if (condition) {
+          const response = await Register(
+            formData.full_name,
+            formData.email,
+            formData.password
+          )
+          console.log('frontend', response)
+          const templateParams = {
+            firstName: formData.full_name.split(' ')[0],
+            name: formData.full_name,
+            status: 'registered successfully',
+            email: formData.email
+          }
+          await emailjs.send(serviceId, templateId, templateParams, publicKey)
 
-    const templateParams = {
-      firstName: formData.full_name.split(' ')[0],
-      name: formData.full_name,
-      status: 'registered successfully',
-      email: formData.email
+          setFormData({
+            full_name: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+          })
+          navigate('/sign-in')
+        }
+      } else {
+        setMessage('Please enter your full name.')
+        setTimeout(() => {
+          setMessage('')
+        }, 2000)
+      }
+    } catch (error) {
+      setMessage(error.response.data.msg)
+      setTimeout(() => {
+        setMessage('')
+      }, 2000)
     }
-    await emailjs.send(serviceId, templateId, templateParams, publicKey)
-
-    setFormData({
-      full_name: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    })
-    navigate('/sign-in')
   }
   return (
     <div className="sign-page">
@@ -91,6 +134,7 @@ const SignUp = () => {
           onChange={handleChange}
           required
         />
+        <p className="less-tiny-text top-padding side-indentation">{message}</p>
         <button type="submit" className="sign-button">
           Sign up
         </button>

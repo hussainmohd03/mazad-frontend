@@ -6,6 +6,8 @@ import Description from './Description'
 import Images from './Images'
 import { createItem } from '../../services/item'
 import { useNavigate } from 'react-router-dom'
+
+// FOUR STEP FORM (whilst ill)
 const ItemForm = () => {
   const navigate = useNavigate()
   const [activeStep, setActiveStep] = useState(1)

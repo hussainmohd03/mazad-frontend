@@ -48,11 +48,13 @@ body {
 }
 
 .get-started-btn {
+  font-weight: 550;
   background-color: white;
   color: #e40421;
 }
 
 .guest-btn {
+  font-weight: 550;
   background-color: transparent;
   color: white;
 }
@@ -145,6 +147,7 @@ nav a.nav-link.active img {
 
 .terms p {
   width: 90%;
+  padding-left: 10px;
 }
 
 .terms a {

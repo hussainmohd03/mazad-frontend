@@ -37,7 +37,7 @@ const App = () => {
   const [financialData, setFinancialData] = useState({})
   const [notification, setNotification] = useState('')
   const [verification, setVerification] = useState(false)
-
+  const [message, setMessage] = useState('')
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
@@ -131,11 +131,17 @@ const App = () => {
             />
           }
         />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route
+          path="/sign-up"
+          element={<SignUp message={message} setMessage={setMessage} />}
+        />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/auctions/:auctionId" element={<ItemDetails />} />
         <Route path="/edit-profile" element={<EditProfile />} />
-        <Route path="change-password" element={<ChangePassword />} />
+        <Route
+          path="change-password"
+          element={<ChangePassword message={message} setMessage={setMessage} />}
+        />
         <Route path="/admin/sign-in" element={<AdminSignIn />} />
         <Route path="/admin/sign-up" element={<AdminSignUp />} />
         <Route path="/admin/listings" element={<AdminListings />} />

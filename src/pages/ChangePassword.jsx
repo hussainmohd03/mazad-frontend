@@ -6,7 +6,7 @@ import UserContext from '../context/UserContext'
 import { io } from 'socket.io-client'
 const socket = io('wss://mazad-704ecf2af46e.herokuapp.com')
 
-const ChangePassword = () => {
+const ChangePassword = ({message, setMessage}) => {
   const navigate = useNavigate()
   const credentialsInitial = {
     old_password: '',
@@ -16,7 +16,7 @@ const ChangePassword = () => {
   const { user } = useContext(UserContext)
   const [credentials, setCredentials] = useState(credentialsInitial)
   const [condition, setCondition] = useState(false)
-  const [message, setMessage] = useState('')
+
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
