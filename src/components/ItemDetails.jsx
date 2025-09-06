@@ -163,14 +163,20 @@ const ItemDetails = () => {
           />
         </div>
         <div className="item-details">
-          <p>Lot ID # {auction.auction.itemId?._id}</p>
-          <p>{auction.auction.itemId?.name}</p>
-          <p>Current Bid</p>
-          <p>BHD {auction.auction.currentPrice}</p>
-          <p className="bids-count">
-            {bidCount} Bids Closes on:{' '}
+          <div className='item-details-top'>
+            <div> 
+              <p className='secondary-item-text'>Lot ID # {auction.auction.itemId?._id}</p>
+              <p className='main-item-text'> {auction.auction.itemId?.name}</p>
+            </div>
+            <div>
+              <p className='secondary-item-text'>Current Bid</p>
+              <p className='main-item-text'>BHD {auction.auction.currentPrice}</p>
+              <p className="bids-count">
+            {bidCount} Bids • Closes on:{' '}
             {getDateFormatted(auction.auction.endDate)}
-          </p>
+              </p>
+            </div>
+          </div>
           <div className="item-description">
             <p className="description-title">Description</p>
             <p className="description-text">{auction.itemId?.description}</p>
